@@ -1,0 +1,29 @@
+name: Build
+
+on: [pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: npm
+          registry-url: "https://npm.pkg.github.com"
+      - name: Build and test
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+        run: |
+          npm ci
+          npm run test-ci
+          npm run build
+      - name: Npm build server
+        working-directory: ./server
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+        run: |
+          npm ci
+          npm run build
