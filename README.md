@@ -1,6 +1,6 @@
 # familie-ef-minside
 
-Frontend - søknad for enslig forsørger.
+Enslig forsørger - min side
 
 ## Kjør lokalt
 
