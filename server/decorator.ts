@@ -14,7 +14,7 @@ const getHtmlWithDecorator = (filePath: string) => {
     env: env === 'localhost' ? 'dev' : (env as NaisEnv),
     filePath: filePath,
     params: {
-      simple: true,
+      simple: false,
       enforceLogin: false,
       redirectToApp: true,
       level: 'Level4',

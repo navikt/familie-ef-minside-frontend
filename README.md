@@ -16,7 +16,7 @@ Med api må du sette cookie første gang:
 ## Kjør lokalt med mellomlagring
 1. Last ned [familie-dokument](https://github.com/navikt/familie-dokument) og [familie-ef-minside-api](https://github.com/navikt/familie-ef-minside-api)
 2. Kjør `mvn clean install` i begge prosjektene
-2. Kjør opp appene lokalt ved å kjøre familie-dokument din `DevLauncher` og familie-ef-minside-api sin `ApplicationLocalLauncher` 
+2. Kjør opp appene lokalt ved å kjøre familie-ef-minside-api sin `ApplicationLocalLauncher` 
 
 
 ## Kjøre opp med node-server lokalt
