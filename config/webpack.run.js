@@ -42,7 +42,7 @@ const config = {
   },
   devtool: 'eval-cheap-module-source-map',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.less', '.mjs'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.mjs'],
     fallback: { crypto: false, fs: false, path: false, os: false },
   },
   module: {
@@ -61,7 +61,7 @@ const config = {
         ],
       },
       {
-        test: /\.(css|less)$/,
+        test: /\.(css)$/,
         use: [
           {
             loader: 'style-loader',
@@ -74,9 +74,6 @@ const config = {
               },
               importLoaders: 2,
             },
-          },
-          {
-            loader: 'less-loader',
           },
         ],
       },
