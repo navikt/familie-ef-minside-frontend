@@ -7,8 +7,7 @@
     "build": "tsc & NODE_ENV=production PUBLIC_URL=/familie/alene-med-barn/minside webpack --config ./config/webpack.build.js",
     "build:dev": "tsc & NODE_ENV=development PUBLIC_URL=/familie/alene-med-barn/minside webpack --config ./config/webpack.run.js",
     "start": "NODE_ENV=development PUBLIC_URL=/familie/alene-med-barn/minside node dev-server/dev-server.js",
-    "start:mock": "NODE_ENV=development BRUK_MOCK_LOKALT=true PUBLIC_URL=/familie/alene-med-barn/minside node dev-server/dev-server.js",
-    "test-ci": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "start:mock": "NODE_ENV=development BRUK_MOCK_LOKALT=true PUBLIC_URL=/familie/alene-med-barn/minside node dev-server/dev-server.js"
   },
   "husky": {
     "hooks": {
@@ -54,10 +53,7 @@
     "@babel/preset-typescript": "^7.23.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@svgr/webpack": "^8.1.0",
-    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.20",
-    "@types/history": "^5.0.0",
-    "@types/jest": "^29.5.6",
     "@types/node": "^20.9.2",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
