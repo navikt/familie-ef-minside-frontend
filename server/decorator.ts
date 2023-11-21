@@ -17,7 +17,7 @@ const getHtmlWithDecorator = (filePath: string) => {
     throw Error('Miljø kan ikke være undefined');
   }
 
-  let decoratorBreadcrumb: DecoratorBreadcrumb[] = [
+  const decoratorBreadcrumb: DecoratorBreadcrumb[] = [
     {
       url: miljø.minsideNav,
       title: 'Min side',
