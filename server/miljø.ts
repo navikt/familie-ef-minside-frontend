@@ -2,7 +2,7 @@ import logger from './logger';
 
 const lokaltMiljø = {
   apiUrl: 'http://localhost:8091',
-  minsideNav: '/minside',
+  minsideNav: 'https://www.intern.dev.nav.no/minside/',
   oauthCallbackUri:
     'https://localhost:8080/familie/alene-med-barn/minside/oauth2/callback',
 };
