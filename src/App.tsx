@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import React from "react";
-import Forside from "./components/Forside";
+import Forside from "./pages/Forside";
 
 const App: React.FC = () => {
 
