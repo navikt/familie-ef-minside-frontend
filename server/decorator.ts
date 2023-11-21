@@ -18,8 +18,16 @@ const getHtmlWithDecorator = (filePath: string) => {
   }
 
   let decoratorBreadcrumb: DecoratorBreadcrumb[] = [
-    { url: '/minside', title: 'Min side', handleInApp: false },
-    { url: '/minside', title: 'Min side', handleInApp: false },
+    {
+      url: 'https://www.intern.dev.nav.no/minside/',
+      title: 'Min side',
+      handleInApp: false,
+    },
+    {
+      url: '/minside',
+      title: 'Min side - enslig forsørger',
+      handleInApp: false,
+    },
   ];
 
   const dekoratørConfig = {
