@@ -1,7 +1,14 @@
 import { injectDecoratorServerSide } from '@navikt/nav-dekoratoren-moduler/ssr';
 import logger from './logger';
-
+import { miljø } from './miljø';
 type NaisEnv = 'prod' | 'dev';
+
+type DecoratorBreadcrumb = {
+  url: string;
+  title: string;
+  analyticsTitle?: string;
+  handleInApp?: boolean;
+};
 
 const getHtmlWithDecorator = (filePath: string) => {
   const env = process.env.ENV;
@@ -9,6 +16,19 @@ const getHtmlWithDecorator = (filePath: string) => {
     logger.error('Mangler miljø for dekoratøren');
     throw Error('Miljø kan ikke være undefined');
   }
+
+  const decoratorBreadcrumb: DecoratorBreadcrumb[] = [
+    {
+      url: miljø.minsideNav,
+      title: 'Min side',
+      handleInApp: false,
+    },
+    {
+      url: '/minside',
+      title: 'Min side - Enslig forsørger',
+      handleInApp: false,
+    },
+  ];
 
   const dekoratørConfig = {
     env: env === 'localhost' ? 'dev' : (env as NaisEnv),
@@ -18,6 +38,7 @@ const getHtmlWithDecorator = (filePath: string) => {
       enforceLogin: false,
       redirectToApp: true,
       level: 'Level4',
+      breadcrumbs: decoratorBreadcrumb,
     },
   };
 
