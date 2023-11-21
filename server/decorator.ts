@@ -1,6 +1,6 @@
 import { injectDecoratorServerSide } from '@navikt/nav-dekoratoren-moduler/ssr';
 import logger from './logger';
-
+import { miljø } from './miljø';
 type NaisEnv = 'prod' | 'dev';
 
 type DecoratorBreadcrumb = {
@@ -19,13 +19,13 @@ const getHtmlWithDecorator = (filePath: string) => {
 
   let decoratorBreadcrumb: DecoratorBreadcrumb[] = [
     {
-      url: 'https://www.intern.dev.nav.no/minside/',
+      url: miljø.minsideNav,
       title: 'Min side',
       handleInApp: false,
     },
     {
       url: '/minside',
-      title: 'Min side - enslig forsørger',
+      title: 'Min side - Enslig forsørger',
       handleInApp: false,
     },
   ];
