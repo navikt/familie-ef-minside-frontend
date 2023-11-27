@@ -9,6 +9,7 @@ import LenkePanelStor from '../components/LenkePanelStor';
 import { Ettersending } from '../ikoner/Ettersending';
 import { Tannhjul } from '../ikoner/Tannhjul';
 import { ABgSubtle } from '@navikt/ds-tokens/dist/tokens';
+import SideTittel from '../components/SideTittel';
 
 const OuterContainer = styled.div`
   display: flex;
@@ -37,7 +38,7 @@ const Forside: React.FC = () => {
   return (
     <>
       <OuterContainer>
-        <Heading size={'large'}>Min side</Heading>
+        <SideTittel />
       </OuterContainer>
       <HovedInnhold>
         <KomponentGruppe>
