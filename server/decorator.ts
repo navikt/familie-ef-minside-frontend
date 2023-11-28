@@ -19,7 +19,7 @@ const getHtmlWithDecorator = (filePath: string) => {
 
   const decoratorBreadcrumb: DecoratorBreadcrumb[] = [
     {
-      url: miljø.minsideNav,
+      url: miljø.minSideUrl,
       title: 'Min side',
       handleInApp: false,
     },

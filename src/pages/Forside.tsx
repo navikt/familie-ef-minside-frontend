@@ -10,6 +10,7 @@ import { Ettersending } from '../ikoner/Ettersending';
 import { Tannhjul } from '../ikoner/Tannhjul';
 import { ABgSubtle } from '@navikt/ds-tokens/dist/tokens';
 import SideTittel from '../components/SideTittel';
+import { useApp } from '../context/AppContext';
 
 const OuterContainer = styled.div`
   display: flex;
@@ -35,6 +36,10 @@ const HovedInnhold = styled(OuterContainer)`
 `;
 
 const Forside: React.FC = () => {
+  const { appEnv } = useApp();
+
+  console.log('appEnv i forsiden', appEnv);
+
   return (
     <>
       <OuterContainer>

@@ -120,7 +120,7 @@ const tokenxConfig = {
   discoveryUrl: process.env.TOKEN_X_WELL_KNOWN_URL,
   clientId: process.env.TOKEN_X_CLIENT_ID,
   privateJwk: process.env.TOKEN_X_PRIVATE_JWK,
-  redirectUri: miljø.oauthCallbackUri,
+  redirectUri: miljø.oAuthCallbackUri,
   clusterName: process.env.NAIS_CLUSTER_NAME,
 };
 
