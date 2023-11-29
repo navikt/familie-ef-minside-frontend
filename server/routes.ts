@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import path from 'path';
-import getHtmlWithDecorator from './decorator';
-import logger from './logger';
-import { addRequestInfo, doProxy } from './proxy';
-import attachToken from './tokenProxy';
-import { miljø } from './miljø';
+import getHtmlWithDecorator from './decorator.js';
+import logger from './logger.js';
+import { addRequestInfo, doProxy } from './proxy.js';
+import attachToken from './tokenProxy.js';
+import { miljø } from './miljø.js';
 
 const buildPath = path.resolve(process.cwd(), '../build');
 const EF_BASE_PATH = '/familie/alene-med-barn';
@@ -13,23 +13,6 @@ const routes = (router: Router) => {
   router.get(`${BASE_PATH}/internal/isAlive|isReady`, (_req, res) =>
     res.sendStatus(200)
   );
-
-  router.get(`/env`, (_req, res) => {
-    res
-      .status(200)
-      .send({
-        endringsmeldingUrl: miljø.endringsmeldingUrl,
-        ettersendingUrl: miljø.ettersendingUrl,
-        søknadOvergangsstønadUrl: miljø.søknadOvergangsstønadUrl,
-        søknadBarnetilsynUrl: miljø.søknadBarnetilsynUrl,
-        søknadSkolepengerUrl: miljø.søknadSkolepengerUrl,
-        infoSideOvergangsstønadUrl: miljø.infoSideOvergangsstønadUrl,
-        infoSideBarnetilsynUrl: miljø.infoSideBarnetilsynUrl,
-        infoSideSkolepengerUrl: miljø.infoSideSkolepengerUrl,
-        saksbehandlingstiderUrl: miljø.saksbehandlingstiderUrl,
-      })
-      .end();
-  });
 
   router.get(`${BASE_PATH}/env`, (_req, res) => {
     res

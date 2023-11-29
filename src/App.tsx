@@ -4,9 +4,11 @@ import Forside from './pages/Forside';
 import styled from 'styled-components';
 import { AppEnv, hentEnv } from './api/env';
 import { AppProvider } from './context/AppContext';
+import { HStack, Loader } from '@navikt/ds-react';
 
 const AppContainer = styled.div`
   margin-top: 2rem;
+  margin-bottom: 2rem;
 `;
 
 const App: React.FC = () => {
@@ -18,11 +20,18 @@ const App: React.FC = () => {
     });
   }, []);
 
-  // if (!appEnv) {
-  //   // TODO: Presenter feilside
-  //   return <></>;
-  // }
-  console.log('appEnv', appEnv);
+  if (!appEnv) {
+    return (
+      <HStack justify={'center'}>
+        <Loader
+          size={'xlarge'}
+          onResize={undefined}
+          onResizeCapture={undefined}
+        />
+      </HStack>
+    );
+  }
+
   return (
     <AppProvider appEnv={appEnv}>
       <AppContainer>

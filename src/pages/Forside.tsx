@@ -38,8 +38,6 @@ const HovedInnhold = styled(OuterContainer)`
 const Forside: React.FC = () => {
   const { appEnv } = useApp();
 
-  console.log('appEnv i forsiden', appEnv);
-
   return (
     <>
       <OuterContainer>
@@ -55,13 +53,13 @@ const Forside: React.FC = () => {
               <LenkePanelStor
                 tittel="Endringsmelding"
                 brødtekst="Ved endring i inntekt, aktivitet eller annet som påvirker din stønad."
-                url=""
+                url={appEnv.endringsmeldingUrl}
                 ikon={<Søknad farge="grønn" />}
               />
               <LenkePanelStor
                 tittel="Ettersendelse"
                 brødtekst="Her kan du ettersende dokumenter til din sak."
-                url=""
+                url={appEnv.ettersendingUrl}
                 ikon={<Ettersending />}
               />
             </HStack>
@@ -72,17 +70,17 @@ const Forside: React.FC = () => {
               <LenkePanelLiten
                 tittel="Søknad om overgangsstønad"
                 ikon={<Søknad farge={'rød'} />}
-                url={'www.nav.no'}
+                url={appEnv.søknadOvergangsstønadUrl}
               />
               <LenkePanelLiten
                 tittel="Søknad om stønad til barnetilsyn"
                 ikon={<Søknad farge={'rød'} />}
-                url={'www.nav.no'}
+                url={appEnv.søknadBarnetilsynUrl}
               />
               <LenkePanelLiten
                 tittel="Søknad om stønad til skolepenger"
                 ikon={<Søknad farge={'rød'} />}
-                url={'www.nav.no'}
+                url={appEnv.søknadSkolepengerUrl}
               />
             </HStack>
           </VStack>
@@ -98,17 +96,17 @@ const Forside: React.FC = () => {
               <LenkePanelLiten
                 tittel="Overgangsstønad"
                 ikon={<Overgangsstønad />}
-                url={'https://www.nav.no/overgangsstonad-enslig'}
+                url={appEnv.infoSideOvergangsstønadUrl}
               />
               <LenkePanelLiten
                 tittel="Stønad til Barnetilsyn"
                 ikon={<Barnetilsyn />}
-                url={'https://www.nav.no/barnetilsyn-enslig'}
+                url={appEnv.infoSideBarnetilsynUrl}
               />
               <LenkePanelLiten
                 tittel="Stønad til skolepenger"
                 ikon={<Skolepenger />}
-                url={'https://www.nav.no/skolepenger-enslig'}
+                url={appEnv.infoSideSkolepengerUrl}
               />
             </HStack>
           </VStack>
@@ -117,7 +115,7 @@ const Forside: React.FC = () => {
             <LenkePanelLiten
               tittel="Saksbehandlingstider"
               ikon={<Tannhjul />}
-              url={''}
+              url={appEnv.saksbehandlingstiderUrl}
               kompaktVisning={true}
             />
           </VStack>

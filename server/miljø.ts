@@ -1,6 +1,7 @@
-import logger from './logger';
+import logger from './logger.js';
 
 interface Environment {
+  port: number;
   apiUrl: string;
   minSideUrl: string;
   oAuthCallbackUri: string;
@@ -16,11 +17,12 @@ interface Environment {
 }
 
 const lokaltMiljø = {
+  port: 3000,
   apiUrl: 'http://localhost:8091',
   minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
     'https://localhost:8080/familie/alene-med-barn/minside/oauth2/callback',
-  endringsmeldingUrl: 'https://www.ekstern.dev.nav.no/skriv-til-oss',
+  endringsmeldingUrl: 'https://www.ekstern.dev.nav.no/skriv-til-oss-om-familie',
   ettersendingUrl:
     'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/ettersending',
   søknadOvergangsstønadUrl:
@@ -38,11 +40,12 @@ const lokaltMiljø = {
 };
 
 const devMiljø = {
+  port: 8080,
   apiUrl: 'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api',
   minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
     'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/minside/oauth2/callback',
-  endringsmeldingUrl: 'https://www.ekstern.dev.nav.no/skriv-til-oss',
+  endringsmeldingUrl: 'https://www.nav.no/skriv-til-oss-om-familie',
   ettersendingUrl:
     'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/ettersending',
   søknadOvergangsstønadUrl:
@@ -60,6 +63,7 @@ const devMiljø = {
 };
 
 const prodMiljø = {
+  port: 8080,
   apiUrl: 'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api',
   minSideUrl: 'https://www.nav.no/minside/',
   oAuthCallbackUri:
@@ -92,3 +96,4 @@ const initierMiljøvariabler = (): Environment => {
 };
 
 export const miljø = initierMiljøvariabler();
+export const isLocal = () => process.env.ENV === 'localhost';

@@ -2,9 +2,9 @@ import { Issuer } from 'openid-client';
 import jwt from 'jsonwebtoken';
 import { v4 as uuid } from 'uuid';
 import nodeJose from 'node-jose';
-import logger from './logger';
-import { ApplicationName } from './tokenProxy';
-import { miljø } from './miljø';
+import logger from './logger.js';
+import { ApplicationName } from './tokenProxy.js';
+import { isLocal, miljø } from './miljø.js';
 
 class TokenXClient {
   private tokenxClient: any = null;
@@ -12,6 +12,11 @@ class TokenXClient {
 
   constructor() {
     logger.info('Setter opp TokenX');
+
+    if (isLocal()) {
+      logger.info('Setter ikke opp TokenX lokalt');
+      return;
+    }
 
     this.init()
       .then((client: any) => {
