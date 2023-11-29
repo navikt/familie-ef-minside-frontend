@@ -1,6 +1,6 @@
-import { injectDecoratorServerSide } from '@navikt/nav-dekoratoren-moduler/ssr';
-import logger from './logger';
-import { miljø } from './miljø';
+import { injectDecoratorServerSide } from '@navikt/nav-dekoratoren-moduler/ssr/index.js';
+import logger from './logger.js';
+import { miljø } from './miljø.js';
 type NaisEnv = 'prod' | 'dev';
 
 type DecoratorBreadcrumb = {
@@ -19,7 +19,7 @@ const getHtmlWithDecorator = (filePath: string) => {
 
   const decoratorBreadcrumb: DecoratorBreadcrumb[] = [
     {
-      url: miljø.minsideNav,
+      url: miljø.minSideUrl,
       title: 'Min side',
       handleInApp: false,
     },

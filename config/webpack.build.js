@@ -97,7 +97,6 @@ const config = {
       threshold: 10240,
       minRatio: 0.8,
     }),
-
     new HtmlWebpackPlugin({
       publicPath: publicPath,
       template: path.join(process.cwd(), 'public/index.html'),

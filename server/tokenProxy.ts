@@ -1,6 +1,6 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
-import TokenXClient from './tokenx';
-import { logWarn, logInfo } from './logger';
+import TokenXClient from './tokenx.js';
+import { logWarn, logInfo } from './logger.js';
 
 const { exchangeToken } = new TokenXClient();
 
