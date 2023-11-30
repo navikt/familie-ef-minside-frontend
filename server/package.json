@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc --build --verbose",
-    "start": "NODE_ENV=production ENV=prod node --experimental-modules --es-module-specifier-resolution=node build/server.js",
-    "start:dev": "NODE_ENV=development ENV=localhost node --experimental-modules --es-module-specifier-resolution=node build/server.js"
+    "start": "NODE_ENV=production ENV=prod node --experimental-modules --es-module-specifier-resolution=node build/server.js"
   },
   "dependencies": {
     "@navikt/nav-dekoratoren-moduler": "^2.1.3",
