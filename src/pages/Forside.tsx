@@ -1,4 +1,3 @@
-import { Heading } from '@navikt/ds-react';
 import styled from 'styled-components';
 import LenkePanelLiten from '../components/LenkePanelLiten';
 import { Søknad } from '../icons/Søknad';
@@ -12,6 +11,7 @@ import { ABgSubtle } from '@navikt/ds-tokens/dist/tokens';
 import SideTittel from '../components/SideTittel';
 import { useApp } from '../context/AppContext';
 import ResponsiveFlexbox from '../components/ResponsiveFlexbox';
+import ResponsiveHeading from '../components/ResponsiveHeading';
 
 const HovedInnhold = styled(ResponsiveFlexbox)`
   background-color: ${ABgSubtle};
@@ -22,13 +22,7 @@ const Forside: React.FC = () => {
 
   return (
     <>
-      <ResponsiveFlexbox
-        $gap="2rem"
-        $direction="column"
-        $align="center"
-        $justify="center"
-        $padding="2rem"
-      >
+      <ResponsiveFlexbox $align="center" $justify="center" $padding="2rem">
         <SideTittel />
       </ResponsiveFlexbox>
       <HovedInnhold
@@ -40,9 +34,9 @@ const Forside: React.FC = () => {
       >
         <ResponsiveFlexbox $gap="2rem" $direction="column">
           <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-            <Heading size={'medium'}>
+            <ResponsiveHeading size={'medium'}>
               Melde fra eller ettersende dokumentasjon?
-            </Heading>
+            </ResponsiveHeading>
             <ResponsiveFlexbox $gap="1rem">
               <LenkePanelStor
                 tittel="Endringsmelding"
@@ -59,7 +53,9 @@ const Forside: React.FC = () => {
             </ResponsiveFlexbox>
           </ResponsiveFlexbox>
           <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-            <Heading size={'medium'}>Ønsker du å søke?</Heading>
+            <ResponsiveHeading size={'medium'}>
+              Ønsker du å søke?
+            </ResponsiveHeading>
             <ResponsiveFlexbox $gap="1rem">
               <LenkePanelLiten
                 tittel="Søknad om overgangsstønad"
@@ -89,9 +85,9 @@ const Forside: React.FC = () => {
       >
         <ResponsiveFlexbox $gap="2rem" $direction="column">
           <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-            <Heading size={'medium'}>
+            <ResponsiveHeading size={'medium'}>
               Ønsker du å lese mer om stønadene?
-            </Heading>
+            </ResponsiveHeading>
             <ResponsiveFlexbox $gap="1rem">
               <LenkePanelLiten
                 tittel="Overgangsstønad"
@@ -111,7 +107,7 @@ const Forside: React.FC = () => {
             </ResponsiveFlexbox>
           </ResponsiveFlexbox>
           <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-            <Heading size={'medium'}>Snarveier</Heading>
+            <ResponsiveHeading size={'medium'}>Snarveier</ResponsiveHeading>
             <LenkePanelLiten
               tittel="Saksbehandlingstider"
               ikon={<Tannhjul />}
