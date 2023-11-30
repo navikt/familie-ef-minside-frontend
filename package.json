@@ -7,7 +7,7 @@
     "build": "tsc && NODE_ENV=production ENV=prod PUBLIC_URL=/familie/alene-med-barn/minside webpack --config ./config/webpack.build.js",
     "start:dev": "npm run build:dev-server &&  NODE_ENV=development ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node --es-module-specifier-resolution=node --trace-deprecation server/build/server.js",
     "build:dev-server": "cd server && tsc --build --verbose && cd ..",
-    "postinstall": "cd server && npm install && cd .."
+    "postinstall": "cd server && npm ci && cd .."
   },
   "husky": {
     "hooks": {
@@ -81,7 +81,6 @@
     "typescript": "^5.2.2",
     "url-loader": "^4.1.1",
     "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-cli": "^5.1.4"
   }
 }

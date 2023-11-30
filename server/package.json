@@ -30,6 +30,7 @@
     "@types/node-jose": "^1.1.11",
     "@types/uuid": "^9.0.4",
     "@types/webpack-hot-middleware": "^2.25.9",
+    "webpack-dev-server": "^4.15.1",
     "webpack-hot-middleware": "^2.25.4"
   }
 }
