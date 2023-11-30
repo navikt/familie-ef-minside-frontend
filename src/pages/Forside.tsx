@@ -12,9 +12,15 @@ import SideTittel from '../components/SideTittel';
 import { useApp } from '../context/AppContext';
 import ResponsiveFlexbox from '../components/ResponsiveFlexbox';
 import ResponsiveHeading from '../components/ResponsiveHeading';
+import { smallSkjerm } from '../utils';
 
 const HovedInnhold = styled(ResponsiveFlexbox)`
   background-color: ${ABgSubtle};
+
+  @media (max-width: ${smallSkjerm}) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 `;
 
 const Forside: React.FC = () => {
