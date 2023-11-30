@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import express, { Router } from 'express';
 import path from 'path';
 import getHtmlWithDecorator from './decorator.js';
 import logger from './logger.js';
@@ -6,7 +6,7 @@ import { addRequestInfo, doProxy } from './proxy.js';
 import attachToken from './tokenProxy.js';
 import { miljø } from './miljø.js';
 
-const buildPath = path.resolve(process.cwd(), '../build');
+const buildPath = path.join(process.cwd(), 'build');
 const EF_BASE_PATH = '/familie/alene-med-barn';
 const BASE_PATH = `${EF_BASE_PATH}/minside`;
 const routes = (router: Router) => {
@@ -31,6 +31,15 @@ const routes = (router: Router) => {
       .end();
   });
 
+  router.use(
+    `${BASE_PATH}/api`,
+    addRequestInfo(),
+    attachToken('familie-ef-soknad-api'),
+    doProxy(miljø.apiUrl, `${BASE_PATH}/api`)
+  );
+
+  router.use(`${BASE_PATH}`, express.static(buildPath, { index: false }));
+
   router.use(/^(?!.*\/(internal|static|api)\/).*$/, (_req, res) => {
     getHtmlWithDecorator(path.join(buildPath, 'index.html'))
       .then((html) => {
@@ -41,13 +50,6 @@ const routes = (router: Router) => {
         res.status(500).send(e);
       });
   });
-
-  router.use(
-    `${BASE_PATH}/api`,
-    addRequestInfo(),
-    attachToken('familie-ef-soknad-api'),
-    doProxy(miljø.apiUrl, `${BASE_PATH}/api`)
-  );
 
   return router;
 };
