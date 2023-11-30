@@ -1,4 +1,4 @@
-import { AleneMedBarn } from '../ikoner/AleneMedBarn';
+import { AleneMedBarn } from '../icons/AleneMedBarn';
 import { Heading, HStack } from '@navikt/ds-react';
 
 const SideTittel: React.FC = () => (
