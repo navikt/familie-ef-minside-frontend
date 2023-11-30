@@ -1,6 +1,14 @@
 import { BodyLong, Heading, LinkPanel, VStack } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
+import { smallSkjerm } from '../utils';
+
+interface Props {
+  tittel: string;
+  brødtekst: string;
+  url: string;
+  ikon: React.ReactNode;
+}
 
 const InnerContainer = styled(LinkPanel.Title)`
   display: flex;
@@ -14,14 +22,11 @@ const StyledLinkPanel = styled(LinkPanel)`
   border-radius: 0.5rem;
   box-shadow: ${AShadowMedium};
   border-color: ${ABorderSubtle};
-`;
 
-interface Props {
-  tittel: string;
-  brødtekst: string;
-  url: string;
-  ikon: React.ReactNode;
-}
+  @media (max-width: ${smallSkjerm}px) {
+    max-height: 10rem;
+  }
+`;
 
 const LenkePanelStor: React.FC<Props> = ({ tittel, brødtekst, url, ikon }) => (
   <StyledLinkPanel href={url} border={true}>

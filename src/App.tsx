@@ -1,15 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useState } from 'react';
 import Forside from './pages/Forside';
-import styled from 'styled-components';
 import { AppEnv, hentEnv } from './api/env';
 import { AppProvider } from './context/AppContext';
 import { HStack, Loader } from '@navikt/ds-react';
-
-const AppContainer = styled.div`
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-`;
 
 const App: React.FC = () => {
   const [appEnv, settAppEnv] = useState<AppEnv>();
@@ -34,13 +28,11 @@ const App: React.FC = () => {
 
   return (
     <AppProvider appEnv={appEnv}>
-      <AppContainer>
-        <Router basename={process.env.PUBLIC_URL}>
-          <Routes>
-            <Route path={'*'} element={<Forside />} />
-          </Routes>
-        </Router>
-      </AppContainer>
+      <Router basename={process.env.PUBLIC_URL}>
+        <Routes>
+          <Route path={'*'} element={<Forside />} />
+        </Routes>
+      </Router>
     </AppProvider>
   );
 };

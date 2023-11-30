@@ -2,6 +2,13 @@ import { Heading, LinkPanel } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 
+interface Props {
+  tittel: string;
+  url: string;
+  ikon: React.ReactNode;
+  kompaktVisning?: boolean;
+}
+
 const InnerContainer = styled(LinkPanel.Title)<{ kompakt?: boolean }>`
   display: flex;
   align-items: center;
@@ -10,7 +17,7 @@ const InnerContainer = styled(LinkPanel.Title)<{ kompakt?: boolean }>`
 
 const StyledLinkPanel = styled(LinkPanel)<{ kompakt?: boolean }>`
   max-width: 18.125rem;
-  max-height: 5.25rem;
+  max-height: 5.5rem;
   border-radius: 0.5rem;
   box-shadow: ${AShadowMedium};
   border-color: ${ABorderSubtle};
@@ -21,13 +28,6 @@ const StyledLinkPanel = styled(LinkPanel)<{ kompakt?: boolean }>`
     gap: 0.2rem;
   `}
 `;
-
-interface Props {
-  tittel: string;
-  url: string;
-  ikon: React.ReactNode;
-  kompaktVisning?: boolean;
-}
 
 const LenkePanelLiten: React.FC<Props> = ({
   tittel,
