@@ -1,9 +1,9 @@
-import ResponsiveFlexbox from './ResponsiveFlexbox';
-import ResponsiveHeading from './ResponsiveHeading';
-import LenkePanelMikro from './LenkePanelMikro';
-import { useApp } from '../context/AppContext';
+import ResponsiveFlexbox from '../../components/ResponsiveFlexbox';
+import ResponsiveHeading from '../../components/ResponsiveHeading';
+import LenkePanelMikro from '../../components/LenkePanelMikro';
+import { useApp } from '../../context/AppContext';
 import styled from 'styled-components';
-import { smallSkjerm971 } from '../utils';
+import { smallSkjerm971 } from '../../utils';
 
 const Container = styled(ResponsiveFlexbox)`
   @media (min-width: ${smallSkjerm971}px) {
