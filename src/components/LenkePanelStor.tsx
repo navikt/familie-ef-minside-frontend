@@ -1,7 +1,7 @@
 import { BodyLong, Heading, LinkPanel, VStack } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
-import { smallSkjerm } from '../utils';
+import { smallSkjerm971 } from '../utils';
 
 interface Props {
   tittel: string;
@@ -23,7 +23,7 @@ const StyledLinkPanel = styled(LinkPanel)`
   box-shadow: ${AShadowMedium};
   border-color: ${ABorderSubtle};
 
-  @media (max-width: ${smallSkjerm}px) {
+  @media (max-width: ${smallSkjerm971}px) {
     max-height: 10rem;
   }
 `;
@@ -33,7 +33,7 @@ const LenkePanelStor: React.FC<Props> = ({ tittel, brødtekst, url, ikon }) => (
     <InnerContainer>
       <div aria-hidden={true}>{ikon}</div>
       <VStack>
-        <Heading size={'xsmall'}>{tittel}</Heading>
+        <Heading size={'small'}>{tittel}</Heading>
         <BodyLong textColor="subtle">{brødtekst}</BodyLong>
       </VStack>
     </InnerContainer>

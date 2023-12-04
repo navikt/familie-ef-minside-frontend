@@ -2,10 +2,10 @@ import { AleneMedBarn } from '../icons/AleneMedBarn';
 import styled from 'styled-components';
 import ResponsiveFlexbox from './ResponsiveFlexbox';
 import ResponsiveHeading from './ResponsiveHeading';
-import { smallSkjerm } from '../utils';
+import { smallSkjerm971 } from '../utils';
 
 const IkonContainer = styled.div`
-  @media (max-width: ${smallSkjerm}px) {
+  @media (max-width: ${smallSkjerm971}px) {
     display: none;
   }
 `;
@@ -16,7 +16,7 @@ const SideTittel: React.FC = () => (
       <AleneMedBarn />
     </IkonContainer>
     <ResponsiveHeading size="xlarge">
-      Din oversikt - enslig forsørger
+      Din oversikt - stønad til enslig mor eller far
     </ResponsiveHeading>
   </ResponsiveFlexbox>
 );

@@ -1,1 +1,2 @@
-export const smallSkjerm = 970;
+export const smallSkjerm971 = 971;
+export const smallSkjerm970 = 970;

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useState } from 'react';
-import Forside from './pages/Forside';
+import Forside from './pages/Forside/Forside';
 import { AppEnv, hentEnv } from './api/env';
 import { AppProvider } from './context/AppContext';
 import { HStack, Loader } from '@navikt/ds-react';
