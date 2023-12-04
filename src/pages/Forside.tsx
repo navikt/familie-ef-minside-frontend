@@ -7,7 +7,7 @@ import { Skolepenger } from '../icons/Skolepenger';
 import LenkePanelStor from '../components/LenkePanelStor';
 import { Ettersending } from '../icons/Ettersending';
 import { Tannhjul } from '../icons/Tannhjul';
-import { ABgSubtle } from '@navikt/ds-tokens/dist/tokens';
+import { ASurfaceActionSubtle } from '@navikt/ds-tokens/dist/tokens';
 import SideTittel from '../components/SideTittel';
 import { useApp } from '../context/AppContext';
 import ResponsiveFlexbox from '../components/ResponsiveFlexbox';
@@ -15,7 +15,7 @@ import ResponsiveHeading from '../components/ResponsiveHeading';
 import { smallSkjerm } from '../utils';
 
 const HovedInnhold = styled(ResponsiveFlexbox)`
-  background-color: ${ABgSubtle};
+  background-color: ${ASurfaceActionSubtle};
 
   @media (max-width: ${smallSkjerm}) {
     padding-left: 1rem;
@@ -38,47 +38,23 @@ const Forside: React.FC = () => {
         $justify="center"
         $padding="2rem"
       >
-        <ResponsiveFlexbox $gap="2rem" $direction="column">
-          <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-            <ResponsiveHeading size={'medium'}>
-              Melde fra eller ettersende dokumentasjon?
-            </ResponsiveHeading>
-            <ResponsiveFlexbox $gap="1rem">
-              <LenkePanelStor
-                tittel="Endringsmelding"
-                brødtekst="Ved endring i inntekt, aktivitet eller annet som påvirker din stønad."
-                url={appEnv.endringsmeldingUrl}
-                ikon={<Søknad farge="grønn" />}
-              />
-              <LenkePanelStor
-                tittel="Ettersendelse"
-                brødtekst="Her kan du ettersende dokumenter til din sak."
-                url={appEnv.ettersendingUrl}
-                ikon={<Ettersending />}
-              />
-            </ResponsiveFlexbox>
-          </ResponsiveFlexbox>
-          <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-            <ResponsiveHeading size={'medium'}>
-              Ønsker du å søke?
-            </ResponsiveHeading>
-            <ResponsiveFlexbox $gap="1rem">
-              <LenkePanelLiten
-                tittel="Søknad om overgangsstønad"
-                ikon={<Søknad farge={'rød'} />}
-                url={appEnv.søknadOvergangsstønadUrl}
-              />
-              <LenkePanelLiten
-                tittel="Søknad om stønad til barnetilsyn"
-                ikon={<Søknad farge={'rød'} />}
-                url={appEnv.søknadBarnetilsynUrl}
-              />
-              <LenkePanelLiten
-                tittel="Søknad om stønad til skolepenger"
-                ikon={<Søknad farge={'rød'} />}
-                url={appEnv.søknadSkolepengerUrl}
-              />
-            </ResponsiveFlexbox>
+        <ResponsiveFlexbox $gap="0.5rem" $direction="column">
+          <ResponsiveHeading size={'medium'}>
+            Melde fra eller ettersende dokumentasjon?
+          </ResponsiveHeading>
+          <ResponsiveFlexbox $gap="1rem">
+            <LenkePanelStor
+              tittel="Endringsmelding"
+              brødtekst="Ved endring i inntekt, aktivitet eller annet som påvirker din stønad."
+              url={appEnv.endringsmeldingUrl}
+              ikon={<Søknad farge="grønn" />}
+            />
+            <LenkePanelStor
+              tittel="Ettersendelse"
+              brødtekst="Her kan du ettersende dokumenter til din sak."
+              url={appEnv.ettersendingUrl}
+              ikon={<Ettersending />}
+            />
           </ResponsiveFlexbox>
         </ResponsiveFlexbox>
       </HovedInnhold>
@@ -89,6 +65,28 @@ const Forside: React.FC = () => {
         $justify="center"
         $padding="2rem"
       >
+        <ResponsiveFlexbox $gap="0.5rem" $direction="column">
+          <ResponsiveHeading size={'medium'}>
+            Ønsker du å søke?
+          </ResponsiveHeading>
+          <ResponsiveFlexbox $gap="1rem">
+            <LenkePanelLiten
+              tittel="Søknad om overgangsstønad"
+              ikon={<Overgangsstønad width={52} height={52} />}
+              url={appEnv.søknadOvergangsstønadUrl}
+            />
+            <LenkePanelLiten
+              tittel="Søknad om stønad til barnetilsyn"
+              ikon={<Barnetilsyn width={52} height={52} />}
+              url={appEnv.søknadBarnetilsynUrl}
+            />
+            <LenkePanelLiten
+              tittel="Søknad om stønad til skolepenger"
+              ikon={<Skolepenger width={52} height={52} />}
+              url={appEnv.søknadSkolepengerUrl}
+            />
+          </ResponsiveFlexbox>
+        </ResponsiveFlexbox>
         <ResponsiveFlexbox $gap="2rem" $direction="column">
           <ResponsiveFlexbox $gap="0.5rem" $direction="column">
             <ResponsiveHeading size={'medium'}>

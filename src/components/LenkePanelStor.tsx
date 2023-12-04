@@ -33,7 +33,7 @@ const LenkePanelStor: React.FC<Props> = ({ tittel, brødtekst, url, ikon }) => (
     <InnerContainer>
       <div aria-hidden={true}>{ikon}</div>
       <VStack>
-        <Heading size={'xsmall'}>{tittel}</Heading>
+        <Heading size={'small'}>{tittel}</Heading>
         <BodyLong textColor="subtle">{brødtekst}</BodyLong>
       </VStack>
     </InnerContainer>
