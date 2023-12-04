@@ -1,7 +1,7 @@
 import { BodyLong, Heading, LinkPanel, VStack } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
-import { smallSkjerm } from '../utils';
+import { smallSkjerm971 } from '../utils';
 
 interface Props {
   tittel: string;
@@ -23,7 +23,7 @@ const StyledLinkPanel = styled(LinkPanel)`
   box-shadow: ${AShadowMedium};
   border-color: ${ABorderSubtle};
 
-  @media (max-width: ${smallSkjerm}px) {
+  @media (max-width: ${smallSkjerm971}px) {
     max-height: 10rem;
   }
 `;

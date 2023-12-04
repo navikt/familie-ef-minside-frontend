@@ -6,18 +6,19 @@ import { Barnetilsyn } from '../icons/Barnetilsyn';
 import { Skolepenger } from '../icons/Skolepenger';
 import LenkePanelStor from '../components/LenkePanelStor';
 import { Ettersending } from '../icons/Ettersending';
-import { Tannhjul } from '../icons/Tannhjul';
 import { ASurfaceActionSubtle } from '@navikt/ds-tokens/dist/tokens';
 import SideTittel from '../components/SideTittel';
 import { useApp } from '../context/AppContext';
 import ResponsiveFlexbox from '../components/ResponsiveFlexbox';
 import ResponsiveHeading from '../components/ResponsiveHeading';
-import { smallSkjerm } from '../utils';
+import { smallSkjerm971 } from '../utils';
+import SnarveierLitenSkjerm from '../components/SnarveierLitenSkjerm';
+import SnarveierStorSkjerm from '../components/SnarveierStorSkjerm';
 
 const HovedInnhold = styled(ResponsiveFlexbox)`
   background-color: ${ASurfaceActionSubtle};
 
-  @media (max-width: ${smallSkjerm}) {
+  @media (max-width: ${smallSkjerm971}) {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -87,39 +88,8 @@ const Forside: React.FC = () => {
             />
           </ResponsiveFlexbox>
         </ResponsiveFlexbox>
-        <ResponsiveFlexbox $gap="2rem" $direction="column">
-          <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-            <ResponsiveHeading size={'medium'}>
-              Ønsker du å lese mer om stønadene?
-            </ResponsiveHeading>
-            <ResponsiveFlexbox $gap="1rem">
-              <LenkePanelLiten
-                tittel="Overgangsstønad"
-                ikon={<Overgangsstønad />}
-                url={appEnv.infoSideOvergangsstønadUrl}
-              />
-              <LenkePanelLiten
-                tittel="Stønad til Barnetilsyn"
-                ikon={<Barnetilsyn />}
-                url={appEnv.infoSideBarnetilsynUrl}
-              />
-              <LenkePanelLiten
-                tittel="Stønad til skolepenger"
-                ikon={<Skolepenger />}
-                url={appEnv.infoSideSkolepengerUrl}
-              />
-            </ResponsiveFlexbox>
-          </ResponsiveFlexbox>
-          <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-            <ResponsiveHeading size={'medium'}>Snarveier</ResponsiveHeading>
-            <LenkePanelLiten
-              tittel="Saksbehandlingstider"
-              ikon={<Tannhjul />}
-              url={appEnv.saksbehandlingstiderUrl}
-              kompaktVisning={true}
-            />
-          </ResponsiveFlexbox>
-        </ResponsiveFlexbox>
+        <SnarveierStorSkjerm />
+        <SnarveierLitenSkjerm />
       </ResponsiveFlexbox>
     </>
   );
