@@ -12,7 +12,7 @@ const IkonContainer = styled.div`
 
 const SideTittel: React.FC = () => (
   <ResponsiveFlexbox $gap="1rem" $direction="row">
-    <IkonContainer>
+    <IkonContainer aria-hidden={true}>
       <AleneMedBarn />
     </IkonContainer>
     <ResponsiveHeading size="xlarge" level="1">
