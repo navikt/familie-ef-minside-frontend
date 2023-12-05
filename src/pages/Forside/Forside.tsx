@@ -19,7 +19,7 @@ const HovedInnhold = styled(ResponsiveFlexbox)`
 
 const Forside: React.FC = () => {
   return (
-    <>
+    <main id="maincontent" tabIndex={-1} role="main">
       <ResponsiveFlexbox $align="center" $justify="center" $padding="2rem">
         <SideTittel />
       </ResponsiveFlexbox>
@@ -43,7 +43,7 @@ const Forside: React.FC = () => {
         <SnarveierStorSkjerm />
         <SnarveierLitenSkjerm />
       </ResponsiveFlexbox>
-    </>
+    </main>
   );
 };
 
