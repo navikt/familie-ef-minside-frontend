@@ -17,28 +17,34 @@ const SnarveierStorSkjerm: React.FC = () => {
   return (
     <Container $gap="2rem" $direction="column">
       <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-        <ResponsiveHeading size={'medium'}>
+        <ResponsiveHeading size={'medium'} level="2">
           Ønsker du å lese mer om stønadene?
         </ResponsiveHeading>
         <ResponsiveFlexbox $gap="1rem">
           <LenkePanelMikro
             tittel="Overgangsstønad"
+            headingLevel="3"
             url={appEnv.infoSideOvergangsstønadUrl}
           />
           <LenkePanelMikro
             tittel="Stønad til Barnetilsyn"
+            headingLevel="3"
             url={appEnv.infoSideBarnetilsynUrl}
           />
           <LenkePanelMikro
             tittel="Stønad til skolepenger"
+            headingLevel="3"
             url={appEnv.infoSideSkolepengerUrl}
           />
         </ResponsiveFlexbox>
       </ResponsiveFlexbox>
       <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-        <ResponsiveHeading size={'medium'}>Snarveier</ResponsiveHeading>
+        <ResponsiveHeading size={'medium'} level="2">
+          Snarveier
+        </ResponsiveHeading>
         <LenkePanelMikro
           tittel="Saksbehandlingstider"
+          headingLevel="3"
           url={appEnv.saksbehandlingstiderUrl}
         />
       </ResponsiveFlexbox>

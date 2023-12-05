@@ -5,6 +5,7 @@ import { smallSkjerm971 } from '../utils';
 
 interface Props {
   tittel: string;
+  headingLevel: '1' | '2' | '3' | '4' | '5';
   brødtekst: string;
   url: string;
   ikon: React.ReactNode;
@@ -28,12 +29,20 @@ const StyledLinkPanel = styled(LinkPanel)`
   }
 `;
 
-const LenkePanelStor: React.FC<Props> = ({ tittel, brødtekst, url, ikon }) => (
+const LenkePanelStor: React.FC<Props> = ({
+  tittel,
+  headingLevel,
+  brødtekst,
+  url,
+  ikon,
+}) => (
   <StyledLinkPanel href={url} border={true}>
     <InnerContainer>
       <div aria-hidden={true}>{ikon}</div>
       <VStack>
-        <Heading size={'small'}>{tittel}</Heading>
+        <Heading size={'small'} level={headingLevel}>
+          {tittel}
+        </Heading>
         <BodyLong textColor="subtle">{brødtekst}</BodyLong>
       </VStack>
     </InnerContainer>
