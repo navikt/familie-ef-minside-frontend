@@ -15,7 +15,7 @@ const SideTittel: React.FC = () => (
     <IkonContainer>
       <AleneMedBarn />
     </IkonContainer>
-    <ResponsiveHeading size="xlarge">
+    <ResponsiveHeading size="xlarge" level="1">
       Din oversikt - stønad til enslig mor eller far
     </ResponsiveHeading>
   </ResponsiveFlexbox>

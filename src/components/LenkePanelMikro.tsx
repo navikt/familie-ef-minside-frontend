@@ -4,6 +4,7 @@ import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 
 interface Props {
   tittel: string;
+  headingLevel: '1' | '2' | '3' | '4' | '5';
   url: string;
 }
 
@@ -14,9 +15,11 @@ const StyledLinkPanel = styled(LinkPanel)`
   border-color: ${ABorderSubtle};
 `;
 
-const LenkePanelMikro: React.FC<Props> = ({ tittel, url }) => (
+const LenkePanelMikro: React.FC<Props> = ({ tittel, headingLevel, url }) => (
   <StyledLinkPanel href={url} border={true}>
-    <Heading size={'xsmall'}>{tittel}</Heading>
+    <Heading size={'xsmall'} level={headingLevel}>
+      {tittel}
+    </Heading>
   </StyledLinkPanel>
 );
 

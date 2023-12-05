@@ -11,20 +11,25 @@ const LenkePanelLitenListe: React.FC = () => {
 
   return (
     <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-      <ResponsiveHeading size={'medium'}>Ønsker du å søke?</ResponsiveHeading>
+      <ResponsiveHeading size={'medium'} level="2">
+        Ønsker du å søke?
+      </ResponsiveHeading>
       <ResponsiveFlexbox $gap="1rem">
         <LenkePanelLiten
           tittel="Søknad om overgangsstønad"
+          headingLevel="3"
           ikon={<Overgangsstønad width={52} height={52} />}
           url={appEnv.søknadOvergangsstønadUrl}
         />
         <LenkePanelLiten
           tittel="Søknad om stønad til barnetilsyn"
+          headingLevel="3"
           ikon={<Barnetilsyn width={52} height={52} />}
           url={appEnv.søknadBarnetilsynUrl}
         />
         <LenkePanelLiten
           tittel="Søknad om stønad til skolepenger"
+          headingLevel="3"
           ikon={<Skolepenger width={52} height={52} />}
           url={appEnv.søknadSkolepengerUrl}
         />

@@ -4,6 +4,7 @@ import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 
 interface Props {
   tittel: string;
+  headingLevel: '1' | '2' | '3' | '4' | '5';
   url: string;
   ikon: React.ReactNode;
   kompaktVisning?: boolean;
@@ -31,6 +32,7 @@ const StyledLinkPanel = styled(LinkPanel)<{ kompakt?: boolean }>`
 
 const LenkePanelLiten: React.FC<Props> = ({
   tittel,
+  headingLevel,
   url,
   ikon,
   kompaktVisning,
@@ -38,7 +40,9 @@ const LenkePanelLiten: React.FC<Props> = ({
   <StyledLinkPanel href={url} border={true} kompakt={kompaktVisning}>
     <InnerContainer kompakt={kompaktVisning}>
       <div aria-hidden={true}>{ikon}</div>
-      <Heading size={'xsmall'}>{tittel}</Heading>
+      <Heading size={'xsmall'} level={headingLevel}>
+        {tittel}
+      </Heading>
     </InnerContainer>
   </StyledLinkPanel>
 );
