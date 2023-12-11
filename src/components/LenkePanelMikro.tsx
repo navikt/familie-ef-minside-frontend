@@ -9,7 +9,7 @@ interface Props {
 }
 
 const StyledLinkPanel = styled(LinkPanel)`
-  width: 18.125rem;
+  width: 18.75rem;
   border-radius: 0.5rem;
   box-shadow: ${AShadowMedium};
   border-color: ${ABorderSubtle};

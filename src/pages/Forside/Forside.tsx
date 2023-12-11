@@ -2,16 +2,15 @@ import styled from 'styled-components';
 import { ASurfaceActionSubtle } from '@navikt/ds-tokens/dist/tokens';
 import SideTittel from '../../components/SideTittel';
 import ResponsiveFlexbox from '../../components/ResponsiveFlexbox';
-import { smallSkjerm971 } from '../../utils';
-import SnarveierLitenSkjerm from './SnarveierLitenSkjerm';
-import SnarveierStorSkjerm from './SnarveierStorSkjerm';
+import { fullSkjermbredde996 } from '../../utils';
+import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
-import LenkePanelLitenListe from './LenkePanelLitenListe';
+import StønadPanelListe from './StønadPanelListe';
 
 const HovedInnhold = styled(ResponsiveFlexbox)`
   background-color: ${ASurfaceActionSubtle};
 
-  @media (max-width: ${smallSkjerm971}) {
+  @media (max-width: ${fullSkjermbredde996}) {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -39,9 +38,8 @@ const Forside: React.FC = () => {
         $justify="center"
         $padding="2rem"
       >
-        <LenkePanelLitenListe />
-        <SnarveierStorSkjerm />
-        <SnarveierLitenSkjerm />
+        <StønadPanelListe />
+        <Snarveier />
       </ResponsiveFlexbox>
     </main>
   );

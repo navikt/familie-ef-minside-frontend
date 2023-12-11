@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { smallSkjerm970 } from '../utils';
+import { fullSkjermBredde995 } from '../utils';
 
 interface Props {
   $direction?: 'row' | 'column';
@@ -24,7 +24,7 @@ const ResponsiveFlexbox = styled.div<Props>`
   align-items: ${(props) => props.$align};
   padding: ${(props) => props.$padding};
 
-  @media (max-width: ${smallSkjerm970}px) {
+  @media (max-width: ${fullSkjermBredde995}px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;

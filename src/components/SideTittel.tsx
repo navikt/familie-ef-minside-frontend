@@ -2,10 +2,10 @@ import { AleneMedBarn } from '../icons/AleneMedBarn';
 import styled from 'styled-components';
 import ResponsiveFlexbox from './ResponsiveFlexbox';
 import ResponsiveHeading from './ResponsiveHeading';
-import { smallSkjerm971 } from '../utils';
+import { fullSkjermBredde995 } from '../utils';
 
 const IkonContainer = styled.div`
-  @media (max-width: ${smallSkjerm971}px) {
+  @media (max-width: ${fullSkjermBredde995}px) {
     display: none;
   }
 `;

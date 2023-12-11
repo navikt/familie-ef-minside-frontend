@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Heading } from '@navikt/ds-react';
-import { smallSkjerm970 } from '../utils';
+import { fullSkjermBredde995 } from '../utils';
 
 const ResponsiveHeading = styled(Heading)`
-  @media (max-width: ${smallSkjerm970}px) {
+  @media (max-width: ${fullSkjermBredde995}px) {
     text-align: center;
   }
 `;

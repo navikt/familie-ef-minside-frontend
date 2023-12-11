@@ -1,2 +1,3 @@
-export const smallSkjerm971 = 971;
-export const smallSkjerm970 = 970;
+export const fullSkjermbredde996 = 996;
+export const fullSkjermBredde995 = 995;
+export const skjermInnholdBredde = '58.25rem';
