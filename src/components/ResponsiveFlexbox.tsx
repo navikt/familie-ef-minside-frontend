@@ -13,6 +13,7 @@ interface Props {
     | 'space-evenly';
   $align?: 'start' | 'center' | 'end' | 'baseline' | 'stretch';
   $padding?: '0.5rem' | '1rem' | '2rem';
+  $paddingBottom?: '0.5rem' | '1rem' | '2rem';
 }
 
 const ResponsiveFlexbox = styled.div<Props>`
@@ -23,6 +24,7 @@ const ResponsiveFlexbox = styled.div<Props>`
   justify-content: ${(props) => props.$justify};
   align-items: ${(props) => props.$align};
   padding: ${(props) => props.$padding};
+  padding-bottom: ${(props) => props.$paddingBottom};
 
   @media (max-width: ${fullSkjermBredde995}px) {
     flex-direction: column;

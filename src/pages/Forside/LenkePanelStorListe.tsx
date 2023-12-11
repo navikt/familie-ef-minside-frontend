@@ -13,7 +13,7 @@ const LenkePanelStorListe: React.FC = () => {
       <ResponsiveHeading size={'medium'} level="2">
         Melde fra eller ettersende dokumentasjon?
       </ResponsiveHeading>
-      <ResponsiveFlexbox $gap="1rem">
+      <ResponsiveFlexbox $gap="1rem" $paddingBottom="0.5rem">
         <LenkePanelStor
           tittel="Endringsmelding"
           headingLevel="3"
