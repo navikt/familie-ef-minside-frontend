@@ -19,14 +19,9 @@ const InnerContainer = styled(LinkPanel.Title)`
 
 const StyledLinkPanel = styled(LinkPanel)`
   max-width: 28.625rem;
-  max-height: 7.75rem;
   border-radius: 0.5rem;
   box-shadow: ${AShadowMedium};
   border-color: ${ABorderSubtle};
-
-  @media (max-width: ${fullSkjermbredde996}px) {
-    max-height: 10rem;
-  }
 `;
 
 const LenkePanelStor: React.FC<Props> = ({
