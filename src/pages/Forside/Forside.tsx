@@ -2,7 +2,12 @@ import styled from 'styled-components';
 import { ASurfaceActionSubtle } from '@navikt/ds-tokens/dist/tokens';
 import SideTittel from '../../components/SideTittel';
 import ResponsiveFlexbox from '../../components/ResponsiveFlexbox';
-import { fullSkjermbredde996, skjermInnholdBredde } from '../../utils';
+import {
+  skjermBreddeMax,
+  skjermBreddeInhhold,
+  skjermBreddeMobil,
+  breddeGuidePanelIkon,
+} from '../../utils';
 import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
@@ -11,40 +16,44 @@ import { GuidePanel } from '@navikt/ds-react';
 const HovedInnhold = styled(ResponsiveFlexbox)`
   background-color: ${ASurfaceActionSubtle};
 
-  @media (max-width: ${fullSkjermbredde996}) {
+  @media (max-width: ${skjermBreddeMax}px) {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 `;
 
-const StyledGuidePanel = styled(GuidePanel)`
-  max-width: ${skjermInnholdBredde};
+const ForsideTittel = styled(SideTittel)`
+  @media (min-width: ${skjermBreddeMobil}px) {
+    padding-left: ${breddeGuidePanelIkon / 2}px;
+  }
+`;
+
+const TittelContainer = styled.div`
+  max-width: ${skjermBreddeInhhold};
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `;
 
 const Forside: React.FC = () => {
   return (
     <main id="maincontent" tabIndex={-1} role="main">
-      <ResponsiveFlexbox
-        $gap="2rem"
-        $direction="column"
-        $align="center"
-        $justify="center"
-        $padding="2rem"
-      >
-        <SideTittel />
-        <StyledGuidePanel>
-          Hei, Ola Nordmann. Denne siden er under arbeid og du vil foreløpig
-          ikke finnes informasjon om din sak. Det du finner er relevante lenker.
-          Denne siden er under arbeid og du vil foreløpig ikke finne infomrasjon
-          om din sak. Det du finner er relevante lenker.
-        </StyledGuidePanel>
+      <ResponsiveFlexbox $justify="center" $padding="2.5rem">
+        <TittelContainer>
+          <ForsideTittel />
+          <GuidePanel>
+            Hei, Ola Nordmann. Denne siden er under arbeid og du vil foreløpig
+            ikke finnes informasjon om din sak. Det du finner er relevante
+            lenker. Denne siden er under arbeid og du vil foreløpig ikke finne
+            infomrasjon om din sak. Det du finner er relevante lenker.
+          </GuidePanel>
+        </TittelContainer>
       </ResponsiveFlexbox>
       <HovedInnhold
-        $gap="2rem"
-        $direction="column"
-        $align="center"
         $justify="center"
-        $padding="2.5rem"
+        $padding="2rem"
+        $paddingTop="2.5rem"
+        $paddingBottom="2.5rem"
       >
         <LenkePanelStorListe />
       </HovedInnhold>
@@ -52,7 +61,6 @@ const Forside: React.FC = () => {
         $gap="2.5rem"
         $direction="column"
         $align="center"
-        $justify="center"
         $padding="2rem"
         $paddingTop="2.5rem"
         $paddingBottom="2.5rem"

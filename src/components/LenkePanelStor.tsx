@@ -1,7 +1,6 @@
 import { BodyLong, Heading, LinkPanel, VStack } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
-import { fullSkjermbredde996 } from '../utils';
 
 interface Props {
   tittel: string;

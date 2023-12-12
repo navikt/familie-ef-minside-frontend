@@ -2,17 +2,21 @@ import { AleneMedBarn } from '../icons/AleneMedBarn';
 import styled from 'styled-components';
 import ResponsiveFlexbox from './ResponsiveFlexbox';
 import ResponsiveHeading from './ResponsiveHeading';
-import { fullSkjermBredde995 } from '../utils';
+import { skjermBreddeTittelIkon } from '../utils';
 import { BodyShort } from '@navikt/ds-react';
 
+interface Props {
+  className?: string;
+}
+
 const IkonContainer = styled.div`
-  @media (max-width: ${fullSkjermBredde995}px) {
+  @media (max-width: ${skjermBreddeTittelIkon}px) {
     display: none;
   }
 `;
 
-const SideTittel: React.FC = () => (
-  <ResponsiveFlexbox $gap="1rem" $direction="row">
+const SideTittel: React.FC<Props> = ({ className }) => (
+  <ResponsiveFlexbox $gap="1rem" $direction="row" className={className}>
     <IkonContainer aria-hidden={true}>
       <AleneMedBarn />
     </IkonContainer>
