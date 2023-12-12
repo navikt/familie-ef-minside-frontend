@@ -26,7 +26,11 @@ const Snarveier: React.FC = () => {
             headingLevel="3"
             url={appEnv.saksbehandlingstiderUrl}
           />
-          <LenkePanelMikro tittel="Skriv til oss" headingLevel="3" url={''} />
+          <LenkePanelMikro
+            tittel="Skriv til oss"
+            headingLevel="3"
+            url={appEnv.endringsmeldingUrl}
+          />
         </ResponsiveFlexbox>
       </ResponsiveFlexbox>
     </Container>
