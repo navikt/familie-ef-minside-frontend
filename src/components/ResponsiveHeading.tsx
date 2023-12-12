@@ -1,11 +1,19 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Heading } from '@navikt/ds-react';
-import { fullSkjermBredde995 } from '../utils';
+import { skjermBreddeMax } from '../utils';
 
-const ResponsiveHeading = styled(Heading)`
-  @media (max-width: ${fullSkjermBredde995}px) {
-    text-align: center;
-  }
+interface Props {
+  $responsive?: boolean;
+}
+
+const ResponsiveHeading = styled(Heading)<Props>`
+  ${(props) =>
+    props.$responsive === true &&
+    css`
+      @media (max-width: ${skjermBreddeMax - 1}px) {
+        text-align: center;
+      }
+    `}
 `;
 
 export default ResponsiveHeading;

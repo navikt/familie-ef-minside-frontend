@@ -3,11 +3,11 @@ import ResponsiveHeading from '../../components/ResponsiveHeading';
 import LenkePanelMikro from '../../components/LenkePanelMikro';
 import { useApp } from '../../context/AppContext';
 import styled from 'styled-components';
-import { skjermInnholdBredde, fullSkjermbredde996 } from '../../utils';
+import { breddeSkjermInnhold, skjermBreddeMax } from '../../utils';
 
 const Container = styled(ResponsiveFlexbox)`
-  @media (min-width: ${fullSkjermbredde996}px) {
-    width: ${skjermInnholdBredde};
+  @media (min-width: ${skjermBreddeMax}px) {
+    width: ${breddeSkjermInnhold};
   }
 `;
 
@@ -17,10 +17,10 @@ const Snarveier: React.FC = () => {
   return (
     <Container $gap="2rem" $direction="column">
       <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-        <ResponsiveHeading size={'medium'} level="2">
+        <ResponsiveHeading size={'medium'} level="2" $responsive={true}>
           Andre snarveier
         </ResponsiveHeading>
-        <ResponsiveFlexbox $gap="1rem">
+        <ResponsiveFlexbox $gap="1rem" $responsive={true}>
           <LenkePanelMikro
             tittel="Saksbehandlingstider"
             headingLevel="3"

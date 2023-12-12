@@ -10,10 +10,10 @@ const LenkePanelStorListe: React.FC = () => {
 
   return (
     <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-      <ResponsiveHeading size={'medium'} level="2">
+      <ResponsiveHeading size={'medium'} level="2" $responsive={true}>
         Melde fra eller ettersende dokumentasjon?
       </ResponsiveHeading>
-      <ResponsiveFlexbox $gap="1rem" $paddingBottom="1rem">
+      <ResponsiveFlexbox $gap="1rem" $paddingBottom="1rem" $responsive={true}>
         <LenkePanelStor
           tittel="Endringsmelding"
           headingLevel="3"

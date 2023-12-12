@@ -11,10 +11,10 @@ const StønadPanelListe: React.FC = () => {
 
   return (
     <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-      <ResponsiveHeading size={'medium'} level="2">
+      <ResponsiveHeading size={'medium'} level="2" $responsive={true}>
         Ønsker du å søke?
       </ResponsiveHeading>
-      <ResponsiveFlexbox $gap="1rem">
+      <ResponsiveFlexbox $gap="1rem" $responsive={true}>
         <StønadPanel
           tittel="Overgangsstønad"
           headingLevel="3"

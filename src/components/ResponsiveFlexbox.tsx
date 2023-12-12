@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { fullSkjermBredde995 } from '../utils';
+import styled, { css } from 'styled-components';
+import { skjermBreddeMax } from '../utils';
 
 interface Props {
   $direction?: 'row' | 'column';
@@ -15,6 +15,7 @@ interface Props {
   $padding?: '0.5rem' | '1rem' | '1.5rem' | '2rem' | '2.5rem';
   $paddingTop?: '0.5rem' | '1rem' | '1.5rem' | '2rem' | '2.5rem';
   $paddingBottom?: '0.5rem' | '1rem' | '1.5rem' | '2rem' | '2.5rem';
+  $responsive?: boolean;
 }
 
 const ResponsiveFlexbox = styled.div<Props>`
@@ -28,11 +29,15 @@ const ResponsiveFlexbox = styled.div<Props>`
   padding-top: ${(props) => props.$paddingTop};
   padding-bottom: ${(props) => props.$paddingBottom};
 
-  @media (max-width: ${fullSkjermBredde995}px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  ${(props) =>
+    props.$responsive === true &&
+    css`
+      @media (max-width: ${skjermBreddeMax - 1}px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    `}
 `;
 
 export default ResponsiveFlexbox;
