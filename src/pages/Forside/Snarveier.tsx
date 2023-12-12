@@ -3,11 +3,11 @@ import ResponsiveHeading from '../../components/ResponsiveHeading';
 import LenkePanelMikro from '../../components/LenkePanelMikro';
 import { useApp } from '../../context/AppContext';
 import styled from 'styled-components';
-import { breddeSkjermInnhold, skjermBreddeMax } from '../../utils';
+import { skjermBreddeInhhold, skjermBreddeMax } from '../../utils';
 
 const Container = styled(ResponsiveFlexbox)`
   @media (min-width: ${skjermBreddeMax}px) {
-    width: ${breddeSkjermInnhold};
+    width: ${skjermBreddeInhhold};
   }
 `;
 
