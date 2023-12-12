@@ -18,10 +18,10 @@ const SideTittel: React.FC = () => (
     </IkonContainer>
     <ResponsiveFlexbox $direction="column">
       <ResponsiveHeading size="xlarge" level="1">
-        Din oversikt - stønad til enslig mor eller far
+        Dine stønader til enslig mor eller far
       </ResponsiveHeading>
       <BodyShort>
-        Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
+        OVERGANGSSTØNAD, STØNAD TIL BARNETILSYN OG STØNAD TIL SKOLEPENGER
       </BodyShort>
     </ResponsiveFlexbox>
   </ResponsiveFlexbox>

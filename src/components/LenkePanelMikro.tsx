@@ -17,7 +17,7 @@ const StyledLinkPanel = styled(LinkPanel)`
 
 const LenkePanelMikro: React.FC<Props> = ({ tittel, headingLevel, url }) => (
   <StyledLinkPanel href={url} border={true}>
-    <Heading size={'xsmall'} level={headingLevel}>
+    <Heading size={'small'} level={headingLevel}>
       {tittel}
     </Heading>
   </StyledLinkPanel>

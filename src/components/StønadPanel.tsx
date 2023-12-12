@@ -51,7 +51,7 @@ const StønadPanel: React.FC<Props> = ({
     <VStack gap="4">
       <HStack gap="2" align="center" justify="start">
         <IkonContainer aria-hidden={true}>{ikon}</IkonContainer>
-        <Heading size={'xsmall'} level={headingLevel}>
+        <Heading size={'small'} level={headingLevel}>
           {tittel}
         </Heading>
       </HStack>

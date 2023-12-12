@@ -26,6 +26,7 @@ const Forside: React.FC = () => {
     <main id="maincontent" tabIndex={-1} role="main">
       <ResponsiveFlexbox
         $gap="2rem"
+        $direction="column"
         $align="center"
         $justify="center"
         $padding="2rem"
@@ -43,16 +44,18 @@ const Forside: React.FC = () => {
         $direction="column"
         $align="center"
         $justify="center"
-        $padding="2rem"
+        $padding="2.5rem"
       >
         <LenkePanelStorListe />
       </HovedInnhold>
       <ResponsiveFlexbox
-        $gap="2rem"
+        $gap="2.5rem"
         $direction="column"
         $align="center"
         $justify="center"
         $padding="2rem"
+        $paddingTop="2.5rem"
+        $paddingBottom="2.5rem"
       >
         <StønadPanelListe />
         <Snarveier />
