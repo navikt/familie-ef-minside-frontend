@@ -43,7 +43,7 @@ const Forside: React.FC = () => {
           <ForsideTittel />
           <GuidePanel>
             Hei, Ola Nordmann. Denne siden er under arbeid og du vil foreløpig
-            ikke finnes informasjon om din sak. Det du finner er relevante
+            ikke finne informasjon om din sak. Det du finner er relevante
             lenker. Denne siden er under arbeid og du vil foreløpig ikke finne
             infomrasjon om din sak. Det du finner er relevante lenker.
           </GuidePanel>

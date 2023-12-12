@@ -15,10 +15,11 @@ interface Props {
   tittel: string;
   headingLevel: '1' | '2' | '3' | '4' | '5';
   brødtekst: string;
-  url: string;
-  ikon: React.ReactNode;
   lenkeTekst: string;
+  lenkeUrl: string;
   knappTekst: string;
+  knappUrl: string;
+  ikon: React.ReactNode;
 }
 
 const Container = styled(Panel)`
@@ -42,10 +43,11 @@ const StønadPanel: React.FC<Props> = ({
   tittel,
   headingLevel,
   brødtekst,
-  url,
-  ikon,
   lenkeTekst,
+  lenkeUrl,
   knappTekst,
+  knappUrl,
+  ikon,
 }) => (
   <Container border={true}>
     <VStack gap="4">
@@ -58,8 +60,14 @@ const StønadPanel: React.FC<Props> = ({
       <BodyLong>{brødtekst}</BodyLong>
     </VStack>
     <VStack gap="4">
-      <Link href={url}>{lenkeTekst}</Link>
-      <Button variant="secondary">{knappTekst}</Button>
+      <Link href={lenkeUrl}>{lenkeTekst}</Link>
+      <Button
+        variant="secondary"
+        role="link"
+        onClick={() => (window.location.href = knappUrl)}
+      >
+        {knappTekst}
+      </Button>
     </VStack>
   </Container>
 );
