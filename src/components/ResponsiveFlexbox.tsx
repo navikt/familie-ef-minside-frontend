@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { smallSkjerm970 } from '../utils';
+import { fullSkjermBredde995 } from '../utils';
 
 interface Props {
   $direction?: 'row' | 'column';
-  $gap?: '0.5rem' | '1rem' | '2rem';
+  $gap?: '0.5rem' | '1rem' | '1.5rem' | '2rem' | '2.5rem';
   $justify?:
     | 'start'
     | 'center'
@@ -12,7 +12,9 @@ interface Props {
     | 'space-between'
     | 'space-evenly';
   $align?: 'start' | 'center' | 'end' | 'baseline' | 'stretch';
-  $padding?: '0.5rem' | '1rem' | '2rem';
+  $padding?: '0.5rem' | '1rem' | '1.5rem' | '2rem' | '2.5rem';
+  $paddingTop?: '0.5rem' | '1rem' | '1.5rem' | '2rem' | '2.5rem';
+  $paddingBottom?: '0.5rem' | '1rem' | '1.5rem' | '2rem' | '2.5rem';
 }
 
 const ResponsiveFlexbox = styled.div<Props>`
@@ -23,8 +25,10 @@ const ResponsiveFlexbox = styled.div<Props>`
   justify-content: ${(props) => props.$justify};
   align-items: ${(props) => props.$align};
   padding: ${(props) => props.$padding};
+  padding-top: ${(props) => props.$paddingTop};
+  padding-bottom: ${(props) => props.$paddingBottom};
 
-  @media (max-width: ${smallSkjerm970}px) {
+  @media (max-width: ${fullSkjermBredde995}px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;

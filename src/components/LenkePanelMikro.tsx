@@ -9,7 +9,7 @@ interface Props {
 }
 
 const StyledLinkPanel = styled(LinkPanel)`
-  width: 18.125rem;
+  width: 18.75rem;
   border-radius: 0.5rem;
   box-shadow: ${AShadowMedium};
   border-color: ${ABorderSubtle};
@@ -17,7 +17,7 @@ const StyledLinkPanel = styled(LinkPanel)`
 
 const LenkePanelMikro: React.FC<Props> = ({ tittel, headingLevel, url }) => (
   <StyledLinkPanel href={url} border={true}>
-    <Heading size={'xsmall'} level={headingLevel}>
+    <Heading size={'small'} level={headingLevel}>
       {tittel}
     </Heading>
   </StyledLinkPanel>
