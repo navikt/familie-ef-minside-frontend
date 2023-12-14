@@ -24,8 +24,8 @@ export const Barnetilsyn: React.FC<Props> = ({ width, height }) => {
       />
       <mask id="path-1-inside-1_3174_9619" fill="white">
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M28.0147 10.5175C27.1466 7.89182 28.6165 5.06749 31.2651 4.27198L35.8454 2.89621C40.4469 1.51411 45.0508 4.26544 46.295 8.57354L46.3662 8.5566L46.4004 8.9762C46.563 9.66834 46.6399 10.397 46.6182 11.1522L46.6075 11.5227L46.9588 15.8417L53.335 17.5502C57.256 18.6008 59.5828 22.6311 58.5322 26.5521C57.4816 30.4731 53.4513 32.8 49.5303 31.7494L40.8583 29.4257C36.1616 28.1672 33.1803 23.7023 33.6385 19.0173L33.5056 19.0014L34.8467 13.9966L32.4434 13.8817C30.4133 13.7847 28.6526 12.4472 28.0147 10.5175Z"
         />
       </mask>
@@ -37,28 +37,28 @@ export const Barnetilsyn: React.FC<Props> = ({ width, height }) => {
       <path
         d="M56.9393 38.807C52.9391 41.117 46.5326 41.0914 41.4749 39.7361C36.4171 38.3809 30.8561 35.1999 28.5469 31.1992"
         stroke="#23262A"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <path
         d="M38.1238 27.0022L32.0769 36.2844"
         stroke="#23262A"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <path
         d="M50.5767 30.3365L51.1723 41.3986"
         stroke="#23262A"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <path
         d="M61.8131 24.4801C62.4419 25.0311 62.7405 25.9103 62.5095 26.7725L60.7145 33.4715C60.0857 32.9205 59.7871 32.0413 60.0181 31.1791L61.8131 24.4801Z"
         stroke="#23262A"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <path
         d="M44.1463 2.42938C44.6178 2.91036 44.83 3.62091 44.6431 4.31855L44.3011 5.59478C43.817 5.19168 43.5835 4.53009 43.7572 3.88168L44.1463 2.42938Z"
         stroke="#23262A"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <rect
         x="58.5891"
@@ -67,14 +67,14 @@ export const Barnetilsyn: React.FC<Props> = ({ width, height }) => {
         height="1.63368"
         transform="rotate(15 58.5891 23.1836)"
         stroke="#23262A"
-        stroke-width="1.633"
+        strokeWidth="1.633"
       />
       <path
         d="M18.6667 43C24.9465 43 30.7412 46.1348 36.0539 52.6667C30.7412 59.1986 24.9465 62.3333 18.6667 62.3333C12.3869 62.3333 6.59215 59.1986 1.27944 52.6667C6.59215 46.1348 12.3869 43 18.6667 43Z"
         stroke="#23262A"
-        stroke-width="2"
+        strokeWidth="2"
       />
-      <circle cx="18.666" cy="52.668" r="7" stroke="#23262A" stroke-width="2" />
+      <circle cx="18.666" cy="52.668" r="7" stroke="#23262A" strokeWidth="2" />
     </svg>
   );
 };

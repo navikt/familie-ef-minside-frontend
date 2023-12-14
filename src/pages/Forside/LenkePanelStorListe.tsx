@@ -23,14 +23,14 @@ const LenkePanelStorListe: React.FC = () => {
         <LenkePanelStor
           tittel="Endringsmelding"
           headingLevel="3"
-          brødtekst="Ved endring i inntekt, aktivitet eller annet som påvirker din stønad."
+          brødtekst="Her kan du melde fra om endringer som kan påvirke stønaden din."
           url={appEnv.endringsmeldingUrl}
           ikon={<Søknad farge="grønn" />}
         />
         <LenkePanelStor
           tittel="Ettersendelse"
           headingLevel="3"
-          brødtekst="Her kan du ettersende dokumenter til din sak."
+          brødtekst="Her kan du ettersende dokumenter til saken din."
           url={appEnv.ettersendingUrl}
           ikon={<Ettersending />}
         />
