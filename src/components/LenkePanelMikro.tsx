@@ -20,7 +20,7 @@ const LenkePanelMikro: React.FC<Props> = ({ tittel, headingLevel, url }) => (
   <StyledLinkPanel
     href={url}
     border={true}
-    onClick={() => logNavigering(url, tittel, 'link-panel')}
+    onClick={() => logNavigering(url, tittel, 'lenke-panel-mikro')}
   >
     <Heading size={'small'} level={headingLevel}>
       {tittel}

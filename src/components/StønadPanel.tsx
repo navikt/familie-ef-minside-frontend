@@ -63,7 +63,7 @@ const StønadPanel: React.FC<Props> = ({
     <VStack gap="4">
       <Link
         href={lenkeUrl}
-        onClick={() => logNavigering(lenkeUrl, lenkeTekst, 'link')}
+        onClick={() => logNavigering(lenkeUrl, lenkeTekst, 'stønad-panel')}
       >
         {lenkeTekst}
       </Link>

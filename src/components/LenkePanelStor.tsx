@@ -34,7 +34,7 @@ const LenkePanelStor: React.FC<Props> = ({
   <StyledLinkPanel
     href={url}
     border={true}
-    onClick={() => logNavigering(url, tittel, 'link-panel')}
+    onClick={() => logNavigering(url, tittel, 'lenke-panel-stor')}
   >
     <InnerContainer>
       <div aria-hidden={true}>{ikon}</div>
