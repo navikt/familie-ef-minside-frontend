@@ -12,6 +12,8 @@ import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
 import { GuidePanel } from '@navikt/ds-react';
+import { useEffect } from 'react';
+import { logBesøk } from '../../amplitude/amplitude';
 
 const HovedInnhold = styled(ResponsiveFlexbox)`
   background-color: ${ASurfaceActionSubtle};
@@ -36,6 +38,10 @@ const TittelContainer = styled.div`
 `;
 
 const Forside: React.FC = () => {
+  useEffect(() => {
+    logBesøk('Forside');
+  }, []);
+
   return (
     <main id="maincontent" tabIndex={-1} role="main">
       <ResponsiveFlexbox $justify="center" $padding="2.5rem">

@@ -1,7 +1,7 @@
 import { BodyLong, Heading, LinkPanel, VStack } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
-import { logNavigeringTil } from '../amplitude/amplitude';
+import { logNavigering } from '../amplitude/amplitude';
 
 interface Props {
   tittel: string;
@@ -34,7 +34,7 @@ const LenkePanelStor: React.FC<Props> = ({
   <StyledLinkPanel
     href={url}
     border={true}
-    onClick={() => logNavigeringTil(tittel, url)}
+    onClick={() => logNavigering(url, tittel, 'link-panel')}
   >
     <InnerContainer>
       <div aria-hidden={true}>{ikon}</div>

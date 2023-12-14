@@ -14,12 +14,24 @@ export function logEvent(eventName: string, eventProperties: any) {
   amplitudeInstance.logEvent(eventName, eventProperties);
 }
 
-export const logNavigeringTil = (lenketekst: string, destinasjon: string) => {
-  console.log('Event navigere - log amplitude: ', lenketekst);
+export const logNavigering = (
+  destinasjon: string,
+  lenketekst: string,
+  kilde?: string
+) => {
   logEvent('navigere', {
-    lenketekst: lenketekst,
     destinasjon: destinasjon,
+    lenketekst: lenketekst,
+    kilde: kilde,
     team_id: 'familie',
-    applikasjon: 'familie-ef-minside',
+    applikasjon: 'ef-minside',
+  });
+};
+
+export const logBesøk = (side: string) => {
+  logEvent('besøk', {
+    side,
+    team_id: 'familie',
+    applikasjon: 'familie-ef-ettersending',
   });
 };

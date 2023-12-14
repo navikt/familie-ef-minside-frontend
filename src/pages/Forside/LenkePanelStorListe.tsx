@@ -4,19 +4,13 @@ import LenkePanelStor from '../../components/LenkePanelStor';
 import { Søknad } from '../../icons/Søknad';
 import { Ettersending } from '../../icons/Ettersending';
 import { useApp } from '../../context/AppContext';
-import { logNavigeringTil } from '../../amplitude/amplitude';
 
 const LenkePanelStorListe: React.FC = () => {
   const { appEnv } = useApp();
 
   return (
     <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-      <ResponsiveHeading
-        size={'medium'}
-        level="2"
-        $responsive={true}
-        onClick={() => logNavigeringTil('test', 'self')}
-      >
+      <ResponsiveHeading size={'medium'} level="2" $responsive={true}>
         Melde fra eller ettersende dokumentasjon?
       </ResponsiveHeading>
       <ResponsiveFlexbox $gap="1rem" $paddingBottom="1rem" $responsive={true}>

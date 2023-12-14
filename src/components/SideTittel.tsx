@@ -4,6 +4,7 @@ import ResponsiveFlexbox from './ResponsiveFlexbox';
 import ResponsiveHeading from './ResponsiveHeading';
 import { skjermBreddeTittelIkon } from '../utils';
 import { BodyShort } from '@navikt/ds-react';
+import { logNavigering } from '../amplitude/amplitude';
 
 interface Props {
   className?: string;
@@ -21,7 +22,17 @@ const SideTittel: React.FC<Props> = ({ className }) => (
       <AleneMedBarn />
     </IkonContainer>
     <ResponsiveFlexbox $direction="column">
-      <ResponsiveHeading size="xlarge" level="1">
+      <ResponsiveHeading
+        size="xlarge"
+        level="1"
+        onClick={() =>
+          logNavigering(
+            'self',
+            'Dine stønader til enslig mor eller far',
+            'header'
+          )
+        }
+      >
         Dine stønader til enslig mor eller far
       </ResponsiveHeading>
       <BodyShort>
