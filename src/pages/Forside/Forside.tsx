@@ -12,6 +12,7 @@ import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
 import { GuidePanel } from '@navikt/ds-react';
+import { useEffect } from 'react';
 
 const HovedInnhold = styled(ResponsiveFlexbox)`
   background-color: ${ASurfaceActionSubtle};
@@ -42,10 +43,8 @@ const Forside: React.FC = () => {
         <TittelContainer>
           <ForsideTittel />
           <GuidePanel>
-            Hei, Ola Nordmann. Denne siden er under arbeid og du vil foreløpig
-            ikke finne informasjon om din sak. Det du finner er relevante
-            lenker. Denne siden er under arbeid og du vil foreløpig ikke finne
-            infomrasjon om din sak. Det du finner er relevante lenker.
+            Denne siden er under arbeid og du vil foreløpig ikke finne
+            informasjon om din sak. Denne siden kan inneholde feil og mangler.
           </GuidePanel>
         </TittelContainer>
       </ResponsiveFlexbox>

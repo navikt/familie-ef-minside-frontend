@@ -1,6 +1,7 @@
 import { Heading, LinkPanel } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
+import { logNavigering } from '../amplitude/amplitude';
 
 interface Props {
   tittel: string;
@@ -16,7 +17,11 @@ const StyledLinkPanel = styled(LinkPanel)`
 `;
 
 const LenkePanelMikro: React.FC<Props> = ({ tittel, headingLevel, url }) => (
-  <StyledLinkPanel href={url} border={true}>
+  <StyledLinkPanel
+    href={url}
+    border={true}
+    onClick={() => logNavigering(url, tittel, 'lenke-panel-mikro')}
+  >
     <Heading size={'small'} level={headingLevel}>
       {tittel}
     </Heading>

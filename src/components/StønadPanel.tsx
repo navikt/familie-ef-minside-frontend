@@ -10,6 +10,7 @@ import {
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import React from 'react';
+import { logNavigering } from '../amplitude/amplitude';
 
 interface Props {
   tittel: string;
@@ -60,11 +61,19 @@ const StønadPanel: React.FC<Props> = ({
       <BodyLong>{brødtekst}</BodyLong>
     </VStack>
     <VStack gap="4">
-      <Link href={lenkeUrl}>{lenkeTekst}</Link>
+      <Link
+        href={lenkeUrl}
+        onClick={() => logNavigering(lenkeUrl, lenkeTekst, 'stønad-panel')}
+      >
+        {lenkeTekst}
+      </Link>
       <Button
         variant="secondary"
         role="link"
-        onClick={() => (window.location.href = knappUrl)}
+        onClick={() => {
+          logNavigering(knappUrl, knappTekst, 'button');
+          window.location.href = knappUrl;
+        }}
       >
         {knappTekst}
       </Button>
