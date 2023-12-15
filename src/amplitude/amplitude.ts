@@ -28,3 +28,11 @@ export const logNavigering = (
     applikasjon: 'ef-minside',
   });
 };
+
+export const logBesøk = (side: string) => {
+  logEvent('besøk', {
+    side,
+    team_id: 'familie',
+    applikasjon: 'familie-ef-ettersending',
+  });
+};

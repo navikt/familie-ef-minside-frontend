@@ -22,7 +22,7 @@ const lokaltMiljø = {
   minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
     'https://localhost:8080/familie/alene-med-barn/minside/oauth2/callback',
-  endringsmeldingUrl: 'https://www.ekstern.dev.nav.no/skriv-til-oss-om-familie',
+  endringsmeldingUrl: 'https://innboks.nav.no/s/skriv-til-oss?category=Familie',
   ettersendingUrl:
     'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/ettersending',
   søknadOvergangsstønadUrl:
@@ -45,7 +45,7 @@ const devMiljø = {
   minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
     'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/minside/oauth2/callback',
-  endringsmeldingUrl: 'https://www.nav.no/skriv-til-oss-om-familie',
+  endringsmeldingUrl: 'https://innboks.nav.no/s/skriv-til-oss?category=Familie',
   ettersendingUrl:
     'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/ettersending',
   søknadOvergangsstønadUrl:
@@ -68,7 +68,7 @@ const prodMiljø = {
   minSideUrl: 'https://www.nav.no/minside/',
   oAuthCallbackUri:
     'https://www.nav.no/familie/alene-med-barn/minside/oauth2/callback',
-  endringsmeldingUrl: 'https://www.nav.no/skriv-til-oss',
+  endringsmeldingUrl: 'https://innboks.nav.no/s/skriv-til-oss?category=Familie',
   ettersendingUrl: 'https://www.nav.no/familie/alene-med-barn/ettersending',
   søknadOvergangsstønadUrl: 'https://www.nav.no/familie/alene-med-barn/soknad',
   søknadBarnetilsynUrl:
