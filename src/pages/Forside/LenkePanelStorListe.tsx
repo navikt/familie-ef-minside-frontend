@@ -11,7 +11,7 @@ const LenkePanelStorListe: React.FC = () => {
   return (
     <ResponsiveFlexbox $gap="0.5rem" $direction="column">
       <ResponsiveHeading size={'medium'} level="2" $responsive={true}>
-        Skal du melde fra eller ettersende dokumentasjon?
+        Skal du melde fra om endringer eller ettersende dokumentasjon?
       </ResponsiveHeading>
       <ResponsiveFlexbox $gap="1rem" $paddingBottom="1rem" $responsive={true}>
         <LenkePanelStor
