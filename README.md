@@ -3,21 +3,16 @@
 Enslig forsørger - min side
 
 ## Kjør lokalt
-
 1. `npm install`
 2. `npm run start`
 
-* Hvis man ønsker å kjøre med mock-api
-1. `npm run start:mock`
-2. `node mock/mock-server.js` 
-
 Med api må du sette cookie første gang:
 `http://localhost:8091/local/cookie?redirect=http://localhost:3000/familie/alene-med-barn/minside&issuerId=tokenx&audience=familie-app`
+
 ## Kjør lokalt med mellomlagring
 1. Last ned [familie-dokument](https://github.com/navikt/familie-dokument) og [familie-ef-minside-api](https://github.com/navikt/familie-ef-minside-api)
 2. Kjør `mvn clean install` i begge prosjektene
 2. Kjør opp appene lokalt ved å kjøre familie-ef-minside-api sin `ApplicationLocalLauncher` 
-
 
 ## Kjøre opp med node-server lokalt
 I noen få tilfeller kan det være nyttig å kjøre opp node-serverne lokalt, slik som det gjøres i preprod
@@ -52,8 +47,6 @@ I appen har vi tekstinnhold på norsk bokmål, engelsk og nynorsk.
 3. Trykk på "Vis/Show" fulgt av "Kjør/Run".
 
 Det skrives ut 3 ulike tekstbolker i "Utdata"-fanen under kodesnutten. Denne skal kopieres og limes inn i tilhørende "tekster_xx.json" fil. Husk å kjøre reformat (optn + cmd + l")
-
-
 
 ## Sett opp Prettier lokalt on save (IntelliJ)
 

@@ -11,18 +11,18 @@ const LenkePanelStorListe: React.FC = () => {
   return (
     <ResponsiveFlexbox $gap="0.5rem" $direction="column">
       <ResponsiveHeading size={'medium'} level="2" $responsive={true}>
-        Melde fra eller ettersende dokumentasjon?
+        Skal du melde fra eller ettersende dokumentasjon?
       </ResponsiveHeading>
       <ResponsiveFlexbox $gap="1rem" $paddingBottom="1rem" $responsive={true}>
         <LenkePanelStor
-          tittel="Endringsmelding"
+          tittel="Melde fra om endring"
           headingLevel="3"
           brødtekst="Her kan du melde fra om endringer som kan påvirke stønaden din."
           url={appEnv.endringsmeldingUrl}
           ikon={<Søknad farge="grønn" />}
         />
         <LenkePanelStor
-          tittel="Ettersendelse"
+          tittel="Ettersende dokumentasjon"
           headingLevel="3"
           brødtekst="Her kan du ettersende dokumenter til saken din."
           url={appEnv.ettersendingUrl}

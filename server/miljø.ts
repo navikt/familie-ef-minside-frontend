@@ -14,6 +14,7 @@ interface Environment {
   infoSideBarnetilsynUrl: string;
   infoSideSkolepengerUrl: string;
   saksbehandlingstiderUrl: string;
+  søknadApiUrl: string;
 }
 
 const lokaltMiljø = {
@@ -37,6 +38,7 @@ const lokaltMiljø = {
   infoSideSkolepengerUrl: 'https://www.ekstern.dev.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl:
     'https://www.ekstern.dev.nav.no/saksbehandlingstider',
+  søknadApiUrl: '',
 };
 
 const devMiljø = {
@@ -60,6 +62,8 @@ const devMiljø = {
   infoSideSkolepengerUrl: 'https://www.ekstern.dev.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl:
     'https://www.ekstern.dev.nav.no/saksbehandlingstider',
+  søknadApiUrl:
+    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/api',
 };
 
 const prodMiljø = {
@@ -79,6 +83,7 @@ const prodMiljø = {
   infoSideBarnetilsynUrl: 'https://www.nav.no/barnetilsyn-enslig',
   infoSideSkolepengerUrl: 'https://www.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl: 'https://www.nav.no/saksbehandlingstider',
+  søknadApiUrl: 'https://www.nav.no/familie/alene-med-barn/soknad/api',
 };
 
 const initierMiljøvariabler = (): Environment => {
