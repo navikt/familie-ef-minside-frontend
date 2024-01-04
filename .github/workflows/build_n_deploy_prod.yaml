@@ -1,7 +1,9 @@
 name: Build, push, and deploy app to dev and prod
 
 on:
-  workflow_dispatch: # TODO legg til ved push til main når vi er klare for å deploye til prod
+  push:
+    branches:
+      - 'main'
 
 env:
   IMAGE: ghcr.io/navikt/familie-ef-minside:${{ github.sha }}
