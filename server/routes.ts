@@ -27,6 +27,7 @@ const routes = (router: Router) => {
         infoSideBarnetilsynUrl: miljø.infoSideBarnetilsynUrl,
         infoSideSkolepengerUrl: miljø.infoSideSkolepengerUrl,
         saksbehandlingstiderUrl: miljø.saksbehandlingstiderUrl,
+        søknadApiUrl: miljø.søknadApiUrl,
       })
       .end();
   });

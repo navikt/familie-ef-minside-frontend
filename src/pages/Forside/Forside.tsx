@@ -14,6 +14,7 @@ import StønadPanelListe from './StønadPanelListe';
 import { GuidePanel } from '@navikt/ds-react';
 import { useEffect } from 'react';
 import { logBesøk } from '../../amplitude/amplitude';
+import { useApp } from '../../context/AppContext';
 
 const HovedInnhold = styled(ResponsiveFlexbox)`
   background-color: ${ASurfaceActionSubtle};
@@ -38,9 +39,15 @@ const TittelContainer = styled.div`
 `;
 
 const Forside: React.FC = () => {
+  const { personData } = useApp();
+
   useEffect(() => {
     logBesøk('Forside');
   }, []);
+
+  const panelTekstPrefix = personData.visningsnavn
+    ? `Hei, ${personData.visningsnavn}. `
+    : '';
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">
@@ -48,8 +55,9 @@ const Forside: React.FC = () => {
         <TittelContainer>
           <ForsideTittel />
           <GuidePanel>
-            Denne siden er under arbeid og du vil foreløpig ikke finne
-            informasjon om din sak. Denne siden kan inneholde feil og mangler.
+            {`${panelTekstPrefix}Denne siden er under arbeid, og du
+            vil derfor ikke finne informasjon om saken din her nå. Foreløpig vil
+            du finne relevante lenker for stønad til enslig mor eller far.`}
           </GuidePanel>
         </TittelContainer>
       </ResponsiveFlexbox>
