@@ -11,6 +11,7 @@ amplitudeInstance.init('default', '', {
 });
 
 // NAVs retningslinjer for amplitude taksonomi: https://github.com/navikt/analytics-taxonomy
+// @ts-ignore
 export function logEvent(eventName: string, eventProperties: any) {
   amplitudeInstance.logEvent(eventName, eventProperties);
 }
