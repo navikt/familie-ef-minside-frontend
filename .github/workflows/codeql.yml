@@ -25,7 +25,7 @@ jobs:
           cache: npm
           registry-url: "https://npm.pkg.github.com"
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
       - name: Npm install and build
