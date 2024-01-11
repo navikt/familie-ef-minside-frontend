@@ -12,8 +12,6 @@ import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
 import { GuidePanel } from '@navikt/ds-react';
-import { useEffect } from 'react';
-import { logBesøk } from '../../amplitude/amplitude';
 import { useApp } from '../../context/AppContext';
 
 const HovedInnhold = styled(ResponsiveFlexbox)`
@@ -40,10 +38,6 @@ const TittelContainer = styled.div`
 
 const Forside: React.FC = () => {
   const { personData } = useApp();
-
-  useEffect(() => {
-    logBesøk('Forside');
-  }, []);
 
   const panelTekstPrefix = personData.visningsnavn
     ? `Hei, ${personData.visningsnavn}. `
