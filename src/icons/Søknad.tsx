@@ -1,22 +1,25 @@
 import * as React from 'react';
 
 interface Props {
-  farge: 'rød' | 'grønn';
+  color: 'rød' | 'grønn';
+  size?: '32' | '40' | '48' | '56' | '64';
 }
 
-export const Søknad: React.FC<Props> = ({ farge }) => {
-  const color = farge === 'rød' ? '#FFE6E6' : '#99DEAD';
+export const Søknad: React.FC<Props> = ({ color, size }) => {
+  const colorCode = color === 'rød' ? '#FFE6E6' : '#99DEAD';
+  const svgSize = size ? size : '64';
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="64"
-      height="64"
-      viewBox="0 0 64 64"
+      width={svgSize}
+      height={svgSize}
+      viewBox={`0 0 ${svgSize} ${svgSize}`}
       fill="none"
     >
-      <rect x="20" y="21" width="24" height="8" fill={color} />
-      <rect x="20" y="34" width="24" height="8" fill={color} />
-      <circle cx="32" cy="32" r="19" fill={color} />
+      <rect x="20" y="21" width="24" height="8" fill={colorCode} />
+      <rect x="20" y="34" width="24" height="8" fill={colorCode} />
+      <circle cx="32" cy="32" r="19" fill={colorCode} />
       <path
         d="M21.1271 4.8947L26.7741 10.5262M1.33398 29.9987H30.6673M23.5301 2.49835L9.41242 16.577L8.00065 23.6164L15.0595 22.2085L29.1771 8.12982C30.7365 6.57473 30.7365 4.05344 29.1771 2.49835C27.6177 0.943259 25.0895 0.943259 23.5301 2.49835Z"
         stroke="#23262A"

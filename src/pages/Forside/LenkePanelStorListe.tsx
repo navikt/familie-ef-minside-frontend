@@ -19,7 +19,7 @@ const LenkePanelStorListe: React.FC = () => {
           headingLevel="3"
           brødtekst="Her kan du melde fra om endringer som kan påvirke stønaden din."
           url={appEnv.endringsmeldingUrl}
-          ikon={<Søknad farge="grønn" />}
+          ikon={<Søknad color="grønn" />}
         />
         <LenkePanelStor
           tittel="Ettersende dokumentasjon"
