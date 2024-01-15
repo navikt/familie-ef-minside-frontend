@@ -10,8 +10,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
 
 spec:
-  image:  {{ image }}
-  team: teamfamilie
+  image:  "{{ image }}"
   replicas:
     min: 1
     max: 2
