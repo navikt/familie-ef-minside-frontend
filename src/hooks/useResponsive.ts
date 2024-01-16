@@ -34,9 +34,9 @@ const useResponsive = () => {
   };
 
   const getCurrentDevice = (windowWidth: number) => {
-    if (windowWidth <= 768) {
+    if (windowWidth <= 480) {
       return Device.MOBILE;
-    } else if (windowWidth >= 990) {
+    } else if (windowWidth >= 768) {
       return Device.DESKTOP;
     }
     return Device.TABLET;

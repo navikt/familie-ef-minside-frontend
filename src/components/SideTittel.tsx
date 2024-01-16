@@ -20,7 +20,8 @@ const IkonContainer = styled.div`
 const SideTittel: React.FC<Props> = ({ className }) => {
   const { currentDevice } = useApp();
 
-  const headerSize = currentDevice === Device.MOBILE ? 'medium' : 'xlarge';
+  const tittelSize = currentDevice === Device.MOBILE ? 'medium' : 'xlarge';
+  const underTittelSize = currentDevice === Device.MOBILE ? 'small' : 'medium';
 
   return (
     <ResponsiveFlexbox $gap="1rem" $direction="row" className={className}>
@@ -28,10 +29,10 @@ const SideTittel: React.FC<Props> = ({ className }) => {
         <AleneMedBarn />
       </IkonContainer>
       <ResponsiveFlexbox $direction="column">
-        <Heading size={headerSize} level="1">
+        <Heading size={tittelSize} level="1">
           Dine stønader til enslig mor eller far
         </Heading>
-        <BodyShort>
+        <BodyShort size={underTittelSize}>
           overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
         </BodyShort>
       </ResponsiveFlexbox>
