@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from './useDebounce';
 
+export enum Device {
+  MOBILE = 'MOBILE',
+  TABLET = 'TABLET',
+  DESKTOP = 'DESKTOP',
+  UNKNOWN = 'UNKNOWN',
+}
+
 // Basert på https://learnersbucket.com/examples/interview/useresponsive-hook-in-react/
 const useResponsive = () => {
   // screen resolutions
-  const [state, setState] = useState({
-    isMobile: false,
-    isTablet: false,
-    isDesktop: false,
-  });
+  const [state, setState] = useState<Device>(Device.UNKNOWN);
 
   useEffect(() => {
     // update the state on the initial load
@@ -25,11 +28,18 @@ const useResponsive = () => {
 
   // update the state on window resize
   const onResizeHandler = () => {
-    const isMobile = window.innerWidth <= 768;
-    const isTablet = window.innerWidth >= 768 && window.innerWidth <= 990;
-    const isDesktop = window.innerWidth > 990;
+    const currentDevice = getCurrentDevice(window.innerWidth);
 
-    setState({ isMobile, isTablet, isDesktop });
+    setState(currentDevice);
+  };
+
+  const getCurrentDevice = (windowWidth: number) => {
+    if (windowWidth <= 768) {
+      return Device.MOBILE;
+    } else if (windowWidth >= 990) {
+      return Device.DESKTOP;
+    }
+    return Device.TABLET;
   };
 
   // debounce the resize call
