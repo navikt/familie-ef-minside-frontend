@@ -1,6 +1,10 @@
 import { prefferedAxios } from '../api/axios';
 import { useCallback, useState } from 'react';
-import { initiellPersonData, PersonData } from '../interfaces/personData';
+import {
+  formatertPersonData,
+  initiellPersonData,
+  PersonData,
+} from '../interfaces/personData';
 
 const axiosConfig = {
   withCredentials: true,
@@ -22,7 +26,7 @@ export const useHentPersonData = (søknadApiUrl: string): Props => {
     prefferedAxios
       .get(`${søknadApiUrl}/api/oppslag/sokerminimum`, axiosConfig)
       .then((response: { data: PersonData }) => {
-        response && settPersonData(response.data);
+        response && settPersonData(formatertPersonData(response.data));
       });
   }, [prefferedAxios]);
 
