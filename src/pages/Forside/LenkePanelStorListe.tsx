@@ -1,18 +1,18 @@
-import ResponsiveHeading from '../../components/ResponsiveHeading';
 import ResponsiveFlexbox from '../../components/ResponsiveFlexbox';
 import LenkePanelStor from '../../components/LenkePanelStor';
 import { Søknad } from '../../icons/Søknad';
 import { Ettersending } from '../../icons/Ettersending';
 import { useApp } from '../../context/AppContext';
+import { Heading } from '@navikt/ds-react';
 
 const LenkePanelStorListe: React.FC = () => {
   const { appEnv } = useApp();
 
   return (
     <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-      <ResponsiveHeading size={'medium'} level="2" $responsive={true}>
+      <Heading size={'medium'} level="2" $responsive={true}>
         Skal du melde fra om endringer eller ettersende dokumentasjon?
-      </ResponsiveHeading>
+      </Heading>
       <ResponsiveFlexbox $gap="1rem" $paddingBottom="1rem" $responsive={true}>
         <LenkePanelStor
           tittel="Melde fra om endring"

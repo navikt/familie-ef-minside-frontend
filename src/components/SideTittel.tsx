@@ -1,9 +1,11 @@
 import { AleneMedBarn } from '../icons/AleneMedBarn';
 import styled from 'styled-components';
 import ResponsiveFlexbox from './ResponsiveFlexbox';
-import ResponsiveHeading from './ResponsiveHeading';
 import { skjermBreddeTittelIkon } from '../utils';
-import { BodyShort } from '@navikt/ds-react';
+import { BodyShort, Heading } from '@navikt/ds-react';
+import { useApp } from '../context/AppContext';
+import { Device } from '../hooks/useResponsive';
+import React from 'react';
 
 interface Props {
   className?: string;
@@ -15,20 +17,26 @@ const IkonContainer = styled.div`
   }
 `;
 
-const SideTittel: React.FC<Props> = ({ className }) => (
-  <ResponsiveFlexbox $gap="1rem" $direction="row" className={className}>
-    <IkonContainer aria-hidden={true}>
-      <AleneMedBarn />
-    </IkonContainer>
-    <ResponsiveFlexbox $direction="column">
-      <ResponsiveHeading size="xlarge" level="1">
-        Dine stønader til enslig mor eller far
-      </ResponsiveHeading>
-      <BodyShort>
-        OVERGANGSSTØNAD, STØNAD TIL BARNETILSYN OG STØNAD TIL SKOLEPENGER
-      </BodyShort>
+const SideTittel: React.FC<Props> = ({ className }) => {
+  const { currentDevice } = useApp();
+
+  const headerSize = currentDevice === Device.MOBILE ? 'medium' : 'xlarge';
+
+  return (
+    <ResponsiveFlexbox $gap="1rem" $direction="row" className={className}>
+      <IkonContainer aria-hidden={true}>
+        <AleneMedBarn />
+      </IkonContainer>
+      <ResponsiveFlexbox $direction="column">
+        <Heading size={headerSize} level="1">
+          Dine stønader til enslig mor eller far
+        </Heading>
+        <BodyShort>
+          overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
+        </BodyShort>
+      </ResponsiveFlexbox>
     </ResponsiveFlexbox>
-  </ResponsiveFlexbox>
-);
+  );
+};
 
 export default SideTittel;

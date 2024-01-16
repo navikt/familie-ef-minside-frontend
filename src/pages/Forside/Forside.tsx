@@ -45,7 +45,11 @@ const Forside: React.FC = () => {
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">
-      <ResponsiveFlexbox $justify="center" $padding="2.5rem">
+      <ResponsiveFlexbox
+        $justify="center"
+        $padding="1rem"
+        $paddingBottom="2rem"
+      >
         <TittelContainer>
           <ForsideTittel />
           <GuidePanel>
