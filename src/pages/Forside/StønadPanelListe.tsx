@@ -1,19 +1,22 @@
-import ResponsiveHeading from '../../components/ResponsiveHeading';
 import ResponsiveFlexbox from '../../components/ResponsiveFlexbox';
 import { useApp } from '../../context/AppContext';
 import { Overgangsstønad } from '../../icons/Overgangsstønad';
 import { Barnetilsyn } from '../../icons/Barnetilsyn';
 import { Skolepenger } from '../../icons/Skolepenger';
 import StønadPanel from '../../components/StønadPanel';
+import { Heading } from '@navikt/ds-react';
+import { Device } from '../../hooks/useResponsive';
 
 const StønadPanelListe: React.FC = () => {
-  const { appEnv } = useApp();
+  const { appEnv, currentDevice } = useApp();
+
+  const tittelSize = currentDevice === Device.MOBILE ? 'small' : 'medium';
 
   return (
     <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-      <ResponsiveHeading size={'medium'} level="2" $responsive={true}>
+      <Heading size={tittelSize} level="2" $responsive={true}>
         Ønsker du å søke?
-      </ResponsiveHeading>
+      </Heading>
       <ResponsiveFlexbox $gap="1rem" $responsive={true}>
         <StønadPanel
           tittel="Overgangsstønad"

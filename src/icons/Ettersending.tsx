@@ -1,11 +1,17 @@
 import * as React from 'react';
 
-export const Ettersending: React.FC = () => {
+interface Props {
+  size?: '32' | '40' | '48' | '56' | '64';
+}
+
+export const Ettersending: React.FC<Props> = ({ size }) => {
+  const svgSize = size ? size : '64';
+
   return (
     <svg
-      width="64"
-      height="64"
-      viewBox="0 0 64 64"
+      width={svgSize}
+      height={svgSize}
+      viewBox={`0 0 ${svgSize} ${svgSize}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

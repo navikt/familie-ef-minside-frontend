@@ -13,6 +13,7 @@ import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
 import { GuidePanel } from '@navikt/ds-react';
 import { useApp } from '../../context/AppContext';
+import { Device } from '../../hooks/useResponsive';
 
 const HovedInnhold = styled(ResponsiveFlexbox)`
   background-color: ${ASurfaceActionSubtle};
@@ -29,37 +30,44 @@ const ForsideTittel = styled(SideTittel)`
   }
 `;
 
-const TittelContainer = styled.div`
+const TittelContainer = styled.div<{ $gap: string }>`
   max-width: ${skjermBreddeInhhold};
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: ${(props) => props.$gap};
 `;
 
 const Forside: React.FC = () => {
-  const { personData } = useApp();
+  const { currentDevice, personData } = useApp();
 
   const panelTekstPrefix = personData.visningsnavn
     ? `Hei, ${personData.visningsnavn}. `
     : '';
+  const tittelContainerGap = currentDevice === Device.MOBILE ? '1rem' : '2rem';
+
+  const HovedInnholdPadding =
+    currentDevice === Device.MOBILE ? '1.5rem' : '2.5rem';
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">
-      <ResponsiveFlexbox $justify="center" $padding="2.5rem">
-        <TittelContainer>
+      <ResponsiveFlexbox
+        $justify="center"
+        $padding="1rem"
+        $paddingBottom="2rem"
+      >
+        <TittelContainer $gap={tittelContainerGap}>
           <ForsideTittel />
           <GuidePanel>
             {`${panelTekstPrefix}Denne siden er under arbeid, og du
-            vil derfor ikke finne informasjon om saken din her nå. Foreløpig vil
-            du finne relevante lenker for stønad til enslig mor eller far.`}
+            vil foreløpig ikke finne informasjon om saken din her nå.`}
           </GuidePanel>
         </TittelContainer>
       </ResponsiveFlexbox>
       <HovedInnhold
         $justify="center"
         $padding="2rem"
-        $paddingTop="2.5rem"
-        $paddingBottom="2.5rem"
+        $paddingTop={HovedInnholdPadding}
+        $paddingBottom={HovedInnholdPadding}
       >
         <LenkePanelStorListe />
       </HovedInnhold>
