@@ -33,7 +33,7 @@ const SideTittel: React.FC<Props> = ({ className }) => {
           Dine stønader til enslig mor eller far
         </Heading>
         <BodyShort size={underTittelSize}>
-          overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
+          Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
         </BodyShort>
       </ResponsiveFlexbox>
     </ResponsiveFlexbox>
