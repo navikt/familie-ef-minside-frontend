@@ -1,5 +1,4 @@
-export const skjermBreddeMax = 996; //px
 export const skjermBreddeTittelIkon = 800; //px
-export const skjermBreddeMobil = 480; //px
-export const breddeGuidePanelIkon = 80; //px
-export const skjermBreddeInhhold = '58.25rem'; // 932px
+export const contentWidthDesktop = 932; // px
+export const contentWidthMobile = 458; // px
+export const desktop = 948; // px

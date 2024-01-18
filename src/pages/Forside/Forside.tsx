@@ -1,87 +1,42 @@
 import styled from 'styled-components';
 import { ASurfaceActionSubtle } from '@navikt/ds-tokens/dist/tokens';
-import SideTittel from '../../components/SideTittel';
-import ResponsiveFlexbox from '../../components/ResponsiveFlexbox';
-import {
-  skjermBreddeMax,
-  skjermBreddeInhhold,
-  skjermBreddeMobil,
-  breddeGuidePanelIkon,
-} from '../../utils';
+import { desktop, contentWidthDesktop, contentWidthMobile } from '../../utils';
 import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
-import { GuidePanel } from '@navikt/ds-react';
-import { useApp } from '../../context/AppContext';
-import { Device } from '../../hooks/useResponsive';
-
-const HovedInnhold = styled(ResponsiveFlexbox)`
-  background-color: ${ASurfaceActionSubtle};
-
-  @media (max-width: ${skjermBreddeMax}px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-`;
-
-const ForsideTittel = styled(SideTittel)`
-  @media (min-width: ${skjermBreddeMobil}px) {
-    padding-left: ${breddeGuidePanelIkon / 2}px;
-  }
-`;
-
-const TittelContainer = styled.div<{ $gap: string }>`
-  max-width: ${skjermBreddeInhhold};
-  display: flex;
-  flex-direction: column;
-  gap: ${(props) => props.$gap};
-`;
+import React from 'react';
+import SideHeader from './SideHeader';
 
 const Forside: React.FC = () => {
-  const { currentDevice, personData } = useApp();
+  const Grid = styled.section`
+    display: grid;
+    grid-template-columns: minmax(auto, ${contentWidthMobile}px);
+    row-gap: 2.5rem;
+    justify-content: center;
 
-  const panelTekstPrefix = personData.visningsnavn
-    ? `Hei, ${personData.visningsnavn}. `
-    : '';
-  const tittelContainerGap = currentDevice === Device.MOBILE ? '1rem' : '2rem';
+    padding: 2rem 0.5rem;
 
-  const HovedInnholdPadding =
-    currentDevice === Device.MOBILE ? '1.5rem' : '2.5rem';
+    @media (min-width: ${desktop}px) {
+      grid-template-columns: minmax(auto, ${contentWidthDesktop}px);
+    }
+  `;
+
+  const Stripe = styled(Grid)`
+    background-color: ${ASurfaceActionSubtle};
+  `;
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">
-      <ResponsiveFlexbox
-        $justify="center"
-        $padding="1rem"
-        $paddingBottom="2rem"
-      >
-        <TittelContainer $gap={tittelContainerGap}>
-          <ForsideTittel />
-          <GuidePanel>
-            {`${panelTekstPrefix}Denne siden er under arbeid, og du
-            vil foreløpig ikke finne informasjon om saken din her nå.`}
-          </GuidePanel>
-        </TittelContainer>
-      </ResponsiveFlexbox>
-      <HovedInnhold
-        $justify="center"
-        $padding="2rem"
-        $paddingTop={HovedInnholdPadding}
-        $paddingBottom={HovedInnholdPadding}
-      >
+      <Grid>
+        <SideHeader />
+      </Grid>
+      <Stripe>
         <LenkePanelStorListe />
-      </HovedInnhold>
-      <ResponsiveFlexbox
-        $gap="2.5rem"
-        $direction="column"
-        $align="center"
-        $padding="2rem"
-        $paddingTop="2.5rem"
-        $paddingBottom="2.5rem"
-      >
+      </Stripe>
+      <Grid>
         <StønadPanelListe />
         <Snarveier />
-      </ResponsiveFlexbox>
+      </Grid>
     </main>
   );
 };

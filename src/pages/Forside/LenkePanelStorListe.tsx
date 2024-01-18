@@ -1,9 +1,8 @@
-import ResponsiveFlexbox from '../../components/ResponsiveFlexbox';
 import LenkePanelStor from '../../components/LenkePanelStor';
 import { Søknad } from '../../icons/Søknad';
 import { Ettersending } from '../../icons/Ettersending';
 import { useApp } from '../../context/AppContext';
-import { Heading } from '@navikt/ds-react';
+import { Heading, HStack, VStack } from '@navikt/ds-react';
 import { Device } from '../../hooks/useResponsive';
 
 const LenkePanelStorListe: React.FC = () => {
@@ -12,11 +11,11 @@ const LenkePanelStorListe: React.FC = () => {
   const tittelSize = currentDevice === Device.MOBILE ? 'small' : 'medium';
 
   return (
-    <ResponsiveFlexbox $gap="0.5rem" $direction="column">
+    <VStack gap="2">
       <Heading size={tittelSize} level="2" $responsive={true}>
         Skal du melde fra om endringer eller ettersende dokumentasjon?
       </Heading>
-      <ResponsiveFlexbox $gap="1rem" $paddingBottom="1rem" $responsive={true}>
+      <HStack gap="4">
         <LenkePanelStor
           tittel="Melde fra om endring"
           headingLevel="3"
@@ -31,8 +30,8 @@ const LenkePanelStorListe: React.FC = () => {
           url={appEnv.ettersendingUrl}
           ikon={<Ettersending />}
         />
-      </ResponsiveFlexbox>
-    </ResponsiveFlexbox>
+      </HStack>
+    </VStack>
   );
 };
 
