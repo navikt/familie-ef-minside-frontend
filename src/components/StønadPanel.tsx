@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import React from 'react';
 import { logNavigering } from '../amplitude/amplitude';
+import { desktop } from '../utils';
 
 interface Props {
   tittel: string;
@@ -24,7 +25,6 @@ interface Props {
 }
 
 const Container = styled(Panel)`
-  max-width: 18.75rem;
   padding: 1.25rem;
   box-shadow: ${AShadowMedium};
   border-color: ${ABorderSubtle};
@@ -34,6 +34,10 @@ const Container = styled(Panel)`
   flex-direction: column;
   justify-content: space-between;
   gap: 1.5rem;
+
+  @media (min-width: ${desktop}px) {
+    max-width: 18.75rem;
+  }
 `;
 
 const IkonContainer = styled.div`

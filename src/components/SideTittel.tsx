@@ -1,14 +1,16 @@
 import { AleneMedBarn } from '../icons/AleneMedBarn';
 import styled from 'styled-components';
-import { skjermBreddeTittelIkon } from '../utils';
+import { desktop } from '../utils';
 import { BodyShort, Heading, HStack, VStack } from '@navikt/ds-react';
 import { useApp } from '../context/AppContext';
 import { Device } from '../hooks/useResponsive';
 import React from 'react';
 
 const IkonContainer = styled.div`
-  @media (max-width: ${skjermBreddeTittelIkon}px) {
-    display: none;
+  display: none;
+
+  @media (min-width: ${desktop}px) {
+    display: block;
   }
 `;
 
