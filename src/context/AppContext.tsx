@@ -2,7 +2,6 @@ import constate from 'constate';
 import { AppEnv } from '../api/env';
 import { useHentPersonData } from '../hooks/useHentPersonData';
 import { useEffect } from 'react';
-import useResponsive from '../hooks/useResponsive';
 
 interface Props {
   appEnv: AppEnv;
@@ -10,13 +9,12 @@ interface Props {
 
 const [AppProvider, useApp] = constate(({ appEnv }: Props) => {
   const { hentPersonData, personData } = useHentPersonData(appEnv.søknadApiUrl);
-  const currentDevice = useResponsive();
 
   useEffect(() => {
     hentPersonData();
   }, []);
 
-  return { appEnv, currentDevice, personData };
+  return { appEnv, personData };
 });
 
 export { AppProvider, useApp };
