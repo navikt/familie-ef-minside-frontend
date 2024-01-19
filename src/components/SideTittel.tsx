@@ -19,7 +19,7 @@ const SideTittel: React.FC = () => (
       <AleneMedBarn />
     </IkonContainer>
     <VStack>
-      <HeadingLevel1 level="1">
+      <HeadingLevel1 size="medium" level="1">
         Dine stønader til enslig mor eller far
       </HeadingLevel1>
       <UnderTittel>

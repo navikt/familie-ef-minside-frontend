@@ -10,7 +10,7 @@ const LenkePanelStorListe: React.FC = () => {
 
   return (
     <VStack gap="2">
-      <HeadingLevel2 level="2">
+      <HeadingLevel2 size="small" level="2">
         Skal du melde fra om endringer eller ettersende dokumentasjon?
       </HeadingLevel2>
       <HStack gap="4">

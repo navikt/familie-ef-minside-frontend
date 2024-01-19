@@ -11,7 +11,9 @@ const StønadPanelListe: React.FC = () => {
 
   return (
     <VStack gap="2">
-      <HeadingLevel2 level="2">Ønsker du å søke?</HeadingLevel2>
+      <HeadingLevel2 size="small" level="2">
+        Ønsker du å søke?
+      </HeadingLevel2>
       <HStack gap="4">
         <StønadPanel
           tittel="Overgangsstønad"

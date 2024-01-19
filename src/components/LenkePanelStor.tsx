@@ -44,7 +44,9 @@ const LenkePanelStor: React.FC<Props> = ({
     <InnerContainer>
       <div aria-hidden={true}>{ikon}</div>
       <VStack>
-        <HeadingLevel3 level={headingLevel}>{tittel}</HeadingLevel3>
+        <HeadingLevel3 size="xsmall" level={headingLevel}>
+          {tittel}
+        </HeadingLevel3>
         <BodyLong textColor="subtle">{brødtekst}</BodyLong>
       </VStack>
     </InnerContainer>
