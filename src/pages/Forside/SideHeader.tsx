@@ -1,5 +1,5 @@
 import { useApp } from '../../context/AppContext';
-import { GuidePanel, VStack } from '@navikt/ds-react';
+import { GuidePanel } from '@navikt/ds-react';
 import SideTittel from '../../components/SideTittel';
 import styled from 'styled-components';
 import { desktop } from '../../utils';
@@ -18,6 +18,16 @@ const Banner = styled(GuidePanel)`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (min-width: ${desktop}px) {
+    gap: 2.5rem;
+  }
+`;
+
 const SideHeader: React.FC = () => {
   const { personData } = useApp();
 
@@ -26,7 +36,7 @@ const SideHeader: React.FC = () => {
     : '';
 
   return (
-    <VStack gap="8">
+    <Container>
       <SideTittel />
       <Poster poster>
         {`${panelTekstPrefix}Denne siden er under arbeid, og du
@@ -36,7 +46,7 @@ const SideHeader: React.FC = () => {
         {`${panelTekstPrefix}Denne siden er under arbeid, og du
             vil foreløpig ikke finne informasjon om saken din her nå.`}
       </Banner>
-    </VStack>
+    </Container>
   );
 };
 
