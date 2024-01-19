@@ -1,4 +1,4 @@
-import { Heading, LinkPanel } from '@navikt/ds-react';
+import { LinkPanel } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import { logNavigering } from '../amplitude/amplitude';
