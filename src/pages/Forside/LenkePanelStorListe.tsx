@@ -1,6 +1,4 @@
 import LenkePanelStor from '../../components/LenkePanelStor';
-import { Søknad } from '../../icons/Søknad';
-import { Ettersending } from '../../icons/Ettersending';
 import { useApp } from '../../context/AppContext';
 import { HStack, VStack } from '@navikt/ds-react';
 import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
@@ -19,14 +17,12 @@ const LenkePanelStorListe: React.FC = () => {
           headingLevel="3"
           brødtekst="Her kan du melde fra om endringer som kan påvirke stønaden din."
           url={appEnv.endringsmeldingUrl}
-          ikon={<Søknad color="grønn" />}
         />
         <LenkePanelStor
           tittel="Ettersende dokumentasjon"
           headingLevel="3"
           brødtekst="Her kan du ettersende dokumenter til saken din."
           url={appEnv.ettersendingUrl}
-          ikon={<Ettersending />}
         />
       </HStack>
     </VStack>

@@ -10,22 +10,22 @@ interface Props {
   headingLevel: '1' | '2' | '3' | '4' | '5';
   brødtekst: string;
   url: string;
-  ikon: React.ReactNode;
 }
 
-const InnerContainer = styled(LinkPanel.Title)`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
-
 const StyledLinkPanel = styled(LinkPanel)`
+  width: 100%;
   border-radius: 0.5rem;
   box-shadow: ${AShadowMedium};
   border-color: ${ABorderSubtle};
+  padding-left: 1.5rem;
+  min-height: 6.75rem;
 
   @media (min-width: ${desktop}px) {
     max-width: 28.625rem;
+
+    .navds-link-panel__content {
+      height: 100%;
+    }
   }
 `;
 
@@ -34,22 +34,18 @@ const LenkePanelStor: React.FC<Props> = ({
   headingLevel,
   brødtekst,
   url,
-  ikon,
 }) => (
   <StyledLinkPanel
     href={url}
     border={true}
     onClick={() => logNavigering(url, tittel, 'lenke-panel-stor')}
   >
-    <InnerContainer>
-      <div aria-hidden={true}>{ikon}</div>
-      <VStack>
-        <HeadingLevel3 size="xsmall" level={headingLevel}>
-          {tittel}
-        </HeadingLevel3>
-        <BodyLong textColor="subtle">{brødtekst}</BodyLong>
-      </VStack>
-    </InnerContainer>
+    <VStack>
+      <HeadingLevel3 size="xsmall" level={headingLevel}>
+        {tittel}
+      </HeadingLevel3>
+      <BodyLong textColor="subtle">{brødtekst}</BodyLong>
+    </VStack>
   </StyledLinkPanel>
 );
 
