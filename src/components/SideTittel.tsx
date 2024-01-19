@@ -1,43 +1,32 @@
 import { AleneMedBarn } from '../icons/AleneMedBarn';
 import styled from 'styled-components';
-import ResponsiveFlexbox from './ResponsiveFlexbox';
-import { skjermBreddeTittelIkon } from '../utils';
-import { BodyShort, Heading } from '@navikt/ds-react';
-import { useApp } from '../context/AppContext';
-import { Device } from '../hooks/useResponsive';
+import { desktop } from '../utils';
+import { HStack, VStack } from '@navikt/ds-react';
 import React from 'react';
-
-interface Props {
-  className?: string;
-}
+import { HeadingLevel1, UnderTittel } from './ResponsiveHeadinger';
 
 const IkonContainer = styled.div`
-  @media (max-width: ${skjermBreddeTittelIkon}px) {
-    display: none;
+  display: none;
+
+  @media (min-width: ${desktop}px) {
+    display: block;
   }
 `;
 
-const SideTittel: React.FC<Props> = ({ className }) => {
-  const { currentDevice } = useApp();
-
-  const tittelSize = currentDevice === Device.MOBILE ? 'medium' : 'xlarge';
-  const underTittelSize = currentDevice === Device.MOBILE ? 'small' : 'medium';
-
-  return (
-    <ResponsiveFlexbox $gap="1rem" $direction="row" className={className}>
-      <IkonContainer aria-hidden={true}>
-        <AleneMedBarn />
-      </IkonContainer>
-      <ResponsiveFlexbox $direction="column">
-        <Heading size={tittelSize} level="1">
-          Dine stønader til enslig mor eller far
-        </Heading>
-        <BodyShort size={underTittelSize}>
-          Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
-        </BodyShort>
-      </ResponsiveFlexbox>
-    </ResponsiveFlexbox>
-  );
-};
+const SideTittel: React.FC = () => (
+  <HStack gap="4">
+    <IkonContainer aria-hidden={true}>
+      <AleneMedBarn />
+    </IkonContainer>
+    <VStack>
+      <HeadingLevel1 size="medium" level="1">
+        Dine stønader til enslig mor eller far
+      </HeadingLevel1>
+      <UnderTittel>
+        Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
+      </UnderTittel>
+    </VStack>
+  </HStack>
+);
 
 export default SideTittel;

@@ -1,6 +1,5 @@
 import {
   BodyLong,
-  Heading,
   Panel,
   HStack,
   VStack,
@@ -11,6 +10,8 @@ import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import React from 'react';
 import { logNavigering } from '../amplitude/amplitude';
+import { desktop } from '../utils';
+import { HeadingLevel3 } from './ResponsiveHeadinger';
 
 interface Props {
   tittel: string;
@@ -24,7 +25,6 @@ interface Props {
 }
 
 const Container = styled(Panel)`
-  max-width: 18.75rem;
   padding: 1.25rem;
   box-shadow: ${AShadowMedium};
   border-color: ${ABorderSubtle};
@@ -34,6 +34,10 @@ const Container = styled(Panel)`
   flex-direction: column;
   justify-content: space-between;
   gap: 1.5rem;
+
+  @media (min-width: ${desktop}px) {
+    max-width: 18.75rem;
+  }
 `;
 
 const IkonContainer = styled.div`
@@ -54,9 +58,9 @@ const StønadPanel: React.FC<Props> = ({
     <VStack gap="4">
       <HStack gap="2" align="center" justify="start">
         <IkonContainer aria-hidden={true}>{ikon}</IkonContainer>
-        <Heading size={'small'} level={headingLevel}>
+        <HeadingLevel3 size="xsmall" level={headingLevel}>
           {tittel}
-        </Heading>
+        </HeadingLevel3>
       </HStack>
       <BodyLong>{brødtekst}</BodyLong>
     </VStack>

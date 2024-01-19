@@ -1,23 +1,20 @@
-import ResponsiveFlexbox from '../../components/ResponsiveFlexbox';
 import { useApp } from '../../context/AppContext';
 import { Overgangsstønad } from '../../icons/Overgangsstønad';
 import { Barnetilsyn } from '../../icons/Barnetilsyn';
 import { Skolepenger } from '../../icons/Skolepenger';
 import StønadPanel from '../../components/StønadPanel';
-import { Heading } from '@navikt/ds-react';
-import { Device } from '../../hooks/useResponsive';
+import { HStack, VStack } from '@navikt/ds-react';
+import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
 
 const StønadPanelListe: React.FC = () => {
-  const { appEnv, currentDevice } = useApp();
-
-  const tittelSize = currentDevice === Device.MOBILE ? 'small' : 'medium';
+  const { appEnv } = useApp();
 
   return (
-    <ResponsiveFlexbox $gap="0.5rem" $direction="column">
-      <Heading size={tittelSize} level="2" $responsive={true}>
+    <VStack gap="2">
+      <HeadingLevel2 size="small" level="2">
         Ønsker du å søke?
-      </Heading>
-      <ResponsiveFlexbox $gap="1rem" $responsive={true}>
+      </HeadingLevel2>
+      <HStack gap="4">
         <StønadPanel
           tittel="Overgangsstønad"
           headingLevel="3"
@@ -48,8 +45,8 @@ const StønadPanelListe: React.FC = () => {
           knappTekst="Søk stønad til skolepenger"
           knappUrl={appEnv.søknadSkolepengerUrl}
         />
-      </ResponsiveFlexbox>
-    </ResponsiveFlexbox>
+      </HStack>
+    </VStack>
   );
 };
 
