@@ -1,10 +1,18 @@
 import { AleneMedBarn } from '../icons/AleneMedBarn';
 import styled from 'styled-components';
-import { desktop } from '../utils';
+import { desktop, mobile } from '../utils';
 import { BodyShort, Heading, HStack, VStack } from '@navikt/ds-react';
-import { useApp } from '../context/AppContext';
-import { Device } from '../hooks/useResponsive';
 import React from 'react';
+import {
+  AFontLineHeightHeading2xlarge,
+  AFontLineHeightLarge,
+  AFontLineHeightMedium,
+  AFontSizeHeading2xlarge,
+  AFontSizeHeadingMedium,
+  AFontSizeLarge,
+  AFontSizeMedium,
+  AFontWeightRegular,
+} from '@navikt/ds-tokens/dist/tokens';
 
 const IkonContainer = styled.div`
   display: none;
@@ -14,27 +22,43 @@ const IkonContainer = styled.div`
   }
 `;
 
-const SideTittel: React.FC = () => {
-  const { currentDevice } = useApp();
+const Tittel = styled(Heading)`
+  font-size: ${AFontSizeHeadingMedium};
+  line-height: ${AFontLineHeightMedium};
+  letter-spacing: -0.01em;
 
-  const tittelSize = currentDevice === Device.MOBILE ? 'medium' : 'xlarge';
-  const underTittelSize = currentDevice === Device.MOBILE ? 'small' : 'medium';
+  @media (min-width: ${mobile}px) {
+    font-size: ${AFontSizeHeading2xlarge};
+    line-height: ${AFontLineHeightHeading2xlarge};
+    letter-spacing: -0.002em;
+  }
+`;
 
-  return (
-    <HStack gap="4">
-      <IkonContainer aria-hidden={true}>
-        <AleneMedBarn />
-      </IkonContainer>
-      <VStack>
-        <Heading size={tittelSize} level="1">
-          Dine stønader til enslig mor eller far
-        </Heading>
-        <BodyShort size={underTittelSize}>
-          Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
-        </BodyShort>
-      </VStack>
-    </HStack>
-  );
-};
+const UnderTittel = styled(BodyShort)`
+  font-size: ${AFontSizeMedium};
+  line-height: ${AFontLineHeightMedium};
+  letter-spacing: 0.002em;
+
+  @media (min-width: ${mobile}px) {
+    font-size: ${AFontSizeLarge};
+    font-width: ${AFontWeightRegular};
+    line-height: ${AFontLineHeightLarge};
+    letter-spacing: 0;
+  }
+`;
+
+const SideTittel: React.FC = () => (
+  <HStack gap="4">
+    <IkonContainer aria-hidden={true}>
+      <AleneMedBarn />
+    </IkonContainer>
+    <VStack>
+      <Tittel level="1">Dine stønader til enslig mor eller far</Tittel>
+      <UnderTittel>
+        Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
+      </UnderTittel>
+    </VStack>
+  </HStack>
+);
 
 export default SideTittel;
