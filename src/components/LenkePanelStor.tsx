@@ -1,10 +1,9 @@
-import { BodyLong, Heading, LinkPanel, VStack } from '@navikt/ds-react';
+import { BodyLong, LinkPanel, VStack } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import { logNavigering } from '../amplitude/amplitude';
-import { useApp } from '../context/AppContext';
-import { Device } from '../hooks/useResponsive';
 import { desktop } from '../utils';
+import { HeadingLevel3 } from './ResponsiveHeadinger';
 
 interface Props {
   tittel: string;
@@ -36,28 +35,20 @@ const LenkePanelStor: React.FC<Props> = ({
   brødtekst,
   url,
   ikon,
-}) => {
-  const { currentDevice } = useApp();
-
-  const tittelSize = currentDevice === Device.MOBILE ? 'xsmall' : 'small';
-
-  return (
-    <StyledLinkPanel
-      href={url}
-      border={true}
-      onClick={() => logNavigering(url, tittel, 'lenke-panel-stor')}
-    >
-      <InnerContainer>
-        <div aria-hidden={true}>{ikon}</div>
-        <VStack>
-          <Heading size={tittelSize} level={headingLevel}>
-            {tittel}
-          </Heading>
-          <BodyLong textColor="subtle">{brødtekst}</BodyLong>
-        </VStack>
-      </InnerContainer>
-    </StyledLinkPanel>
-  );
-};
+}) => (
+  <StyledLinkPanel
+    href={url}
+    border={true}
+    onClick={() => logNavigering(url, tittel, 'lenke-panel-stor')}
+  >
+    <InnerContainer>
+      <div aria-hidden={true}>{ikon}</div>
+      <VStack>
+        <HeadingLevel3 level={headingLevel}>{tittel}</HeadingLevel3>
+        <BodyLong textColor="subtle">{brødtekst}</BodyLong>
+      </VStack>
+    </InnerContainer>
+  </StyledLinkPanel>
+);
 
 export default LenkePanelStor;

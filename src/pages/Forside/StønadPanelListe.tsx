@@ -3,19 +3,15 @@ import { Overgangsstønad } from '../../icons/Overgangsstønad';
 import { Barnetilsyn } from '../../icons/Barnetilsyn';
 import { Skolepenger } from '../../icons/Skolepenger';
 import StønadPanel from '../../components/StønadPanel';
-import { Heading, HStack, VStack } from '@navikt/ds-react';
-import { Device } from '../../hooks/useResponsive';
+import { HStack, VStack } from '@navikt/ds-react';
+import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
 
 const StønadPanelListe: React.FC = () => {
-  const { appEnv, currentDevice } = useApp();
-
-  const tittelSize = currentDevice === Device.MOBILE ? 'small' : 'medium';
+  const { appEnv } = useApp();
 
   return (
     <VStack gap="2">
-      <Heading size={tittelSize} level="2">
-        Ønsker du å søke?
-      </Heading>
+      <HeadingLevel2 level="2">Ønsker du å søke?</HeadingLevel2>
       <HStack gap="4">
         <StønadPanel
           tittel="Overgangsstønad"

@@ -1,6 +1,5 @@
 import {
   BodyLong,
-  Heading,
   Panel,
   HStack,
   VStack,
@@ -12,6 +11,7 @@ import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import React from 'react';
 import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils';
+import { HeadingLevel3 } from './ResponsiveHeadinger';
 
 interface Props {
   tittel: string;
@@ -58,9 +58,7 @@ const StønadPanel: React.FC<Props> = ({
     <VStack gap="4">
       <HStack gap="2" align="center" justify="start">
         <IkonContainer aria-hidden={true}>{ikon}</IkonContainer>
-        <Heading size={'small'} level={headingLevel}>
-          {tittel}
-        </Heading>
+        <HeadingLevel3 level={headingLevel}>{tittel}</HeadingLevel3>
       </HStack>
       <BodyLong>{brødtekst}</BodyLong>
     </VStack>

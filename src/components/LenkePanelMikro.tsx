@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils';
+import { HeadingLevel3 } from './ResponsiveHeadinger';
 
 interface Props {
   tittel: string;
@@ -27,9 +28,9 @@ const LenkePanelMikro: React.FC<Props> = ({ tittel, headingLevel, url }) => (
     border={true}
     onClick={() => logNavigering(url, tittel, 'lenke-panel-mikro')}
   >
-    <Heading size={'small'} level={headingLevel}>
+    <HeadingLevel3 size={'small'} level={headingLevel}>
       {tittel}
-    </Heading>
+    </HeadingLevel3>
   </StyledLinkPanel>
 );
 

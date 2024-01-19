@@ -1,18 +1,14 @@
 import LenkePanelMikro from '../../components/LenkePanelMikro';
 import { useApp } from '../../context/AppContext';
-import { Heading, HStack, VStack } from '@navikt/ds-react';
-import { Device } from '../../hooks/useResponsive';
+import { HStack, VStack } from '@navikt/ds-react';
+import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
 
 const Snarveier: React.FC = () => {
-  const { appEnv, currentDevice } = useApp();
-
-  const tittelSize = currentDevice === Device.MOBILE ? 'small' : 'medium';
+  const { appEnv } = useApp();
 
   return (
     <VStack gap="2">
-      <Heading size={tittelSize} level="2" $responsive={true}>
-        Andre snarveier
-      </Heading>
+      <HeadingLevel2 level="2">Andre snarveier</HeadingLevel2>
       <HStack gap="4">
         <LenkePanelMikro
           tittel="Saksbehandlingstider"
