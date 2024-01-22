@@ -37,7 +37,6 @@
     "@types/amplitude-js": "^8.16.5",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
-    "@types/react-router-dom": "^5.3.3",
     "amplitude-js": "^8.21.9",
     "axios": "^1.6.5",
     "constate": "^3.3.2",
