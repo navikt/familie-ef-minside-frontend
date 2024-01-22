@@ -12,6 +12,7 @@ interface Props {
   brødtekst: string;
   url: string;
   redirect: 'ekstern' | 'intern';
+  className?: string;
 }
 
 const StyledLinkPanel = styled(LinkPanel)`
@@ -37,6 +38,7 @@ const LenkePanelStor: React.FC<Props> = ({
   brødtekst,
   url,
   redirect,
+  className,
 }) => {
   const navigate = useNavigate();
 
@@ -51,7 +53,12 @@ const LenkePanelStor: React.FC<Props> = ({
   };
 
   return (
-    <StyledLinkPanel href={href} border={true} onClick={handleClick}>
+    <StyledLinkPanel
+      href={href}
+      border={true}
+      onClick={handleClick}
+      className={className}
+    >
       <VStack>
         <HeadingLevel3 size="xsmall" level={headingLevel}>
           {tittel}
