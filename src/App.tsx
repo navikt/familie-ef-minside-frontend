@@ -1,9 +1,16 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Outlet,
+  Routes,
+  Navigate,
+} from 'react-router-dom';
 import React, { useState } from 'react';
 import Forside from './pages/Forside/Forside';
 import { AppEnv, hentEnv } from './api/env';
 import { AppProvider } from './context/AppContext';
 import { HStack, Loader } from '@navikt/ds-react';
+import Dokumentoversikt from './pages/Dokumentoversikt/Dokumentoversikt';
 
 const App: React.FC = () => {
   const [appEnv, settAppEnv] = useState<AppEnv>();
@@ -28,11 +35,15 @@ const App: React.FC = () => {
 
   return (
     <AppProvider appEnv={appEnv}>
-      <Router basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
-          <Route path={'*'} element={<Forside />} />
+          <Route path="/" element={<Outlet />}>
+            <Route index element={<Forside />} />
+            <Route path="/dokumentoversikt" element={<Dokumentoversikt />} />
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
+          </Route>
         </Routes>
-      </Router>
+      </BrowserRouter>
     </AppProvider>
   );
 };

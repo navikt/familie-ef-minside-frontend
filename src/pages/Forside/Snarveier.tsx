@@ -16,11 +16,13 @@ const Snarveier: React.FC = () => {
           tittel="Saksbehandlingstider"
           headingLevel="3"
           url={appEnv.saksbehandlingstiderUrl}
+          redirect="ekstern"
         />
         <LenkePanelMikro
           tittel="Skriv til oss"
           headingLevel="3"
           url={appEnv.endringsmeldingUrl}
+          redirect="ekstern"
         />
       </HStack>
     </VStack>

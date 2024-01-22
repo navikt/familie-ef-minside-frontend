@@ -6,6 +6,7 @@ import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
 import React from 'react';
 import SideHeader from './SideHeader';
+import DineDokumenter from './DineDokumenter';
 
 const Grid = styled.section`
   display: grid;
@@ -35,6 +36,7 @@ const Forside: React.FC = () => (
       <LenkePanelStorListe />
     </Stripe>
     <Grid>
+      <DineDokumenter />
       <StønadPanelListe />
       <Snarveier />
     </Grid>
