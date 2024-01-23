@@ -27,9 +27,7 @@ const config = {
           : 'http://localhost:8091',
     },
     devMiddleware: { publicPath: publicPath },
-    historyApiFallback: {
-      index: publicPath,
-    },
+    historyApiFallback: true,
   },
   entry: {
     'familie-ef-minside': ['./src/index.tsx'],
