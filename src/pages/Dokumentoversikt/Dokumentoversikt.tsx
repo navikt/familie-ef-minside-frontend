@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { contentWidthDesktop, contentWidthMobile, desktop } from '../../utils';
 import { dummyDokumenter } from './dummyData';
@@ -7,7 +7,9 @@ import {
   HeadingLevel1,
   UnderTittel,
 } from '../../components/ResponsiveHeadinger';
-import { BodyShort, VStack } from '@navikt/ds-react';
+import { VStack } from '@navikt/ds-react';
+import { useHentDokumenter } from '../../hooks/useHentDokumenter';
+import { useApp } from '../../context/AppContext';
 
 const Grid = styled.section`
   display: grid;
@@ -23,7 +25,12 @@ const Grid = styled.section`
 `;
 
 const DokumentOversikt: React.FC = () => {
-  const dokumenter = dummyDokumenter;
+  const { appEnv } = useApp();
+  const { hentDokumenter, dokumenter } = useHentDokumenter(appEnv.søknadApiUrl);
+
+  useEffect(() => {
+    hentDokumenter();
+  }, [hentDokumenter]);
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">
@@ -43,8 +50,11 @@ const DokumentOversikt: React.FC = () => {
             dokumentene til de er synlige i oversikten.
           </UnderTittel>
         </VStack>
-        {dokumenter.map((dokument) => (
-          <Dokument dokument={dokument} />
+        {dummyDokumenter.map((dokument) => (
+          <Dokument
+            key={dokument.opprettet + dokument.tittel}
+            dokument={dokument}
+          />
         ))}
       </Grid>
     </main>

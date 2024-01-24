@@ -57,7 +57,9 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
               Vedlegg:
             </Detail>
             {dokument.vedlegg.map((vedlegg) => (
-              <Vedlegg spacing>{vedlegg.tittel}</Vedlegg>
+              <Vedlegg key={vedlegg.opprettet + vedlegg.tittel} spacing>
+                {vedlegg.tittel}
+              </Vedlegg>
             ))}
           </div>
         )}
