@@ -7,15 +7,15 @@ export interface HentDokumentResponse {
   dokumenter: Journalpost[];
 }
 
-export const useHentDokumenter = (
-  søknadApiUrl: string
-): HentDokumentResponse => {
+export const useHentDokumenter = (): HentDokumentResponse => {
   const [dokumenter, settDokumenter] = useState<Journalpost[]>([]);
 
   const hentDokumenter = useCallback(() => {
-    console.log('hent');
     prefferedAxios
-      .get(`${søknadApiUrl}/api/dokument/journalposter`, axiosConfig)
+      .get(
+        `familie/alene-med-barn/minside/api/dokument/journalposter`,
+        axiosConfig
+      )
       .then((response: { data: Journalpost[] }) => {
         response && settDokumenter(response.data);
       });

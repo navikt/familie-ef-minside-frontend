@@ -11,12 +11,15 @@ interface Props {
   personData: PersonData;
 }
 
-export const useHentPersonData = (søknadApiUrl: string): Props => {
+export const useHentPersonData = (): Props => {
   const [personData, settPersonData] = useState<PersonData>(initiellPersonData);
 
   const hentPersonData = useCallback(() => {
     prefferedAxios
-      .get(`${søknadApiUrl}/api/oppslag/sokerminimum`, axiosConfig)
+      .get(
+        `familie/alene-med-barn/minside/api/oppslag/sokerminimum`,
+        axiosConfig
+      )
       .then((response: { data: PersonData }) => {
         response && settPersonData(formatertPersonData(response.data));
       });

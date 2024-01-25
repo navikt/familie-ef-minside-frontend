@@ -9,7 +9,6 @@ import {
 } from '../../components/ResponsiveHeadinger';
 import { VStack } from '@navikt/ds-react';
 import { useHentDokumenter } from '../../hooks/useHentDokumenter';
-import { useApp } from '../../context/AppContext';
 
 const Grid = styled.section`
   display: grid;
@@ -25,8 +24,7 @@ const Grid = styled.section`
 `;
 
 const DokumentOversikt: React.FC = () => {
-  const { appEnv } = useApp();
-  const { hentDokumenter, dokumenter } = useHentDokumenter(appEnv.søknadApiUrl);
+  const { hentDokumenter, dokumenter } = useHentDokumenter();
 
   useEffect(() => {
     hentDokumenter();

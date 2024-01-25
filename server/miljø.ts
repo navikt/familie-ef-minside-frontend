@@ -2,7 +2,6 @@ import logger from './logger.js';
 
 interface Environment {
   port: number;
-  apiUrl: string;
   minSideUrl: string;
   oAuthCallbackUri: string;
   endringsmeldingUrl: string;
@@ -19,8 +18,7 @@ interface Environment {
 
 const lokaltMiljø = {
   port: 3000,
-  apiUrl: 'http://localhost:8091',
-  minSideUrl: 'https://www.intern.dev.nav.no/minside/',
+  minSideUrl: 'http://localhost:3000',
   oAuthCallbackUri:
     'https://localhost:8080/familie/alene-med-barn/minside/oauth2/callback',
   endringsmeldingUrl: 'https://innboks.nav.no/s/skriv-til-oss?category=Familie',
@@ -38,12 +36,11 @@ const lokaltMiljø = {
   infoSideSkolepengerUrl: 'https://www.ekstern.dev.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl:
     'https://www.ekstern.dev.nav.no/saksbehandlingstider',
-  søknadApiUrl: '',
+  søknadApiUrl: 'http://localhost:8091',
 };
 
 const devMiljø = {
   port: 8080,
-  apiUrl: 'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api',
   minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
     'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/minside/oauth2/callback',
@@ -63,12 +60,11 @@ const devMiljø = {
   saksbehandlingstiderUrl:
     'https://www.ekstern.dev.nav.no/saksbehandlingstider',
   søknadApiUrl:
-    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/api',
+    'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api',
 };
 
 const prodMiljø = {
   port: 8080,
-  apiUrl: 'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api',
   minSideUrl: 'https://www.nav.no/minside/',
   oAuthCallbackUri:
     'https://www.nav.no/familie/alene-med-barn/minside/oauth2/callback',
@@ -83,7 +79,8 @@ const prodMiljø = {
   infoSideBarnetilsynUrl: 'https://www.nav.no/barnetilsyn-enslig',
   infoSideSkolepengerUrl: 'https://www.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl: 'https://www.nav.no/saksbehandlingstider',
-  søknadApiUrl: 'https://www.nav.no/familie/alene-med-barn/soknad/api',
+  søknadApiUrl:
+    'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api',
 };
 
 const initierMiljøvariabler = (): Environment => {

@@ -8,7 +8,7 @@ interface Props {
 }
 
 const [AppProvider, useApp] = constate(({ appEnv }: Props) => {
-  const { hentPersonData, personData } = useHentPersonData(appEnv.søknadApiUrl);
+  const { hentPersonData, personData } = useHentPersonData();
 
   useEffect(() => {
     hentPersonData();
