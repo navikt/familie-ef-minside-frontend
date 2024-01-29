@@ -16,7 +16,9 @@ const attachToken = (applicationName: ApplicationName): RequestHandler => {
         req,
         applicationName
       );
-      req.headers[AUTHORIZATION_HEADER] = authenticationHeader.authorization;
+      req.headers[AUTHORIZATION_HEADER] = erLokalt()
+        ? ''
+        : authenticationHeader.authorization;
       req.headers[WONDERWALL_ID_TOKEN_HEADER] = '';
       next();
     } catch (error) {
@@ -56,6 +58,9 @@ const prepareSecuredRequest = async (
 ) => {
   logInfo('PrepareSecuredRequest', req);
   const { authorization } = req.headers;
+  if (erLokalt()) {
+    return { authorization: `Bearer ${req.cookies['localhost-idtoken']}` };
+  }
   const token = utledToken(req, authorization);
   logInfo('IdPorten-token found: ' + (token.length > 1), req);
   const accessToken = await exchangeToken(token, applicationName).then(

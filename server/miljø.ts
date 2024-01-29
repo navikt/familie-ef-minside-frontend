@@ -2,6 +2,7 @@ import logger from './logger.js';
 
 interface Environment {
   port: number;
+  søknadApiProxyUrl: string;
   minSideUrl: string;
   oAuthCallbackUri: string;
   endringsmeldingUrl: string;
@@ -13,12 +14,12 @@ interface Environment {
   infoSideBarnetilsynUrl: string;
   infoSideSkolepengerUrl: string;
   saksbehandlingstiderUrl: string;
-  søknadApiUrl: string;
 }
 
-const lokaltMiljø = {
+const lokaltMiljø: Environment = {
   port: 3000,
-  minSideUrl: 'http://localhost:3000',
+  søknadApiProxyUrl: 'http://localhost:8091/api',
+  minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
     'https://localhost:8080/familie/alene-med-barn/minside/oauth2/callback',
   endringsmeldingUrl: 'https://innboks.nav.no/s/skriv-til-oss?category=Familie',
@@ -36,11 +37,12 @@ const lokaltMiljø = {
   infoSideSkolepengerUrl: 'https://www.ekstern.dev.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl:
     'https://www.ekstern.dev.nav.no/saksbehandlingstider',
-  søknadApiUrl: 'http://localhost:8091',
 };
 
-const devMiljø = {
+const devMiljø: Environment = {
   port: 8080,
+  søknadApiProxyUrl:
+    'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api/api',
   minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
     'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/minside/oauth2/callback',
@@ -59,12 +61,12 @@ const devMiljø = {
   infoSideSkolepengerUrl: 'https://www.ekstern.dev.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl:
     'https://www.ekstern.dev.nav.no/saksbehandlingstider',
-  søknadApiUrl:
-    'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api',
 };
 
-const prodMiljø = {
+const prodMiljø: Environment = {
   port: 8080,
+  søknadApiProxyUrl:
+    'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api/api',
   minSideUrl: 'https://www.nav.no/minside/',
   oAuthCallbackUri:
     'https://www.nav.no/familie/alene-med-barn/minside/oauth2/callback',
@@ -79,8 +81,6 @@ const prodMiljø = {
   infoSideBarnetilsynUrl: 'https://www.nav.no/barnetilsyn-enslig',
   infoSideSkolepengerUrl: 'https://www.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl: 'https://www.nav.no/saksbehandlingstider',
-  søknadApiUrl:
-    'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api',
 };
 
 const initierMiljøvariabler = (): Environment => {

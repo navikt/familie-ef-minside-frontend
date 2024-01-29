@@ -10,7 +10,6 @@ export interface AppEnv {
   infoSideBarnetilsynUrl: string;
   infoSideSkolepengerUrl: string;
   saksbehandlingstiderUrl: string;
-  søknadApiUrl: string;
 }
 
 export const hentEnv = (): Promise<AppEnv> => {
