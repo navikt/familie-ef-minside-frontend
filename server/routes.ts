@@ -27,7 +27,6 @@ const routes = (router: Router) => {
         infoSideBarnetilsynUrl: miljø.infoSideBarnetilsynUrl,
         infoSideSkolepengerUrl: miljø.infoSideSkolepengerUrl,
         saksbehandlingstiderUrl: miljø.saksbehandlingstiderUrl,
-        søknadApiUrl: miljø.søknadApiUrl,
       })
       .end();
   });
@@ -36,7 +35,7 @@ const routes = (router: Router) => {
     `${BASE_PATH}/api`,
     addRequestInfo(),
     attachToken('familie-ef-soknad-api'),
-    doProxy(miljø.apiUrl, `${BASE_PATH}/api`)
+    doProxy(miljø.søknadApiProxyUrl, `${BASE_PATH}/api`)
   );
 
   router.use(`${BASE_PATH}`, express.static(buildPath, { index: false }));
