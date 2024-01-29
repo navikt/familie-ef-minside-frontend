@@ -9,8 +9,9 @@ env:
   IMAGE: ghcr.io/navikt/familie-ef-minside:${{ github.sha }}
 
 permissions:
-  contents: 'read'
-  id-token: 'write'
+  packages: write
+  id-token: write
+  contents: read
 
 jobs:
   build:
