@@ -6,12 +6,14 @@ on:
 env:
   IMAGE: ghcr.io/navikt/familie-ef-minside:${{ github.sha }}
 
+permissions:
+  contents: 'read'
+  id-token: 'write'
+
 jobs:
   build:
     name: Build and push Docker container
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -49,6 +51,5 @@ jobs:
       - name: deploy to gcp-dev
         uses: nais/deploy/actions/deploy@v2
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: nais-dev.yaml
