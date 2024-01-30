@@ -2,7 +2,7 @@ import { LinkPanel } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import { logNavigering } from '../amplitude/amplitude';
-import { desktop } from '../utils';
+import { desktop } from '../utils/constants';
 import { HeadingLevel3 } from './ResponsiveHeadinger';
 import { useNavigate } from 'react-router-dom';
 

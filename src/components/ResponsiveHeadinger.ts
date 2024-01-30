@@ -14,7 +14,7 @@ import {
   AFontSizeHeadingXsmall,
   AFontWeightRegular,
 } from '@navikt/ds-tokens/dist/tokens';
-import { mobile } from '../utils';
+import { mobile } from '../utils/constants';
 
 export const HeadingLevel1 = styled(Heading)`
   font-size: ${AFontSizeHeadingMedium};

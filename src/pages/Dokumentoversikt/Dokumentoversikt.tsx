@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { contentWidthDesktop, contentWidthMobile, desktop } from '../../utils';
-import { dummyDokumenter } from './dummyData';
+import {
+  contentWidthDesktop,
+  contentWidthMobile,
+  desktop,
+} from '../../utils/constants';
 import Dokument from './Dokument';
 import {
   HeadingLevel1,
@@ -48,11 +51,8 @@ const DokumentOversikt: React.FC = () => {
             dokumentene til de er synlige i oversikten.
           </UnderTittel>
         </VStack>
-        {dummyDokumenter.map((dokument) => (
-          <Dokument
-            key={dokument.opprettet + dokument.tittel}
-            dokument={dokument}
-          />
+        {dokumenter.map((dokument) => (
+          <Dokument key={dokument.journalpostId} dokument={dokument} />
         ))}
       </Grid>
     </main>

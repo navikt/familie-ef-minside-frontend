@@ -1,12 +1,13 @@
 import React from 'react';
-import { IDokument } from './dummyData';
 import { FilePdfIcon } from '@navikt/aksel-icons';
 import styled from 'styled-components';
 import { ABorderDivider, AIconAction } from '@navikt/ds-tokens/dist/tokens';
 import { BodyShort, Detail, Label, VStack } from '@navikt/ds-react';
+import { Journalpost } from '../../interfaces/journalpost';
+import { utledDetailTekst } from './utils';
 
 interface Props {
-  dokument: IDokument;
+  dokument: Journalpost;
 }
 
 const Container = styled.div`
@@ -31,11 +32,7 @@ const Vedlegg = styled(BodyShort)`
 `;
 
 const Dokument: React.FC<Props> = ({ dokument }) => {
-  const detailTekst =
-    dokument.retning === 'I'
-      ? `Sendt inn av deg: ${dokument.opprettet}`
-      : `Sendt fra NAV: ${dokument.opprettet}`;
-
+  const detailTekst = utledDetailTekst(dokument);
   const harVedlegg = dokument.vedlegg.length > 0;
 
   return (
@@ -48,7 +45,7 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
       />
       <VStack gap="5">
         <div>
-          <HovedDokument>{dokument.tittel}</HovedDokument>
+          <HovedDokument>{dokument.hovedDokument.tittel}</HovedDokument>
           <Detail textColor="subtle">{detailTekst}</Detail>
         </div>
         {harVedlegg && (
@@ -57,7 +54,7 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
               Vedlegg:
             </Detail>
             {dokument.vedlegg.map((vedlegg) => (
-              <Vedlegg key={vedlegg.opprettet + vedlegg.tittel} spacing>
+              <Vedlegg key={vedlegg.dokumentId} spacing>
                 {vedlegg.tittel}
               </Vedlegg>
             ))}

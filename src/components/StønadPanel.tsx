@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import React from 'react';
 import { logNavigering } from '../amplitude/amplitude';
-import { desktop } from '../utils';
+import { desktop } from '../utils/constants';
 import { HeadingLevel3 } from './ResponsiveHeadinger';
 
 interface Props {

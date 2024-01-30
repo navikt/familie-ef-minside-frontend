@@ -1,6 +1,6 @@
 import { AleneMedBarn } from '../icons/AleneMedBarn';
 import styled from 'styled-components';
-import { desktop } from '../utils';
+import { desktop } from '../utils/constants';
 import { HStack, VStack } from '@navikt/ds-react';
 import React from 'react';
 import { HeadingLevel1, UnderTittel } from './ResponsiveHeadinger';
