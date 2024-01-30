@@ -3,11 +3,13 @@ import { axiosConfig, prefferedAxios } from '../api/axios';
 import { Journalpost } from '../interfaces/journalpost';
 
 export interface HentDokumentResponse {
-  hentDokumenter: () => void;
   dokumenter: Journalpost[];
+  hentDokumenter: () => void;
+  lasterDokumenter: boolean;
 }
 
 export const useHentDokumenter = (): HentDokumentResponse => {
+  const [lasterDokumenter, settLasterDokumenter] = useState<boolean>(true);
   const [dokumenter, settDokumenter] = useState<Journalpost[]>([]);
 
   const hentDokumenter = useCallback(() => {
@@ -18,11 +20,13 @@ export const useHentDokumenter = (): HentDokumentResponse => {
       )
       .then((response: { data: Journalpost[] }) => {
         response && settDokumenter(response.data);
+        settLasterDokumenter(false);
       });
   }, [prefferedAxios]);
 
   return {
-    hentDokumenter,
     dokumenter,
+    hentDokumenter,
+    lasterDokumenter,
   };
 };

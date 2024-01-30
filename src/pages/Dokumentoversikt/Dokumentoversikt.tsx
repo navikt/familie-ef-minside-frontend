@@ -12,6 +12,7 @@ import {
 } from '../../components/ResponsiveHeadinger';
 import { Alert, VStack } from '@navikt/ds-react';
 import { useHentDokumenter } from '../../hooks/useHentDokumenter';
+import DataLoader from '../../components/DataLoader';
 
 const Grid = styled.section`
   display: grid;
@@ -31,11 +32,15 @@ const InfoStripe = styled(Alert)`
 `;
 
 const DokumentOversikt: React.FC = () => {
-  const { hentDokumenter, dokumenter } = useHentDokumenter();
+  const { lasterDokumenter, hentDokumenter, dokumenter } = useHentDokumenter();
 
   useEffect(() => {
     hentDokumenter();
   }, [hentDokumenter]);
+
+  if (lasterDokumenter) {
+    return <DataLoader size="xlarge" title="Henter dokumenter" />;
+  }
 
   const harDokumenter = dokumenter.length > 0;
 
