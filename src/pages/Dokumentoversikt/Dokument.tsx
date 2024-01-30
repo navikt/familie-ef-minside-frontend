@@ -45,7 +45,7 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
       />
       <VStack gap="5">
         <div>
-          <HovedDokument>{dokument.hovedDokument.tittel}</HovedDokument>
+          <HovedDokument>{`${dokument.hovedDokument.tittel}.pdf`}</HovedDokument>
           <Detail textColor="subtle">{detailTekst}</Detail>
         </div>
         {harVedlegg && (
@@ -55,7 +55,7 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
             </Detail>
             {dokument.vedlegg.map((vedlegg) => (
               <Vedlegg key={vedlegg.dokumentId} spacing>
-                {vedlegg.tittel}
+                {`${vedlegg.tittel}.pdf`}
               </Vedlegg>
             ))}
           </div>

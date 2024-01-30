@@ -37,18 +37,13 @@ const DokumentOversikt: React.FC = () => {
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>
         <VStack gap="5">
-          <div>
-            <HeadingLevel1 size="medium" level="1">
-              Dokumentoversikt
-            </HeadingLevel1>
-            <UnderTittel>
-              Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
-            </UnderTittel>
-          </div>
+          <HeadingLevel1 size="medium" level="1">
+            Dokumentoversikt
+          </HeadingLevel1>
           <UnderTittel spacing>
-            Her finner du alle dine journalførte dokumenter relatert til stønad
-            til enslig mor eller far. Det kan ta noe tid fra du har sendt inn
-            dokumentene til de er synlige i oversikten.
+            Her finner du dokumentene dine som gjelder stønad til enslig mor
+            eller far. Det kan ta noe tid fra du har sendt inn dokumentene til
+            de vises i oversikten.
           </UnderTittel>
         </VStack>
         {dokumenter.map((dokument) => (
