@@ -10,7 +10,7 @@ import {
   HeadingLevel1,
   UnderTittel,
 } from '../../components/ResponsiveHeadinger';
-import { VStack } from '@navikt/ds-react';
+import { Alert, VStack } from '@navikt/ds-react';
 import { useHentDokumenter } from '../../hooks/useHentDokumenter';
 
 const Grid = styled.section`
@@ -26,12 +26,18 @@ const Grid = styled.section`
   }
 `;
 
+const InfoStripe = styled(Alert)`
+  margin-top: 1rem;
+`;
+
 const DokumentOversikt: React.FC = () => {
   const { hentDokumenter, dokumenter } = useHentDokumenter();
 
   useEffect(() => {
     hentDokumenter();
   }, [hentDokumenter]);
+
+  const harDokumenter = dokumenter.length > 0;
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">
@@ -49,6 +55,11 @@ const DokumentOversikt: React.FC = () => {
         {dokumenter.map((dokument) => (
           <Dokument key={dokument.journalpostId} dokument={dokument} />
         ))}
+        {!harDokumenter && (
+          <InfoStripe inline variant="info">
+            Vi fant ingen dokumenter å vise.
+          </InfoStripe>
+        )}
       </Grid>
     </main>
   );
