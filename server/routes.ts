@@ -35,6 +35,13 @@ const routes = (router: Router) => {
   });
 
   router.use(
+    `/dokument`,
+    addRequestInfo(),
+    attachToken('familie-ef-soknad-api'),
+    doProxy(`${miljø.søknadApiProxyUrl}/dokument`, `/dokument`)
+  );
+
+  router.use(
     `${BASE_PATH}/api`,
     addRequestInfo(),
     attachToken('familie-ef-soknad-api'),
