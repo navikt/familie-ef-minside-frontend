@@ -35,7 +35,7 @@ const LenkeBold = styled(Lenke)`
 const Dokument: React.FC<Props> = ({ dokument }) => {
   const detailTekst = utledDetailTekst(dokument);
   const harVedlegg = dokument.vedlegg.length > 0;
-  const urlHovedDokument = `/dokument/journalpost/${dokument.journalpostId}/dokument-pdf/${dokument.hovedDokument.dokumentId}/variantformat/${dokument.hovedDokument.variantformat}`;
+  const urlHovedDokument = `/familie/alene-med-barn/minside/dokument/journalpost/${dokument.journalpostId}/dokument-pdf/${dokument.hovedDokument.dokumentId}/variantformat/${dokument.hovedDokument.variantformat}`;
 
   return (
     <Container>
@@ -51,16 +51,7 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
             href={urlHovedDokument}
             variant="neutral"
             className="bold"
-            onClick={(e: React.SyntheticEvent) => {
-              // Ønsker å vise url som lenken navigerer til ved hover og samtidig åpne pdfen i ny fane
-              e.preventDefault();
-              åpneFilIEgenTab(
-                dokument.journalpostId,
-                dokument.hovedDokument.dokumentId,
-                dokument.hovedDokument.variantformat,
-                dokument.hovedDokument.tittel
-              );
-            }}
+            target="_blank"
           >
             {`${dokument.hovedDokument.tittel}.pdf`}
           </LenkeBold>
@@ -79,16 +70,17 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
                   spacing
                   variant="neutral"
                   href={vedleggHref}
-                  onClick={(e: React.SyntheticEvent) => {
-                    // Ønsker å vise url som lenken navigerer til ved hover og samtidig åpne pdfen i ny fane
-                    e.preventDefault();
-                    åpneFilIEgenTab(
-                      dokument.journalpostId,
-                      vedlegg.dokumentId,
-                      vedlegg.variantformat,
-                      vedlegg.tittel
-                    );
-                  }}
+                  target="_blank"
+                  // onClick={(e: React.SyntheticEvent) => {
+                  //   // Ønsker å vise url som lenken navigerer til ved hover og samtidig åpne pdfen i ny fane
+                  //   e.preventDefault();
+                  //   åpneFilIEgenTab(
+                  //     dokument.journalpostId,
+                  //     vedlegg.dokumentId,
+                  //     vedlegg.variantformat,
+                  //     vedlegg.tittel
+                  //   );
+                  // }}
                 >
                   {`${vedlegg.tittel}.pdf`}
                 </Lenke>

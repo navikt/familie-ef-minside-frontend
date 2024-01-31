@@ -7,7 +7,7 @@ export const åpneFilIEgenTab = (
   filnavn: string
 ): void => {
   const newWindow = window.open(
-    `/dokument/journalpost/${journalpostId}/dokument-pdf/${dokumentinfoId}/variantformat/${variantFormat}`,
+    `/familie/alene-med-barn/minside/dokument/journalpost/${journalpostId}/dokument-pdf/${dokumentinfoId}/variantformat/${variantFormat}`,
     '_blank'
   );
   setTimeout(function () {
