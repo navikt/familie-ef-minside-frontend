@@ -35,7 +35,7 @@ const LenkeBold = styled(Lenke)`
 const Dokument: React.FC<Props> = ({ dokument }) => {
   const detailTekst = utledDetailTekst(dokument);
   const harVedlegg = dokument.vedlegg.length > 0;
-  const urlHovedDokument = `/dokument/journalpost/${dokument.journalpostId}/dokument-pdf/${dokument.hovedDokument.dokumentId}/variantformat/ARKIV`; // TODO
+  const urlHovedDokument = `/dokument/journalpost/${dokument.journalpostId}/dokument-pdf/${dokument.hovedDokument.dokumentId}/variantformat/${dokument.hovedDokument.variantformat}`;
 
   return (
     <Container>
@@ -57,7 +57,7 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
               åpneFilIEgenTab(
                 dokument.journalpostId,
                 dokument.hovedDokument.dokumentId,
-                'ARKIV', // TODO
+                dokument.hovedDokument.variantformat,
                 dokument.hovedDokument.tittel
               );
             }}
@@ -72,8 +72,7 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
               Vedlegg:
             </Detail>
             {dokument.vedlegg.map((vedlegg) => {
-              const vedleggHref = `/dokument/journalpost/${dokument.journalpostId}/dokument-pdf/${vedlegg.dokumentId}/variantformat/ARKIV`; // TODO
-
+              const vedleggHref = `/dokument/journalpost/${dokument.journalpostId}/dokument-pdf/${vedlegg.dokumentId}/variantformat/${vedlegg.variantformat}`; // TODO
               return (
                 <Lenke
                   key={vedlegg.dokumentId}
@@ -86,7 +85,7 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
                     åpneFilIEgenTab(
                       dokument.journalpostId,
                       vedlegg.dokumentId,
-                      'ARKIV', // TODO
+                      vedlegg.variantformat,
                       vedlegg.tittel
                     );
                   }}

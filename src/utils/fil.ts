@@ -1,7 +1,9 @@
+import { Variantformat } from '../interfaces/journalpost';
+
 export const åpneFilIEgenTab = (
   journalpostId: string,
   dokumentinfoId: string,
-  variantFormat: string,
+  variantFormat: Variantformat,
   filnavn: string
 ): void => {
   const newWindow = window.open(
