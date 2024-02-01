@@ -63,7 +63,7 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
               Vedlegg:
             </Detail>
             {dokument.vedlegg.map((vedlegg) => {
-              const vedleggHref = `/dokument/journalpost/${dokument.journalpostId}/dokument-pdf/${vedlegg.dokumentId}/variantformat/${vedlegg.variantformat}`; // TODO
+              const vedleggHref = `/familie/alene-med-barn/minside/dokument/journalpost/${dokument.journalpostId}/dokument-pdf/${vedlegg.dokumentId}/variantformat/${vedlegg.variantformat}`; // TODO
               return (
                 <Lenke
                   key={vedlegg.dokumentId}
