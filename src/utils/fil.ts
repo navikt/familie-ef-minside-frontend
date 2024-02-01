@@ -1,18 +1,8 @@
 import { Variantformat } from '../interfaces/journalpost';
 
-export const åpneFilIEgenTab = (
+export const utledFilUrl = (
   journalpostId: string,
-  dokumentinfoId: string,
-  variantFormat: Variantformat,
-  filnavn: string
-): void => {
-  const newWindow = window.open(
-    `/familie/alene-med-barn/minside/dokument/journalpost/${journalpostId}/dokument-pdf/${dokumentinfoId}/variantformat/${variantFormat}`,
-    '_blank'
-  );
-  setTimeout(function () {
-    if (newWindow) {
-      newWindow.document.title = filnavn;
-    }
-  }, 500);
-};
+  dokumentId: string,
+  variantformat: Variantformat
+) =>
+  `/familie/alene-med-barn/minside/dokument/journalpost/${journalpostId}/dokument-pdf/${dokumentId}/variantformat/${variantformat}`;

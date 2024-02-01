@@ -5,7 +5,7 @@ import { ABorderDivider, AIconAction } from '@navikt/ds-tokens/dist/tokens';
 import { Detail, Link, VStack } from '@navikt/ds-react';
 import { Journalpost } from '../../interfaces/journalpost';
 import { utledDetailTekst } from './utils';
-import { åpneFilIEgenTab } from '../../utils/fil';
+import { utledFilUrl } from '../../utils/fil';
 
 interface Props {
   dokument: Journalpost;
@@ -35,7 +35,11 @@ const LenkeBold = styled(Lenke)`
 const Dokument: React.FC<Props> = ({ dokument }) => {
   const detailTekst = utledDetailTekst(dokument);
   const harVedlegg = dokument.vedlegg.length > 0;
-  const urlHovedDokument = `/familie/alene-med-barn/minside/dokument/journalpost/${dokument.journalpostId}/dokument-pdf/${dokument.hovedDokument.dokumentId}/variantformat/${dokument.hovedDokument.variantformat}`;
+  const urlHovedDokument = utledFilUrl(
+    dokument.journalpostId,
+    dokument.hovedDokument.dokumentId,
+    dokument.hovedDokument.variantformat
+  );
 
   return (
     <Container>
@@ -63,24 +67,18 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
               Vedlegg:
             </Detail>
             {dokument.vedlegg.map((vedlegg) => {
-              const vedleggHref = `/familie/alene-med-barn/minside/dokument/journalpost/${dokument.journalpostId}/dokument-pdf/${vedlegg.dokumentId}/variantformat/${vedlegg.variantformat}`; // TODO
+              const urlVedlegg = utledFilUrl(
+                dokument.journalpostId,
+                vedlegg.dokumentId,
+                vedlegg.variantformat
+              );
               return (
                 <Lenke
                   key={vedlegg.dokumentId}
                   spacing
                   variant="neutral"
-                  href={vedleggHref}
+                  href={urlVedlegg}
                   target="_blank"
-                  // onClick={(e: React.SyntheticEvent) => {
-                  //   // Ønsker å vise url som lenken navigerer til ved hover og samtidig åpne pdfen i ny fane
-                  //   e.preventDefault();
-                  //   åpneFilIEgenTab(
-                  //     dokument.journalpostId,
-                  //     vedlegg.dokumentId,
-                  //     vedlegg.variantformat,
-                  //     vedlegg.tittel
-                  //   );
-                  // }}
                 >
                   {`${vedlegg.tittel}.pdf`}
                 </Lenke>
