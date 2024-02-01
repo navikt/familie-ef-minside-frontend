@@ -7,6 +7,16 @@ Enslig forsørger - min side
 3. `npm run start:dev`
 4. Sett cookie og naviger til forsiden med `http://localhost:8091/local/cookie?redirect=http://localhost:3000/familie/alene-med-barn/minside&issuerId=tokenx&audience=familie-app`
 
+### Mot preprod:
+1. Hent token fra
+    - `https://tokenx-token-generator.intern.dev.nav.no/api/obo?aud=dev-gcp:teamfamilie:familie-ef-soknad-api`
+2. `.env` må inneholde følgende
+ ``` 
+TOKENX_API=...
+```
+3. `npm install`
+4. `npm run start:preprod`
+
 ## Henvendelser
 Interne henvendelser kan sendes via Slack i kanalen #team-familie.
 

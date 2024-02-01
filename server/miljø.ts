@@ -1,4 +1,5 @@
 import logger from './logger.js';
+import 'dotenv/config';
 
 interface Environment {
   port: number;
@@ -15,10 +16,13 @@ interface Environment {
   infoSideSkolepengerUrl: string;
   saksbehandlingstiderUrl: string;
 }
+export const brukDevApi  = () => process.env.BRUK_DEV_API === 'true';
 
 const lokaltMiljø: Environment = {
   port: 3000,
-  søknadApiProxyUrl: 'http://localhost:8091/api',
+  søknadApiProxyUrl: brukDevApi()
+    ? 'https://familie-ef-soknad-api.intern.dev.nav.no/familie/alene-med-barn/soknad-api'
+    : 'http://localhost:8091',
   minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
     'https://localhost:8080/familie/alene-med-barn/minside/oauth2/callback',
@@ -99,3 +103,4 @@ const initierMiljøvariabler = (): Environment => {
 
 export const miljø = initierMiljøvariabler();
 export const isLocal = () => process.env.ENV === 'localhost';
+export const lokaltTokenxApi = process.env.TOKENX_API
