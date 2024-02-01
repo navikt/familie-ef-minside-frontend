@@ -11,7 +11,10 @@ import {
   UnderTittel,
 } from '../../components/ResponsiveHeadinger';
 import { Alert, VStack } from '@navikt/ds-react';
-import { useHentJournalposter } from '../../hooks/useHentJournalposter';
+import {
+  JournalpostStatus,
+  useHentJournalposter,
+} from '../../hooks/useHentJournalposter';
 import DataLoader from '../../components/DataLoader';
 
 const Grid = styled.section`
@@ -32,14 +35,24 @@ const InfoStripe = styled(Alert)`
 `;
 
 const DokumentOversikt: React.FC = () => {
-  const { lasterJournalposter, hentJournalposter, journalposter } = useHentJournalposter();
+  const { journalpostStatus, hentJournalposter, journalposter } =
+    useHentJournalposter();
 
   useEffect(() => {
     hentJournalposter();
   }, [hentJournalposter]);
 
-  if (lasterJournalposter) {
+  if (journalpostStatus === JournalpostStatus.HENTER) {
     return <DataLoader size="xlarge" title="Henter dokumenter" />;
+  }
+  if (journalpostStatus === JournalpostStatus.FEILET) {
+    return (
+      <main id="maincontent" tabIndex={-1} role="main">
+        <Alert variant="error">
+          Noe gikk galt ved uthenting av dine dokumenter.
+        </Alert>
+      </main>
+    );
   }
 
   const harDokumenter = journalposter.length > 0;

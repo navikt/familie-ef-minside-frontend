@@ -5,11 +5,17 @@ import { Journalpost } from '../interfaces/journalpost';
 export interface HentDokumentResponse {
   journalposter: Journalpost[];
   hentJournalposter: () => void;
-  lasterJournalposter: boolean;
+  journalpostStatus: JournalpostStatus;
+}
+
+export enum JournalpostStatus {
+  HENTER = 'HENTER',
+  HENTET = 'HENTET',
+  FEILET = 'FEILET'
 }
 
 export const useHentJournalposter = (): HentDokumentResponse => {
-  const [lasterJournalposter, settLasterJournalposter] = useState<boolean>(true);
+  const [journalpostStatus, settJournalpostStatus] = useState<JournalpostStatus>(JournalpostStatus.HENTER);
   const [journalposter, settJournalposter] = useState<Journalpost[]>([]);
 
   const hentJournalposter = useCallback(() => {
@@ -20,13 +26,15 @@ export const useHentJournalposter = (): HentDokumentResponse => {
       )
       .then((response: { data: Journalpost[] }) => {
         response && settJournalposter(response.data);
-        settLasterJournalposter(false);
-      });
+        settJournalpostStatus(JournalpostStatus.HENTET);
+      }).catch(() => {
+        settJournalpostStatus(JournalpostStatus.FEILET)
+    });
   }, [prefferedAxios]);
 
   return {
     journalposter,
     hentJournalposter,
-    lasterJournalposter,
+    journalpostStatus,
   };
 };
