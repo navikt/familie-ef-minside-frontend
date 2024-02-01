@@ -22,7 +22,7 @@ const lokaltMiljø: Environment = {
   port: 3000,
   søknadApiProxyUrl: brukDevApi()
     ? 'https://familie-ef-soknad-api.intern.dev.nav.no/familie/alene-med-barn/soknad-api'
-    : 'http://localhost:8091',
+    : 'http://localhost:8091/api',
   minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
     'https://localhost:8080/familie/alene-med-barn/minside/oauth2/callback',

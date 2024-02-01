@@ -11,7 +11,7 @@ import {
   UnderTittel,
 } from '../../components/ResponsiveHeadinger';
 import { Alert, VStack } from '@navikt/ds-react';
-import { useHentDokumenter } from '../../hooks/useHentDokumenter';
+import { useHentJournalposter } from '../../hooks/useHentJournalposter';
 import DataLoader from '../../components/DataLoader';
 
 const Grid = styled.section`
@@ -32,17 +32,17 @@ const InfoStripe = styled(Alert)`
 `;
 
 const DokumentOversikt: React.FC = () => {
-  const { lasterDokumenter, hentDokumenter, dokumenter } = useHentDokumenter();
+  const { lasterJournalposter, hentJournalposter, journalposter } = useHentJournalposter();
 
   useEffect(() => {
-    hentDokumenter();
-  }, [hentDokumenter]);
+    hentJournalposter();
+  }, [hentJournalposter]);
 
-  if (lasterDokumenter) {
+  if (lasterJournalposter) {
     return <DataLoader size="xlarge" title="Henter dokumenter" />;
   }
 
-  const harDokumenter = dokumenter.length > 0;
+  const harDokumenter = journalposter.length > 0;
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">
@@ -57,7 +57,7 @@ const DokumentOversikt: React.FC = () => {
             de vises i oversikten.
           </UnderTittel>
         </VStack>
-        {dokumenter.map((dokument) => (
+        {journalposter.map((dokument) => (
           <Dokument key={dokument.journalpostId} dokument={dokument} />
         ))}
         {!harDokumenter && (
