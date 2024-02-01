@@ -16,12 +16,12 @@ interface Environment {
   infoSideSkolepengerUrl: string;
   saksbehandlingstiderUrl: string;
 }
-export const brukDevApi  = () => process.env.BRUK_DEV_API === 'true';
+export const brukDevApi = () => process.env.BRUK_DEV_API === 'true';
 
 const lokaltMiljø: Environment = {
   port: 3000,
   søknadApiProxyUrl: brukDevApi()
-    ? 'https://familie-ef-soknad-api.intern.dev.nav.no/familie/alene-med-barn/soknad-api'
+    ? 'https://familie-ef-soknad-api.intern.dev.nav.no/familie/alene-med-barn/soknad-api/api'
     : 'http://localhost:8091/api',
   minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
@@ -103,4 +103,4 @@ const initierMiljøvariabler = (): Environment => {
 
 export const miljø = initierMiljøvariabler();
 export const isLocal = () => process.env.ENV === 'localhost';
-export const lokaltTokenxApi = process.env.TOKENX_API
+export const lokaltTokenxApi = process.env.TOKENX_API;
