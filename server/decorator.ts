@@ -25,7 +25,7 @@ const getHtmlWithDecorator = (filePath: string) => {
     },
     {
       url: '/minside',
-      title: 'Dine stønader',
+      title: 'Enslig mor eller far',
       handleInApp: false,
     },
   ];
