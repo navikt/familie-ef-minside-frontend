@@ -1,6 +1,7 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import TokenXClient from './tokenx.js';
 import { logWarn, logInfo } from './logger.js';
+import { brukDevApi, isLocal, lokaltTokenxApi } from './miljø';
 
 const { exchangeToken } = new TokenXClient();
 
@@ -8,7 +9,7 @@ export type ApplicationName = 'familie-ef-soknad-api';
 
 const AUTHORIZATION_HEADER = 'authorization';
 const WONDERWALL_ID_TOKEN_HEADER = 'x-wonderwall-id-token';
-
+const brukCookie = () => isLocal() && !brukDevApi();
 const attachToken = (applicationName: ApplicationName): RequestHandler => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -16,7 +17,7 @@ const attachToken = (applicationName: ApplicationName): RequestHandler => {
         req,
         applicationName
       );
-      req.headers[AUTHORIZATION_HEADER] = erLokalt()
+      req.headers[AUTHORIZATION_HEADER] = brukCookie()
         ? ''
         : authenticationHeader.authorization;
       req.headers[WONDERWALL_ID_TOKEN_HEADER] = '';
@@ -43,9 +44,7 @@ const harBearerToken = (authorization: string) => {
 };
 
 const utledToken = (req: Request, authorization: string | undefined) => {
-  if (erLokalt()) {
-    return req.cookies['localhost-idtoken'];
-  } else if (authorization && harBearerToken(authorization)) {
+  if (authorization && harBearerToken(authorization)) {
     return authorization.split(' ')[1];
   } else {
     throw Error('Mangler authorization i header');
@@ -57,6 +56,13 @@ const prepareSecuredRequest = async (
   applicationName: ApplicationName
 ) => {
   logInfo('PrepareSecuredRequest', req);
+  if (isLocal()) {
+    const lokalToken = lokaltTokenxApi
+    return {
+      authorization: `Bearer ${lokalToken}`,
+    };
+  }
+
   const { authorization } = req.headers;
   if (erLokalt()) {
     return { authorization: `Bearer ${req.cookies['localhost-idtoken']}` };

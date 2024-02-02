@@ -2,7 +2,7 @@ import { useApp } from '../../context/AppContext';
 import { GuidePanel } from '@navikt/ds-react';
 import SideTittel from '../../components/SideTittel';
 import styled from 'styled-components';
-import { desktop } from '../../utils';
+import { desktop } from '../../utils/constants';
 
 const Poster = styled(GuidePanel)`
   @media (min-width: ${desktop}px) {

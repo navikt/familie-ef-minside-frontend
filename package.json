@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc && NODE_ENV=production ENV=prod PUBLIC_URL=/familie/alene-med-barn/minside webpack --config ./config/webpack.build.js",
     "start:dev": "npm run build:dev-server && NODE_ENV=development ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node --es-module-specifier-resolution=node --trace-deprecation server/build/server-lokal.js",
+    "start:preprod": "npm run build:dev-server && NODE_ENV=development BRUK_DEV_API=true ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node --es-module-specifier-resolution=node --trace-deprecation server/build/server-lokal.js",
     "build:dev-server": "cd server && tsc --build --verbose && cd ..",
     "postinstall": "cd server && npm ci && cd .."
   },
@@ -37,10 +38,10 @@
     "@types/amplitude-js": "^8.16.5",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
-    "@types/react-router-dom": "^5.3.3",
     "amplitude-js": "^8.21.9",
     "axios": "^1.6.5",
     "constate": "^3.3.2",
+    "date-fns": "^3.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
