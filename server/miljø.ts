@@ -1,5 +1,6 @@
 import logger from './logger.js';
 import 'dotenv/config';
+import { DecoratorBreadcrumb } from './decorator';
 
 interface Environment {
   port: number;
@@ -104,3 +105,15 @@ const initierMiljøvariabler = (): Environment => {
 export const miljø = initierMiljøvariabler();
 export const isLocal = () => process.env.ENV === 'localhost';
 export const lokaltTokenxApi = process.env.TOKENX_API;
+export const defaultBreadcrumbs: DecoratorBreadcrumb[] = [
+  {
+    url: miljø.minSideUrl,
+    title: 'Min side',
+    handleInApp: false,
+  },
+  {
+    url: '/familie/alene-med-barn/minside',
+    title: 'Enslig mor eller far',
+    handleInApp: false,
+  },
+];

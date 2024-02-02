@@ -16,6 +16,8 @@ import {
   useHentJournalposter,
 } from '../../hooks/useHentJournalposter';
 import DataLoader from '../../components/DataLoader';
+import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
+import { useApp } from '../../context/AppContext';
 
 const Grid = styled.section`
   display: grid;
@@ -34,7 +36,16 @@ const InfoStripe = styled(Alert)`
   margin-top: 1rem;
 `;
 
+const dokumentBreadCrumb = {
+  url: '/familie/alene-med-barn/minside/dokumentoversikt',
+  title: 'Dokumentoversikt',
+  handleInApp: false,
+};
 const DokumentOversikt: React.FC = () => {
+  const { appEnv } = useApp();
+
+  setBreadcrumbs([...appEnv.defaultBreadcrumbs, dokumentBreadCrumb]);
+
   const { journalpostStatus, hentJournalposter, journalposter } =
     useHentJournalposter();
 
