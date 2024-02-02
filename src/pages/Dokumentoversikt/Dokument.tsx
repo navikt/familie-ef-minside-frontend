@@ -6,12 +6,9 @@ import { Detail, Link, VStack } from '@navikt/ds-react';
 import { Journalpost } from '../../interfaces/journalpost';
 import { utledDetailTekst } from './utils';
 import { utledFilUrl } from '../../utils/fil';
+import VedleggListe from './VedleggListe';
 
-interface Props {
-  dokument: Journalpost;
-}
-
-const Container = styled.div`
+const ListElement = styled.li`
   display: grid;
   grid-template-columns: 2rem 1fr;
   column-gap: 1.25rem;
@@ -32,20 +29,25 @@ const LenkeBold = styled(Lenke)`
   font-weight: bold;
 `;
 
-const Dokument: React.FC<Props> = ({ dokument }) => {
-  const detailTekst = utledDetailTekst(dokument);
-  const harVedlegg = dokument.vedlegg.length > 0;
+interface Props {
+  journalpost: Journalpost;
+}
+
+const Dokument: React.FC<Props> = ({ journalpost }) => {
+  const detailTekst = utledDetailTekst(journalpost);
+  const harVedlegg = journalpost.vedlegg.length > 0;
   const urlHovedDokument = utledFilUrl(
-    dokument.journalpostId,
-    dokument.hovedDokument.dokumentId,
-    dokument.hovedDokument.variantformat
+    journalpost.journalpostId,
+    journalpost.hovedDokument.dokumentId,
+    journalpost.hovedDokument.variantformat
   );
 
   return (
-    <Container>
+    <ListElement>
       <FilePdfIcon
         color={AIconAction}
-        title="a11y-title"
+        title="pdf-dokument"
+        aria-hidden={true}
         width="2.25rem"
         height="2.25rem"
       />
@@ -57,37 +59,18 @@ const Dokument: React.FC<Props> = ({ dokument }) => {
             className="bold"
             target="_blank"
           >
-            {`${dokument.hovedDokument.tittel}.pdf`}
+            {`${journalpost.hovedDokument.tittel}.pdf`}
           </LenkeBold>
           <Detail textColor="subtle">{detailTekst}</Detail>
         </div>
         {harVedlegg && (
-          <div>
-            <Detail weight="semibold" spacing={true}>
-              Vedlegg:
-            </Detail>
-            {dokument.vedlegg.map((vedlegg) => {
-              const urlVedlegg = utledFilUrl(
-                dokument.journalpostId,
-                vedlegg.dokumentId,
-                vedlegg.variantformat
-              );
-              return (
-                <Lenke
-                  key={vedlegg.dokumentId}
-                  spacing
-                  variant="neutral"
-                  href={urlVedlegg}
-                  target="_blank"
-                >
-                  {`${vedlegg.tittel}.pdf`}
-                </Lenke>
-              );
-            })}
-          </div>
+          <VedleggListe
+            journalpostId={journalpost.journalpostId}
+            vedleggListe={journalpost.vedlegg}
+          />
         )}
       </VStack>
-    </Container>
+    </ListElement>
   );
 };
 

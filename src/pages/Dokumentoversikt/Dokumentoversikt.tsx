@@ -5,7 +5,7 @@ import {
   contentWidthMobile,
   desktop,
 } from '../../utils/constants';
-import Dokument from './Dokument';
+import DokumentListe from './DokumentListe';
 import {
   HeadingLevel1,
   UnderTittel,
@@ -41,6 +41,7 @@ const dokumentBreadCrumb = {
   title: 'Dokumentoversikt',
   handleInApp: false,
 };
+
 const DokumentOversikt: React.FC = () => {
   const { appEnv } = useApp();
 
@@ -81,10 +82,9 @@ const DokumentOversikt: React.FC = () => {
             digitalt.
           </UnderTittel>
         </VStack>
-        {journalposter.map((dokument) => (
-          <Dokument key={dokument.journalpostId} dokument={dokument} />
-        ))}
-        {!harDokumenter && (
+        {harDokumenter ? (
+          <DokumentListe journalposter={journalposter} />
+        ) : (
           <InfoStripe inline variant="info">
             Vi fant ingen dokumenter å vise.
           </InfoStripe>
