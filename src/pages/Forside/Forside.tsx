@@ -11,6 +11,8 @@ import StønadPanelListe from './StønadPanelListe';
 import React from 'react';
 import SideHeader from './SideHeader';
 import DineDokumenter from './DineDokumenter';
+import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
+import { useApp } from '../../context/AppContext';
 
 const Grid = styled.section`
   display: grid;
@@ -31,20 +33,24 @@ const Stripe = styled(Grid)`
   background-color: ${ASurfaceActionSubtle};
 `;
 
-const Forside: React.FC = () => (
-  <main id="maincontent" tabIndex={-1} role="main">
-    <Grid>
-      <SideHeader />
-    </Grid>
-    <Stripe>
-      <LenkePanelStorListe />
-    </Stripe>
-    <Grid>
-      <DineDokumenter />
-      <StønadPanelListe />
-      <Snarveier />
-    </Grid>
-  </main>
-);
+const Forside: React.FC = () => {
+  const { appEnv } = useApp();
+  setBreadcrumbs(appEnv.defaultBreadcrumbs);
+  return (
+    <main id="maincontent" tabIndex={-1} role="main">
+      <Grid>
+        <SideHeader />
+      </Grid>
+      <Stripe>
+        <LenkePanelStorListe />
+      </Stripe>
+      <Grid>
+        <DineDokumenter />
+        <StønadPanelListe />
+        <Snarveier />
+      </Grid>
+    </main>
+  );
+};
 
 export default Forside;

@@ -1,5 +1,5 @@
 import { prefferedAxios } from './axios';
-import { defaultBreadcrumbs } from '../../server/miljø';
+
 type DecoratorBreadcrumb = {
   url: string;
   title: string;
