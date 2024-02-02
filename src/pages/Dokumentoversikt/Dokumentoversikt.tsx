@@ -66,8 +66,8 @@ const DokumentOversikt: React.FC = () => {
           </HeadingLevel1>
           <UnderTittel spacing>
             Her finner du dokumentene dine som gjelder stønad til enslig mor
-            eller far. Det kan ta noe tid fra du har sendt inn dokumentene til
-            de vises i oversikten.
+            eller far. Du kan bare se dokumenter og meldinger du har sendt inn
+            digitalt.
           </UnderTittel>
         </VStack>
         {journalposter.map((dokument) => (
