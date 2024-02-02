@@ -42,12 +42,13 @@ const LenkePanelStor: React.FC<Props> = ({
 }) => {
   const navigate = useNavigate();
 
-  const href = redirect === 'ekstern' ? url : undefined;
+  const href = redirect === 'ekstern' ? url : `${process.env.PUBLIC_URL}${url}`;
 
-  const handleClick = () => {
+  const handleClick = (e: React.SyntheticEvent) => {
     if (redirect === 'ekstern') {
       logNavigering(url, tittel, 'lenke-panel-stor');
     } else {
+      e.preventDefault();
       navigate(url);
     }
   };
