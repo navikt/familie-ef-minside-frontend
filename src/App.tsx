@@ -11,6 +11,7 @@ import { AppEnv, hentEnv } from './api/env';
 import { AppProvider } from './context/AppContext';
 import { HStack, Loader } from '@navikt/ds-react';
 import Dokumentoversikt from './pages/Dokumentoversikt/Dokumentoversikt';
+import { ScrollToTop } from './utils/scrollEffect';
 
 const App: React.FC = () => {
   const [appEnv, settAppEnv] = useState<AppEnv>();
@@ -36,6 +37,7 @@ const App: React.FC = () => {
   return (
     <AppProvider appEnv={appEnv}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Outlet />}>
             <Route index element={<Forside />} />

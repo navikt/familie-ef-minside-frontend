@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === 'development') {
   const middleware = webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
     writeToDisk: true,
+    index: false,
   });
 
   app.use(middleware);

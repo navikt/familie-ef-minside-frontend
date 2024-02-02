@@ -4,7 +4,7 @@ import getHtmlWithDecorator from './decorator.js';
 import logger from './logger.js';
 import { addRequestInfo, doProxy } from './proxy.js';
 import attachToken from './tokenProxy.js';
-import { miljø } from './miljø.js';
+import { defaultBreadcrumbs, miljø } from './miljø.js';
 
 const buildPath =
   process.env.NODE_ENV !== 'development'
@@ -30,6 +30,7 @@ const routes = (router: Router) => {
         infoSideBarnetilsynUrl: miljø.infoSideBarnetilsynUrl,
         infoSideSkolepengerUrl: miljø.infoSideSkolepengerUrl,
         saksbehandlingstiderUrl: miljø.saksbehandlingstiderUrl,
+        defaultBreadcrumbs: defaultBreadcrumbs,
       })
       .end();
   });

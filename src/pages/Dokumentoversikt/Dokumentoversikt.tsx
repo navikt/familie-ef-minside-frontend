@@ -5,7 +5,7 @@ import {
   contentWidthMobile,
   desktop,
 } from '../../utils/constants';
-import Dokument from './Dokument';
+import DokumentListe from './DokumentListe';
 import {
   HeadingLevel1,
   UnderTittel,
@@ -16,6 +16,8 @@ import {
   useHentJournalposter,
 } from '../../hooks/useHentJournalposter';
 import DataLoader from '../../components/DataLoader';
+import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
+import { useApp } from '../../context/AppContext';
 
 const Grid = styled.section`
   display: grid;
@@ -34,7 +36,17 @@ const InfoStripe = styled(Alert)`
   margin-top: 1rem;
 `;
 
+const dokumentBreadCrumb = {
+  url: '/familie/alene-med-barn/minside/dokumentoversikt',
+  title: 'Dokumentoversikt',
+  handleInApp: false,
+};
+
 const DokumentOversikt: React.FC = () => {
+  const { appEnv } = useApp();
+
+  setBreadcrumbs([...appEnv.defaultBreadcrumbs, dokumentBreadCrumb]);
+
   const { journalpostStatus, hentJournalposter, journalposter } =
     useHentJournalposter();
 
@@ -70,10 +82,9 @@ const DokumentOversikt: React.FC = () => {
             digitalt.
           </UnderTittel>
         </VStack>
-        {journalposter.map((dokument) => (
-          <Dokument key={dokument.journalpostId} dokument={dokument} />
-        ))}
-        {!harDokumenter && (
+        {harDokumenter ? (
+          <DokumentListe journalposter={journalposter} />
+        ) : (
           <InfoStripe inline variant="info">
             Vi fant ingen dokumenter å vise.
           </InfoStripe>

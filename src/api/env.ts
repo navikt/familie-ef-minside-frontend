@@ -1,5 +1,12 @@
 import { prefferedAxios } from './axios';
 
+type DecoratorBreadcrumb = {
+  url: string;
+  title: string;
+  analyticsTitle?: string;
+  handleInApp?: boolean;
+};
+
 export interface AppEnv {
   endringsmeldingUrl: string;
   ettersendingUrl: string;
@@ -10,6 +17,7 @@ export interface AppEnv {
   infoSideBarnetilsynUrl: string;
   infoSideSkolepengerUrl: string;
   saksbehandlingstiderUrl: string;
+  defaultBreadcrumbs: DecoratorBreadcrumb[];
 }
 
 export const hentEnv = (): Promise<AppEnv> => {
