@@ -1,17 +1,21 @@
-import { VStack } from '@navikt/ds-react';
+import { Alert, Link, VStack } from '@navikt/ds-react';
 import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
-import LenkePanelStor from '../../components/LenkePanelStor';
-import styled from 'styled-components';
 import { useApp } from '../../context/AppContext';
 import React from 'react';
 import DataViewer from '../../components/DataViewer';
+import { Journalpost } from '../../interfaces/journalpost';
+import DokumentListe from '../Dokumentoversikt/DokumentListe';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
-const LenkePanel = styled(LenkePanelStor)`
-  cursor: pointer;
+const Lenke = styled(Link)`
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  max-width: fit-content;
 `;
 
 const DineDokumenter: React.FC = () => {
-  const { journalpostStatus } = useApp();
+  const { journalposter, journalpostStatus } = useApp();
 
   return (
     <VStack gap="2">
@@ -23,15 +27,41 @@ const DineDokumenter: React.FC = () => {
         loaderTekst="Henter dokumenter"
         alertTekst="Noe gikk galt ved uthenting av dine dokumenter."
       >
-        <LenkePanel
-          tittel="Dokumentoversikt"
-          headingLevel="3"
-          brødtekst="Her finner du dokumentene dine som gjelder stønad til enslig mor eller far"
-          url={'/dokumentoversikt'}
-          redirect="intern"
-        />
+        <DokumentVisning journalposter={journalposter} />
       </DataViewer>
     </VStack>
+  );
+};
+
+const DokumentVisning: React.FC<{ journalposter: Journalpost[] }> = ({
+  journalposter,
+}) => {
+  const navigate = useNavigate();
+  const harDokumenter = journalposter.length > 0;
+  const href = `${process.env.PUBLIC_URL}/dokumentoversikt`;
+
+  const handleClick = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    navigate('/dokumentoversikt');
+  };
+
+  if (!harDokumenter) {
+    return (
+      <Alert inline variant="info">
+        Vi fant ingen dokumenter å vise som gjelder stønad til enslig mor eller
+        far. Merk at det kun er dokumenter og meldinger du har sendt inn
+        digitalt som vil vises her.
+      </Alert>
+    );
+  }
+
+  return (
+    <>
+      <DokumentListe antall={3} journalposter={journalposter} />
+      <Lenke href={href} onClick={handleClick}>
+        Se alle dokumenter
+      </Lenke>
+    </>
   );
 };
 

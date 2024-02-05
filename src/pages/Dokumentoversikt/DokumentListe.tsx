@@ -4,12 +4,13 @@ import Dokument from './Dokument';
 import UnorderedList from '../../components/UnorderedList';
 
 interface Props {
+  antall?: number;
   journalposter: Journalpost[];
 }
 
-const DokumentListe: React.FC<Props> = ({ journalposter }) => (
+const DokumentListe: React.FC<Props> = ({ antall, journalposter }) => (
   <UnorderedList>
-    {journalposter.map((journalpost) => (
+    {journalposter.slice(0, antall).map((journalpost) => (
       <Dokument journalpost={journalpost} />
     ))}
   </UnorderedList>
