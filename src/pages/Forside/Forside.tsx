@@ -36,6 +36,7 @@ const Stripe = styled(Grid)`
 const Forside: React.FC = () => {
   const { appEnv } = useApp();
   setBreadcrumbs(appEnv.defaultBreadcrumbs);
+
   return (
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>

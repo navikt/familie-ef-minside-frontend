@@ -11,13 +11,10 @@ import {
   UnderTittel,
 } from '../../components/ResponsiveHeadinger';
 import { Alert, VStack } from '@navikt/ds-react';
-import {
-  JournalpostStatus,
-  useHentJournalposter,
-} from '../../hooks/useHentJournalposter';
-import DataLoader from '../../components/DataLoader';
+import { useHentJournalposter } from '../../hooks/useHentJournalposter';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
+import DataViewer from '../../components/DataViewer';
 
 const Grid = styled.section`
   display: grid;
@@ -43,53 +40,39 @@ const dokumentBreadCrumb = {
 };
 
 const DokumentOversikt: React.FC = () => {
-  const { appEnv } = useApp();
+  const { appEnv, journalposter, journalpostStatus } = useApp();
 
   setBreadcrumbs([...appEnv.defaultBreadcrumbs, dokumentBreadCrumb]);
-
-  const { journalpostStatus, hentJournalposter, journalposter } =
-    useHentJournalposter();
-
-  useEffect(() => {
-    hentJournalposter();
-  }, [hentJournalposter]);
-
-  if (journalpostStatus === JournalpostStatus.HENTER) {
-    return <DataLoader size="xlarge" title="Henter dokumenter" />;
-  }
-  if (journalpostStatus === JournalpostStatus.FEILET) {
-    return (
-      <main id="maincontent" tabIndex={-1} role="main">
-        <Alert variant="error">
-          Noe gikk galt ved uthenting av dine dokumenter.
-        </Alert>
-      </main>
-    );
-  }
 
   const harDokumenter = journalposter.length > 0;
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">
-      <Grid>
-        <VStack gap="5">
-          <HeadingLevel1 size="medium" level="1">
-            Dokumentoversikt
-          </HeadingLevel1>
-          <UnderTittel spacing>
-            Her finner du dokumentene dine som gjelder stønad til enslig mor
-            eller far. Du kan bare se dokumenter og meldinger du har sendt inn
-            digitalt.
-          </UnderTittel>
-        </VStack>
-        {harDokumenter ? (
-          <DokumentListe journalposter={journalposter} />
-        ) : (
-          <InfoStripe inline variant="info">
-            Vi fant ingen dokumenter å vise.
-          </InfoStripe>
-        )}
-      </Grid>
+      <DataViewer
+        dataStatus={journalpostStatus}
+        loaderTekst={'Henter dokumenter'}
+        alertTekst={'Noe gikk galt ved uthenting av dine dokumenter.'}
+      >
+        <Grid>
+          <VStack gap="5">
+            <HeadingLevel1 size="medium" level="1">
+              Dokumentoversikt
+            </HeadingLevel1>
+            <UnderTittel spacing>
+              Her finner du dokumentene dine som gjelder stønad til enslig mor
+              eller far. Du kan bare se dokumenter og meldinger du har sendt inn
+              digitalt.
+            </UnderTittel>
+          </VStack>
+          {harDokumenter ? (
+            <DokumentListe journalposter={journalposter} />
+          ) : (
+            <InfoStripe inline variant="info">
+              Vi fant ingen dokumenter å vise.
+            </InfoStripe>
+          )}
+        </Grid>
+      </DataViewer>
     </main>
   );
 };
