@@ -16,12 +16,7 @@ const ListElement = styled.li`
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 
-  //&:first-child {
-  //  padding-top: 0;
-  //}
-
   &:last-child {
-    //padding-bottom: 0;
     border-bottom: none;
   }
 `;
