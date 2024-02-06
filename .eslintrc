@@ -11,7 +11,7 @@
         "ecmaVersion": 2020,
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint"],
+    "plugins": ["@typescript-eslint", "prettier", "react-hooks"],
     "rules": {
         "import/extensions": [
             "off",
@@ -25,6 +25,7 @@
         ],
         "@typescript-eslint/ban-ts-ignore": "off",
         "@typescript-eslint/ban-ts-comment": "off",
+        "prettier/prettier": "warn",
         "@typescript-eslint/interface-name-prefix": "off",
         "@typescript-eslint/no-var-requires": "warn",
         "@typescript-eslint/no-explicit-any": "warn",
@@ -33,6 +34,8 @@
         "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
         "no-prototype-builtins": "warn",
         "@typescript-eslint/explicit-function-return-type": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         "no-console": "warn"
     },
     "settings": {

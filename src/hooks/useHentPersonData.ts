@@ -1,10 +1,6 @@
 import { axiosConfig, prefferedAxios } from '../api/axios';
 import { useCallback, useState } from 'react';
-import {
-  formatertPersonData,
-  initiellPersonData,
-  PersonData,
-} from '../interfaces/personData';
+import { formatertPersonData, initiellPersonData, PersonData } from '../interfaces/personData';
 
 interface Props {
   hentPersonData: () => void;
@@ -16,14 +12,11 @@ export const useHentPersonData = (): Props => {
 
   const hentPersonData = useCallback(() => {
     prefferedAxios
-      .get(
-        `familie/alene-med-barn/minside/api/oppslag/sokerminimum`,
-        axiosConfig
-      )
+      .get(`familie/alene-med-barn/minside/api/oppslag/sokerminimum`, axiosConfig)
       .then((response: { data: PersonData }) => {
         response && settPersonData(formatertPersonData(response.data));
       });
-  }, [prefferedAxios]);
+  }, []);
 
   return {
     hentPersonData,

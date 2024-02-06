@@ -56,11 +56,7 @@ export const Skolepenger: React.FC<Props> = ({ height, width }) => {
         stroke="#23262A"
         strokeWidth="2"
       />
-      <path
-        d="M63.334 8.33203L57.334 8.33203"
-        stroke="#23262A"
-        strokeWidth="2"
-      />
+      <path d="M63.334 8.33203L57.334 8.33203" stroke="#23262A" strokeWidth="2" />
       <path d="M63.334 14L59.334 14" stroke="#23262A" strokeWidth="2" />
       <path d="M63.334 19.668L57.334 19.668" stroke="#23262A" strokeWidth="2" />
       <path d="M63.334 25.332L59.334 25.332" stroke="#23262A" strokeWidth="2" />

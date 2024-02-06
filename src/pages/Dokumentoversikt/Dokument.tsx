@@ -43,7 +43,7 @@ const Dokument: React.FC<Props> = ({ journalpost }) => {
   );
 
   return (
-    <ListElement>
+    <ListElement className="dokument-rad">
       <FilePdfIcon
         color={AIconAction}
         title="pdf-dokument"
@@ -53,12 +53,7 @@ const Dokument: React.FC<Props> = ({ journalpost }) => {
       />
       <VStack gap="5">
         <div>
-          <LenkeBold
-            href={urlHovedDokument}
-            variant="neutral"
-            className="bold"
-            target="_blank"
-          >
+          <LenkeBold href={urlHovedDokument} variant="neutral" className="bold" target="_blank">
             {`${journalpost.hovedDokument.tittel}.pdf`}
           </LenkeBold>
           <Detail textColor="subtle">{detailTekst}</Detail>

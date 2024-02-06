@@ -54,12 +54,7 @@ const LenkePanelStor: React.FC<Props> = ({
   };
 
   return (
-    <StyledLinkPanel
-      href={href}
-      border={true}
-      onClick={handleClick}
-      className={className}
-    >
+    <StyledLinkPanel href={href} border={true} onClick={handleClick} className={className}>
       <VStack>
         <HeadingLevel3 size="xsmall" level={headingLevel}>
           {tittel}

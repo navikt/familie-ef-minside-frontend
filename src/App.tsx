@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Route,
-  Outlet,
-  Routes,
-  Navigate,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Outlet, Routes, Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import Forside from './pages/Forside/Forside';
 import { AppEnv, hentEnv } from './api/env';
@@ -25,11 +19,7 @@ const App: React.FC = () => {
   if (!appEnv) {
     return (
       <HStack justify={'center'}>
-        <Loader
-          size={'xlarge'}
-          onResize={undefined}
-          onResizeCapture={undefined}
-        />
+        <Loader size={'xlarge'} onResize={undefined} onResizeCapture={undefined} />
       </HStack>
     );
   }

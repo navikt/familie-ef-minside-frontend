@@ -21,9 +21,7 @@ export interface AppEnv {
 }
 
 export const hentEnv = (): Promise<AppEnv> => {
-  return prefferedAxios
-    .get(`/familie/alene-med-barn/minside/env`)
-    .then((response) => {
-      return response.data;
-    });
+  return prefferedAxios.get(`/familie/alene-med-barn/minside/env`).then((response) => {
+    return response.data;
+  });
 };

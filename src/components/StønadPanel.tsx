@@ -1,11 +1,4 @@
-import {
-  BodyLong,
-  Panel,
-  HStack,
-  VStack,
-  Link,
-  Button,
-} from '@navikt/ds-react';
+import { BodyLong, Panel, HStack, VStack, Link, Button } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import React from 'react';
@@ -65,10 +58,7 @@ const StønadPanel: React.FC<Props> = ({
       <BodyLong>{brødtekst}</BodyLong>
     </VStack>
     <VStack gap="4">
-      <Link
-        href={lenkeUrl}
-        onClick={() => logNavigering(lenkeUrl, lenkeTekst, 'stønad-panel')}
-      >
+      <Link href={lenkeUrl} onClick={() => logNavigering(lenkeUrl, lenkeTekst, 'stønad-panel')}>
         {lenkeTekst}
       </Link>
       <Button

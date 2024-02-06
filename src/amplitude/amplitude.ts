@@ -11,16 +11,12 @@ amplitudeInstance.init('default', '', {
 });
 
 // NAVs retningslinjer for amplitude taksonomi: https://github.com/navikt/analytics-taxonomy
-// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function logEvent(eventName: string, eventProperties: any) {
   amplitudeInstance.logEvent(eventName, eventProperties);
 }
 
-export const logNavigering = (
-  destinasjon: string,
-  lenketekst: string,
-  kilde?: string
-) => {
+export const logNavigering = (destinasjon: string, lenketekst: string, kilde?: string) => {
   logEvent('navigere', {
     destinasjon: destinasjon,
     lenketekst: lenketekst,

@@ -40,16 +40,8 @@ export const Barnetilsyn: React.FC<Props> = ({ width, height }) => {
         strokeWidth="2"
         strokeLinecap="round"
       />
-      <path
-        d="M38.1238 27.0022L32.0769 36.2844"
-        stroke="#23262A"
-        strokeWidth="2"
-      />
-      <path
-        d="M50.5767 30.3365L51.1723 41.3986"
-        stroke="#23262A"
-        strokeWidth="2"
-      />
+      <path d="M38.1238 27.0022L32.0769 36.2844" stroke="#23262A" strokeWidth="2" />
+      <path d="M50.5767 30.3365L51.1723 41.3986" stroke="#23262A" strokeWidth="2" />
       <path
         d="M61.8131 24.4801C62.4419 25.0311 62.7405 25.9103 62.5095 26.7725L60.7145 33.4715C60.0857 32.9205 59.7871 32.0413 60.0181 31.1791L61.8131 24.4801Z"
         stroke="#23262A"

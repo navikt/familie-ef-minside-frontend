@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Detail, Link } from '@navikt/ds-react';
+import { Detail } from '@navikt/ds-react';
 import { DokumentInfo } from '../../interfaces/journalpost';
 import UnorderedList from '../../components/UnorderedList';
 import Vedlegg from './Vedlegg';

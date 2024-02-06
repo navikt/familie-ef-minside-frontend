@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import { ASurfaceActionSubtle } from '@navikt/ds-tokens/dist/tokens';
-import {
-  desktop,
-  contentWidthDesktop,
-  contentWidthMobile,
-} from '../../utils/constants';
+import { desktop, contentWidthDesktop, contentWidthMobile } from '../../utils/constants';
 import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
@@ -36,6 +32,7 @@ const Stripe = styled(Grid)`
 const Forside: React.FC = () => {
   const { appEnv } = useApp();
   setBreadcrumbs(appEnv.defaultBreadcrumbs);
+
   return (
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>
