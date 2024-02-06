@@ -1,15 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  contentWidthDesktop,
-  contentWidthMobile,
-  desktop,
-} from '../../utils/constants';
+import { contentWidthDesktop, contentWidthMobile, desktop } from '../../utils/constants';
 import DokumentListe from './DokumentListe';
-import {
-  HeadingLevel1,
-  UnderTittel,
-} from '../../components/ResponsiveHeadinger';
+import { HeadingLevel1, UnderTittel } from '../../components/ResponsiveHeadinger';
 import { Alert, VStack } from '@navikt/ds-react';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
@@ -58,9 +51,8 @@ const DokumentOversikt: React.FC = () => {
               Dokumentoversikt
             </HeadingLevel1>
             <UnderTittel spacing>
-              Her finner du dokumentene dine som gjelder stønad til enslig mor
-              eller far. Du kan bare se dokumenter og meldinger du har sendt inn
-              digitalt.
+              Her finner du dokumentene dine som gjelder stønad til enslig mor eller far. Du kan
+              bare se dokumenter og meldinger du har sendt inn digitalt.
             </UnderTittel>
           </VStack>
           {harDokumenter ? (

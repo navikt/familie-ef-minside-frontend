@@ -31,9 +31,7 @@ const Container = styled.div`
 const SideHeader: React.FC = () => {
   const { personData } = useApp();
 
-  const panelTekstPrefix = personData.visningsnavn
-    ? `Hei, ${personData.visningsnavn}. `
-    : '';
+  const panelTekstPrefix = personData.visningsnavn ? `Hei, ${personData.visningsnavn}. ` : '';
 
   return (
     <Container>

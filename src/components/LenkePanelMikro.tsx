@@ -24,12 +24,7 @@ const StyledLinkPanel = styled(LinkPanel)`
   }
 `;
 
-const LenkePanelMikro: React.FC<Props> = ({
-  tittel,
-  headingLevel,
-  url,
-  redirect,
-}) => {
+const LenkePanelMikro: React.FC<Props> = ({ tittel, headingLevel, url, redirect }) => {
   const navigate = useNavigate();
 
   const href = redirect === 'ekstern' ? url : undefined;

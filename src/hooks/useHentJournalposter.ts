@@ -10,9 +10,7 @@ export interface HentDokumentResponse {
 }
 
 export const useHentJournalposter = (): HentDokumentResponse => {
-  const [journalpostStatus, settJournalpostStatus] = useState<DataStatus>(
-    DataStatus.HENTER
-  );
+  const [journalpostStatus, settJournalpostStatus] = useState<DataStatus>(DataStatus.HENTER);
   const [journalposter, settJournalposter] = useState<Journalpost[]>([]);
 
   const hentJournalposter = useCallback(() => {

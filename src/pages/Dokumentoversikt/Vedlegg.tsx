@@ -14,21 +14,11 @@ interface Props {
 }
 
 const Vedlegg: React.FC<Props> = ({ journalpostId, vedlegg }) => {
-  const urlVedlegg = utledFilUrl(
-    journalpostId,
-    vedlegg.dokumentId,
-    vedlegg.variantformat
-  );
+  const urlVedlegg = utledFilUrl(journalpostId, vedlegg.dokumentId, vedlegg.variantformat);
 
   return (
     <li>
-      <Lenke
-        key={vedlegg.dokumentId}
-        spacing
-        variant="neutral"
-        href={urlVedlegg}
-        target="_blank"
-      >
+      <Lenke key={vedlegg.dokumentId} spacing variant="neutral" href={urlVedlegg} target="_blank">
         {`${vedlegg.tittel}.pdf`}
       </Lenke>
     </li>

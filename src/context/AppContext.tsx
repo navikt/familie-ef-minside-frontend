@@ -10,8 +10,7 @@ interface Props {
 
 const [AppProvider, useApp] = constate(({ appEnv }: Props) => {
   const { hentPersonData, personData } = useHentPersonData();
-  const { hentJournalposter, journalposter, journalpostStatus } =
-    useHentJournalposter();
+  const { hentJournalposter, journalposter, journalpostStatus } = useHentJournalposter();
 
   useEffect(() => {
     hentPersonData();

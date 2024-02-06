@@ -22,9 +22,7 @@ const SideTittel: React.FC = () => (
       <HeadingLevel1 size="medium" level="1">
         Dine stønader til enslig mor eller far
       </HeadingLevel1>
-      <UnderTittel>
-        Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger
-      </UnderTittel>
+      <UnderTittel>Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger</UnderTittel>
     </VStack>
   </HStack>
 );

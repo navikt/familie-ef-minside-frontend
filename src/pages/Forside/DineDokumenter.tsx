@@ -8,9 +8,19 @@ import DokumentListe from '../Dokumentoversikt/DokumentListe';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
+const StyledDokumentListe = styled(DokumentListe)`
+  .dokument-rad {
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+`;
+
 const Lenke = styled(Link)`
-  margin-top: -0.5rem;
-  margin-bottom: 0.5rem;
   max-width: fit-content;
 `;
 
@@ -33,9 +43,7 @@ const DineDokumenter: React.FC = () => {
   );
 };
 
-const DokumentVisning: React.FC<{ journalposter: Journalpost[] }> = ({
-  journalposter,
-}) => {
+const DokumentVisning: React.FC<{ journalposter: Journalpost[] }> = ({ journalposter }) => {
   const navigate = useNavigate();
   const harDokumenter = journalposter.length > 0;
   const href = `${process.env.PUBLIC_URL}/dokumentoversikt`;
@@ -48,16 +56,15 @@ const DokumentVisning: React.FC<{ journalposter: Journalpost[] }> = ({
   if (!harDokumenter) {
     return (
       <Alert inline variant="info">
-        Vi fant ingen dokumenter å vise som gjelder stønad til enslig mor eller
-        far. Merk at det kun er dokumenter og meldinger du har sendt inn
-        digitalt som vil vises her.
+        Vi fant ingen dokumenter å vise som gjelder stønad til enslig mor eller far. Merk at det kun
+        er dokumenter og meldinger du har sendt inn digitalt som vil vises her.
       </Alert>
     );
   }
 
   return (
     <>
-      <DokumentListe antall={3} journalposter={journalposter} />
+      <StyledDokumentListe antall={3} journalposter={journalposter} />
       <Lenke href={href} onClick={handleClick}>
         Se alle dokumenter
       </Lenke>

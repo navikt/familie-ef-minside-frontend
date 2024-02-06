@@ -8,12 +8,7 @@ interface Props {
   loaderTekst: string;
   alertTekst: string;
 }
-const DataViewer: React.FC<Props> = ({
-  children,
-  dataStatus,
-  loaderTekst,
-  alertTekst,
-}) => {
+const DataViewer: React.FC<Props> = ({ children, dataStatus, loaderTekst, alertTekst }) => {
   if (dataStatus === DataStatus.HENTER) {
     return (
       <HStack justify="center">
