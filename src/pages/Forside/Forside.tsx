@@ -5,10 +5,10 @@ import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
 import React from 'react';
-import SideHeader from './SideHeader';
 import DineDokumenter from './DineDokumenter';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
+import SideTittel from '../../components/SideTittel';
 
 const Grid = styled.section`
   display: grid;
@@ -36,7 +36,7 @@ const Forside: React.FC = () => {
   return (
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>
-        <SideHeader />
+        <SideTittel />
       </Grid>
       <Stripe>
         <LenkePanelStorListe />
