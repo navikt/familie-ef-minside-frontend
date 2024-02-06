@@ -15,7 +15,7 @@ const [AppProvider, useApp] = constate(({ appEnv }: Props) => {
   useEffect(() => {
     hentPersonData();
     hentJournalposter();
-  }, []);
+  }, [hentJournalposter, hentPersonData]);
 
   return { appEnv, journalposter, journalpostStatus, personData };
 });

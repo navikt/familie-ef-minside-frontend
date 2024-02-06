@@ -23,7 +23,7 @@ export const useHentJournalposter = (): HentDokumentResponse => {
       .catch(() => {
         settJournalpostStatus(DataStatus.FEILET);
       });
-  }, [prefferedAxios]);
+  }, []);
 
   return {
     journalposter,

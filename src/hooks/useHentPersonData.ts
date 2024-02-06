@@ -16,7 +16,7 @@ export const useHentPersonData = (): Props => {
       .then((response: { data: PersonData }) => {
         response && settPersonData(formatertPersonData(response.data));
       });
-  }, [prefferedAxios]);
+  }, []);
 
   return {
     hentPersonData,
