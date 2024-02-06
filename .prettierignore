@@ -1,5 +1,12 @@
+.prettierignore
+*.json
+*.less
 *.yaml
 *.yml
 *.md
 *.html
 *.txt
+*.lock
+.env
+.gitignore
+.husky/

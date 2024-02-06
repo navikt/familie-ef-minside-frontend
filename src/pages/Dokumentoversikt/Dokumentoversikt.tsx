@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {
   contentWidthDesktop,
@@ -11,7 +11,6 @@ import {
   UnderTittel,
 } from '../../components/ResponsiveHeadinger';
 import { Alert, VStack } from '@navikt/ds-react';
-import { useHentJournalposter } from '../../hooks/useHentJournalposter';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
 import DataViewer from '../../components/DataViewer';
