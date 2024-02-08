@@ -3,13 +3,13 @@ import { axiosConfig, prefferedAxios } from '../api/axios';
 import { Journalpost } from '../interfaces/journalpost';
 import { DataStatus } from '../interfaces/dataStatus';
 
-export interface HentDokumentResponse {
+export interface JournalpostResponse {
   journalposter: Journalpost[];
   hentJournalposter: () => void;
   journalpostStatus: DataStatus;
 }
 
-export const useHentJournalposter = (): HentDokumentResponse => {
+export const useHentJournalposter = (): JournalpostResponse => {
   const [journalpostStatus, settJournalpostStatus] = useState<DataStatus>(DataStatus.HENTER);
   const [journalposter, settJournalposter] = useState<Journalpost[]>([]);
 
