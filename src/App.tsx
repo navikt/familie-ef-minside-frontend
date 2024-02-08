@@ -32,6 +32,30 @@ const App: React.FC = () => {
           <Route path="/" element={<Outlet />}>
             <Route index element={<Forside />} />
             <Route path="/dokumentoversikt" element={<Dokumentoversikt />} />
+            <Route
+              path="/overgangsstonad"
+              element={
+                <div>
+                  <p>Hello overgangsstønad</p>
+                </div>
+              }
+            />
+            <Route
+              path="/barnetilsyn"
+              element={
+                <div>
+                  <p>Hello barnetilsyn</p>
+                </div>
+              }
+            />
+            <Route
+              path="/skolepenger"
+              element={
+                <div>
+                  <p>Hello skolepenger</p>
+                </div>
+              }
+            />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
           </Route>
         </Routes>

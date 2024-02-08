@@ -9,6 +9,7 @@ import DineDokumenter from './DineDokumenter';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
 import SideTittel from '../../components/SideTittel';
+import DineStønader from './DineStønader';
 
 const Grid = styled.section`
   display: grid;
@@ -37,6 +38,7 @@ const Forside: React.FC = () => {
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>
         <SideTittel />
+        <DineStønader />
       </Grid>
       <Stripe>
         <LenkePanelStorListe />
