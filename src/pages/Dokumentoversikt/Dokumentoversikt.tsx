@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { contentWidthDesktop, contentWidthMobile, desktop } from '../../utils/constants';
+import {
+  breadCrumbDokumentOversikt,
+  contentWidthDesktop,
+  contentWidthMobile,
+  desktop,
+} from '../../utils/constants';
 import DokumentListe from './DokumentListe';
 import { HeadingLevel1, UnderTittel } from '../../components/ResponsiveHeadinger';
 import { Alert, VStack } from '@navikt/ds-react';
@@ -25,16 +30,10 @@ const InfoStripe = styled(Alert)`
   margin-top: 1rem;
 `;
 
-const dokumentBreadCrumb = {
-  url: '/familie/alene-med-barn/minside/dokumentoversikt',
-  title: 'Dokumentoversikt',
-  handleInApp: false,
-};
-
 const DokumentOversikt: React.FC = () => {
   const { appEnv, journalposter, journalpostStatus } = useApp();
 
-  setBreadcrumbs([...appEnv.defaultBreadcrumbs, dokumentBreadCrumb]);
+  setBreadcrumbs([...appEnv.defaultBreadcrumbs, breadCrumbDokumentOversikt]);
 
   const harDokumenter = journalposter.length > 0;
 

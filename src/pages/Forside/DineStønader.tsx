@@ -7,8 +7,6 @@ import LenkePanel from '../../components/LenkePanel';
 import { Overgangsstønad } from '../../icons/Overgangsstønad';
 import { Barnetilsyn } from '../../icons/Barnetilsyn';
 import { Skolepenger } from '../../icons/Skolepenger';
-import { Journalpost } from '../../interfaces/journalpost';
-import { useNavigate } from 'react-router-dom';
 import { Stønader } from '../../interfaces/stønader';
 
 const DineStønader: React.FC = () => {
@@ -33,9 +31,9 @@ const DineStønader: React.FC = () => {
 const StønadVisning: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
   const { overgangsstønad, barnetilsyn, skolepenger } = stønader;
 
-  const harOvergangsstønad = overgangsstønad.length > 0;
-  const harBarnetilsyn = barnetilsyn.length > 0;
-  const harSkolepenger = skolepenger.length > 0;
+  const harOvergangsstønad = overgangsstønad.length > -1; // TODO
+  const harBarnetilsyn = barnetilsyn.length > -1; // TODO
+  const harSkolepenger = skolepenger.length > -1; // TODO
 
   if (!(harOvergangsstønad || harBarnetilsyn || harSkolepenger)) {
     return (
@@ -69,7 +67,7 @@ const StønadVisning: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
       )}
       {harSkolepenger && (
         <LenkePanel
-          tittel="Ettersende dokumentasjon"
+          tittel="Skolepenger"
           headingLevel="3"
           brødtekst="Klikk for å se detaljer"
           url={'/skolepenger'}
