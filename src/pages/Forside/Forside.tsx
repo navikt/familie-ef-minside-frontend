@@ -34,10 +34,13 @@ const Forside: React.FC = () => {
   const { appEnv } = useApp();
   setBreadcrumbs(appEnv.defaultBreadcrumbs);
 
+  const tittel = 'Dine stønader til enslig mor eller far';
+  const underTittel = 'Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger';
+
   return (
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>
-        <SideTittel />
+        <SideTittel tittel={tittel} underTittel={underTittel} ikon={true} />
         <DineStønader />
       </Grid>
       <Stripe>

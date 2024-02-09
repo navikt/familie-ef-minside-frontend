@@ -10,10 +10,12 @@ const Overgangsstønad: React.FC = () => {
 
   setBreadcrumbs([...appEnv.defaultBreadcrumbs, breadCrumbOvergangsstønad]);
 
+  const tittel = 'Din overgangsstønad';
+
   return (
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>
-        <SideTittel />
+        <SideTittel tittel={tittel} />
       </Grid>
       <Stripe></Stripe>
     </main>

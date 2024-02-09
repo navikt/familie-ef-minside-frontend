@@ -10,10 +10,12 @@ const Barnetilsyn: React.FC = () => {
 
   setBreadcrumbs([...appEnv.defaultBreadcrumbs, breadCrumbBarnetilsyn]);
 
+  const tittel = 'Din stønad til barnetilsyn';
+
   return (
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>
-        <SideTittel />
+        <SideTittel tittel={tittel} />
       </Grid>
       <Stripe></Stripe>
     </main>

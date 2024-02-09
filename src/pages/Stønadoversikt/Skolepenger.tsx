@@ -10,10 +10,12 @@ const Skolepenger: React.FC = () => {
 
   setBreadcrumbs([...appEnv.defaultBreadcrumbs, breadCrumbSkolepenger]);
 
+  const tittel = 'Din stønad til skolepenger';
+
   return (
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>
-        <SideTittel />
+        <SideTittel tittel={tittel} />
       </Grid>
       <Stripe></Stripe>
     </main>

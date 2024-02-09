@@ -5,6 +5,12 @@ import { HStack, VStack } from '@navikt/ds-react';
 import React from 'react';
 import { HeadingLevel1, UnderTittel } from './ResponsiveHeadinger';
 
+interface Props {
+  tittel: string;
+  underTittel?: string;
+  ikon?: boolean;
+}
+
 const IkonContainer = styled.div`
   display: none;
 
@@ -13,16 +19,20 @@ const IkonContainer = styled.div`
   }
 `;
 
-const SideTittel: React.FC = () => (
+const SideTittel: React.FC<Props> = ({ tittel, underTittel, ikon }) => (
   <HStack gap="4">
-    <IkonContainer aria-hidden={true}>
-      <AleneMedBarn />
-    </IkonContainer>
+    {ikon && (
+      <IkonContainer aria-hidden={true}>
+        <AleneMedBarn />
+      </IkonContainer>
+    )}
     <VStack>
       <HeadingLevel1 size="medium" level="1">
-        Dine stønader til enslig mor eller far
+        {tittel}
       </HeadingLevel1>
-      <UnderTittel>Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger</UnderTittel>
+      {underTittel && (
+        <UnderTittel>Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger</UnderTittel>
+      )}
     </VStack>
   </HStack>
 );
