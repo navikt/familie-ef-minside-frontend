@@ -16,6 +16,7 @@ export interface DokumentInfo {
 export enum JournalpostType {
   I = 'I',
   U = 'U',
+  N = 'N',
 }
 
 export enum Variantformat {
