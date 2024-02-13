@@ -9,5 +9,7 @@ export const utledDetailTekst = (journalpost: Journalpost) => {
       return `Sendt av deg: ${dato}`;
     case JournalpostType.U:
       return `Sendt fra NAV: ${dato}`;
+    case JournalpostType.N:
+      return `${dato}`;
   }
 };
