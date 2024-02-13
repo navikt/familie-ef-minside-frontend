@@ -31,9 +31,9 @@ const DineStønader: React.FC = () => {
 const StønadVisning: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
   const { overgangsstønad, barnetilsyn, skolepenger } = stønader;
 
-  const harOvergangsstønad = overgangsstønad.length > -1; // TODO
-  const harBarnetilsyn = barnetilsyn.length > -1; // TODO
-  const harSkolepenger = skolepenger.length > -1; // TODO
+  const harOvergangsstønad = overgangsstønad.perioder.length > 0;
+  const harBarnetilsyn = barnetilsyn.perioder.length > 0;
+  const harSkolepenger = skolepenger.perioder.length > 0;
 
   if (!(harOvergangsstønad || harBarnetilsyn || harSkolepenger)) {
     return (
