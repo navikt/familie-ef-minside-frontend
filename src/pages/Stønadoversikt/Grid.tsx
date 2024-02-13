@@ -12,7 +12,7 @@ export const Grid = styled.section`
 
   @media (min-width: ${desktop}px) {
     grid-template-columns: minmax(auto, ${contentWidthDesktop}px);
-    row-gap: 2.5rem;
+    row-gap: 1.5rem;
     padding: 2rem 0.5rem;
   }
 `;

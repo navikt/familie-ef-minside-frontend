@@ -22,13 +22,13 @@ const DineStønader: React.FC = () => {
         loaderTekst="Henter dine stønader"
         alertTekst="Noe gikk galt ved uthenting av dine stønader."
       >
-        <StønadVisning stønader={stønader} />
+        <StønadPaneler stønader={stønader} />
       </DataViewer>
     </VStack>
   );
 };
 
-const StønadVisning: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
+const StønadPaneler: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
   const { overgangsstønad, barnetilsyn, skolepenger } = stønader;
 
   const harOvergangsstønad = overgangsstønad.perioder.length > 0;
