@@ -17,6 +17,7 @@ export interface AppEnv {
   infoSideBarnetilsynUrl: string;
   infoSideSkolepengerUrl: string;
   saksbehandlingstiderUrl: string;
+  utbetalingerUrl: string;
   defaultBreadcrumbs: DecoratorBreadcrumb[];
 }
 

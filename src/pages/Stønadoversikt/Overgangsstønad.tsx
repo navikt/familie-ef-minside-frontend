@@ -5,6 +5,7 @@ import { useApp } from '../../context/AppContext';
 import SideTittel from '../../components/SideTittel';
 import { Grid, Stripe } from './Grid';
 import { BodyLong, Table } from '@navikt/ds-react';
+import LenkePanelStorListe from './LenkePanelStorListe';
 
 const Overgangsstønad: React.FC = () => {
   const { appEnv } = useApp();
@@ -43,7 +44,9 @@ const Overgangsstønad: React.FC = () => {
           </Table.Body>
         </Table>
       </Grid>
-      <Stripe></Stripe>
+      <Stripe>
+        <LenkePanelStorListe />
+      </Stripe>
     </main>
   );
 };

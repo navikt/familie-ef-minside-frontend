@@ -1,7 +1,6 @@
 import LenkePanelStor from '../../components/LenkePanelStor';
 import { useApp } from '../../context/AppContext';
-import { HStack, VStack } from '@navikt/ds-react';
-import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
+import { HStack } from '@navikt/ds-react';
 
 const LenkePanelStorListe: React.FC = () => {
   const { appEnv } = useApp();
@@ -19,7 +18,7 @@ const LenkePanelStorListe: React.FC = () => {
         tittel="Dine utbetalinger"
         headingLevel="3"
         brødtekst="Her kan du sjekke hva du har fått utbetalt fra NAV."
-        url={appEnv.ettersendingUrl}
+        url={appEnv.utbetalingerUrl}
         redirect="ekstern"
       />
     </HStack>
