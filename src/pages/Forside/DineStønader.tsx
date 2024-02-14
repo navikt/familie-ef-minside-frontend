@@ -4,9 +4,6 @@ import { useApp } from '../../context/AppContext';
 import React from 'react';
 import DataViewer from '../../components/DataViewer';
 import LenkePanel from '../../components/LenkePanel';
-import { Overgangsstønad } from '../../icons/Overgangsstønad';
-import { Barnetilsyn } from '../../icons/Barnetilsyn';
-import { Skolepenger } from '../../icons/Skolepenger';
 import { Stønader } from '../../interfaces/stønader';
 
 const DineStønader: React.FC = () => {
@@ -47,32 +44,26 @@ const StønadPaneler: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
     <HStack gap="4">
       {harOvergangsstønad && (
         <LenkePanel
-          tittel="Overgangsstønad"
           headingLevel="3"
-          brødtekst="Du får stønad til og med 31.12.2024"
-          url={'/overgangsstonad'}
           redirect="intern"
-          ikon={<Overgangsstønad width={44} height={44} />}
+          stønad={overgangsstønad}
+          stønadType="overgangsstønad"
         />
       )}
       {harBarnetilsyn && (
         <LenkePanel
-          tittel="Stønad til barnetilsyn"
           headingLevel="3"
-          brødtekst="Du får stønad til og med 30.06.2024"
-          url={'/barnetilsyn'}
           redirect="intern"
-          ikon={<Barnetilsyn width={44} height={44} />}
+          stønad={barnetilsyn}
+          stønadType="barnetilsyn"
         />
       )}
       {harSkolepenger && (
         <LenkePanel
-          tittel="Skolepenger"
           headingLevel="3"
-          brødtekst="Klikk for å se detaljer"
-          url={'/skolepenger'}
           redirect="intern"
-          ikon={<Skolepenger width={44} height={44} />}
+          stønad={skolepenger}
+          stønadType="skolepenger"
         />
       )}
     </HStack>

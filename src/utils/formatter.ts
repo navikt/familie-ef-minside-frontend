@@ -6,6 +6,9 @@ const datoFormat = {
   year: 'numeric',
 } as const;
 
+export const formaterNullableIsoDato = (dato?: string): string | undefined =>
+  dato && formaterIsoDato(dato);
+
 export const formaterIsoDato = (dato: string): string => {
   return parseISO(dato).toLocaleDateString('no-NO', datoFormat);
 };
@@ -19,3 +22,6 @@ export const formaterTallMedTusenSkille = (verdi?: number): string =>
 
 export const harTallverdi = (verdi: number | undefined | null | string): boolean =>
   verdi !== undefined && verdi !== null;
+
+export const formaterStorForbokstav = (streng: string): string =>
+  streng.charAt(0).toUpperCase() + streng.slice(1);
