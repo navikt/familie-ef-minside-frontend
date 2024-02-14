@@ -6,9 +6,7 @@ import { AppProvider } from './context/AppContext';
 import { HStack, Loader } from '@navikt/ds-react';
 import Dokumentoversikt from './pages/Dokumentoversikt/Dokumentoversikt';
 import { ScrollToTop } from './utils/scrollEffect';
-import Overgangsstønad from './pages/Stønadoversikt/Overgangsstønad';
-import Barnetilsyn from './pages/Stønadoversikt/Barnetilsyn';
-import Skolepenger from './pages/Stønadoversikt/Skolepenger';
+import StønadSide from './pages/Stønadoversikt/StønadSide';
 
 const App: React.FC = () => {
   const [appEnv, settAppEnv] = useState<AppEnv>();
@@ -35,9 +33,9 @@ const App: React.FC = () => {
           <Route path="/" element={<Outlet />}>
             <Route index element={<Forside />} />
             <Route path="/dokumentoversikt" element={<Dokumentoversikt />} />
-            <Route path="/overgangsstonad" element={<Overgangsstønad />} />
-            <Route path="/barnetilsyn" element={<Barnetilsyn />} />
-            <Route path="/skolepenger" element={<Skolepenger />} />
+            <Route path="/overgangsstonad" element={<StønadSide stønadType="overgangsstønad" />} />
+            <Route path="/barnetilsyn" element={<StønadSide stønadType="barnetilsyn" />} />
+            <Route path="/skolepenger" element={<StønadSide stønadType="skolepenger" />} />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
           </Route>
         </Routes>

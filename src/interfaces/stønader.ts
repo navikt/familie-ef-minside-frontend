@@ -1,3 +1,5 @@
+export type StønadType = 'overgangsstønad' | 'barnetilsyn' | 'skolepenger';
+
 export interface Stønader {
   overgangsstønad: Stønad;
   barnetilsyn: Stønad;
