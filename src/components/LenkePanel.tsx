@@ -7,7 +7,11 @@ import { HeadingLevel3 } from './ResponsiveHeadinger';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Stønad, StønadType } from '../interfaces/stønader';
-import { formaterNullableIsoDato, formaterStorForbokstav } from '../utils/formatter';
+import {
+  formaterNullableIsoDato,
+  formaterSpesialtegn,
+  formaterStorForbokstav,
+} from '../utils/formatter';
 import { Overgangsstønad } from '../icons/Overgangsstønad';
 import { Barnetilsyn } from '../icons/Barnetilsyn';
 import { Skolepenger } from '../icons/Skolepenger';
@@ -48,7 +52,7 @@ const Bold = styled.b`
 const LenkePanel: React.FC<Props> = ({ className, headingLevel, redirect, stønad, stønadType }) => {
   const navigate = useNavigate();
 
-  const url = `/${stønadType}`;
+  const url = `/${formaterSpesialtegn(stønadType)}`;
   const ikon = utledIkon(stønadType);
   const tittel = formaterStorForbokstav(stønadType);
   const href = redirect === 'ekstern' ? url : `${process.env.PUBLIC_URL}${url}`;

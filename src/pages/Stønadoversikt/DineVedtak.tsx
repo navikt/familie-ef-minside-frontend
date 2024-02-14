@@ -1,4 +1,4 @@
-import { Alert, VStack } from '@navikt/ds-react';
+import { Alert, BodyLong, VStack } from '@navikt/ds-react';
 import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
 import { useApp } from '../../context/AppContext';
 import React from 'react';
@@ -7,6 +7,7 @@ import DokumentListe from '../Dokumentoversikt/DokumentListe';
 import styled from 'styled-components';
 import DataViewer from '../../components/DataViewer';
 import { StønadType } from '../../interfaces/stønader';
+import { utledBeskrivelse } from './utils';
 
 interface Props {
   stønadType: StønadType;
@@ -62,7 +63,14 @@ const DokumentVisning: React.FC<{ journalposter: Journalpost[]; stønadType: St�
     );
   }
 
-  return <StyledDokumentListe journalposter={vedtak} />;
+  const listeBeskrivelse = utledBeskrivelse(stønadType);
+
+  return (
+    <>
+      <BodyLong>{listeBeskrivelse}</BodyLong>
+      <StyledDokumentListe journalposter={vedtak} />
+    </>
+  );
 };
 
 export default DineVedtak;

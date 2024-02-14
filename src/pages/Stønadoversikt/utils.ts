@@ -26,3 +26,14 @@ export const utledSidetittel = (stønadType: StønadType) => {
       return 'Din stønad til skolepenger';
   }
 };
+
+export const utledBeskrivelse = (stønadType: StønadType) => {
+  switch (stønadType) {
+    case 'overgangsstønad':
+      return 'Her vises dine vedtakdsdokumenter for overgangsstønad.';
+    case 'barnetilsyn':
+      return 'Her vises dine vedtakdsdokumenter for stønad til barnetilsyn.';
+    case 'skolepenger':
+      return 'Her vises dine vedtakdsdokumenter for stønad til skolepenger.';
+  }
+};

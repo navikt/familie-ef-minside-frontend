@@ -25,3 +25,6 @@ export const harTallverdi = (verdi: number | undefined | null | string): boolean
 
 export const formaterStorForbokstav = (streng: string): string =>
   streng.charAt(0).toUpperCase() + streng.slice(1);
+
+export const formaterSpesialtegn = (streng: string): string =>
+  streng.replace('æ', 'e').replace('ø', 'o').replace('å', 'a');
