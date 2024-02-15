@@ -16,7 +16,8 @@ interface Environment {
   infoSideBarnetilsynUrl: string;
   infoSideSkolepengerUrl: string;
   saksbehandlingstiderUrl: string;
-  utbetalingerUrl: string;
+  utbetalingsoversiktUrl: string;
+  utvidetBarnetrygdUrl: string;
 }
 export const brukDevApi = () => process.env.BRUK_DEV_API === 'true';
 
@@ -38,7 +39,8 @@ const lokaltMiljø: Environment = {
   infoSideBarnetilsynUrl: 'https://www.ekstern.dev.nav.no/barnetilsyn-enslig',
   infoSideSkolepengerUrl: 'https://www.ekstern.dev.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl: 'https://www.ekstern.dev.nav.no/saksbehandlingstider',
-  utbetalingerUrl: 'https://www.ekstern.dev.nav.no/utbetalinger',
+  utbetalingsoversiktUrl: 'https://www.nav.no/utbetalingsoversikt',
+  utvidetBarnetrygdUrl: 'https://www.nav.no/utvidet-barnetrygd',
 };
 
 const devMiljø: Environment = {
@@ -58,7 +60,8 @@ const devMiljø: Environment = {
   infoSideBarnetilsynUrl: 'https://www.ekstern.dev.nav.no/barnetilsyn-enslig',
   infoSideSkolepengerUrl: 'https://www.ekstern.dev.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl: 'https://www.ekstern.dev.nav.no/saksbehandlingstider',
-  utbetalingerUrl: 'https://www.ekstern.dev.nav.no/utbetalinger',
+  utbetalingsoversiktUrl: 'https://www.nav.no/utbetalingsoversikt',
+  utvidetBarnetrygdUrl: 'https://www.nav.no/utvidet-barnetrygd',
 };
 
 const prodMiljø: Environment = {
@@ -75,7 +78,8 @@ const prodMiljø: Environment = {
   infoSideBarnetilsynUrl: 'https://www.nav.no/barnetilsyn-enslig',
   infoSideSkolepengerUrl: 'https://www.nav.no/skolepenger-enslig',
   saksbehandlingstiderUrl: 'https://www.nav.no/saksbehandlingstider',
-  utbetalingerUrl: 'https://www.nav.no/utbetalinger',
+  utbetalingsoversiktUrl: 'https://www.nav.no/utbetalingsoversikt',
+  utvidetBarnetrygdUrl: 'https://www.nav.no/utvidet-barnetrygd',
 };
 
 const initierMiljøvariabler = (): Environment => {
@@ -117,7 +121,8 @@ export const appEnv = {
   infoSideBarnetilsynUrl: miljø.infoSideBarnetilsynUrl,
   infoSideSkolepengerUrl: miljø.infoSideSkolepengerUrl,
   saksbehandlingstiderUrl: miljø.saksbehandlingstiderUrl,
-  utbetalingerUrl: miljø.utbetalingerUrl,
+  utbetalingsoversiktUrl: miljø.utbetalingsoversiktUrl,
+  utvidetBarnetrygdUrl: miljø.utvidetBarnetrygdUrl,
   defaultBreadcrumbs: defaultBreadcrumbs,
 };
 
