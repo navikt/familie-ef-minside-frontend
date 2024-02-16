@@ -19,9 +19,7 @@ const StønadTabell: React.FC<Props> = ({ stønad, stønadType }) => {
 
   if (!harStønad) {
     return (
-      <Alert variant="info">
-        Vi fant ingen {stønadType} å vise. Denne teksten må avklares med teamet. // TODO
-      </Alert>
+      <Alert variant="info">Vi fant ingen utbetalingsperioder som gjelder {stønadType}.</Alert>
     );
   }
 
@@ -36,12 +34,14 @@ const StønadTabell: React.FC<Props> = ({ stønad, stønadType }) => {
       </BodyLong>
       <Tabell>
         <Table.Header>
-          <Table.HeaderCell>Periode</Table.HeaderCell>
-          <Table.HeaderCell>Beløp per måned før skatt</Table.HeaderCell>
+          <Table.Row>
+            <Table.HeaderCell>Periode</Table.HeaderCell>
+            <Table.HeaderCell>Beløp per måned før skatt</Table.HeaderCell>
+          </Table.Row>
         </Table.Header>
         <Table.Body>
           {sortertePerioder.map((periode) => (
-            <TabellRad periode={periode} />
+            <TabellRad key={periode.fraDato + periode.tilDato} periode={periode} />
           ))}
         </Table.Body>
       </Tabell>

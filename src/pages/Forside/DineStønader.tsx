@@ -35,7 +35,7 @@ const StønadPaneler: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
   if (!(harOvergangsstønad || harBarnetilsyn || harSkolepenger)) {
     return (
       <Alert inline variant="info">
-        Vi fant ingen stønader å vise. Denne teksten må avklares med teamet. // TODO
+        Vi fant ingen utbetalingsperioder som gjelder stønad til enslig mor eller far.
       </Alert>
     );
   }

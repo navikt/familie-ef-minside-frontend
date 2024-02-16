@@ -18,7 +18,7 @@ const Vedlegg: React.FC<Props> = ({ journalpostId, vedlegg }) => {
 
   return (
     <li>
-      <Lenke key={vedlegg.dokumentId} spacing variant="neutral" href={urlVedlegg} target="_blank">
+      <Lenke key={vedlegg.dokumentId} variant="neutral" href={urlVedlegg} target="_blank">
         {`${vedlegg.tittel}.pdf`}
       </Lenke>
     </li>

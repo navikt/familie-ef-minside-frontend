@@ -16,7 +16,7 @@ const VedleggListe: React.FC<Props> = ({ vedleggListe, journalpostId }) => (
     </Detail>
     <UnorderedList>
       {vedleggListe.map((vedlegg) => (
-        <Vedlegg journalpostId={journalpostId} vedlegg={vedlegg} />
+        <Vedlegg key={vedlegg.dokumentId} journalpostId={journalpostId} vedlegg={vedlegg} />
       ))}
     </UnorderedList>
   </div>
