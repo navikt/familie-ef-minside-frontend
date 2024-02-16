@@ -56,7 +56,7 @@ const LenkePanel: React.FC<Props> = ({ className, headingLevel, redirect, støna
   const ikon = utledIkon(stønadType);
   const tittel = formaterStorForbokstav(stønadType);
   const href = redirect === 'ekstern' ? url : `${process.env.PUBLIC_URL}${url}`;
-  const brødtekst = utledBrødtekst(stønad);
+  const brødtekst = utledBrødtekst(stønadType, stønad);
 
   const handleClick = (e: React.SyntheticEvent) => {
     if (redirect === 'ekstern') {
@@ -93,7 +93,11 @@ const utledIkon = (stønadType: StønadType) => {
   }
 };
 
-const utledBrødtekst = (stønad: Stønad) => {
+const utledBrødtekst = (stønadType: StønadType, stønad: Stønad) => {
+  if (stønadType === 'skolepenger') {
+    return <BodyLong>Klikk for å se detaljer</BodyLong>;
+  }
+
   const startDato = formaterNullableIsoDato(stønad.startDato);
   const sluttDato = formaterNullableIsoDato(stønad.sluttDato);
 

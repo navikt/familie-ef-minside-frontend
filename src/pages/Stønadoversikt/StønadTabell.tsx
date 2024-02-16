@@ -4,6 +4,7 @@ import { Alert, BodyLong, Table } from '@navikt/ds-react';
 import { formaterIsoDato, formaterTallMedTusenSkille } from '../../utils/formatter';
 import styled from 'styled-components';
 import { contentWidthMobile } from '../../utils/constants';
+import { utledBrødtekst, utledHeaderTekst } from './utils';
 
 interface Props {
   stønad: Stønad;
@@ -22,23 +23,14 @@ const StønadTabell: React.FC<Props> = ({ stønad, stønadType }) => {
       <Alert variant="info">Vi fant ingen utbetalingsperioder som gjelder {stønadType}.</Alert>
     );
   }
-
+  const brødTekst = utledBrødtekst(stønadType);
   const sortertePerioder = stønad.perioder.slice().sort((a, b) => (a.fraDato < b.fraDato ? 1 : -1));
 
   return (
     <>
-      <BodyLong>
-        Tabellen viser periodene dine med {stønadType} og hvor mye du har fått/får i stønad per
-        måned før skatt. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt.
-        Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.
-      </BodyLong>
+      <BodyLong>{brødTekst}</BodyLong>
       <Tabell>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Periode</Table.HeaderCell>
-            <Table.HeaderCell>Beløp per måned før skatt</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
+        <TabellHeader stønadType={stønadType} />
         <Table.Body>
           {sortertePerioder.map((periode) => (
             <TabellRad key={periode.fraDato + periode.tilDato} periode={periode} />
@@ -46,6 +38,19 @@ const StønadTabell: React.FC<Props> = ({ stønad, stønadType }) => {
         </Table.Body>
       </Tabell>
     </>
+  );
+};
+
+const TabellHeader: React.FC<{ stønadType: StønadType }> = ({ stønadType }) => {
+  const { headerCelle1, headerCelle2 } = utledHeaderTekst(stønadType);
+
+  return (
+    <Table.Header>
+      <Table.Row>
+        <Table.HeaderCell>{headerCelle1}</Table.HeaderCell>
+        <Table.HeaderCell>{headerCelle2}</Table.HeaderCell>
+      </Table.Row>
+    </Table.Header>
   );
 };
 
