@@ -1,10 +1,14 @@
 import React from 'react';
 import { Stønad, Stønadsperiode, StønadType } from '../../interfaces/stønader';
 import { Alert, BodyLong, Table } from '@navikt/ds-react';
-import { formaterIsoDato, formaterTallMedTusenSkille } from '../../utils/formatter';
+import {
+  formaterIsoDato,
+  formaterIsoÅrMåned,
+  formaterTallMedTusenSkille,
+} from '../../utils/formatter';
 import styled from 'styled-components';
 import { contentWidthMobile } from '../../utils/constants';
-import { utledBrødtekst, utledHeaderTekst } from './utils';
+import { utledBrødtekst, utledHeaderTekst, utledPerioder } from './utils';
 
 interface Props {
   stønad: Stønad;
@@ -24,7 +28,7 @@ const StønadTabell: React.FC<Props> = ({ stønad, stønadType }) => {
     );
   }
   const brødTekst = utledBrødtekst(stønadType);
-  const sortertePerioder = stønad.perioder.slice().sort((a, b) => (a.fraDato < b.fraDato ? 1 : -1));
+  const tabellPerioder = utledPerioder(stønadType, stønad.perioder);
 
   return (
     <>
@@ -32,8 +36,12 @@ const StønadTabell: React.FC<Props> = ({ stønad, stønadType }) => {
       <Tabell>
         <TabellHeader stønadType={stønadType} />
         <Table.Body>
-          {sortertePerioder.map((periode) => (
-            <TabellRad key={periode.fraDato + periode.tilDato} periode={periode} />
+          {tabellPerioder.map((periode) => (
+            <TabellRad
+              key={periode.fraDato + periode.tilDato}
+              periode={periode}
+              stønadType={stønadType}
+            />
           ))}
         </Table.Body>
       </Tabell>
@@ -54,13 +62,21 @@ const TabellHeader: React.FC<{ stønadType: StønadType }> = ({ stønadType }) =
   );
 };
 
-const TabellRad: React.FC<{ periode: Stønadsperiode }> = ({ periode }) => {
+const TabellRad: React.FC<{ periode: Stønadsperiode; stønadType: StønadType }> = ({
+  periode,
+  stønadType,
+}) => {
   const fraDato = formaterIsoDato(periode.fraDato);
   const tilDato = formaterIsoDato(periode.tilDato);
+  const årMåned = formaterIsoÅrMåned(periode.fraDato);
+
+  const beløpsperiode = stønadType === 'skolepenger' ? `${årMåned}` : `${fraDato} - ${tilDato}`;
+
   const beløp = `${formaterTallMedTusenSkille(periode.beløp)} kr`;
+
   return (
     <Table.Row>
-      <Table.DataCell>{`${fraDato} - ${tilDato}`}</Table.DataCell>
+      <Table.DataCell>{beløpsperiode}</Table.DataCell>
       <Table.DataCell align="right">{beløp}</Table.DataCell>
     </Table.Row>
   );

@@ -1,10 +1,11 @@
-import { StønadType } from '../../interfaces/stønader';
+import { Stønadsperiode, StønadType } from '../../interfaces/stønader';
 import {
   breadCrumbBarnetilsyn,
   breadCrumbOvergangsstønad,
   breadCrumbSkolepenger,
 } from '../../utils/constants';
 import { Journalpost } from '../../interfaces/journalpost';
+import { erPåfølgendeDatoer } from '../../utils/date';
 
 export const utledBreadCrumb = (stønadType: StønadType) => {
   switch (stønadType) {
@@ -37,6 +38,45 @@ export const utledBeskrivelse = (stønadType: StønadType) => {
     case 'skolepenger':
       return 'Her vises dine vedtakdsdokumenter for stønad til skolepenger.';
   }
+};
+
+export const utledPerioder = (stønadType: StønadType, perioder: Stønadsperiode[]) =>
+  stønadType === 'skolepenger'
+    ? sorterStønadsperioder(perioder, 'desc')
+    : mergeSammenhengendePerioderMedLikeBeløp(perioder);
+
+export const sorterStønadsperioder = (perioder: Stønadsperiode[], rekkefølge: 'asc' | 'desc') =>
+  perioder
+    .slice()
+    .sort((a, b) => (rekkefølge === 'asc' ? sorterDatoAsc(a, b) : sorterDatoDesc(a, b)));
+
+const sorterDatoAsc = (a: Stønadsperiode, b: Stønadsperiode) => (a.fraDato < b.fraDato ? -1 : 1);
+const sorterDatoDesc = (a: Stønadsperiode, b: Stønadsperiode) => (a.fraDato < b.fraDato ? 1 : -1);
+
+export const mergeSammenhengendePerioderMedLikeBeløp = (perioder: Stønadsperiode[]) => {
+  const sortertePerioderAsc = sorterStønadsperioder(perioder, 'asc');
+
+  const sammenslåttePerioder = sortertePerioderAsc.reduce((acc, periode) => {
+    if (acc.length === 0) {
+      return [periode];
+    }
+    const prevPeriode = acc[acc.length - 1];
+    if (
+      erPåfølgendeDatoer(prevPeriode.tilDato, periode.fraDato) &&
+      harSammeBeløp(prevPeriode, periode)
+    ) {
+      const sammenslåttPeriode = {
+        fraDato: prevPeriode.fraDato,
+        tilDato: periode.tilDato,
+        beløp: periode.beløp,
+      } as Stønadsperiode;
+
+      return [...acc.slice(0, acc.length - 1), sammenslåttPeriode];
+    }
+    return [...acc, periode];
+  }, [] as Stønadsperiode[]);
+
+  return sorterStønadsperioder(sammenslåttePerioder, 'desc');
 };
 
 export const utledVedtak = (journalposter: Journalpost[], stønadType: StønadType) =>
@@ -76,3 +116,6 @@ export const utledHeaderTekst = (stønadType: StønadType) => {
       return { headerCelle1: 'Måned', headerCelle2: 'Beløp' };
   }
 };
+
+const harSammeBeløp = (periodeLeft: Stønadsperiode, periodeRight: Stønadsperiode) =>
+  periodeLeft.beløp === periodeRight.beløp;

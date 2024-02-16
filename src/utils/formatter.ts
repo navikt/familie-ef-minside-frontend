@@ -6,11 +6,20 @@ const datoFormat = {
   year: 'numeric',
 } as const;
 
+const årMånedFormat = {
+  month: '2-digit',
+  year: 'numeric',
+} as const;
+
 export const formaterNullableIsoDato = (dato?: string): string | undefined =>
   dato && formaterIsoDato(dato);
 
 export const formaterIsoDato = (dato: string): string => {
   return parseISO(dato).toLocaleDateString('no-NO', datoFormat);
+};
+
+export const formaterIsoÅrMåned = (dato: string): string => {
+  return parseISO(dato).toLocaleDateString('no-NO', årMånedFormat);
 };
 
 export const formaterIsoDatoTid = (dato: string): string => {
