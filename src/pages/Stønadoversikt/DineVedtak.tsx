@@ -7,7 +7,7 @@ import DokumentListe from '../Dokumentoversikt/DokumentListe';
 import styled from 'styled-components';
 import DataViewer from '../../components/DataViewer';
 import { StønadType } from '../../interfaces/stønader';
-import { utledBeskrivelse } from './utils';
+import { utledBeskrivelse, utledVedtak } from './utils';
 
 interface Props {
   stønadType: StønadType;
@@ -48,10 +48,7 @@ const DokumentVisning: React.FC<{ journalposter: Journalpost[]; stønadType: St�
   journalposter,
   stønadType,
 }) => {
-  const vedtak = journalposter.filter((journalpost) => {
-    const tittel = journalpost.hovedDokument.tittel.toLowerCase();
-    return tittel.includes(stønadType) && tittel.includes('vedtak');
-  });
+  const vedtak = utledVedtak(journalposter, stønadType);
   const harVedtak = vedtak.length > 0;
 
   if (!harVedtak) {

@@ -4,6 +4,7 @@ import {
   breadCrumbOvergangsstønad,
   breadCrumbSkolepenger,
 } from '../../utils/constants';
+import { Journalpost } from '../../interfaces/journalpost';
 
 export const utledBreadCrumb = (stønadType: StønadType) => {
   switch (stønadType) {
@@ -37,3 +38,14 @@ export const utledBeskrivelse = (stønadType: StønadType) => {
       return 'Her vises dine vedtakdsdokumenter for stønad til skolepenger.';
   }
 };
+
+export const utledVedtak = (journalposter: Journalpost[], stønadType: StønadType) =>
+  journalposter.filter((journalpost) => {
+    const tittel = journalpost.hovedDokument.tittel.toLowerCase();
+
+    // Har iverksatt vedtak med skrivefeil i dokumenttittel ("overgangstønad") så må endre på sjekken for overgangsstønad
+    if (stønadType === 'overgangsstønad') {
+      return tittel.includes('overgang') && tittel.includes('vedtak');
+    }
+    return tittel.includes(stønadType) && tittel.includes('vedtak');
+  });
