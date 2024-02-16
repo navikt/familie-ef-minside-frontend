@@ -13,24 +13,13 @@ const brukCookie = () => isLocal() && !brukDevApi();
 const attachToken = (applicationName: ApplicationName): RequestHandler => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const authenticationHeader = await prepareSecuredRequest(
-        req,
-        applicationName
-      );
-      req.headers[AUTHORIZATION_HEADER] = brukCookie()
-        ? ''
-        : authenticationHeader.authorization;
+      const authenticationHeader = await prepareSecuredRequest(req, applicationName);
+      req.headers[AUTHORIZATION_HEADER] = brukCookie() ? '' : authenticationHeader.authorization;
       req.headers[WONDERWALL_ID_TOKEN_HEADER] = '';
       next();
     } catch (error) {
-      logWarn(
-        `Noe gikk galt ved setting av token (${req.method} - ${req.path}): `,
-        req,
-        error
-      );
-      return res
-        .status(401)
-        .send('En uventet feil oppstod. Ingen gyldig token');
+      logWarn(`Noe gikk galt ved setting av token (${req.method} - ${req.path}): `, req, error);
+      return res.status(401).send('En uventet feil oppstod. Ingen gyldig token');
     }
   };
 };
@@ -51,13 +40,10 @@ const utledToken = (req: Request, authorization: string | undefined) => {
   }
 };
 
-const prepareSecuredRequest = async (
-  req: Request,
-  applicationName: ApplicationName
-) => {
+const prepareSecuredRequest = async (req: Request, applicationName: ApplicationName) => {
   logInfo('PrepareSecuredRequest', req);
   if (isLocal()) {
-    const lokalToken = lokaltTokenxApi
+    const lokalToken = lokaltTokenxApi;
     return {
       authorization: `Bearer ${lokalToken}`,
     };

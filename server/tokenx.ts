@@ -25,17 +25,13 @@ class TokenXClient {
       .catch(() => process.exit(1));
   }
 
-  exchangeToken = async (
-    idportenToken: any,
-    applicationName: ApplicationName
-  ) => {
+  exchangeToken = async (idportenToken: any, applicationName: ApplicationName) => {
     const clientAssertion = await this.createClientAssertion();
 
     return this.tokenxClient
       .grant({
         grant_type: 'urn:ietf:params:oauth:grant-type:token-exchange',
-        client_assertion_type:
-          'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+        client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
         token_endpoint_auth_method: 'private_key_jwt',
         client_assertion: clientAssertion,
         subject_token_type: 'urn:ietf:params:oauth:token-type:jwt',
@@ -92,9 +88,7 @@ class TokenXClient {
   private init = async () => {
     if (!tokenxConfig.discoveryUrl) {
       logger.error('Mangler miljøvariabel TOKEN_X_WELL_KNOWN_URL');
-      throw new TypeError(
-        'Miljøvariabelen "TOKEN_X_WELL_KNOWN_URL må være satt'
-      );
+      throw new TypeError('Miljøvariabelen "TOKEN_X_WELL_KNOWN_URL må være satt');
     }
     const tokenx = await Issuer.discover(tokenxConfig.discoveryUrl);
     this.audience = tokenx.token_endpoint;
@@ -112,10 +106,7 @@ class TokenXClient {
 
       return Promise.resolve(client);
     } catch (err) {
-      logger.error(
-        'Feil oppstod under parsing av jwt eller opprettelse av TokenX client',
-        err
-      );
+      logger.error('Feil oppstod under parsing av jwt eller opprettelse av TokenX client', err);
       return Promise.reject(err);
     }
   };
