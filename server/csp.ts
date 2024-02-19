@@ -11,6 +11,7 @@ export const cspMap = (): Record<string, string[]> => {
       '*.psplugin.com',
       '*.taskanalytics.com',
       '*.hotjar.com',
+      'nav.boost.ai',
     ],
     // Hvor vi kan hente .css filer fra.
     'style-src': ["'self'", "'unsafe-inline'", '*.nav.no', '*.psplugin.com'],
