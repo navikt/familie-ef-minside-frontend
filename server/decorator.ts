@@ -26,6 +26,7 @@ const getHtmlWithDecorator = (filePath: string) => {
       redirectToApp: true,
       level: 'Level4',
       breadcrumbs: defaultBreadcrumbs,
+      chatbot: true,
     },
   };
 
