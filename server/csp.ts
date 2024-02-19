@@ -11,6 +11,7 @@ export const cspMap = (): Record<string, string[]> => {
       '*.psplugin.com',
       '*.taskanalytics.com',
       '*.hotjar.com',
+      'nav.boost.ai',
     ],
     // Hvor vi kan hente .css filer fra.
     'style-src': ["'self'", "'unsafe-inline'", '*.nav.no', '*.psplugin.com'],
@@ -28,13 +29,7 @@ export const cspMap = (): Record<string, string[]> => {
     // Kan kun submitte forms til seg selv.
     'form-action': ["'self'"],
     // Hvor fonter kan hentes fra.
-    'font-src': [
-      "'self'",
-      'data:',
-      '*.psplugin.com',
-      '*.hotjar.com',
-      'cdn.nav.no',
-    ],
+    'font-src': ["'self'", 'data:', '*.psplugin.com', '*.hotjar.com', 'cdn.nav.no'],
     // Hvor vi hente innhold til iFrames fra.
     'frame-src': ['*.hotjar.com', 'video.qbrick.com', 'player.vimeo.com'],
     // Hvor bilder kan hentes fra.
@@ -50,12 +45,7 @@ export const cspMap = (): Record<string, string[]> => {
     'worker-src': ["'self'", 'blob:'],
     'child-src': ["'self'", 'blob:'],
     // Hvor manifest-filer kan hentes fra
-    'manifest-src': [
-      "'self'",
-      'www.nav.no',
-      'oidc-ver2.difi.no',
-      'idporten-ver2.difi.no',
-    ],
+    'manifest-src': ["'self'", 'www.nav.no', 'oidc-ver2.difi.no', 'idporten-ver2.difi.no'],
   };
 };
 
