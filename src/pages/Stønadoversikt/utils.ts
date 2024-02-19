@@ -113,9 +113,25 @@ export const utledHeaderTekst = (stønadType: StønadType) => {
     case 'barnetilsyn':
       return { headerCelle1: 'Periode', headerCelle2: 'Beløp per måned' };
     case 'skolepenger':
-      return { headerCelle1: 'Måned', headerCelle2: 'Beløp' };
+      return { headerCelle1: 'Utbetalingsmåned', headerCelle2: 'Beløp' };
   }
 };
 
 const harSammeBeløp = (periodeLeft: Stønadsperiode, periodeRight: Stønadsperiode) =>
   periodeLeft.beløp === periodeRight.beløp;
+
+// Denne utleder bredde til beløpskolonne i tabell. For høyrejustering av beløp.
+export const utledKolonnebredde = (beløp: number) => {
+  if (beløp < 10) {
+    return '1.75rem';
+  } else if (beløp < 100) {
+    return '2.3rem';
+  } else if (beløp < 1000) {
+    return '2.85rem';
+  } else if (beløp < 10000) {
+    return '3.65rem';
+  } else if (beløp < 100000) {
+    return '4.2rem';
+  }
+  return '4.8rem';
+};

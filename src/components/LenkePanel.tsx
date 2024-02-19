@@ -7,14 +7,11 @@ import { HeadingLevel3 } from './ResponsiveHeadinger';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Stønad, StønadType } from '../interfaces/stønader';
-import {
-  formaterNullableIsoDato,
-  formaterSpesialtegn,
-  formaterStorForbokstav,
-} from '../utils/formatter';
+import { formaterNullableIsoDato, formaterSpesialtegn } from '../utils/formatter';
 import { Overgangsstønad } from '../icons/Overgangsstønad';
 import { Barnetilsyn } from '../icons/Barnetilsyn';
 import { Skolepenger } from '../icons/Skolepenger';
+import { utledKomponentTittel } from '../pages/Forside/utils';
 
 interface Props {
   className?: string;
@@ -54,7 +51,7 @@ const LenkePanel: React.FC<Props> = ({ className, headingLevel, redirect, støna
 
   const url = `/${formaterSpesialtegn(stønadType)}`;
   const ikon = utledIkon(stønadType);
-  const tittel = formaterStorForbokstav(stønadType);
+  const tittel = utledKomponentTittel(stønadType);
   const href = redirect === 'ekstern' ? url : `${process.env.PUBLIC_URL}${url}`;
   const brødtekst = utledBrødtekst(stønadType, stønad);
 
@@ -111,7 +108,7 @@ const utledBrødtekst = (stønadType: StønadType, stønad: Stønad) => {
   if (sluttDato) {
     return (
       <BodyLong>
-        Innvilget frem til og med <Bold>{sluttDato}</Bold>
+        Du har stønad til og med <Bold>{sluttDato}</Bold>
       </BodyLong>
     );
   }

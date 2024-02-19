@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stønad, Stønadsperiode, StønadType } from '../../interfaces/stønader';
-import { Alert, BodyLong, Table } from '@navikt/ds-react';
+import { Alert, BodyLong, HStack, Table } from '@navikt/ds-react';
 import {
   formaterIsoDato,
   formaterIsoÅrMåned,
@@ -8,7 +8,7 @@ import {
 } from '../../utils/formatter';
 import styled from 'styled-components';
 import { contentWidthMobile } from '../../utils/constants';
-import { utledBrødtekst, utledHeaderTekst, utledPerioder } from './utils';
+import { utledBrødtekst, utledHeaderTekst, utledKolonnebredde, utledPerioder } from './utils';
 
 interface Props {
   stønad: Stønad;
@@ -17,6 +17,10 @@ interface Props {
 
 const Tabell = styled(Table)`
   max-width: ${contentWidthMobile}px;
+`;
+
+const BeløpWrapper = styled(HStack)<{ bredde: string }>`
+  width: ${(props) => props.bredde};
 `;
 
 const StønadTabell: React.FC<Props> = ({ stønad, stønadType }) => {
@@ -30,6 +34,9 @@ const StønadTabell: React.FC<Props> = ({ stønad, stønadType }) => {
   const brødTekst = utledBrødtekst(stønadType);
   const tabellPerioder = utledPerioder(stønadType, stønad.perioder);
 
+  const størstBeløp = Math.max(...tabellPerioder.map((periode) => periode.beløp));
+  const kolonneBredde = utledKolonnebredde(størstBeløp);
+
   return (
     <>
       <BodyLong>{brødTekst}</BodyLong>
@@ -41,6 +48,7 @@ const StønadTabell: React.FC<Props> = ({ stønad, stønadType }) => {
               key={periode.fraDato + periode.tilDato}
               periode={periode}
               stønadType={stønadType}
+              kolonneBredde={kolonneBredde}
             />
           ))}
         </Table.Body>
@@ -62,10 +70,11 @@ const TabellHeader: React.FC<{ stønadType: StønadType }> = ({ stønadType }) =
   );
 };
 
-const TabellRad: React.FC<{ periode: Stønadsperiode; stønadType: StønadType }> = ({
-  periode,
-  stønadType,
-}) => {
+const TabellRad: React.FC<{
+  periode: Stønadsperiode;
+  stønadType: StønadType;
+  kolonneBredde: string;
+}> = ({ periode, stønadType, kolonneBredde }) => {
   const fraDato = formaterIsoDato(periode.fraDato);
   const tilDato = formaterIsoDato(periode.tilDato);
   const årMåned = formaterIsoÅrMåned(periode.fraDato);
@@ -77,7 +86,11 @@ const TabellRad: React.FC<{ periode: Stønadsperiode; stønadType: StønadType }
   return (
     <Table.Row>
       <Table.DataCell>{beløpsperiode}</Table.DataCell>
-      <Table.DataCell align="right">{beløp}</Table.DataCell>
+      <Table.DataCell align="right">
+        <BeløpWrapper bredde={kolonneBredde} justify="end">
+          {beløp}
+        </BeløpWrapper>
+      </Table.DataCell>
     </Table.Row>
   );
 };
