@@ -4,7 +4,7 @@ import { contentWidthDesktop, contentWidthMobile, desktop } from '../../utils/co
 import DokumentListe from './DokumentListe';
 import { HeadingLevel1, UnderTittel } from '../../components/ResponsiveHeadinger';
 import { Alert, VStack } from '@navikt/ds-react';
-import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
+import { setBreadcrumbs, getAmplitudeInstance } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
 import DataViewer from '../../components/DataViewer';
 
