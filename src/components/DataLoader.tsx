@@ -2,14 +2,7 @@ import { HStack, Loader } from '@navikt/ds-react';
 import React from 'react';
 
 interface Props {
-  size?:
-    | '3xlarge'
-    | '2xlarge'
-    | 'xlarge'
-    | 'large'
-    | 'medium'
-    | 'small'
-    | 'xsmall';
+  size?: '3xlarge' | '2xlarge' | 'xlarge' | 'large' | 'medium' | 'small' | 'xsmall';
   title: string;
 }
 const DataLoader: React.FC<Props> = ({ size, title }) => (

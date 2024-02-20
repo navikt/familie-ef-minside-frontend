@@ -1,5 +1,5 @@
 import { Journalpost, JournalpostType } from '../../interfaces/journalpost';
-import { formaterIsoDatoTid } from '../../utils/dato';
+import { formaterIsoDatoTid } from '../../utils/formatter';
 
 export const utledDetailTekst = (journalpost: Journalpost) => {
   const dato = formaterIsoDatoTid(journalpost.dato);

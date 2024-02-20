@@ -12,7 +12,7 @@ interface Props {
 const DokumentListe: React.FC<Props> = ({ antall, className, journalposter }) => (
   <UnorderedList className={className}>
     {journalposter.slice(0, antall).map((journalpost) => (
-      <Dokument journalpost={journalpost} />
+      <Dokument key={journalpost.journalpostId} journalpost={journalpost} />
     ))}
   </UnorderedList>
 );

@@ -4,7 +4,7 @@ import getHtmlWithDecorator from './decorator.js';
 import logger from './logger.js';
 import { addRequestInfo, doProxy } from './proxy.js';
 import attachToken from './tokenProxy.js';
-import { defaultBreadcrumbs, miljø } from './miljø.js';
+import { appEnv, defaultBreadcrumbs, miljø } from './miljø.js';
 
 const buildPath =
   process.env.NODE_ENV !== 'development'
@@ -13,26 +13,10 @@ const buildPath =
 const EF_BASE_PATH = '/familie/alene-med-barn';
 const BASE_PATH = `${EF_BASE_PATH}/minside`;
 const routes = (router: Router) => {
-  router.get(`${BASE_PATH}/internal/isAlive|isReady`, (_req, res) =>
-    res.sendStatus(200)
-  );
+  router.get(`${BASE_PATH}/internal/isAlive|isReady`, (_req, res) => res.sendStatus(200));
 
   router.get(`${BASE_PATH}/env`, (_req, res) => {
-    res
-      .status(200)
-      .send({
-        endringsmeldingUrl: miljø.endringsmeldingUrl,
-        ettersendingUrl: miljø.ettersendingUrl,
-        søknadOvergangsstønadUrl: miljø.søknadOvergangsstønadUrl,
-        søknadBarnetilsynUrl: miljø.søknadBarnetilsynUrl,
-        søknadSkolepengerUrl: miljø.søknadSkolepengerUrl,
-        infoSideOvergangsstønadUrl: miljø.infoSideOvergangsstønadUrl,
-        infoSideBarnetilsynUrl: miljø.infoSideBarnetilsynUrl,
-        infoSideSkolepengerUrl: miljø.infoSideSkolepengerUrl,
-        saksbehandlingstiderUrl: miljø.saksbehandlingstiderUrl,
-        defaultBreadcrumbs: defaultBreadcrumbs,
-      })
-      .end();
+    res.status(200).send(appEnv).end();
   });
 
   router.use(

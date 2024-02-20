@@ -5,10 +5,11 @@ import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
 import React from 'react';
-import SideHeader from './SideHeader';
 import DineDokumenter from './DineDokumenter';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
+import SideTittel from '../../components/SideTittel';
+import DineStønader from './DineStønader';
 
 const Grid = styled.section`
   display: grid;
@@ -33,10 +34,14 @@ const Forside: React.FC = () => {
   const { appEnv } = useApp();
   setBreadcrumbs(appEnv.defaultBreadcrumbs);
 
+  const tittel = 'Dine stønader til enslig mor eller far';
+  const underTittel = 'Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger';
+
   return (
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>
-        <SideHeader />
+        <SideTittel tittel={tittel} underTittel={underTittel} ikon={true} />
+        <DineStønader />
       </Grid>
       <Stripe>
         <LenkePanelStorListe />

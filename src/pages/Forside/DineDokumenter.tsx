@@ -2,11 +2,11 @@ import { Alert, Link, VStack } from '@navikt/ds-react';
 import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
 import { useApp } from '../../context/AppContext';
 import React from 'react';
-import DataViewer from '../../components/DataViewer';
 import { Journalpost } from '../../interfaces/journalpost';
 import DokumentListe from '../Dokumentoversikt/DokumentListe';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import DataViewer from '../../components/DataViewer';
 
 const StyledDokumentListe = styled(DokumentListe)`
   .dokument-rad {
