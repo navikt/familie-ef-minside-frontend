@@ -7,7 +7,7 @@ import DokumentListe from '../Dokumentoversikt/DokumentListe';
 import styled from 'styled-components';
 import DataViewer from '../../components/DataViewer';
 import { StønadType } from '../../interfaces/stønader';
-import { utledBeskrivelse, utledVedtak } from './utils';
+import { utledBeskrivelse, utledStønadTekst, utledVedtak } from './utils';
 
 interface Props {
   stønadType: StønadType;
@@ -54,8 +54,7 @@ const DokumentVisning: React.FC<{ journalposter: Journalpost[]; stønadType: St�
   if (!harVedtak) {
     return (
       <Alert inline variant="info">
-        Vi fant ingen vedtak å vise som gjelder {stønadType}. Merk at det kun er dokumenter og
-        meldinger du har sendt inn digitalt som vil vises her.
+        Vi fant ingen vedtaksbrev å vise som gjelder {utledStønadTekst(stønadType)}.
       </Alert>
     );
   }

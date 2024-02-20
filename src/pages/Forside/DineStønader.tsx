@@ -45,25 +45,25 @@ const StønadPaneler: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
       {harOvergangsstønad && (
         <LenkePanel
           headingLevel="3"
-          redirect="intern"
           stønad={overgangsstønad}
           stønadType="overgangsstønad"
+          url="/overgangsstonad"
         />
       )}
       {harBarnetilsyn && (
         <LenkePanel
           headingLevel="3"
-          redirect="intern"
           stønad={barnetilsyn}
           stønadType="barnetilsyn"
+          url="/barnetilsyn"
         />
       )}
       {harSkolepenger && (
         <LenkePanel
           headingLevel="3"
-          redirect="intern"
           stønad={skolepenger}
           stønadType="skolepenger"
+          url="/skolepenger"
         />
       )}
     </HStack>

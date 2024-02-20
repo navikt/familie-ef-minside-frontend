@@ -18,7 +18,7 @@ export const utledBreadCrumb = (stønadType: StønadType) => {
   }
 };
 
-export const utledSidetittel = (stønadType: StønadType) => {
+export const utledStønadTekst = (stønadType: StønadType) => {
   switch (stønadType) {
     case 'overgangsstønad':
       return 'Din overgangsstønad';
@@ -71,7 +71,7 @@ export const mergeSammenhengendePerioderMedLikeBeløp = (perioder: Stønadsperio
         beløp: periode.beløp,
       } as Stønadsperiode;
 
-      return [...acc.slice(0, acc.length - 1), sammenslåttPeriode];
+      return [...acc.slice(0, -1), sammenslåttPeriode];
     }
     return [...acc, periode];
   }, [] as Stønadsperiode[]);

@@ -1,13 +1,12 @@
 import { BodyLong, HStack, LinkPanel, VStack } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AOrange50, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
-import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils/constants';
 import { HeadingLevel3 } from './ResponsiveHeadinger';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Stønad, StønadType } from '../interfaces/stønader';
-import { formaterNullableIsoDato, formaterSpesialtegn } from '../utils/formatter';
+import { formaterNullableIsoDato } from '../utils/formatter';
 import { Overgangsstønad } from '../icons/Overgangsstønad';
 import { Barnetilsyn } from '../icons/Barnetilsyn';
 import { Skolepenger } from '../icons/Skolepenger';
@@ -16,9 +15,9 @@ import { utledKomponentTittel } from '../pages/Forside/utils';
 interface Props {
   className?: string;
   headingLevel: '1' | '2' | '3' | '4' | '5';
-  redirect: 'ekstern' | 'intern';
   stønad: Stønad;
   stønadType: StønadType;
+  url: string;
 }
 
 const StyledLinkPanel = styled(LinkPanel)`
@@ -46,22 +45,17 @@ const Bold = styled.b`
   text-decoration-line: underline;
 `;
 
-const LenkePanel: React.FC<Props> = ({ className, headingLevel, redirect, stønad, stønadType }) => {
+const LenkePanel: React.FC<Props> = ({ className, headingLevel, stønad, stønadType, url }) => {
   const navigate = useNavigate();
 
-  const url = `/${formaterSpesialtegn(stønadType)}`;
+  const href = `${process.env.PUBLIC_URL}${url}`;
   const ikon = utledIkon(stønadType);
   const tittel = utledKomponentTittel(stønadType);
-  const href = redirect === 'ekstern' ? url : `${process.env.PUBLIC_URL}${url}`;
   const brødtekst = utledBrødtekst(stønadType, stønad);
 
   const handleClick = (e: React.SyntheticEvent) => {
-    if (redirect === 'ekstern') {
-      logNavigering(url, tittel, 'lenke-panel');
-    } else {
-      e.preventDefault();
-      navigate(url);
-    }
+    e.preventDefault();
+    navigate(url);
   };
 
   return (

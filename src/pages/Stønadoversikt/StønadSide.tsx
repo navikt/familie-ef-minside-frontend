@@ -8,7 +8,7 @@ import DataViewer from '../../components/DataViewer';
 import DineVedtak from './DineVedtak';
 import StønadTabell from './StønadTabell';
 import { StønadType } from '../../interfaces/stønader';
-import { utledBreadCrumb, utledSidetittel } from './utils';
+import { utledBreadCrumb, utledStønadTekst } from './utils';
 
 interface Props {
   stønadType: StønadType;
@@ -18,7 +18,7 @@ const StønadSide: React.FC<Props> = ({ stønadType }) => {
   const { appEnv, stønader, stønadStatus } = useApp();
 
   const breadCrumb = utledBreadCrumb(stønadType);
-  const tittel = utledSidetittel(stønadType);
+  const tittel = utledStønadTekst(stønadType);
   const loaderTekst = `Henter din ${stønadType}`;
   const alertTekst = `Noe gikk galt ved uthenting av ${tittel.toLocaleLowerCase()}.`;
   const stønad = stønader[`${stønadType}`];
