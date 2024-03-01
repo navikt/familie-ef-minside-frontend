@@ -16,6 +16,7 @@ TOKENX_API=<ACCESS_TOKEN>
 ```
 3. `npm install`
 4. `npm run start:preprod`
+5. Naviger til `localhost:3000/familie/alene-med-barn/minside`
 
 ## Henvendelser
 Interne henvendelser kan sendes via Slack i kanalen #team-familie.
