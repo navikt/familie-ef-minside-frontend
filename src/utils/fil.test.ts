@@ -2,8 +2,8 @@ import { describe, expect, test } from 'vitest';
 import { utledFilUrl } from './fil';
 import { Variantformat } from '../interfaces/journalpost';
 
-describe('dokumentUthenting', () => {
-  test('skal utlede riktig url for uthenting av dokument, gitt journalpostId, dokumentId og variantformat', () => {
+describe('sjekk - dokumentuthenting', () => {
+  test('skal utlede url for dokument, gitt journalpostId, dokumentId og variantformat', () => {
     const url = utledFilUrl('1234', '5678', Variantformat.ARKIV);
 
     expect(url).toBe(
