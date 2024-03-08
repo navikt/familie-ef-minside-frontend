@@ -4,7 +4,6 @@ import {
   formaterIsoDatoTid,
   formaterIsoMånedÅr,
   formaterNullableIsoDato,
-  formaterTallMedTusenSkille,
   harTallverdi,
 } from './formatter';
 

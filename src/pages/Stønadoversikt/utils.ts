@@ -45,7 +45,7 @@ export const utledPerioder = (stønadType: StønadType, perioder: Stønadsperiod
     ? sorterStønadsperioder(perioder, 'desc')
     : mergeSammenhengendePerioderMedLikeBeløp(perioder);
 
-export const sorterStønadsperioder = (perioder: Stønadsperiode[], rekkefølge: 'asc' | 'desc') =>
+const sorterStønadsperioder = (perioder: Stønadsperiode[], rekkefølge: 'asc' | 'desc') =>
   perioder
     .slice()
     .sort((a, b) => (rekkefølge === 'asc' ? sorterDatoAsc(a, b) : sorterDatoDesc(a, b)));
@@ -53,7 +53,7 @@ export const sorterStønadsperioder = (perioder: Stønadsperiode[], rekkefølge:
 const sorterDatoAsc = (a: Stønadsperiode, b: Stønadsperiode) => (a.fraDato < b.fraDato ? -1 : 1);
 const sorterDatoDesc = (a: Stønadsperiode, b: Stønadsperiode) => (a.fraDato < b.fraDato ? 1 : -1);
 
-export const mergeSammenhengendePerioderMedLikeBeløp = (perioder: Stønadsperiode[]) => {
+const mergeSammenhengendePerioderMedLikeBeløp = (perioder: Stønadsperiode[]) => {
   const sortertePerioderAsc = sorterStønadsperioder(perioder, 'asc');
 
   const sammenslåttePerioder = sortertePerioderAsc.reduce((acc, periode) => {
