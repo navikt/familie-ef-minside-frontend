@@ -18,7 +18,7 @@ export const formaterIsoDato = (dato: string): string => {
   return parseISO(dato).toLocaleDateString('no-NO', datoFormat);
 };
 
-export const formaterIsoÅrMåned = (dato: string): string => {
+export const formaterIsoMånedÅr = (dato: string): string => {
   return parseISO(dato).toLocaleDateString('no-NO', årMånedFormat);
 };
 
@@ -27,7 +27,7 @@ export const formaterIsoDatoTid = (dato: string): string => {
 };
 
 export const formaterTallMedTusenSkille = (verdi?: number): string =>
-  harTallverdi(verdi) ? Number(verdi).toLocaleString('no-NO', { currency: 'NOK' }) : '';
+  harTallverdi(verdi) ? Number(verdi).toLocaleString('no-NO') : '';
 
 export const harTallverdi = (verdi: number | undefined | null | string): boolean =>
-  verdi !== undefined && verdi !== null;
+  verdi !== undefined && verdi !== null && verdi !== '' && !isNaN(Number(verdi.toString()));

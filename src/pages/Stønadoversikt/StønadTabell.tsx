@@ -3,7 +3,7 @@ import { Stønad, Stønadsperiode, StønadType } from '../../interfaces/stønade
 import { Alert, BodyLong, HStack, Table } from '@navikt/ds-react';
 import {
   formaterIsoDato,
-  formaterIsoÅrMåned,
+  formaterIsoMånedÅr,
   formaterTallMedTusenSkille,
 } from '../../utils/formatter';
 import styled from 'styled-components';
@@ -77,9 +77,9 @@ const TabellRad: React.FC<{
 }> = ({ periode, stønadType, kolonneBredde }) => {
   const fraDato = formaterIsoDato(periode.fraDato);
   const tilDato = formaterIsoDato(periode.tilDato);
-  const årMåned = formaterIsoÅrMåned(periode.fraDato);
+  const månedÅr = formaterIsoMånedÅr(periode.fraDato);
 
-  const beløpsperiode = stønadType === 'skolepenger' ? `${årMåned}` : `${fraDato} - ${tilDato}`;
+  const beløpsperiode = stønadType === 'skolepenger' ? `${månedÅr}` : `${fraDato} - ${tilDato}`;
 
   const beløp = `${formaterTallMedTusenSkille(periode.beløp)} kr`;
 
