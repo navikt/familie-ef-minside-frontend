@@ -4,6 +4,7 @@ import {
   formaterIsoDatoTid,
   formaterIsoMånedÅr,
   formaterNullableIsoDato,
+  formaterTallMedTusenSkille,
   harTallverdi,
 } from './formatter';
 
@@ -40,6 +41,18 @@ describe('sjekk - formatering av tall, dato og tid', () => {
     expect(datoTid).toBe('31.08.2024 kl.12:30');
   });
 
+  test('skal formatere tall med tusenskille', () => {
+    expect(formaterTallMedTusenSkille(10)).toBe('10');
+    expect(formaterTallMedTusenSkille(100)).toBe('100');
+    expect(formaterTallMedTusenSkille(1000)).toBe('1\xa0000');
+    expect(formaterTallMedTusenSkille(10000)).toBe('10\xa0000');
+    expect(formaterTallMedTusenSkille(100000)).toBe('100\xa0000');
+    expect(formaterTallMedTusenSkille(1000000)).toBe('1\xa0000\xa0000');
+    expect(formaterTallMedTusenSkille(10000000)).toBe('10\xa0000\xa0000');
+    expect(formaterTallMedTusenSkille(100000000)).toBe('100\xa0000\xa0000');
+    expect(formaterTallMedTusenSkille(1000000000)).toBe('1\xa0000\xa0000\xa0000');
+  });
+
   test('sjekk - harTallverdi', () => {
     const ti = harTallverdi(10);
     const minusTi = harTallverdi(-10);
@@ -65,8 +78,4 @@ describe('sjekk - formatering av tall, dato og tid', () => {
     expect(streng).toBe(false);
     expect(tomStreng).toBe(false);
   });
-
-  // Kan ikke nødvendigvis sjekke likhet med toBe() på grunn av at funksjonen ruker toLocaleString:
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
-  // Får derfor ikke testet formaterTallMedTusenSKille() på en god måte
 });
