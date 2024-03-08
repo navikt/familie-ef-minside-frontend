@@ -17,6 +17,10 @@ TOKENX_API=<ACCESS_TOKEN>
 3. `npm install`
 4. `npm run start:preprod`
 
+## Testing
+Appen benytter [vitest](https://vitest.dev/) til frontend-testing. Legg gjerne til nye tester etter oppdateringer av utility-filene. 
+For å kjøre opp tester lokalt kan man kjøre `npm run test`. 
+
 ## Henvendelser
 Interne henvendelser kan sendes via Slack i kanalen #team-familie.
 
