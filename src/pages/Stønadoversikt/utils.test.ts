@@ -246,6 +246,12 @@ describe('sjekk - skal sortere stønadsperiodene på dato og slå sammen sammenh
     expect(perioder[2]).toEqual(lagPeriode('2023-05-01', '2023-10-31', 22000));
     expect(perioder[3]).toEqual(lagPeriode('2023-01-01', '2023-03-30', 20900));
   });
+
+  test('skal feile', () => {
+    const perioder = utledPerioder('barnetilsyn', usammenhengendePerioderLiktBeløp());
+
+    expect(perioder).toHaveLength(5);
+  });
 });
 
 const sammenHengendePerioderMedLiktBeløp = () => [
