@@ -9,12 +9,14 @@ export type ApplicationName = 'familie-ef-soknad-api';
 
 const AUTHORIZATION_HEADER = 'authorization';
 const WONDERWALL_ID_TOKEN_HEADER = 'x-wonderwall-id-token';
-const brukCookie = () => isLocal() && !brukDevApi();
+
 const attachToken = (applicationName: ApplicationName): RequestHandler => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const authenticationHeader = await prepareSecuredRequest(req, applicationName);
-      req.headers[AUTHORIZATION_HEADER] = brukCookie() ? '' : authenticationHeader.authorization;
+      req.headers[AUTHORIZATION_HEADER] =
+          isLocal() && !brukDevApi()
+              ? await getFakedingsToken(applicationName)
+              : await getAccessToken(req, applicationName);
       req.headers[WONDERWALL_ID_TOKEN_HEADER] = '';
       next();
     } catch (error) {
@@ -40,27 +42,29 @@ const utledToken = (req: Request, authorization: string | undefined) => {
   }
 };
 
-const prepareSecuredRequest = async (req: Request, applicationName: ApplicationName) => {
+const getAccessToken = async (req: Request, applicationName: ApplicationName) => {
   logInfo('PrepareSecuredRequest', req);
   if (isLocal()) {
-    const lokalToken = lokaltTokenxApi;
-    return {
-      authorization: `Bearer ${lokalToken}`,
-    };
+    return `Bearer ${lokaltTokenxApi}`
   }
 
   const { authorization } = req.headers;
-  if (erLokalt()) {
-    return { authorization: `Bearer ${req.cookies['localhost-idtoken']}` };
-  }
   const token = utledToken(req, authorization);
   logInfo('IdPorten-token found: ' + (token.length > 1), req);
   const accessToken = await exchangeToken(token, applicationName).then(
     (accessToken) => accessToken
   );
-  return {
-    authorization: `Bearer ${accessToken}`,
-  };
+  return `Bearer ${accessToken}`
+};
+
+const getFakedingsToken = async (applicationName: string): Promise<string> => {
+  const clientId = 'dev-gcp:teamfamilie:familie-ef-minside';
+  const audience = `dev-gcp:teamfamilie:${applicationName}`;
+  const url = `https://fakedings.intern.dev.nav.no/fake/tokenx?client_id=${clientId}&aud=${audience}&acr=Level4&pid=31458931375`;
+  const token = await fetch(url).then(function (body) {
+    return body.text();
+  });
+  return `Bearer ${token}`;
 };
 
 export default attachToken;
