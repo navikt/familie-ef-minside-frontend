@@ -16,7 +16,7 @@ TOKENX_API=<ACCESS_TOKEN>
 ```
 3. `npm install`
 4. `npm run start:preprod`
-5. Åpne `localhost:3000/familie/alene-med-barn/minside` i nettleseren
+5. Åpne `http://localhost:3000/familie/alene-med-barn/minside` i nettleseren
 
 ## Testing
 Appen benytter [vitest](https://vitest.dev/) til frontend-testing. Legg gjerne til nye tester etter oppdateringer av utility-filene. 
