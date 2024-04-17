@@ -1,19 +1,19 @@
-import amplitude from 'amplitude-js';
+import * as amplitude from '@amplitude/analytics-browser';
 
-const amplitudeInstance = amplitude.getInstance();
+/*Default tracking is implicit tracking performed by Amplitude on your behalf, and includes page views, sessions, file downloads, form interactions, and marketing attribution.*/
 
-amplitudeInstance.init('default', '', {
-  apiEndpoint: 'amplitude.nav.no/collect-auto',
-  saveEvents: false,
-  includeUtm: true,
-  includeReferrer: true,
-  platform: window.location.toString(),
+amplitude.init('default', undefined, {
+  serverUrl: 'https://amplitude.nav.no/collect-auto',
+  defaultTracking: false,
+  ingestionMetadata: {
+    sourceName: window.location.toString(),
+  },
 });
 
 // NAVs retningslinjer for amplitude taksonomi: https://github.com/navikt/analytics-taxonomy
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function logEvent(eventName: string, eventProperties: any) {
-  amplitudeInstance.logEvent(eventName, eventProperties);
+  amplitude.track(eventName, eventProperties);
 }
 
 export const logNavigering = (destinasjon: string, lenketekst: string, kilde?: string) => {
