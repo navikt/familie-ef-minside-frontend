@@ -69,6 +69,8 @@ const mergeSammenhengendePerioderMedLikeBeløp = (perioder: Stønadsperiode[]) =
         fraDato: prevPeriode.fraDato,
         tilDato: periode.tilDato,
         beløp: periode.beløp,
+        inntektsgrunnlag: periode.inntektsgrunnlag,
+        samordningsfradrag: periode.samordningsfradrag,
       } as Stønadsperiode;
 
       return [...acc.slice(0, -1), sammenslåttPeriode];
@@ -109,16 +111,23 @@ export const utledBrødtekst = (stønadType: StønadType) => {
 export const utledHeaderTekst = (stønadType: StønadType) => {
   switch (stønadType) {
     case 'overgangsstønad':
-      return { headerCelle1: 'Periode', headerCelle2: 'Beløp per måned før skatt' };
+      return {
+        headerPeriode: 'Periode',
+        headerBeløp: 'Beløp per måned før skatt',
+        headerInntekt: 'Inntektsgrunnlag',
+        headerSamordningsfradrag: 'Uføretrygd',
+      };
     case 'barnetilsyn':
-      return { headerCelle1: 'Periode', headerCelle2: 'Beløp per måned' };
+      return { headerPeriode: 'Periode', headerBeløp: 'Beløp per måned' };
     case 'skolepenger':
-      return { headerCelle1: 'Utbetalingsmåned', headerCelle2: 'Beløp' };
+      return { headerPeriode: 'Utbetalingsmåned', headerBeløp: 'Beløp' };
   }
 };
 
 const harSammeBeløp = (periodeLeft: Stønadsperiode, periodeRight: Stønadsperiode) =>
-  periodeLeft.beløp === periodeRight.beløp;
+  periodeLeft.beløp === periodeRight.beløp &&
+  periodeLeft.inntektsgrunnlag === periodeRight.inntektsgrunnlag &&
+  periodeLeft.samordningsfradrag === periodeRight.samordningsfradrag;
 
 // Denne utleder bredde til beløpskolonne i tabell. For høyrejustering av beløp.
 export const utledKolonnebredde = (beløp: number) => {

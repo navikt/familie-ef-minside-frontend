@@ -10,6 +10,7 @@ import {
   utledVedtak,
 } from './utils';
 import { JournalpostType, Variantformat } from '../../interfaces/journalpost';
+import { Stønadsperiode } from '../../interfaces/stønader';
 
 describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
   test('skal utlede breadcrumb gitt stønadType', () => {
@@ -70,11 +71,13 @@ describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
     const skolepenger = utledHeaderTekst('skolepenger');
 
     expect(overgangsstønad).toEqual({
-      headerCelle1: 'Periode',
-      headerCelle2: 'Beløp per måned før skatt',
+      headerPeriode: 'Periode',
+      headerBeløp: 'Beløp per måned før skatt',
+      headerSamordningsfradrag: 'Uføretrygd',
+      headerInntekt: 'Inntektsgrunnlag',
     });
-    expect(barnetilsyn).toEqual({ headerCelle1: 'Periode', headerCelle2: 'Beløp per måned' });
-    expect(skolepenger).toEqual({ headerCelle1: 'Utbetalingsmåned', headerCelle2: 'Beløp' });
+    expect(barnetilsyn).toEqual({ headerPeriode: 'Periode', headerBeløp: 'Beløp per måned' });
+    expect(skolepenger).toEqual({ headerPeriode: 'Utbetalingsmåned', headerBeløp: 'Beløp' });
   });
 
   test('skal utlede kolonnebredde gitt beløp', () => {
@@ -206,6 +209,20 @@ describe('sjekk - skal sortere stønadsperiodene på dato og slå sammen sammenh
     expect(perioder[2]).toEqual(lagPeriode('2023-05-01', '2023-10-31', 22000));
     expect(perioder[3]).toEqual(lagPeriode('2023-01-01', '2023-03-30', 20900));
   });
+
+  test('skal sortere og slå sammen perioder gitt sammenhengende perioder med like verdier for beløp, inntektsgrunnlag og samordningsfradrag', () => {
+    const perioder = utledPerioder(
+      'overgangsstønad',
+      sammenHengendePerioderMedLiktBeløpMenUlikSamordningOgInntekt()
+    );
+
+    expect(perioder).toHaveLength(5);
+    expect(perioder[0]).toEqual(lagPeriode('2023-10-01', '2024-04-30', 22000));
+    expect(perioder[1]).toEqual(lagPeriode('2023-08-01', '2023-09-30', 22000, 200000, 10000));
+    expect(perioder[2]).toEqual(lagPeriode('2023-06-01', '2023-07-31', 22000, 300000));
+    expect(perioder[3]).toEqual(lagPeriode('2023-05-01', '2023-05-31', 22000));
+    expect(perioder[4]).toEqual(lagPeriode('2023-01-01', '2023-04-30', 20900));
+  });
 });
 
 describe('sjekk - skal sortere stønadsperiodene på dato og slå sammen sammenhengende perioder med like beløp for barnetilsyn ', () => {
@@ -253,6 +270,17 @@ const sammenHengendePerioderMedLiktBeløp = () => [
   lagPeriode('2023-05-01', '2023-12-31', 22000),
   lagPeriode('2024-01-01', '2024-04-30', 22000),
   lagPeriode('2024-05-01', '2024-08-31', 2000),
+];
+
+const sammenHengendePerioderMedLiktBeløpMenUlikSamordningOgInntekt = () => [
+  lagPeriode('2023-01-01', '2023-04-30', 20900, 0, 0),
+  lagPeriode('2023-05-01', '2023-05-31', 22000, 0, 0),
+  lagPeriode('2023-06-01', '2023-06-30', 22000, 300000, 0),
+  lagPeriode('2023-07-01', '2023-07-31', 22000, 300000, 0),
+  lagPeriode('2023-08-01', '2023-08-31', 22000, 200000, 10000),
+  lagPeriode('2023-09-01', '2023-09-30', 22000, 200000, 10000),
+  lagPeriode('2023-10-01', '2023-12-31', 22000, 0, 0),
+  lagPeriode('2024-01-01', '2024-04-30', 22000, 0, 0),
 ];
 
 const sammenHengendePerioderMedLiktBeløpIkkeSortert = () => [
@@ -309,11 +337,19 @@ const dummyJournalposter = [
   lagJournalpost('Vedtak om innvilget overgangsstønad'),
 ];
 
-const lagPeriode = (fra: string, til: string, beløp: number) => {
+const lagPeriode = (
+  fra: string,
+  til: string,
+  beløp: number,
+  inntektsgrunnlag: number = 0,
+  samordningsfradrag: number = 0
+): Stønadsperiode => {
   return {
     fraDato: fra,
     tilDato: til,
     beløp: beløp,
+    inntektsgrunnlag: inntektsgrunnlag,
+    samordningsfradrag: samordningsfradrag,
   };
 };
 
