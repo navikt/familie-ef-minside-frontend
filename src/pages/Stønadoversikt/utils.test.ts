@@ -55,7 +55,10 @@ describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
     const skolepenger = utledBrødtekst('skolepenger');
 
     expect(overgangsstønad).toBe(
-      'Tabellen viser periodene dine med overgangsstønad og hvor mye du har fått eller får i stønad\n        per måned før skatt. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket\n        ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.'
+      `Tabellen viser periodene dine med overgangsstønad, hvor mye du har fått eller får i stønad 
+      per måned og hvilken inntekt vi har brukt for å beregne stønaden din. 
+      For å se hvordan vi har beregnet stønaden din, må du lese vedtaket ditt. 
+      Du finner vedtakene dine i dokumentoversikten lengre ned på siden.`
     );
     expect(barnetilsyn).toBe(
       'Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønad\n        per måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket\n        ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.'

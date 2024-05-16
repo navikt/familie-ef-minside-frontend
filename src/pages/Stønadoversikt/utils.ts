@@ -98,8 +98,7 @@ export const utledBrødtekst = (stønadType: StønadType) => {
       return `Tabellen viser periodene dine med overgangsstønad, hvor mye du har fått eller får i stønad 
       per måned og hvilken inntekt vi har brukt for å beregne stønaden din. 
       For å se hvordan vi har beregnet stønaden din, må du lese vedtaket ditt. 
-      Du finner vedtakene dine i dokumentoversikten lengre ned på siden.
-`;
+      Du finner vedtakene dine i dokumentoversikten lengre ned på siden.`;
     case 'barnetilsyn':
       return `Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønad
         per måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket
