@@ -95,9 +95,11 @@ export const utledVedtak = (journalposter: Journalpost[], stønadType: StønadTy
 export const utledBrødtekst = (stønadType: StønadType) => {
   switch (stønadType) {
     case 'overgangsstønad':
-      return `Tabellen viser periodene dine med overgangsstønad og hvor mye du har fått eller får i stønad
-        per måned før skatt. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket
-        ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.`;
+      return `Tabellen viser periodene dine med overgangsstønad, hvor mye du har fått eller får i stønad 
+      per måned og hvilken inntekt vi har brukt for å beregne stønaden din. 
+      For å se hvordan vi har beregnet stønaden din, må du lese vedtaket ditt. 
+      Du finner vedtakene dine i dokumentoversikten lengre ned på siden.
+`;
     case 'barnetilsyn':
       return `Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønad
         per måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket
@@ -115,7 +117,7 @@ export const utledHeaderTekst = (stønadType: StønadType) => {
         headerPeriode: 'Periode',
         headerBeløp: 'Beløp per måned før skatt',
         headerInntekt: 'Inntektsgrunnlag',
-        headerSamordningsfradrag: 'Uføretrygd',
+        headerSamordningsfradrag: 'Samordning',
       };
     case 'barnetilsyn':
       return { headerPeriode: 'Periode', headerBeløp: 'Beløp per måned' };

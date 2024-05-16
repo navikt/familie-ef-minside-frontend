@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Stønadsperiode, StønadType } from '../../interfaces/stønader';
-import { BodyLong, HStack, Table } from '@navikt/ds-react';
+import { BodyLong, HelpText, HStack, Table } from '@navikt/ds-react';
 import { formaterIsoDato, formaterTallMedTusenSkille } from '../../utils/formatter';
 import styled from 'styled-components';
 import { contentWidthDesktop, contentWidthMobile } from '../../utils/constants';
@@ -11,6 +11,9 @@ interface Props {
   stønadsperioder: Stønadsperiode[];
   stønadType: StønadType;
 }
+
+const samordningsfradragHjelpetekst = `Hvis du får uføretrygd, gjenlevendepensjon eller EØS-familieytelse, vil vi trekke dette månedsbeløpet fra det du får i overgangsstønad. 
+  Dette gjør vi før skatt. Vi holder barnetillegget utenfor.`;
 
 const Tabell = styled(Table)<{ bredde: string }>`
   max-width: ${(props) => props.bredde};
@@ -72,7 +75,12 @@ const TabellHeader: React.FC<{
         <Table.HeaderCell>{headerPeriode}</Table.HeaderCell>
         {!ekspanderbar && <Table.HeaderCell>{headerInntekt}</Table.HeaderCell>}
         {!ekspanderbar && harSamordningsfradrag && (
-          <Table.HeaderCell>{headerSamordningsfradrag}</Table.HeaderCell>
+          <Table.HeaderCell>
+            <HStack gap={'1'}>
+              {headerSamordningsfradrag}
+              <HelpText>{samordningsfradragHjelpetekst}</HelpText>
+            </HStack>
+          </Table.HeaderCell>
         )}
         <Table.HeaderCell>{headerBeløp}</Table.HeaderCell>
       </Table.Row>
@@ -131,7 +139,10 @@ const UtvidetTabellRad: React.FC<{
     <>
       <div>Inntektsgrunnlag: {formaterTallMedTusenSkille(periode.inntektsgrunnlag)} kr</div>
       {periode.samordningsfradrag > 0 && (
-        <div>Uføretrygd: {formaterTallMedTusenSkille(periode.samordningsfradrag)} kr</div>
+        <HStack gap={'1'}>
+          Samordning: {formaterTallMedTusenSkille(periode.samordningsfradrag)} kr{' '}
+          <HelpText>{samordningsfradragHjelpetekst}</HelpText>
+        </HStack>
       )}
     </>
   );

@@ -73,7 +73,7 @@ describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
     expect(overgangsstønad).toEqual({
       headerPeriode: 'Periode',
       headerBeløp: 'Beløp per måned før skatt',
-      headerSamordningsfradrag: 'Uføretrygd',
+      headerSamordningsfradrag: 'Samordning',
       headerInntekt: 'Inntektsgrunnlag',
     });
     expect(barnetilsyn).toEqual({ headerPeriode: 'Periode', headerBeløp: 'Beløp per måned' });
