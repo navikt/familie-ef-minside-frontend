@@ -15,6 +15,10 @@ interface Props {
 const samordningsfradragHjelpetekst = `Hvis du får uføretrygd, gjenlevendepensjon eller EØS-familieytelse, vil vi trekke dette månedsbeløpet fra det du får i overgangsstønad. 
   Dette gjør vi før skatt. Vi holder barnetillegget utenfor.`;
 
+const inntektsgrunnlagHjelpetekst = `Vi beregner overgangsstønaden ut ifra inntekten du har eller kan forvente å få i tiden som kommer. Som hovedregel bruker vi inntektsopplysninger arbeidsgiverne dine har meldt inn til offentlige registre. 
+  Vi regner om månedsinntekten din til årsinntekt
+`;
+
 const Tabell = styled(Table)<{ bredde: string }>`
   max-width: ${(props) => props.bredde};
 `;
@@ -73,7 +77,14 @@ const TabellHeader: React.FC<{
       <Table.Row>
         {ekspanderbar && <Table.HeaderCell />}
         <Table.HeaderCell>{headerPeriode}</Table.HeaderCell>
-        {!ekspanderbar && <Table.HeaderCell>{headerInntekt}</Table.HeaderCell>}
+        {!ekspanderbar && (
+          <Table.HeaderCell>
+            <HStack gap={'1'}>
+              {headerInntekt}
+              <HelpText>{inntektsgrunnlagHjelpetekst}</HelpText>
+            </HStack>
+          </Table.HeaderCell>
+        )}
         {!ekspanderbar && harSamordningsfradrag && (
           <Table.HeaderCell>
             <HStack gap={'1'}>
@@ -137,7 +148,10 @@ const UtvidetTabellRad: React.FC<{
 }> = ({ periode }) => {
   return (
     <>
-      <div>Inntektsgrunnlag: {formaterTallMedTusenSkille(periode.inntektsgrunnlag)} kr</div>
+      <HStack gap={'1'}>
+        Inntektsgrunnlag: {formaterTallMedTusenSkille(periode.inntektsgrunnlag)} kr{' '}
+        <HelpText>{inntektsgrunnlagHjelpetekst}</HelpText>
+      </HStack>
       {periode.samordningsfradrag > 0 && (
         <HStack gap={'1'}>
           Samordning: {formaterTallMedTusenSkille(periode.samordningsfradrag)} kr{' '}
