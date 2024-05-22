@@ -17,6 +17,8 @@ export interface Stønadsperiode {
   fraDato: string;
   tilDato: string;
   beløp: number;
+  inntektsgrunnlag: number; // Gjelder OS
+  samordningsfradrag: number; // Gjelder OS
 }
 
 export enum PeriodeStatus {
