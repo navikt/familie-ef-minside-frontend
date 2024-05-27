@@ -35,7 +35,7 @@
     "@navikt/ds-react": "^6.8.0",
     "@navikt/ds-tokens": "^6.1.1",
     "@navikt/nav-dekoratoren-moduler": "^2.1.6",
-    "@sentry/browser": "^7.114.0",
+    "@sentry/browser": "^8.4.0",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@amplitude/analytics-browser": "2.7.4",
