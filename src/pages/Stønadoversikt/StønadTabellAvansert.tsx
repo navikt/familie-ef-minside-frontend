@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import { Stønadsperiode, StønadType } from '../../interfaces/stønader';
-import { BodyLong, HelpText, HStack, Table } from '@navikt/ds-react';
+import { BodyLong, HelpText, HStack, ReadMore, Table } from '@navikt/ds-react';
 import { formaterIsoDato, formaterTallMedTusenSkille } from '../../utils/formatter';
 import styled from 'styled-components';
 import { contentWidthDesktop, contentWidthMobile } from '../../utils/constants';
-import { utledBrødtekst, utledHeaderTekst, utledKolonnebredde } from './utils';
+import { grunnbeløpInfo, utledBrødtekst, utledHeaderTekst, utledKolonnebredde } from './utils';
 import { useSkjermstørrelseHook } from '../../hooks/useSkjermstørrelseHook';
 
 interface Props {
@@ -42,6 +42,12 @@ const StønadTabellAvansert: React.FC<Props> = ({ stønadsperioder, stønadType 
   return (
     <>
       <BodyLong>{utledBrødtekst(stønadType)}</BodyLong>
+      {stønadType === 'overgangsstønad' && (
+        <ReadMore header={grunnbeløpInfo.overskrift} size={'small'}>
+          {grunnbeløpInfo.tekst}
+        </ReadMore>
+      )}
+
       <Tabell bredde={skjermbredde}>
         <TabellHeader
           stønadType={stønadType}

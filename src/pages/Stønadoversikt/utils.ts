@@ -109,6 +109,12 @@ export const utledBrødtekst = (stønadType: StønadType) => {
   }
 };
 
+export const grunnbeløpInfo = {
+  overskrift: 'Regulering av grunnbeløpet',
+  tekst:
+    'Grunnbeløpet i folketrygden blir endret 1. mai hvert år. Det betyr at inntektsgrunnlaget og stønadsbeløpet ditt blir endret fra samme tidspunkt.',
+};
+
 export const utledHeaderTekst = (stønadType: StønadType) => {
   switch (stønadType) {
     case 'overgangsstønad':
