@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 jobs:
-  build_and_deploy:
+  build:
     name: Build and push Docker container
     runs-on: ubuntu-latest
     steps:
@@ -43,9 +43,16 @@ jobs:
           team: teamfamilie
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
-      - name: Deploy to NAIS
-        uses: nais/deploy/actions/deploy@v2
+    outputs:
+      image: ${{ steps.docker-push.outputs.image }}
+  deploy:
+    name: Deploy to GCP
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: dev-gcp
           RESOURCE: nais-dev.yaml
-          VAR: image=${{ steps.docker-build-push.outputs.image }}
+          IMAGE: ${{ needs.build.outputs.image }}
