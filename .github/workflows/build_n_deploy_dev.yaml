@@ -3,15 +3,15 @@ name: Build, push, and deploy app to dev
 on:
   workflow_dispatch:
 
-permissions:
-  packages: write
-  id-token: write
-  contents: read
-
 jobs:
   build:
     name: Build and push Docker container
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      image: ${{ steps.docker-build-push.outputs.image }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -40,14 +40,13 @@ jobs:
           team: teamfamilie
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
-        env:
-          CLUSTER: dev-gcp
-          RESOURCE: nais-dev.yaml
-          VAR: image=${{ env.IMAGE }}
   deploy:
     name: Deploy to GCP
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: nais/deploy/actions/deploy@v2
