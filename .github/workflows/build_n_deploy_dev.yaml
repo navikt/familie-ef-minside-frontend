@@ -42,7 +42,7 @@ jobs:
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
         env:
           CLUSTER: dev-gcp
-          RESOURCE: nais.yaml
+          RESOURCE: nais-dev.yaml
           VAR: image=${{ env.IMAGE }}
   deploy:
     name: Deploy to GCP
@@ -53,5 +53,5 @@ jobs:
       - uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: dev-gcp
-          RESOURCE: .deploy/preprod.yaml
+          RESOURCE: nais-dev.yaml
           VAR: image=${{ needs.build.outputs.image }}
