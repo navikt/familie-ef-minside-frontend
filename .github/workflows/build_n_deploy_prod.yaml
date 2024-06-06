@@ -5,18 +5,15 @@ on:
     branches:
       - 'main'
 
-env:
-  IMAGE: ghcr.io/navikt/familie-ef-minside:${{ github.sha }}
-
-permissions:
-  packages: write
-  id-token: write
-  contents: read
-
 jobs:
   build:
     name: Build and push Docker container
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    outputs:
+      image: ${{ steps.docker-build-push.outputs.image }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -45,12 +42,13 @@ jobs:
           team: teamfamilie
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
-    outputs:
-      image: ${{ steps.docker-push.outputs.image }}
   deploy:
     name: Deploy to NAIS
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - name: Deploy til dev-gcp
@@ -64,3 +62,4 @@ jobs:
         env:
           CLUSTER: prod-gcp
           RESOURCE: nais-prod.yaml
+          VAR: image=${{ needs.build.outputs.image }}
