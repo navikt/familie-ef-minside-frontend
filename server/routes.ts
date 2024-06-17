@@ -23,14 +23,14 @@ const routes = (router: Router) => {
     `${BASE_PATH}/dokument`,
     addRequestInfo(),
     attachToken('familie-ef-soknad-api'),
-    doProxy(`${miljø.søknadApiProxyUrl}`, `${BASE_PATH}/dokument`)
+    doProxy(`${miljø.søknadApiProxyUrl}`)
   );
 
   router.use(
     `${BASE_PATH}/api`,
     addRequestInfo(),
     attachToken('familie-ef-soknad-api'),
-    doProxy(miljø.søknadApiProxyUrl, `${BASE_PATH}/api`)
+    doProxy(`${miljø.søknadApiProxyUrl}`)
   );
 
   router.use(`${BASE_PATH}`, express.static(buildPath, { index: false }));
