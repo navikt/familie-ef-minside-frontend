@@ -1,4 +1,4 @@
-import { createProxyMiddleware } from 'http-proxy-middleware';
+import { legacyCreateProxyMiddleware } from 'http-proxy-middleware';
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { ClientRequest, IncomingMessage } from 'http';
 import * as querystring from 'querystring';
@@ -28,7 +28,7 @@ const restream = (proxyReq: ClientRequest, req: IncomingMessage) => {
 };
 
 export const doProxy = (targetUrl: string, context: string): RequestHandler => {
-  return createProxyMiddleware(context, {
+  return legacyCreateProxyMiddleware(context, {
     changeOrigin: true,
     logLevel: 'info',
     logProvider: () => {
