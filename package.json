@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "build": "tsc && NODE_ENV=production ENV=prod PUBLIC_URL=/familie/alene-med-barn/minside webpack --config ./config/webpack.build.js",
-    "start:dev": "npm run build:dev-server && NODE_ENV=development ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node --es-module-specifier-resolution=node --trace-deprecation server/build/server-lokal.js",
-    "start:preprod": "npm run build:dev-server && NODE_ENV=development BRUK_DEV_API=true ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node --es-module-specifier-resolution=node --trace-deprecation server/build/server-lokal.js",
+    "start:dev": "npm run build:dev-server && npm run set-node-options NODE_ENV=development ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node server/build/server-lokal.js",
+    "start:preprod": "npm run build:dev-server && npm run set-node-options NODE_ENV=development BRUK_DEV_API=true ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node server/build/server-lokal.js",
     "build:dev-server": "cd server && tsc --build --verbose && cd ..",
     "test": "vitest run --exclude '**/build/**'",
-    "postinstall": "cd server && npm ci && cd .."
+    "postinstall": "cd server && npm ci && cd ..",
+    "set-node-options": "NODE_OPTIONS='--import=./server/build/register.js --es-module-specifier-resolution=node'"
   },
   "husky": {
     "hooks": {
