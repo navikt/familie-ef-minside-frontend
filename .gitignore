@@ -12,6 +12,7 @@
 # production
 /build
 /server/build
+/server/backend
 /dev-build
 
 # misc
