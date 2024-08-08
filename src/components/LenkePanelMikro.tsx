@@ -5,6 +5,7 @@ import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils/constants';
 import { HeadingLevel3 } from './ResponsiveHeadinger';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 interface Props {
   tittel: string;

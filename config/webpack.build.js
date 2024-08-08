@@ -81,6 +81,7 @@ const config = {
     }),
     new MiniCssExtractPlugin(),
     new ESLintPlugin({
+      configType: 'flat',
       extensions: [`ts`, `tsx`],
     }),
     new CopyPlugin({

@@ -21,10 +21,7 @@ const config = {
     },
     open: publicPath,
     proxy: {
-      '/api':
-        brukMockLokalt === 'true'
-          ? 'http://localhost:8092'
-          : 'http://localhost:8091',
+      '/api': brukMockLokalt === 'true' ? 'http://localhost:8092' : 'http://localhost:8091',
     },
     devMiddleware: { publicPath: publicPath },
     historyApiFallback: true,
@@ -101,6 +98,7 @@ const config = {
       overlay: false,
     }),
     new ESLintPlugin({
+      configType: 'flat',
       extensions: [`ts`, `tsx`],
     }),
     new CopyPlugin({
