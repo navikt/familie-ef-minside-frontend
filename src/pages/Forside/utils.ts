@@ -1,12 +1,22 @@
 import { StønadType } from '../../interfaces/stønader';
+import { LocaleType } from '../../language/locale';
 
-export const utledKomponentTittel = (stønadType: StønadType) => {
-  switch (stønadType) {
-    case 'overgangsstønad':
-      return 'Overgangsstønad';
-    case 'barnetilsyn':
-      return 'Stønad til barnetilsyn';
-    case 'skolepenger':
-      return 'Stønad til skolepenger';
-  }
+const titler = {
+  overgangsstønad: {
+    nb: 'Overgangsstønad',
+    en: 'Transitional benefit',
+  },
+  barnetilsyn: {
+    nb: 'Stønad til barnetilsyn',
+    en: 'Child care benefit',
+  },
+  skolepenger: {
+    nb: 'Stønad til skolepenger',
+    en: 'Support for School fees',
+  },
+};
+
+export const utledKomponentTittel = (stønadType: StønadType, locale: LocaleType) => {
+  const språk = locale === LocaleType.en ? 'en' : 'nb';
+  return titler[stønadType][språk];
 };

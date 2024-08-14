@@ -5,19 +5,21 @@ import React from 'react';
 import DataViewer from '../../components/DataViewer';
 import LenkePanel from '../../components/LenkePanel';
 import { Stønader } from '../../interfaces/stønader';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const DineStønader: React.FC = () => {
   const { stønader, stønadStatus } = useApp();
+  const { tekst } = useLocaleIntlContext();
 
   return (
     <VStack gap="2">
       <HeadingLevel2 size="small" level="2">
-        Dine stønader
+        {tekst('stonader.tittel')}
       </HeadingLevel2>
       <DataViewer
         dataStatus={stønadStatus}
-        loaderTekst="Henter dine stønader"
-        alertTekst="Noe gikk galt ved uthenting av dine stønader."
+        loaderTekst={tekst('dataViewer.henter')}
+        alertTekst={tekst('dataViewer.galt')}
       >
         <StønadPaneler stønader={stønader} />
       </DataViewer>
@@ -27,6 +29,7 @@ const DineStønader: React.FC = () => {
 
 const StønadPaneler: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
   const { overgangsstønad, barnetilsyn, skolepenger } = stønader;
+  const { tekst } = useLocaleIntlContext();
 
   const harOvergangsstønad = overgangsstønad.perioder.length > 0;
   const harBarnetilsyn = barnetilsyn.perioder.length > 0;
@@ -35,7 +38,7 @@ const StønadPaneler: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
   if (!(harOvergangsstønad || harBarnetilsyn || harSkolepenger)) {
     return (
       <Alert inline variant="info">
-        Vi fant ingen utbetalingsperioder som gjelder stønad til enslig mor eller far.
+        {tekst('stonader.ingenFunnet')}
       </Alert>
     );
   }

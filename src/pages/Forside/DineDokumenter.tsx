@@ -7,6 +7,7 @@ import DokumentListe from '../Dokumentoversikt/DokumentListe';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import DataViewer from '../../components/DataViewer';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const StyledDokumentListe = styled(DokumentListe)`
   .dokument-rad {
@@ -26,16 +27,17 @@ const Lenke = styled(Link)`
 
 const DineDokumenter: React.FC = () => {
   const { journalposter, journalpostStatus } = useApp();
+  const { tekst } = useLocaleIntlContext();
 
   return (
     <VStack gap="2">
       <HeadingLevel2 size="small" level="2">
-        Dine dokumenter
+        {tekst('dokumenter.tittel')}
       </HeadingLevel2>
       <DataViewer
         dataStatus={journalpostStatus}
-        loaderTekst="Henter dokumenter"
-        alertTekst="Noe gikk galt ved uthenting av dine dokumenter."
+        loaderTekst={tekst('dokumenter.henter')}
+        alertTekst={tekst('dokumenter.galt')}
       >
         <DokumentVisning journalposter={journalposter} />
       </DataViewer>
@@ -45,6 +47,7 @@ const DineDokumenter: React.FC = () => {
 
 const DokumentVisning: React.FC<{ journalposter: Journalpost[] }> = ({ journalposter }) => {
   const navigate = useNavigate();
+  const { tekst } = useLocaleIntlContext();
   const harDokumenter = journalposter.length > 0;
   const href = `${process.env.PUBLIC_URL}/dokumentoversikt`;
 
@@ -56,8 +59,7 @@ const DokumentVisning: React.FC<{ journalposter: Journalpost[] }> = ({ journalpo
   if (!harDokumenter) {
     return (
       <Alert inline variant="info">
-        Vi fant ingen dokumenter å vise som gjelder stønad til enslig mor eller far. Merk at det kun
-        er dokumenter og meldinger du har sendt inn digitalt som vil vises her.
+        {tekst('dokumenter.ingenFunnet')}
       </Alert>
     );
   }
@@ -66,7 +68,7 @@ const DokumentVisning: React.FC<{ journalposter: Journalpost[] }> = ({ journalpo
     <>
       <StyledDokumentListe antall={3} journalposter={journalposter} />
       <Lenke href={href} onClick={handleClick}>
-        Se alle dokumenter
+        {tekst('dokumenter.seAlle')}
       </Lenke>
     </>
   );

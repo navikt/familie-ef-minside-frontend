@@ -10,6 +10,8 @@ import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
 import SideTittel from '../../components/SideTittel';
 import DineStønader from './DineStønader';
+import { useSpråkValg } from '../../hooks/useSpråkValg';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const Grid = styled.section`
   display: grid;
@@ -31,16 +33,19 @@ const Stripe = styled(Grid)`
 `;
 
 const Forside: React.FC = () => {
+  useSpråkValg();
   const { appEnv } = useApp();
+  const { tekst } = useLocaleIntlContext();
   setBreadcrumbs(appEnv.defaultBreadcrumbs);
-
-  const tittel = 'Dine stønader til enslig mor eller far';
-  const underTittel = 'Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger';
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">
       <Grid>
-        <SideTittel tittel={tittel} underTittel={underTittel} ikon={true} />
+        <SideTittel
+          tittel={tekst('side.tittel')}
+          underTittel={tekst('side.undertittel')}
+          ikon={true}
+        />
         <DineStønader />
       </Grid>
       <Stripe>

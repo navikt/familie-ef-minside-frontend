@@ -11,6 +11,8 @@ import { Overgangsstønad } from '../icons/Overgangsstønad';
 import { Barnetilsyn } from '../icons/Barnetilsyn';
 import { Skolepenger } from '../icons/Skolepenger';
 import { utledKomponentTittel } from '../pages/Forside/utils';
+import { useSpråkContext } from '../context/SpråkContext';
+import { useLocaleIntlContext } from '../context/LocaleIntlContext';
 
 interface Props {
   className?: string;
@@ -41,17 +43,15 @@ const IkonContainer = styled.div`
   height: 2.75rem;
 `;
 
-const Bold = styled.b`
-  text-decoration-line: underline;
-`;
-
 const LenkePanel: React.FC<Props> = ({ className, headingLevel, stønad, stønadType, url }) => {
   const navigate = useNavigate();
+  const { locale } = useSpråkContext();
+  const { tekst } = useLocaleIntlContext();
 
   const href = `${process.env.PUBLIC_URL}${url}`;
   const ikon = utledIkon(stønadType);
-  const tittel = utledKomponentTittel(stønadType);
-  const brødtekst = utledBrødtekst(stønadType, stønad);
+  const tittel = utledKomponentTittel(stønadType, locale);
+  const brødtekst = utledBrødtekst(stønadType, stønad, tekst);
 
   const handleClick = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -84,30 +84,26 @@ const utledIkon = (stønadType: StønadType) => {
   }
 };
 
-const utledBrødtekst = (stønadType: StønadType, stønad: Stønad) => {
+const utledBrødtekst = (
+  stønadType: StønadType,
+  stønad: Stønad,
+  tekst: (key: string, params?: string[]) => string
+) => {
   if (stønadType === 'skolepenger') {
-    return <BodyLong>Klikk for å se detaljer</BodyLong>;
+    return <BodyLong>{tekst('tekst.seDetaljer')}</BodyLong>;
   }
 
   const startDato = formaterNullableIsoDato(stønad.startDato);
   const sluttDato = formaterNullableIsoDato(stønad.sluttDato);
 
   if (startDato && sluttDato) {
-    return (
-      <BodyLong>
-        Du har stønad fra og med <Bold>{startDato}</Bold> til og med <Bold>{sluttDato}</Bold>
-      </BodyLong>
-    );
+    <BodyLong>{tekst('tekst.fraTil', [startDato, sluttDato])}</BodyLong>;
   }
   if (sluttDato) {
-    return (
-      <BodyLong>
-        Du har stønad til og med <Bold>{sluttDato}</Bold>
-      </BodyLong>
-    );
+    return <BodyLong>{tekst('stønad.tilOgMed', [sluttDato])}</BodyLong>;
   }
 
-  return <BodyLong>Klikk for å se detaljer</BodyLong>;
+  return <BodyLong>{tekst('tekst.seDetaljer')}</BodyLong>;
 };
 
 export default LenkePanel;
