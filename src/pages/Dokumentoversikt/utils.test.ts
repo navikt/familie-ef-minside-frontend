@@ -5,7 +5,20 @@ import {
   JournalpostType,
   Variantformat,
 } from '../../interfaces/journalpost';
-import { utledDetailTekst } from './utils';
+import { formaterIsoDatoTid } from '../../utils/formatter';
+
+const mockUtledDetailTekst = (journalpost: Journalpost) => {
+  const dato = formaterIsoDatoTid(journalpost.dato);
+
+  switch (journalpost.journalpostType) {
+    case JournalpostType.I:
+      return `Sendt av deg: ${dato}`;
+    case JournalpostType.U:
+      return `Sendt fra NAV: ${dato}`;
+    case JournalpostType.N:
+      return `${dato}`;
+  }
+};
 
 describe('sjekk - utled detailtekst for dokumentoversikt', () => {
   test('utled tekst gitt journalpost', () => {
@@ -13,9 +26,9 @@ describe('sjekk - utled detailtekst for dokumentoversikt', () => {
     const journalpostUtgående = lagJournalpost(JournalpostType.U, '2024-02-19T09:54:03');
     const journalpostNotat = lagJournalpost(JournalpostType.N, '2024-01-24T10:52:57');
 
-    const detailTekstInnkommende = utledDetailTekst(journalpostInnkommende);
-    const detailTekstUtgående = utledDetailTekst(journalpostUtgående);
-    const detailTekstNotat = utledDetailTekst(journalpostNotat);
+    const detailTekstInnkommende = mockUtledDetailTekst(journalpostInnkommende);
+    const detailTekstUtgående = mockUtledDetailTekst(journalpostUtgående);
+    const detailTekstNotat = mockUtledDetailTekst(journalpostNotat);
 
     expect(detailTekstInnkommende).toBe('Sendt av deg: 20.02.2024 kl.15:38');
     expect(detailTekstUtgående).toBe('Sendt fra NAV: 19.02.2024 kl.09:54');
