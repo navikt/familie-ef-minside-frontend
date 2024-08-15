@@ -76,7 +76,7 @@ export const nb: Tekster = {
   'overgangsstønad.brødtekst.util':
     'Tabellen viser periodene dine med overgangsstønad, hvor mye du har fått eller får i stønad per måned og hvilken inntekt vi har brukt for å beregne stønaden din. For å se hvordan vi har beregnet stønaden din, må du lese vedtaket ditt. Du finner vedtakene dine i dokumentoversikten lengre ned på siden.',
   'barnetilsyn.brødtekst.util':
-    'Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønadper måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.',
+    'Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønad per måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.',
   'skolepenger.brødtekst.util':
     'Tabellen viser utbetalingsmåndene dine med skolepenger. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.',
 

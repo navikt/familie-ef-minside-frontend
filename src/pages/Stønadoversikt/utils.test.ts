@@ -1,7 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import {
   utledBeskrivelse,
-  utledBreadCrumb,
   utledBrødtekst,
   utledHeaderTekst,
   utledKolonnebredde,
@@ -11,12 +10,13 @@ import {
 } from './utils';
 import { JournalpostType, Variantformat } from '../../interfaces/journalpost';
 import { Stønadsperiode } from '../../interfaces/stønader';
+import { mockBreadCrumb, mockTekst } from '../../test/utils';
 
 describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
   test('skal utlede breadcrumb gitt stønadType', () => {
-    const overgangsstønad = utledBreadCrumb('overgangsstønad');
-    const barnetilsyn = utledBreadCrumb('barnetilsyn');
-    const skolepenger = utledBreadCrumb('skolepenger');
+    const overgangsstønad = mockBreadCrumb('overgangsstønad');
+    const barnetilsyn = mockBreadCrumb('barnetilsyn');
+    const skolepenger = mockBreadCrumb('skolepenger');
 
     expect(overgangsstønad).toEqual(
       lagBreadCrumb('/familie/alene-med-barn/minside/overgangsstonad', 'Din overgangsstønad')
@@ -30,9 +30,9 @@ describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
   });
 
   test('skal utlede stønadstekst gitt stønadType', () => {
-    const overgangsstønad = utledStønadTekst('overgangsstønad');
-    const barnetilsyn = utledStønadTekst('barnetilsyn');
-    const skolepenger = utledStønadTekst('skolepenger');
+    const overgangsstønad = mockTekst(utledStønadTekst('overgangsstønad'));
+    const barnetilsyn = mockTekst(utledStønadTekst('barnetilsyn'));
+    const skolepenger = mockTekst(utledStønadTekst('skolepenger'));
 
     expect(overgangsstønad).toBe('Din overgangsstønad');
     expect(barnetilsyn).toBe('Din stønad til barnetilsyn');
@@ -40,9 +40,9 @@ describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
   });
 
   test('skal utlede beskrivelse gitt stønadType', () => {
-    const overgangsstønad = utledBeskrivelse('overgangsstønad');
-    const barnetilsyn = utledBeskrivelse('barnetilsyn');
-    const skolepenger = utledBeskrivelse('skolepenger');
+    const overgangsstønad = mockTekst(utledBeskrivelse('overgangsstønad'));
+    const barnetilsyn = mockTekst(utledBeskrivelse('barnetilsyn'));
+    const skolepenger = mockTekst(utledBeskrivelse('skolepenger'));
 
     expect(overgangsstønad).toBe('Her vises dine vedtakdsdokumenter for overgangsstønad.');
     expect(barnetilsyn).toBe('Her vises dine vedtakdsdokumenter for stønad til barnetilsyn.');
@@ -50,21 +50,18 @@ describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
   });
 
   test('skal utlede brødtekst gitt stønadType', () => {
-    const overgangsstønad = utledBrødtekst('overgangsstønad');
-    const barnetilsyn = utledBrødtekst('barnetilsyn');
-    const skolepenger = utledBrødtekst('skolepenger');
+    const overgangsstønad = mockTekst(utledBrødtekst('overgangsstønad'));
+    const barnetilsyn = mockTekst(utledBrødtekst('barnetilsyn'));
+    const skolepenger = mockTekst(utledBrødtekst('skolepenger'));
 
     expect(overgangsstønad).toBe(
-      `Tabellen viser periodene dine med overgangsstønad, hvor mye du har fått eller får i stønad 
-      per måned og hvilken inntekt vi har brukt for å beregne stønaden din. 
-      For å se hvordan vi har beregnet stønaden din, må du lese vedtaket ditt. 
-      Du finner vedtakene dine i dokumentoversikten lengre ned på siden.`
+      'Tabellen viser periodene dine med overgangsstønad, hvor mye du har fått eller får i stønad per måned og hvilken inntekt vi har brukt for å beregne stønaden din. For å se hvordan vi har beregnet stønaden din, må du lese vedtaket ditt. Du finner vedtakene dine i dokumentoversikten lengre ned på siden.'
     );
     expect(barnetilsyn).toBe(
-      'Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønad\n        per måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket\n        ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.'
+      'Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønad per måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.'
     );
     expect(skolepenger).toBe(
-      'Tabellen viser utbetalingsmåndene dine med skolepenger. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket\n        ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.'
+      'Tabellen viser utbetalingsmåndene dine med skolepenger. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.'
     );
   });
 
@@ -74,13 +71,19 @@ describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
     const skolepenger = utledHeaderTekst('skolepenger');
 
     expect(overgangsstønad).toEqual({
-      headerPeriode: 'Periode',
-      headerBeløp: 'Beløp per måned før skatt',
-      headerSamordningsfradrag: 'Samordning',
-      headerInntekt: 'Inntektsgrunnlag',
+      headerBeløp: 'tabell.header.beløp',
+      headerInntekt: 'tabell.header.inntekt',
+      headerPeriode: 'tabell.header.periode',
+      headerSamordningsfradrag: 'tabell.header.samordningsfradrag',
     });
-    expect(barnetilsyn).toEqual({ headerPeriode: 'Periode', headerBeløp: 'Beløp per måned' });
-    expect(skolepenger).toEqual({ headerPeriode: 'Utbetalingsmåned', headerBeløp: 'Beløp' });
+    expect(barnetilsyn).toEqual({
+      headerPeriode: 'tabell.header.barnetilsyn',
+      headerBeløp: 'tabell.header.beløp.barnetilsyn',
+    });
+    expect(skolepenger).toEqual({
+      headerPeriode: 'tabell.header.skolepenger',
+      headerBeløp: 'tabell.header.beløp.skolepenger',
+    });
   });
 
   test('skal utlede kolonnebredde gitt beløp', () => {
