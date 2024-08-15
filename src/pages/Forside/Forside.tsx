@@ -10,7 +10,6 @@ import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
 import SideTittel from '../../components/SideTittel';
 import DineStønader from './DineStønader';
-import { useSpråkValg } from '../../hooks/useSpråkValg';
 import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const Grid = styled.section`
@@ -33,7 +32,6 @@ const Stripe = styled(Grid)`
 `;
 
 const Forside: React.FC = () => {
-  useSpråkValg();
   const { appEnv } = useApp();
   const { tekst } = useLocaleIntlContext();
   setBreadcrumbs(appEnv.defaultBreadcrumbs);

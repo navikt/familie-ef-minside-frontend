@@ -8,9 +8,11 @@ import Dokumentoversikt from './pages/Dokumentoversikt/Dokumentoversikt';
 import { ScrollToTop } from './utils/scrollEffect';
 import StønadSide from './pages/Stønadoversikt/StønadSide';
 import { SpråkProvider } from './context/SpråkContext';
+import { useSpråkValg } from './hooks/useSpråkValg';
 
 const App: React.FC = () => {
   const [appEnv, settAppEnv] = useState<AppEnv>();
+  useSpråkValg();
 
   React.useEffect(() => {
     hentEnv().then((env: AppEnv) => {

@@ -9,6 +9,7 @@ import DineVedtak from './DineVedtak';
 import StønadTabell from './StønadTabell';
 import { StønadType } from '../../interfaces/stønader';
 import { utledBreadCrumb, utledStønadTekst } from './utils';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 interface Props {
   stønadType: StønadType;
@@ -16,14 +17,18 @@ interface Props {
 
 const StønadSide: React.FC<Props> = ({ stønadType }) => {
   const { appEnv, stønader, stønadStatus } = useApp();
+  const { tekst } = useLocaleIntlContext();
 
   const breadCrumb = utledBreadCrumb(stønadType);
-  const tittel = utledStønadTekst(stønadType);
+  const breadCrumbTitle = tekst(utledBreadCrumb(stønadType).title);
+  const breadCrumbModifisert = { ...breadCrumb, title: breadCrumbTitle };
+
+  const tittel = tekst(utledStønadTekst(stønadType));
   const loaderTekst = `Henter din ${stønadType}`;
   const alertTekst = `Noe gikk galt ved uthenting av ${tittel.toLocaleLowerCase()}.`;
   const stønad = stønader[`${stønadType}`];
 
-  setBreadcrumbs([...appEnv.defaultBreadcrumbs, breadCrumb]);
+  setBreadcrumbs([...appEnv.defaultBreadcrumbs, breadCrumbModifisert]);
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">

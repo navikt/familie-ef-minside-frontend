@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import DataViewer from '../../components/DataViewer';
 import { StønadType } from '../../interfaces/stønader';
 import { utledBeskrivelse, utledStønadTekst, utledVedtak } from './utils';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 interface Props {
   stønadType: StønadType;
@@ -27,16 +28,17 @@ const StyledDokumentListe = styled(DokumentListe)`
 
 const DineVedtak: React.FC<Props> = ({ stønadType }) => {
   const { journalposter, journalpostStatus } = useApp();
+  const { tekst } = useLocaleIntlContext();
 
   return (
     <VStack gap="2">
       <HeadingLevel2 size="small" level="2">
-        Dine vedtak
+        {tekst('vedtak.tittel')}
       </HeadingLevel2>
       <DataViewer
         dataStatus={journalpostStatus}
-        loaderTekst="Henter vedtak"
-        alertTekst="Noe gikk galt ved uthenting av dine vedtak."
+        loaderTekst={tekst('vedtak.henter')}
+        alertTekst={tekst('vedtak.galt')}
       >
         <DokumentVisning journalposter={journalposter} stønadType={stønadType} />
       </DataViewer>
@@ -48,18 +50,19 @@ const DokumentVisning: React.FC<{ journalposter: Journalpost[]; stønadType: St�
   journalposter,
   stønadType,
 }) => {
+  const { tekst } = useLocaleIntlContext();
   const vedtak = utledVedtak(journalposter, stønadType);
   const harVedtak = vedtak.length > 0;
 
   if (!harVedtak) {
     return (
       <Alert inline variant="info">
-        Vi fant ingen vedtaksbrev å vise som gjelder {utledStønadTekst(stønadType)}.
+        {tekst('vedtak.alert', [tekst(utledStønadTekst(stønadType))])}
       </Alert>
     );
   }
 
-  const listeBeskrivelse = utledBeskrivelse(stønadType);
+  const listeBeskrivelse = tekst(utledBeskrivelse(stønadType));
 
   return (
     <>

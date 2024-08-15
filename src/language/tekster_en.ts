@@ -60,4 +60,46 @@ export const en: Tekster = {
 
   'stønad.fraTil': 'You have benefits from [0] to [1]',
   'stønad.tilOgMed': 'You have benefits until [0]',
+
+  'utbetaling.tittel': 'Your payments',
+  'utbetaling.brødtekst': 'Here you can check what you have received from NAV.',
+
+  'dokumentoversikt.breadcrumb': 'Document overview',
+  'overgangsstønad.breadcrumb': 'Your transitional benefit',
+  'barnetilsyn.breadcrumb': 'Your childcare benefit',
+  'skolepenger.breadcrumb': 'Your school fee benefit',
+
+  'overgangsstønad.beskrivelse': 'Here are your decision documents for transitional benefit.',
+  'barnetilsyn.beskrivelse': 'Here are your decision documents for childcare benefit.',
+  'skolepenger.beskrivelse': 'Here are your decision documents for school fee benefit.',
+
+  'overgangsstønad.brødtekst.util':
+    'The table shows your periods with transitional benefit, how much you have received or will receive per month, and the income we have used to calculate your benefit. To see how we have calculated your benefit, you must read your decision. You can find your decisions in the document overview further down the page.',
+  'barnetilsyn.brødtekst.util':
+    'The table shows your periods with childcare benefit and how much you have received or will receive per month. To see how we have calculated the benefit amount, you must read your decision. You can find all your decisions in the document overview further down the page.',
+  'skolepenger.brødtekst.util':
+    'The table shows your payment months with school fees. To see how we have calculated the benefit amount, you must read your decision. You can find all your decisions in the document overview further down the page.',
+
+  'grunnbeløp.tittel': 'Regulation of the basic amount',
+  'grunnbeløp.tekst':
+    'The basic amount in the National Insurance Scheme is changed on May 1st each year. This means that your income basis and benefit amount will be changed from the same date.',
+
+  'tabell.header.periode': 'Period',
+  'tabell.header.beløp': 'Amount per month before tax',
+  'tabell.header.inntekt': 'Income basis',
+  'tabell.header.samordningsfradrag': 'Coordination',
+  'tabell.header.barnetilsyn': 'Period',
+  'tabell.header.beløp.barnetilsyn': 'Amount per month',
+  'tabell.header.skolepenger': 'Payment month',
+  'tabell.header.beløp.skolepenger': 'Amount',
+
+  'inntektsgrunnlag.hjelpetekst':
+    'We calculate the transitional benefit based on the income you have or can expect to receive in the future. As a general rule, we use income information that your employers have reported to public registers. We convert your monthly income to annual income.',
+  'samordningsfradrag.hjelpetekst':
+    "If you receive disability benefits, survivor's pension, or EEA family benefits, we will deduct this monthly amount from your transitional benefit. We do this before tax. We exclude the child supplement.",
+
+  'vedtak.tittel': 'Your decisions',
+  'vedtak.henter': 'Fetching decisions',
+  'vedtak.galt': 'Something went wrong while fetching your decisions.',
+  'vedtak.alert': 'We found no decision letters to show that apply to [0].',
 };

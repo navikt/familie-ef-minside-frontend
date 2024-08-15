@@ -60,4 +60,46 @@ export const nb: Tekster = {
 
   'stønad.fraTil': 'Du har stønad fra og med [0] til og med [1]',
   'stønad.tilOgMed': 'Du har stønad til og med [0]',
+
+  'utbetaling.tittel': 'Dine utbetalinger',
+  'utbetaling.brødtekst': 'Her kan du sjekke hva du har fått utbetalt fra NAV.',
+
+  'dokumentoversikt.breadcrumb': 'Dokumentoversikt',
+  'overgangsstønad.breadcrumb': 'Din overgangsstønad',
+  'barnetilsyn.breadcrumb': 'Din stønad til barnetilsyn',
+  'skolepenger.breadcrumb': 'Din stønad til skolepenger',
+
+  'overgangsstønad.beskrivelse': 'Her vises dine vedtakdsdokumenter for overgangsstønad.',
+  'barnetilsyn.beskrivelse': 'Her vises dine vedtakdsdokumenter for stønad til barnetilsyn.',
+  'skolepenger.beskrivelse': 'Her vises dine vedtakdsdokumenter for stønad til skolepenger.',
+
+  'overgangsstønad.brødtekst.util':
+    'Tabellen viser periodene dine med overgangsstønad, hvor mye du har fått eller får i stønad per måned og hvilken inntekt vi har brukt for å beregne stønaden din. For å se hvordan vi har beregnet stønaden din, må du lese vedtaket ditt. Du finner vedtakene dine i dokumentoversikten lengre ned på siden.',
+  'barnetilsyn.brødtekst.util':
+    'Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønadper måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.',
+  'skolepenger.brødtekst.util':
+    'Tabellen viser utbetalingsmåndene dine med skolepenger. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.',
+
+  'grunnbeløp.tittel': 'Regulering av grunnbeløpet',
+  'grunnbeløp.tekst':
+    'Grunnbeløpet i folketrygden blir endret 1. mai hvert år. Det betyr at inntektsgrunnlaget og stønadsbeløpet ditt blir endret fra samme tidspunkt.',
+
+  'tabell.header.periode': 'Periode',
+  'tabell.header.beløp': 'Beløp per måned før skatt',
+  'tabell.header.inntekt': 'Inntektsgrunnlag',
+  'tabell.header.samordningsfradrag': 'Samordning',
+  'tabell.header.barnetilsyn': 'Periode',
+  'tabell.header.beløp.barnetilsyn': 'Beløp per måned',
+  'tabell.header.skolepenger': 'Utbetalingsmåned',
+  'tabell.header.beløp.skolepenger': 'Beløp',
+
+  'inntektsgrunnlag.hjelpetekst':
+    'Vi beregner overgangsstønaden ut ifra inntekten du har eller kan forvente å få i tiden som kommer. Som hovedregel bruker vi inntektsopplysninger arbeidsgiverne dine har meldt inn til offentlige registre. Vi regner om månedsinntekten din til årsinntekt.',
+  'samordningsfradrag.hjelpetekst':
+    'Hvis du får uføretrygd, gjenlevendepensjon eller EØS-familieytelse, vil vi trekke dette månedsbeløpet fra det du får i overgangsstønad. Dette gjør vi før skatt. Vi holder barnetillegget utenfor.',
+
+  'vedtak.tittel': 'Dine vedtak',
+  'vedtak.henter': 'Henter vedtak',
+  'vedtak.galt': 'Noe gikk galt ved uthenting av dine vedtak.',
+  'vedtak.alert': 'Vi fant ingen vedtaksbrev å vise som gjelder [0].',
 };

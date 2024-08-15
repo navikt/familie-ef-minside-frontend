@@ -5,24 +5,24 @@ export const mobile = 480; // px
 
 export const breadCrumbDokumentOversikt = {
   url: '/familie/alene-med-barn/minside/dokumentoversikt',
-  title: 'Dokumentoversikt',
+  title: 'dokumentoversikt.breadcrumb',
   handleInApp: false,
 };
 
 export const breadCrumbOvergangsstønad = {
   url: '/familie/alene-med-barn/minside/overgangsstonad',
-  title: 'Din overgangsstønad',
+  title: 'overgangsstønad.breadcrumb',
   handleInApp: false,
 };
 
 export const breadCrumbBarnetilsyn = {
   url: '/familie/alene-med-barn/minside/barnetilsyn',
-  title: 'Din stønad til barnetilsyn',
+  title: 'barnetilsyn.breadcrumb',
   handleInApp: false,
 };
 
 export const breadCrumbSkolepenger = {
   url: '/familie/alene-med-barn/minside/skolepenger',
-  title: 'Din stønad til skolepenger',
+  title: 'skolepenger.breadcrumb',
   handleInApp: false,
 };
