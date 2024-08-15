@@ -2,14 +2,14 @@ import { StønadType } from '../interfaces/stønader';
 import { nb } from '../language/tekster_nb';
 import { utledBreadCrumb } from '../pages/Stønadoversikt/utils';
 
-export const mockTekst = (key: string, values?: string[]) => {
+export const mockTekst = (key: string, parametre?: string[]) => {
   const tekst = nb[key];
 
-  if (values && values.length > 0) {
-    return tekst.replace(/{(\d+)}/g, (match, index) => {
-      const value = values[index];
-      return value !== undefined ? value : match;
-    });
+  if (parametre) {
+    return parametre.reduce((acc, param, index) => {
+      const placeholder = `[${index}]`;
+      return acc.replaceAll(placeholder, param);
+    }, tekst);
   }
 
   return tekst;
