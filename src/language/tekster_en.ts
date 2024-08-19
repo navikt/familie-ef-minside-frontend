@@ -1,10 +1,10 @@
 import { Tekster } from './typer';
 
 export const en: Tekster = {
-  'side.tittel': 'Your benefits for single parents',
+  'side.tittel': 'Your Benefits for Single Parents',
   'side.undertittel': 'Transitional benefit, childcare benefit, and support for school fees',
 
-  'stonader.tittel': 'Your benefits',
+  'stonader.tittel': 'Your Benefits',
   'stonader.ingenFunnet':
     'We found no payment periods related to benefits for single mother or father.',
 
@@ -25,9 +25,9 @@ export const en: Tekster = {
 
   'søke.tittel': 'Do you want to apply?',
 
-  'overgangsstønad.tittel': 'Transitional benefit',
+  'overgangsstønad.tittel': 'Transitional Benefit',
   'overgangsstønad.brødtekst':
-    'Ensures you income for up to 3 years when you have at least 60 per cent of the daily care for children under 8 years of age.',
+    'Ensures you income support for up to 3 years if you have at least 60 percent of the daily care for children under 8 years of age',
   'overgangsstønad.lenkeTekst': 'Read more about transitional benefit',
   'overgangsstønad.knapp': 'Apply for transitional benefit',
 
@@ -76,9 +76,9 @@ export const en: Tekster = {
   'overgangsstønad.brødtekst.util':
     'The table shows your periods with transitional benefit, how much you have received or will receive per month, and the income we have used to calculate your benefit. To see how we have calculated your benefit, you must read your decision. You can find your decisions in the document overview further down the page.',
   'barnetilsyn.brødtekst.util':
-    'The table shows your periods with childcare benefit and how much you have received or will receive per month. To see how we have calculated the benefit amount, you must read your decision. You can find all your decisions in the document overview further down the page.',
+    'The table shows your periods with childcare benefit and how much you have received or will receive per month. To see how we have calculated the benefit amount, please refer to your decision letter. You can find all your decisions in the document overview further down the page.',
   'skolepenger.brødtekst.util':
-    'The table shows your payment months with school fees. To see how we have calculated the benefit amount, you must read your decision. You can find all your decisions in the document overview further down the page.',
+    'The table shows your payment months with school fees. To see how we have calculated the benefit amount, please refer to your decision letter. You can find all your decisions in the document overview further down the page.',
 
   'grunnbeløp.tittel': 'Regulation of the basic amount',
   'grunnbeløp.tekst':

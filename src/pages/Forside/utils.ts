@@ -4,15 +4,15 @@ import { LocaleType } from '../../language/locale';
 const titler = {
   overgangsstønad: {
     nb: 'Overgangsstønad',
-    en: 'Transitional benefit',
+    en: 'Transitional Benefit',
   },
   barnetilsyn: {
     nb: 'Stønad til barnetilsyn',
-    en: 'Child care benefit',
+    en: 'Child Care Benefit',
   },
   skolepenger: {
     nb: 'Stønad til skolepenger',
-    en: 'Support for School fees',
+    en: 'Support for School Fees',
   },
 };
 
