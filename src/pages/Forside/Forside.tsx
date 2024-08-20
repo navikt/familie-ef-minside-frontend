@@ -34,7 +34,13 @@ const Stripe = styled(Grid)`
 const Forside: React.FC = () => {
   const { appEnv } = useApp();
   const { tekst } = useLocaleIntlContext();
-  setBreadcrumbs(appEnv.defaultBreadcrumbs);
+
+  const settBreadcrumbTitleMedTekst = appEnv.defaultBreadcrumbs.map((breadcrumb) => ({
+    ...breadcrumb,
+    title: tekst(breadcrumb.title),
+  }));
+
+  setBreadcrumbs(settBreadcrumbTitleMedTekst);
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">

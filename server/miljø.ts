@@ -101,12 +101,12 @@ export const miljø = initierMiljøvariabler();
 export const defaultBreadcrumbs: DecoratorBreadcrumb[] = [
   {
     url: miljø.minSideUrl,
-    title: 'Min side',
+    title: 'breadcrumb.minside',
     handleInApp: false,
   },
   {
     url: '/familie/alene-med-barn/minside',
-    title: 'Enslig mor eller far',
+    title: 'breadcrumb.ensligMorEllerFar',
     handleInApp: false,
   },
 ];

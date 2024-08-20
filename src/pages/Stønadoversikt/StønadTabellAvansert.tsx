@@ -38,8 +38,8 @@ const StønadTabellAvansert: React.FC<Props> = ({ stønadsperioder, stønadType 
     <>
       <BodyLong>{tekst(utledBrødtekst(stønadType))}</BodyLong>
       {stønadType === 'overgangsstønad' && (
-        <ReadMore header={grunnbeløpInfo.overskrift} size={'small'}>
-          {grunnbeløpInfo.tekst}
+        <ReadMore header={tekst(grunnbeløpInfo.overskrift)} size={'small'}>
+          {tekst(grunnbeløpInfo.tekst)}
         </ReadMore>
       )}
 
@@ -122,7 +122,7 @@ const TabellRad: React.FC<{
 
   const beløpsperiode = `${fraDato} - ${tilDato}`;
 
-  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} kr`;
+  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} nok`;
 
   return ekspanderbar ? (
     <Table.ExpandableRow content={<UtvidetTabellRad periode={periode} />}>
@@ -152,12 +152,12 @@ const UtvidetTabellRad: React.FC<{
   return (
     <>
       <HStack gap={'1'}>
-        Inntektsgrunnlag: {formaterTallMedTusenSkille(periode.inntektsgrunnlag)} kr{' '}
+        Inntektsgrunnlag: {formaterTallMedTusenSkille(periode.inntektsgrunnlag)} nok{' '}
         <HelpText>{tekst('inntektsgrunnlag.hjelpetekst')}</HelpText>
       </HStack>
       {periode.samordningsfradrag > 0 && (
         <HStack gap={'1'}>
-          Samordning: {formaterTallMedTusenSkille(periode.samordningsfradrag)} kr{' '}
+          Samordning: {formaterTallMedTusenSkille(periode.samordningsfradrag)} nok{' '}
           <HelpText>{tekst('samordningsfradrag.hjelpetekst')}</HelpText>
         </HStack>
       )}

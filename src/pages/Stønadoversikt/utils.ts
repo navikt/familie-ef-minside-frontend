@@ -145,8 +145,6 @@ export const utledKolonnebredde = (beløp: number) => {
     return '2.85rem';
   } else if (beløp < 10000) {
     return '3.65rem';
-  } else if (beløp < 100000) {
-    return '4.2rem';
   }
-  return '4.8rem';
+  return '5.5rem';
 };

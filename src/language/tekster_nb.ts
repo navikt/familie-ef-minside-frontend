@@ -78,7 +78,7 @@ export const nb: Tekster = {
   'barnetilsyn.brødtekst.util':
     'Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønad per måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.',
   'skolepenger.brødtekst.util':
-    'Tabellen viser utbetalingsmåndene dine med skolepenger. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.',
+    'Tabellen viser utbetalingsmånedene dine med stønad til skolepenger. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.',
 
   'grunnbeløp.tittel': 'Regulering av grunnbeløpet',
   'grunnbeløp.tekst':
@@ -102,4 +102,7 @@ export const nb: Tekster = {
   'vedtak.henter': 'Henter vedtak',
   'vedtak.galt': 'Noe gikk galt ved uthenting av dine vedtak.',
   'vedtak.alert': 'Vi fant ingen vedtaksbrev å vise som gjelder [0].',
+
+  'breadcrumb.minside': 'Min side',
+  'breadcrumb.ensligMorEllerFar': 'Enslig mor eller far',
 };
