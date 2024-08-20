@@ -61,7 +61,7 @@ describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
       'Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønad per måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.'
     );
     expect(skolepenger).toBe(
-      'Tabellen viser utbetalingsmåndene dine med skolepenger. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.'
+      'Tabellen viser utbetalingsmånedene dine med stønad til skolepenger. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.'
     );
   });
 
@@ -91,8 +91,8 @@ describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
     expect(utledKolonnebredde(10)).toBe('2.3rem');
     expect(utledKolonnebredde(100)).toBe('2.85rem');
     expect(utledKolonnebredde(1000)).toBe('3.65rem');
-    expect(utledKolonnebredde(10000)).toBe('4.2rem');
-    expect(utledKolonnebredde(100000)).toBe('4.8rem');
+    expect(utledKolonnebredde(10000)).toBe('5.5rem');
+    expect(utledKolonnebredde(100000)).toBe('5.5rem');
   });
 });
 
