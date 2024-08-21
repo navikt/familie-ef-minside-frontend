@@ -7,6 +7,7 @@ import { Journalpost } from '../../interfaces/journalpost';
 import { utledDetailTekst } from './utils';
 import { utledFilUrl } from '../../utils/fil';
 import VedleggListe from './VedleggListe';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const ListElement = styled.li`
   display: grid;
@@ -34,7 +35,8 @@ interface Props {
 }
 
 const Dokument: React.FC<Props> = ({ journalpost }) => {
-  const detailTekst = utledDetailTekst(journalpost);
+  const { tekst } = useLocaleIntlContext();
+  const detailTekst = utledDetailTekst(journalpost, tekst);
   const harVedlegg = journalpost.vedlegg.length > 0;
   const urlHovedDokument = utledFilUrl(
     journalpost.journalpostId,

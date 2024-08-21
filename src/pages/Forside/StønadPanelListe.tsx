@@ -5,44 +5,46 @@ import { Skolepenger } from '../../icons/Skolepenger';
 import StønadPanel from '../../components/StønadPanel';
 import { HStack, VStack } from '@navikt/ds-react';
 import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const StønadPanelListe: React.FC = () => {
   const { appEnv } = useApp();
+  const { tekst } = useLocaleIntlContext();
 
   return (
     <VStack gap="2">
       <HeadingLevel2 size="small" level="2">
-        Ønsker du å søke?
+        {tekst('søke.tittel')}
       </HeadingLevel2>
       <HStack gap="4">
         <StønadPanel
-          tittel="Overgangsstønad"
+          tittel={tekst('overgangsstønad.tittel')}
           headingLevel="3"
-          brødtekst="Sikrer deg inntekt i inntil 3 år når du har minst 60 prosent av den daglige omsorgen for barn under 8 år."
+          brødtekst={tekst('overgangsstønad.brødtekst')}
           ikon={<Overgangsstønad width={44} height={44} />}
-          lenkeTekst="Les mer om overgangsstønad"
+          lenkeTekst={tekst('overgangsstønad.lenkeTekst')}
           lenkeUrl={appEnv.infoSideOvergangsstønadUrl}
-          knappTekst="Søk overgangsstønad"
+          knappTekst={tekst('overgangsstønad.knapp')}
           knappUrl={appEnv.søknadOvergangsstønadUrl}
         />
         <StønadPanel
-          tittel="Stønad til barnetilsyn"
+          tittel={tekst('barnetilsyn.tittel')}
           headingLevel="3"
-          brødtekst="Dekker deler av utgiftene til barnehage, skolefritidsordning (SFO) eller dagmamma når du er alene med barn og er i arbeid."
+          brødtekst={tekst('barnetilsyn.brødtekst')}
           ikon={<Barnetilsyn width={44} height={44} />}
-          lenkeTekst="Les mer om stønad til barnetilsyn"
+          lenkeTekst={tekst('barnetilsyn.lenkeTekst')}
           lenkeUrl={appEnv.infoSideBarnetilsynUrl}
-          knappTekst="Søk stønad til barnetilsyn"
+          knappTekst={tekst('barnetilsyn.knapp')}
           knappUrl={appEnv.søknadBarnetilsynUrl}
         />
         <StønadPanel
-          tittel="Stønad til skolepenger"
+          tittel={tekst('skolepenger.tittel')}
           headingLevel="3"
-          brødtekst="Dekker utgifter til studieavgift, semesteravgift og eksamensgebyr når du tar utdanning og er alene med barn."
+          brødtekst={tekst('skolepenger.brødtekst')}
           ikon={<Skolepenger width={44} height={44} />}
-          lenkeTekst="Les mer om stønad til skolepenger"
+          lenkeTekst={tekst('skolepenger.lenkeTekst')}
           lenkeUrl={appEnv.infoSideSkolepengerUrl}
-          knappTekst="Søk stønad til skolepenger"
+          knappTekst={tekst('skolepenger.knapp')}
           knappUrl={appEnv.søknadSkolepengerUrl}
         />
       </HStack>

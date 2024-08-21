@@ -9,6 +9,7 @@ import {
   desktop,
   mobile,
 } from './constants';
+import { mockTekst } from '../test/utils';
 
 describe('sjekk - globale konstanter', () => {
   test('skjermbredder', () => {
@@ -22,16 +23,19 @@ describe('sjekk - globale konstanter', () => {
   });
 
   test('brødsmuler', () => {
+    const test = mockTekst('stonader.tittel');
+    expect(test).toBe('Dine stønader');
+
     expect(breadCrumbDokumentOversikt.url).toBe('/familie/alene-med-barn/minside/dokumentoversikt');
-    expect(breadCrumbDokumentOversikt.title).toBe('Dokumentoversikt');
+    expect(mockTekst(breadCrumbDokumentOversikt.title)).toBe('Dokumentoversikt');
 
     expect(breadCrumbOvergangsstønad.url).toBe('/familie/alene-med-barn/minside/overgangsstonad');
-    expect(breadCrumbOvergangsstønad.title).toBe('Din overgangsstønad');
+    expect(mockTekst(breadCrumbOvergangsstønad.title)).toBe('Din overgangsstønad');
 
     expect(breadCrumbBarnetilsyn.url).toBe('/familie/alene-med-barn/minside/barnetilsyn');
-    expect(breadCrumbBarnetilsyn.title).toBe('Din stønad til barnetilsyn');
+    expect(mockTekst(breadCrumbBarnetilsyn.title)).toBe('Din stønad til barnetilsyn');
 
     expect(breadCrumbSkolepenger.url).toBe('/familie/alene-med-barn/minside/skolepenger');
-    expect(breadCrumbSkolepenger.title).toBe('Din stønad til skolepenger');
+    expect(mockTekst(breadCrumbSkolepenger.title)).toBe('Din stønad til skolepenger');
   });
 });

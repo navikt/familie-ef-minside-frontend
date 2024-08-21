@@ -30,9 +30,7 @@ const SideTittel: React.FC<Props> = ({ tittel, underTittel, ikon }) => (
       <HeadingLevel1 size="medium" level="1">
         {tittel}
       </HeadingLevel1>
-      {underTittel && (
-        <UnderTittel>Overgangsstønad, stønad til barnetilsyn og stønad til skolepenger</UnderTittel>
-      )}
+      {underTittel && <UnderTittel>{underTittel}</UnderTittel>}
     </VStack>
   </HStack>
 );

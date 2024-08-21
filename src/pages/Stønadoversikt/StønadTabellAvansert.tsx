@@ -6,18 +6,12 @@ import styled from 'styled-components';
 import { contentWidthDesktop, contentWidthMobile } from '../../utils/constants';
 import { grunnbeløpInfo, utledBrødtekst, utledHeaderTekst, utledKolonnebredde } from './utils';
 import { useSkjermstørrelseHook } from '../../hooks/useSkjermstørrelseHook';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 interface Props {
   stønadsperioder: Stønadsperiode[];
   stønadType: StønadType;
 }
-
-const samordningsfradragHjelpetekst = `Hvis du får uføretrygd, gjenlevendepensjon eller EØS-familieytelse, vil vi trekke dette månedsbeløpet fra det du får i overgangsstønad. 
-  Dette gjør vi før skatt. Vi holder barnetillegget utenfor.`;
-
-const inntektsgrunnlagHjelpetekst = `Vi beregner overgangsstønaden ut ifra inntekten du har eller kan forvente å få i tiden som kommer. Som hovedregel bruker vi inntektsopplysninger arbeidsgiverne dine har meldt inn til offentlige registre. 
-  Vi regner om månedsinntekten din til årsinntekt
-`;
 
 const Tabell = styled(Table)<{ bredde: string }>`
   max-width: ${(props) => props.bredde};
@@ -33,6 +27,7 @@ const maksBeløpForPeriode = (ekspanderbar: boolean) => (periode: Stønadsperiod
     : Math.max(periode.samordningsfradrag, periode.inntektsgrunnlag, periode.beløp);
 
 const StønadTabellAvansert: React.FC<Props> = ({ stønadsperioder, stønadType }) => {
+  const { tekst } = useLocaleIntlContext();
   const { erLitenSkjerm } = useSkjermstørrelseHook();
   const skjermbredde = erLitenSkjerm ? `${contentWidthMobile}px` : `${contentWidthDesktop}px`;
 
@@ -41,10 +36,10 @@ const StønadTabellAvansert: React.FC<Props> = ({ stønadsperioder, stønadType 
   const harSamordningsfradrag = stønadsperioder.some((periode) => periode.samordningsfradrag > 0);
   return (
     <>
-      <BodyLong>{utledBrødtekst(stønadType)}</BodyLong>
+      <BodyLong>{tekst(utledBrødtekst(stønadType))}</BodyLong>
       {stønadType === 'overgangsstønad' && (
-        <ReadMore header={grunnbeløpInfo.overskrift} size={'small'}>
-          {grunnbeløpInfo.tekst}
+        <ReadMore header={tekst(grunnbeløpInfo.overskrift)} size={'small'}>
+          {tekst(grunnbeløpInfo.tekst)}
         </ReadMore>
       )}
 
@@ -77,29 +72,30 @@ const TabellHeader: React.FC<{
 }> = ({ stønadType, ekspanderbar, harSamordningsfradrag }) => {
   const { headerPeriode, headerBeløp, headerInntekt, headerSamordningsfradrag } =
     utledHeaderTekst(stønadType);
+  const { tekst } = useLocaleIntlContext();
 
   return (
     <Table.Header>
       <Table.Row>
         {ekspanderbar && <Table.HeaderCell />}
-        <Table.HeaderCell>{headerPeriode}</Table.HeaderCell>
+        <Table.HeaderCell>{tekst(headerPeriode)}</Table.HeaderCell>
         {!ekspanderbar && (
           <Table.HeaderCell>
             <HStack gap={'1'}>
-              {headerInntekt}
-              <HelpText>{inntektsgrunnlagHjelpetekst}</HelpText>
+              {headerInntekt && tekst(headerInntekt)}
+              <HelpText>{tekst('inntektsgrunnlag.hjelpetekst')}</HelpText>
             </HStack>
           </Table.HeaderCell>
         )}
         {!ekspanderbar && harSamordningsfradrag && (
           <Table.HeaderCell>
             <HStack gap={'1'}>
-              {headerSamordningsfradrag}
-              <HelpText>{samordningsfradragHjelpetekst}</HelpText>
+              {headerSamordningsfradrag && tekst(headerSamordningsfradrag)}
+              <HelpText>{tekst('samordningsfradrag.hjelpetekst')}</HelpText>
             </HStack>
           </Table.HeaderCell>
         )}
-        <Table.HeaderCell>{headerBeløp}</Table.HeaderCell>
+        <Table.HeaderCell>{tekst(headerBeløp)}</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
   );
@@ -126,7 +122,7 @@ const TabellRad: React.FC<{
 
   const beløpsperiode = `${fraDato} - ${tilDato}`;
 
-  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} kr`;
+  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} NOK`;
 
   return ekspanderbar ? (
     <Table.ExpandableRow content={<UtvidetTabellRad periode={periode} />}>
@@ -152,16 +148,17 @@ const TabellRad: React.FC<{
 const UtvidetTabellRad: React.FC<{
   periode: Stønadsperiode;
 }> = ({ periode }) => {
+  const { tekst } = useLocaleIntlContext();
   return (
     <>
       <HStack gap={'1'}>
-        Inntektsgrunnlag: {formaterTallMedTusenSkille(periode.inntektsgrunnlag)} kr{' '}
-        <HelpText>{inntektsgrunnlagHjelpetekst}</HelpText>
+        Inntektsgrunnlag: {formaterTallMedTusenSkille(periode.inntektsgrunnlag)} NOK{' '}
+        <HelpText>{tekst('inntektsgrunnlag.hjelpetekst')}</HelpText>
       </HStack>
       {periode.samordningsfradrag > 0 && (
         <HStack gap={'1'}>
-          Samordning: {formaterTallMedTusenSkille(periode.samordningsfradrag)} kr{' '}
-          <HelpText>{samordningsfradragHjelpetekst}</HelpText>
+          Samordning: {formaterTallMedTusenSkille(periode.samordningsfradrag)} NOK{' '}
+          <HelpText>{tekst('samordningsfradrag.hjelpetekst')}</HelpText>
         </HStack>
       )}
     </>

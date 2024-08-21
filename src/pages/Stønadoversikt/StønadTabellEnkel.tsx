@@ -9,6 +9,7 @@ import {
 import styled from 'styled-components';
 import { contentWidthMobile } from '../../utils/constants';
 import { utledBrødtekst, utledHeaderTekst, utledKolonnebredde } from './utils';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 interface Props {
   stønadsperioder: Stønadsperiode[];
@@ -24,12 +25,13 @@ const BeløpWrapper = styled(HStack)<{ bredde: string }>`
 `;
 
 const StønadTabellEnkel: React.FC<Props> = ({ stønadsperioder, stønadType }) => {
+  const { tekst } = useLocaleIntlContext();
   const størstBeløp = Math.max(...stønadsperioder.map((periode) => periode.beløp));
   const kolonneBredde = utledKolonnebredde(størstBeløp);
 
   return (
     <>
-      <BodyLong>{utledBrødtekst(stønadType)}</BodyLong>
+      <BodyLong>{tekst(utledBrødtekst(stønadType))}</BodyLong>
       <Tabell>
         <TabellHeader stønadType={stønadType} />
         <Table.Body>
@@ -49,12 +51,12 @@ const StønadTabellEnkel: React.FC<Props> = ({ stønadsperioder, stønadType }) 
 
 const TabellHeader: React.FC<{ stønadType: StønadType }> = ({ stønadType }) => {
   const { headerPeriode, headerBeløp } = utledHeaderTekst(stønadType);
-
+  const { tekst } = useLocaleIntlContext();
   return (
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell>{headerPeriode}</Table.HeaderCell>
-        <Table.HeaderCell>{headerBeløp}</Table.HeaderCell>
+        <Table.HeaderCell>{tekst(headerPeriode)}</Table.HeaderCell>
+        <Table.HeaderCell>{tekst(headerBeløp)}</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
   );
@@ -71,7 +73,7 @@ const TabellRad: React.FC<{
 
   const beløpsperiode = stønadType === 'skolepenger' ? `${månedÅr}` : `${fraDato} - ${tilDato}`;
 
-  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} kr`;
+  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} NOK`;
 
   return (
     <Table.Row>

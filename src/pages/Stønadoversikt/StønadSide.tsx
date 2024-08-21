@@ -1,5 +1,4 @@
 import React from 'react';
-import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
 import SideTittel from '../../components/SideTittel';
 import { Grid, Stripe } from './Grid';
@@ -8,22 +7,23 @@ import DataViewer from '../../components/DataViewer';
 import DineVedtak from './DineVedtak';
 import StønadTabell from './StønadTabell';
 import { StønadType } from '../../interfaces/stønader';
-import { utledBreadCrumb, utledStønadTekst } from './utils';
+import { utledStønadTekst } from './utils';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useSettBreadcrumbTekster } from '../../hooks/useBreadcrumbTekster';
 
 interface Props {
   stønadType: StønadType;
 }
 
 const StønadSide: React.FC<Props> = ({ stønadType }) => {
-  const { appEnv, stønader, stønadStatus } = useApp();
+  const { stønader, stønadStatus } = useApp();
+  const { tekst } = useLocaleIntlContext();
+  useSettBreadcrumbTekster(stønadType);
 
-  const breadCrumb = utledBreadCrumb(stønadType);
-  const tittel = utledStønadTekst(stønadType);
+  const tittel = tekst(utledStønadTekst(stønadType));
   const loaderTekst = `Henter din ${stønadType}`;
   const alertTekst = `Noe gikk galt ved uthenting av ${tittel.toLocaleLowerCase()}.`;
   const stønad = stønader[`${stønadType}`];
-
-  setBreadcrumbs([...appEnv.defaultBreadcrumbs, breadCrumb]);
 
   return (
     <main id="maincontent" tabIndex={-1} role="main">

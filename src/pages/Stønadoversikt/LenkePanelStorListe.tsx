@@ -1,23 +1,25 @@
 import LenkePanelStor from '../../components/LenkePanelStor';
 import { useApp } from '../../context/AppContext';
 import { HStack } from '@navikt/ds-react';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const LenkePanelStorListe: React.FC = () => {
   const { appEnv } = useApp();
+  const { tekst } = useLocaleIntlContext();
 
   return (
     <HStack gap="4">
       <LenkePanelStor
-        tittel="Melde fra om endring"
+        tittel={tekst('endre.tittel')}
         headingLevel="3"
-        brødtekst="Her kan du melde fra om endringer som kan påvirke stønaden din."
+        brødtekst={tekst('endre.brødtekst')}
         url={appEnv.endringsmeldingUrl}
         redirect="ekstern"
       />
       <LenkePanelStor
-        tittel="Dine utbetalinger"
+        tittel={tekst('utbetaling.tittel')}
         headingLevel="3"
-        brødtekst="Her kan du sjekke hva du har fått utbetalt fra NAV."
+        brødtekst={tekst('utbetaling.brødtekst')}
         url={appEnv.utbetalingsoversiktUrl}
         redirect="ekstern"
       />

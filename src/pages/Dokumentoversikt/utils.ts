@@ -1,14 +1,17 @@
 import { Journalpost, JournalpostType } from '../../interfaces/journalpost';
 import { formaterIsoDatoTid } from '../../utils/formatter';
 
-export const utledDetailTekst = (journalpost: Journalpost) => {
+export const utledDetailTekst = (
+  journalpost: Journalpost,
+  tekst: (key: string, params?: string[]) => string
+) => {
   const dato = formaterIsoDatoTid(journalpost.dato);
 
   switch (journalpost.journalpostType) {
     case JournalpostType.I:
-      return `Sendt av deg: ${dato}`;
+      return tekst('journalpost.deg', [dato]);
     case JournalpostType.U:
-      return `Sendt fra NAV: ${dato}`;
+      return tekst('journalpost.nav', [dato]);
     case JournalpostType.N:
       return `${dato}`;
   }

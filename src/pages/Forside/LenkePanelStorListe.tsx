@@ -2,27 +2,29 @@ import LenkePanelStor from '../../components/LenkePanelStor';
 import { useApp } from '../../context/AppContext';
 import { HStack, VStack } from '@navikt/ds-react';
 import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const LenkePanelStorListe: React.FC = () => {
   const { appEnv } = useApp();
+  const { tekst } = useLocaleIntlContext();
 
   return (
     <VStack gap="2">
       <HeadingLevel2 size="small" level="2">
-        Skal du melde fra om endringer eller ettersende dokumentasjon?
+        {tekst('endreEllerEttersende.tittel')}
       </HeadingLevel2>
       <HStack gap="4">
         <LenkePanelStor
-          tittel="Melde fra om endring"
+          tittel={tekst('endre.tittel')}
           headingLevel="3"
-          brødtekst="Her kan du melde fra om endringer som kan påvirke stønaden din."
+          brødtekst={tekst('endre.brødtekst')}
           url={appEnv.endringsmeldingUrl}
           redirect="ekstern"
         />
         <LenkePanelStor
-          tittel="Ettersende dokumentasjon"
+          tittel={tekst('ettersende.tittel')}
           headingLevel="3"
-          brødtekst="Her kan du ettersende dokumenter til saken din."
+          brødtekst={tekst('ettersende.brødtekst')}
           url={appEnv.ettersendingUrl}
           redirect="ekstern"
         />

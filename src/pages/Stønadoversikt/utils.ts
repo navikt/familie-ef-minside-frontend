@@ -21,22 +21,22 @@ export const utledBreadCrumb = (stønadType: StønadType) => {
 export const utledStønadTekst = (stønadType: StønadType) => {
   switch (stønadType) {
     case 'overgangsstønad':
-      return 'Din overgangsstønad';
+      return 'overgangsstønad.breadcrumb';
     case 'barnetilsyn':
-      return 'Din stønad til barnetilsyn';
+      return 'barnetilsyn.breadcrumb';
     case 'skolepenger':
-      return 'Din stønad til skolepenger';
+      return 'skolepenger.breadcrumb';
   }
 };
 
 export const utledBeskrivelse = (stønadType: StønadType) => {
   switch (stønadType) {
     case 'overgangsstønad':
-      return 'Her vises dine vedtakdsdokumenter for overgangsstønad.';
+      return 'overgangsstønad.beskrivelse';
     case 'barnetilsyn':
-      return 'Her vises dine vedtakdsdokumenter for stønad til barnetilsyn.';
+      return 'barnetilsyn.beskrivelse';
     case 'skolepenger':
-      return 'Her vises dine vedtakdsdokumenter for stønad til skolepenger.';
+      return 'skolepenger.beskrivelse';
   }
 };
 
@@ -95,39 +95,38 @@ export const utledVedtak = (journalposter: Journalpost[], stønadType: StønadTy
 export const utledBrødtekst = (stønadType: StønadType) => {
   switch (stønadType) {
     case 'overgangsstønad':
-      return `Tabellen viser periodene dine med overgangsstønad, hvor mye du har fått eller får i stønad 
-      per måned og hvilken inntekt vi har brukt for å beregne stønaden din. 
-      For å se hvordan vi har beregnet stønaden din, må du lese vedtaket ditt. 
-      Du finner vedtakene dine i dokumentoversikten lengre ned på siden.`;
+      return `overgangsstønad.brødtekst.util`;
     case 'barnetilsyn':
-      return `Tabellen viser periodene dine med barnetilsyn og hvor mye du har fått eller får i stønad
-        per måned. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket
-        ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.`;
+      return `barnetilsyn.brødtekst.util`;
     case 'skolepenger':
-      return `Tabellen viser utbetalingsmåndene dine med skolepenger. For å se hvordan vi har regnet ut stønadsbeløpet, må du lese vedtaket
-        ditt. Du finner alle vedtakene dine i dokumentoversikten lengre ned på siden.`;
+      return `skolepenger.brødtekst.util`;
   }
 };
 
 export const grunnbeløpInfo = {
-  overskrift: 'Regulering av grunnbeløpet',
-  tekst:
-    'Grunnbeløpet i folketrygden blir endret 1. mai hvert år. Det betyr at inntektsgrunnlaget og stønadsbeløpet ditt blir endret fra samme tidspunkt.',
+  overskrift: 'grunnbeløp.tittel',
+  tekst: 'grunnbeløp.tekst',
 };
 
 export const utledHeaderTekst = (stønadType: StønadType) => {
   switch (stønadType) {
     case 'overgangsstønad':
       return {
-        headerPeriode: 'Periode',
-        headerBeløp: 'Beløp per måned før skatt',
-        headerInntekt: 'Inntektsgrunnlag',
-        headerSamordningsfradrag: 'Samordning',
+        headerPeriode: 'tabell.header.periode',
+        headerBeløp: 'tabell.header.beløp',
+        headerInntekt: 'tabell.header.inntekt',
+        headerSamordningsfradrag: 'tabell.header.samordningsfradrag',
       };
     case 'barnetilsyn':
-      return { headerPeriode: 'Periode', headerBeløp: 'Beløp per måned' };
+      return {
+        headerPeriode: 'tabell.header.barnetilsyn',
+        headerBeløp: 'tabell.header.beløp.barnetilsyn',
+      };
     case 'skolepenger':
-      return { headerPeriode: 'Utbetalingsmåned', headerBeløp: 'Beløp' };
+      return {
+        headerPeriode: 'tabell.header.skolepenger',
+        headerBeløp: 'tabell.header.beløp.skolepenger',
+      };
   }
 };
 
@@ -146,8 +145,6 @@ export const utledKolonnebredde = (beløp: number) => {
     return '2.85rem';
   } else if (beløp < 10000) {
     return '3.65rem';
-  } else if (beløp < 100000) {
-    return '4.2rem';
   }
-  return '4.8rem';
+  return '5.5rem';
 };
