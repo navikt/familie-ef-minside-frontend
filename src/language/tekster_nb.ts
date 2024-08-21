@@ -105,4 +105,8 @@ export const nb: Tekster = {
 
   'breadcrumb.minside': 'Min side',
   'breadcrumb.ensligMorEllerFar': 'Enslig mor eller far',
+
+  'titler.overgangsstønad': 'Overgangsstønad',
+  'titler.barnetilsyn': 'Stønad til barnetilsyn',
+  'titler.skolepenger': 'Stønad til skolepenger',
 };

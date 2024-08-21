@@ -122,7 +122,7 @@ const TabellRad: React.FC<{
 
   const beløpsperiode = `${fraDato} - ${tilDato}`;
 
-  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} nok`;
+  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} NOK`;
 
   return ekspanderbar ? (
     <Table.ExpandableRow content={<UtvidetTabellRad periode={periode} />}>
@@ -152,12 +152,12 @@ const UtvidetTabellRad: React.FC<{
   return (
     <>
       <HStack gap={'1'}>
-        Inntektsgrunnlag: {formaterTallMedTusenSkille(periode.inntektsgrunnlag)} nok{' '}
+        Inntektsgrunnlag: {formaterTallMedTusenSkille(periode.inntektsgrunnlag)} NOK{' '}
         <HelpText>{tekst('inntektsgrunnlag.hjelpetekst')}</HelpText>
       </HStack>
       {periode.samordningsfradrag > 0 && (
         <HStack gap={'1'}>
-          Samordning: {formaterTallMedTusenSkille(periode.samordningsfradrag)} nok{' '}
+          Samordning: {formaterTallMedTusenSkille(periode.samordningsfradrag)} NOK{' '}
           <HelpText>{tekst('samordningsfradrag.hjelpetekst')}</HelpText>
         </HStack>
       )}

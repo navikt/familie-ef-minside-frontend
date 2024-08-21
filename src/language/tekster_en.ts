@@ -104,4 +104,8 @@ export const en: Tekster = {
 
   'breadcrumb.minside': 'My Page',
   'breadcrumb.ensligMorEllerFar': 'Single Parent',
+
+  'titler.overgangsstønad': 'Transitional Benefit',
+  'titler.barnetilsyn': 'Child Care Benefit',
+  'titler.skolepenger': 'Support for School Fees',
 };

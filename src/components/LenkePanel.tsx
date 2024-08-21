@@ -11,7 +11,6 @@ import { Overgangsstønad } from '../icons/Overgangsstønad';
 import { Barnetilsyn } from '../icons/Barnetilsyn';
 import { Skolepenger } from '../icons/Skolepenger';
 import { utledKomponentTittel } from '../pages/Forside/utils';
-import { useSpråkContext } from '../context/SpråkContext';
 import { useLocaleIntlContext } from '../context/LocaleIntlContext';
 
 interface Props {
@@ -45,12 +44,11 @@ const IkonContainer = styled.div`
 
 const LenkePanel: React.FC<Props> = ({ className, headingLevel, stønad, stønadType, url }) => {
   const navigate = useNavigate();
-  const { locale } = useSpråkContext();
   const { tekst } = useLocaleIntlContext();
 
   const href = `${process.env.PUBLIC_URL}${url}`;
   const ikon = utledIkon(stønadType);
-  const tittel = utledKomponentTittel(stønadType, locale);
+  const tittel = tekst(utledKomponentTittel(stønadType));
   const brødtekst = utledBrødtekst(stønadType, stønad, tekst);
 
   const handleClick = (e: React.SyntheticEvent) => {
