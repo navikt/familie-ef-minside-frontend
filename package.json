@@ -43,7 +43,7 @@
     "@typescript-eslint/eslint-plugin": "^8.4.0",
     "axios": "^1.7.7",
     "constate": "^3.3.2",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "eslint": "^9.10.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
