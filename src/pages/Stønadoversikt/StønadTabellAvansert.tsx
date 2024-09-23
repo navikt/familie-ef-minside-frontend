@@ -122,25 +122,35 @@ const TabellRad: React.FC<{
 
   const beløpsperiode = `${fraDato} - ${tilDato}`;
 
-  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} NOK`;
+  const beløpMedTusenSkilleOgNokEllerNull = (beløp: number) => {
+    if (beløp === 0) {
+      return beløp;
+    }
+
+    return `${formaterTallMedTusenSkille(beløp)} NOK`;
+  };
 
   return ekspanderbar ? (
     <Table.ExpandableRow content={<UtvidetTabellRad periode={periode} />}>
       <Table.DataCell>{beløpsperiode}</Table.DataCell>
-      <VerdiCelle bredde={kolonneBredde}>{beløp}</VerdiCelle>
+      <VerdiCelle bredde={kolonneBredde}>
+        {beløpMedTusenSkilleOgNokEllerNull(periode.beløp)}
+      </VerdiCelle>
     </Table.ExpandableRow>
   ) : (
     <Table.Row>
       <Table.DataCell>{beløpsperiode}</Table.DataCell>
       <VerdiCelle bredde={kolonneBredde}>
-        {formaterTallMedTusenSkille(periode.inntektsgrunnlag)}
+        {beløpMedTusenSkilleOgNokEllerNull(periode.inntektsgrunnlag)}
       </VerdiCelle>
       {harSamordningsfradrag && (
         <VerdiCelle bredde={kolonneBredde}>
-          {formaterTallMedTusenSkille(periode.samordningsfradrag)}
+          {beløpMedTusenSkilleOgNokEllerNull(periode.samordningsfradrag)}
         </VerdiCelle>
       )}
-      <VerdiCelle bredde={kolonneBredde}>{beløp}</VerdiCelle>
+      <VerdiCelle bredde={kolonneBredde}>
+        {beløpMedTusenSkilleOgNokEllerNull(periode.beløp)}
+      </VerdiCelle>
     </Table.Row>
   );
 };
