@@ -14,7 +14,7 @@ const mockUtledDetailTekst = (journalpost: Journalpost) => {
     case JournalpostType.I:
       return `Sendt av deg: ${dato}`;
     case JournalpostType.U:
-      return `Sendt fra NAV: ${dato}`;
+      return `Sendt fra Nav: ${dato}`;
     case JournalpostType.N:
       return `${dato}`;
   }
@@ -31,7 +31,7 @@ describe('sjekk - utled detailtekst for dokumentoversikt', () => {
     const detailTekstNotat = mockUtledDetailTekst(journalpostNotat);
 
     expect(detailTekstInnkommende).toBe('Sendt av deg: 20.02.2024 kl.15:38');
-    expect(detailTekstUtgående).toBe('Sendt fra NAV: 19.02.2024 kl.09:54');
+    expect(detailTekstUtgående).toBe('Sendt fra Nav: 19.02.2024 kl.09:54');
     expect(detailTekstNotat).toBe('24.01.2024 kl.10:52');
   });
 });
