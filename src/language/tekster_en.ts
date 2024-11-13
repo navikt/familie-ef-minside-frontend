@@ -52,7 +52,7 @@ export const en: Tekster = {
   'vedlegg.tittel': 'Attachments',
 
   'journalpost.deg': 'Sent by you: [0]',
-  'journalpost.nav': 'Sent from NAV: [0]',
+  'journalpost.nav': 'Sent from Nav: [0]',
 
   'dataViewer.henter': 'Fetching your benefits',
   'dataViewer.galt': 'Something went wrong while fetching your benefits.',
@@ -61,7 +61,7 @@ export const en: Tekster = {
   'stønad.tilOgMed': 'You have this benefit until [0]',
 
   'utbetaling.tittel': 'Your payments',
-  'utbetaling.brødtekst': 'Here you can check what you have received from NAV.',
+  'utbetaling.brødtekst': 'Here you can check what you have received from Nav.',
 
   'dokumentoversikt.breadcrumb': 'Document overview',
   'overgangsstønad.breadcrumb': 'Your transitional benefit',

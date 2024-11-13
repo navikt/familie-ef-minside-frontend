@@ -53,7 +53,7 @@ export const nb: Tekster = {
   'vedlegg.tittel': 'Vedlegg',
 
   'journalpost.deg': 'Sendt av deg: [0]',
-  'journalpost.nav': 'Sendt fra NAV: [0]',
+  'journalpost.nav': 'Sendt fra Nav: [0]',
 
   'dataViewer.henter': 'Henter dine stønader',
   'dataViewer.galt': 'Noe gikk galt ved uthenting av dine stønader.',
@@ -62,7 +62,7 @@ export const nb: Tekster = {
   'stønad.tilOgMed': 'Du har stønad til og med [0]',
 
   'utbetaling.tittel': 'Dine utbetalinger',
-  'utbetaling.brødtekst': 'Her kan du sjekke hva du har fått utbetalt fra NAV.',
+  'utbetaling.brødtekst': 'Her kan du sjekke hva du har fått utbetalt fra Nav.',
 
   'dokumentoversikt.breadcrumb': 'Dokumentoversikt',
   'overgangsstønad.breadcrumb': 'Din overgangsstønad',
