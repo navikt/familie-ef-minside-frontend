@@ -48,6 +48,7 @@ export const nb: Tekster = {
   'snarveier.skrivTilOss': 'Skriv til oss',
   'snarveier.utbetalingsoversikt': 'Utbetalingsoversikt',
   'snarveier.utvidetBarnetrygd': 'Utvidet barnetrygd',
+  'snarveier.klage': 'Klage',
 
   'tekst.seDetaljer': 'Klikk for å se detaljer',
   'vedlegg.tittel': 'Vedlegg',

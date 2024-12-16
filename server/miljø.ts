@@ -18,6 +18,7 @@ interface Environment {
   saksbehandlingstiderUrl: string;
   utbetalingsoversiktUrl: string;
   utvidetBarnetrygdUrl: string;
+  klageUrl: string;
 }
 export const brukDevApi = () => process.env.BRUK_DEV_API === 'true';
 
@@ -41,6 +42,7 @@ const lokaltMiljø: Environment = {
   saksbehandlingstiderUrl: 'https://www.ekstern.dev.nav.no/saksbehandlingstider',
   utbetalingsoversiktUrl: 'https://www.nav.no/utbetalingsoversikt',
   utvidetBarnetrygdUrl: 'https://www.nav.no/utvidet-barnetrygd',
+  klageUrl: 'https://www.nav.no/klage',
 };
 
 const devMiljø: Environment = {
@@ -62,6 +64,7 @@ const devMiljø: Environment = {
   saksbehandlingstiderUrl: 'https://www.ekstern.dev.nav.no/saksbehandlingstider',
   utbetalingsoversiktUrl: 'https://www.nav.no/utbetalingsoversikt',
   utvidetBarnetrygdUrl: 'https://www.nav.no/utvidet-barnetrygd',
+  klageUrl: 'https://www.nav.no/klage',
 };
 
 const prodMiljø: Environment = {
@@ -80,6 +83,7 @@ const prodMiljø: Environment = {
   saksbehandlingstiderUrl: 'https://www.nav.no/saksbehandlingstider',
   utbetalingsoversiktUrl: 'https://www.nav.no/utbetalingsoversikt',
   utvidetBarnetrygdUrl: 'https://www.nav.no/utvidet-barnetrygd',
+  klageUrl: 'https://www.nav.no/klage',
 };
 
 const initierMiljøvariabler = (): Environment => {
@@ -123,6 +127,7 @@ export const appEnv = {
   saksbehandlingstiderUrl: miljø.saksbehandlingstiderUrl,
   utbetalingsoversiktUrl: miljø.utbetalingsoversiktUrl,
   utvidetBarnetrygdUrl: miljø.utvidetBarnetrygdUrl,
+  klageUrl: miljø.klageUrl,
   defaultBreadcrumbs: defaultBreadcrumbs,
 };
 

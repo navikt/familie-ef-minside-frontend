@@ -19,6 +19,7 @@ export interface AppEnv {
   saksbehandlingstiderUrl: string;
   utbetalingsoversiktUrl: string;
   utvidetBarnetrygdUrl: string;
+  klageUrl: string;
   defaultBreadcrumbs: DecoratorBreadcrumb[];
 }
 

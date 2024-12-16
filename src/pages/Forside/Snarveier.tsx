@@ -38,6 +38,12 @@ const Snarveier: React.FC = () => {
           url={appEnv.utvidetBarnetrygdUrl}
           redirect="ekstern"
         />
+        <LenkePanelMikro
+          tittel={tekst('snarveier.klage')}
+          headingLevel="3"
+          url={appEnv.klageUrl}
+          redirect="ekstern"
+        />
       </HStack>
     </VStack>
   );
