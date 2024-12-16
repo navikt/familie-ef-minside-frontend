@@ -27,10 +27,6 @@ const Grid = styled.section`
   }
 `;
 
-const InfoStripe = styled(Alert)`
-  margin-top: 1rem;
-`;
-
 const DokumentOversikt: React.FC = () => {
   const { appEnv, journalposter, journalpostStatus } = useApp();
   const { tekst } = useLocaleIntlContext();
@@ -53,26 +49,23 @@ const DokumentOversikt: React.FC = () => {
     <main id="maincontent" tabIndex={-1} role="main">
       <DataViewer
         dataStatus={journalpostStatus}
-        loaderTekst={'Henter dokumenter'}
-        alertTekst={'Noe gikk galt ved uthenting av dine dokumenter.'}
+        loaderTekst={tekst('dokumenter.henter')}
+        alertTekst={tekst('dokumenter.galt')}
       >
         <Grid>
           <VStack gap="5">
             <HeadingLevel1 size="medium" level="1">
-              Dokumentoversikt
+              {tekst('dokumentoversikt.tittel')}
             </HeadingLevel1>
-            <UnderTittel spacing>
-              Her finner du dokumentene dine som gjelder stønad til enslig mor eller far. Du kan
-              bare se dokumenter og meldinger du har sendt inn digitalt.
-            </UnderTittel>
+            <UnderTittel spacing>{tekst('dokumentoversikt.undertittel')}</UnderTittel>
+            {!harDokumenter ? (
+              <DokumentListe journalposter={journalposter} />
+            ) : (
+              <Alert inline variant="info">
+                {tekst('dokumentoversikt.ingenFunnet')}
+              </Alert>
+            )}
           </VStack>
-          {harDokumenter ? (
-            <DokumentListe journalposter={journalposter} />
-          ) : (
-            <InfoStripe inline variant="info">
-              Vi fant ingen dokumenter å vise.
-            </InfoStripe>
-          )}
         </Grid>
       </DataViewer>
     </main>
