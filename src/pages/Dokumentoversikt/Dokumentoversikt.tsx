@@ -12,6 +12,7 @@ import { Alert, VStack } from '@navikt/ds-react';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
 import DataViewer from '../../components/DataViewer';
+import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const Grid = styled.section`
   display: grid;
@@ -32,8 +33,19 @@ const InfoStripe = styled(Alert)`
 
 const DokumentOversikt: React.FC = () => {
   const { appEnv, journalposter, journalpostStatus } = useApp();
+  const { tekst } = useLocaleIntlContext();
 
-  setBreadcrumbs([...appEnv.defaultBreadcrumbs, breadCrumbDokumentOversikt]);
+  const defaultBreadCrumbMedTekst = appEnv.defaultBreadcrumbs.map((breadcrumb) => ({
+    ...breadcrumb,
+    title: tekst(breadcrumb.title),
+  }));
+
+  const dokumentoversiktBreadcrumb = {
+    ...breadCrumbDokumentOversikt,
+    title: tekst(breadCrumbDokumentOversikt.title),
+  };
+
+  setBreadcrumbs([...defaultBreadCrumbMedTekst, dokumentoversiktBreadcrumb]);
 
   const harDokumenter = journalposter.length > 0;
 
