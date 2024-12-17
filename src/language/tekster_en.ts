@@ -52,6 +52,7 @@ export const en: Tekster = {
   'snarveier.skrivTilOss': 'Write to us',
   'snarveier.utbetalingsoversikt': 'Payment overview',
   'snarveier.utvidetBarnetrygd': 'Extended child benefit',
+  'snarveier.klage': 'Complaint',
 
   'tekst.seDetaljer': 'Click to see details',
   'vedlegg.tittel': 'Attachments',
