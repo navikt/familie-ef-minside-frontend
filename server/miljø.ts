@@ -42,21 +42,6 @@ const lagMiljø = (overskriv: Partial<Environment>): Environment => ({
   ...overskriv,
 });
 
-const lokaltMiljø: Environment = lagMiljø({
-  port: 3000,
-  søknadApiProxyUrl: brukDevApi()
-    ? 'https://familie-ef-soknad-api.intern.dev.nav.no/familie/alene-med-barn/soknad-api/api'
-    : 'http://localhost:8091/api',
-  oAuthCallbackUri: 'https://localhost:8080/familie/alene-med-barn/minside/oauth2/callback',
-  ettersendingUrl: 'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/ettersending',
-  søknadOvergangsstønadUrl: 'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/',
-  søknadBarnetilsynUrl:
-    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/barnetilsyn',
-  søknadSkolepengerUrl:
-    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/skolepenger',
-  klageUrl: 'https://klage.intern.dev.nav.no/',
-});
-
 const devMiljø: Environment = lagMiljø({
   minSideUrl: 'https://www.intern.dev.nav.no/minside/',
   oAuthCallbackUri:
@@ -68,6 +53,15 @@ const devMiljø: Environment = lagMiljø({
   søknadSkolepengerUrl:
     'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/skolepenger',
   klageUrl: 'https://klage.intern.dev.nav.no/',
+});
+
+const lokaltMiljø: Environment = lagMiljø({
+  ...devMiljø,
+  port: 3000,
+  søknadApiProxyUrl: brukDevApi()
+    ? 'https://familie-ef-soknad-api.intern.dev.nav.no/familie/alene-med-barn/soknad-api/api'
+    : 'http://localhost:8091/api',
+  oAuthCallbackUri: 'https://localhost:8080/familie/alene-med-barn/minside/oauth2/callback',
 });
 
 const prodMiljø: Environment = lagMiljø({});
