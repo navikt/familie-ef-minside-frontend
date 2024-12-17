@@ -22,6 +22,11 @@ export const en: Tekster = {
   'dokumenter.henter': 'Fetching documents',
   'dokumenter.galt': 'Something went wrong while fetching your documents.',
 
+  'dokumentoversikt.tittel': 'Your documents',
+  'dokumentoversikt.undertittel':
+    'Here you can find your documents relating to single parent benefits. You can only view documents and messages you have submitted digitally.',
+  'dokumentoversikt.ingenFunnet': 'We found no documents to show.',
+
   'søke.tittel': 'Do you want to apply?',
 
   'overgangsstønad.tittel': 'Transitional Benefit',

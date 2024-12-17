@@ -23,6 +23,11 @@ export const nb: Tekster = {
   'dokumenter.henter': 'Henter dokumenter',
   'dokumenter.galt': 'Noe gikk galt ved uthenting av dine dokumenter.',
 
+  'dokumentoversikt.tittel': 'Dine dokumenter',
+  'dokumentoversikt.undertittel':
+    'Her finner du dokumentene dine som gjelder stønad til enslig mor eller far. Du kan bare se dokumenter og meldinger du har sendt inn digitalt.',
+  'dokumentoversikt.ingenFunnet': 'Vi fant ingen dokumenter å vise.',
+
   'søke.tittel': 'Ønsker du å søke?',
 
   'overgangsstønad.tittel': 'Overgangsstønad',
