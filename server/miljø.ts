@@ -25,16 +25,13 @@ export const brukDevApi = () => process.env.BRUK_DEV_API === 'true';
 const lagMiljø = (overskriv: Partial<Environment>): Environment => ({
   port: 8080,
   søknadApiProxyUrl: 'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api/api',
-  minSideUrl: 'https://www.intern.dev.nav.no/minside/',
-  oAuthCallbackUri:
-    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/minside/oauth2/callback',
+  minSideUrl: 'https://www.nav.no/minside/',
+  oAuthCallbackUri: 'https://www.nav.no/familie/alene-med-barn/minside/oauth2/callback',
   endringsmeldingUrl: 'https://innboks.nav.no/s/skriv-til-oss?category=Familie',
-  ettersendingUrl: 'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/ettersending',
-  søknadOvergangsstønadUrl: 'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/',
-  søknadBarnetilsynUrl:
-    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/barnetilsyn',
-  søknadSkolepengerUrl:
-    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/skolepenger',
+  ettersendingUrl: 'https://www.nav.no/familie/alene-med-barn/ettersending',
+  søknadOvergangsstønadUrl: 'https://www.nav.no/familie/alene-med-barn/soknad',
+  søknadBarnetilsynUrl: 'https://www.nav.no/familie/alene-med-barn/soknad/barnetilsyn',
+  søknadSkolepengerUrl: 'https://www.nav.no/familie/alene-med-barn/soknad/skolepenger',
   infoSideOvergangsstønadUrl: 'https://www.nav.no/overgangsstonad-enslig',
   infoSideBarnetilsynUrl: 'https://www.nav.no/barnetilsyn-enslig',
   infoSideSkolepengerUrl: 'https://www.nav.no/skolepenger-enslig',
@@ -51,18 +48,29 @@ const lokaltMiljø: Environment = lagMiljø({
     ? 'https://familie-ef-soknad-api.intern.dev.nav.no/familie/alene-med-barn/soknad-api/api'
     : 'http://localhost:8091/api',
   oAuthCallbackUri: 'https://localhost:8080/familie/alene-med-barn/minside/oauth2/callback',
+  ettersendingUrl: 'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/ettersending',
+  søknadOvergangsstønadUrl: 'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/',
+  søknadBarnetilsynUrl:
+    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/barnetilsyn',
+  søknadSkolepengerUrl:
+    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/skolepenger',
+  klageUrl: 'https://klage.intern.dev.nav.no/',
 });
 
-const devMiljø: Environment = lagMiljø({});
-
-const prodMiljø: Environment = lagMiljø({
-  minSideUrl: 'https://www.nav.no/minside/',
-  oAuthCallbackUri: 'https://www.nav.no/familie/alene-med-barn/minside/oauth2/callback',
-  ettersendingUrl: 'https://www.nav.no/familie/alene-med-barn/ettersending',
-  søknadOvergangsstønadUrl: 'https://www.nav.no/familie/alene-med-barn/soknad',
-  søknadBarnetilsynUrl: 'https://www.nav.no/familie/alene-med-barn/soknad/barnetilsyn',
-  søknadSkolepengerUrl: 'https://www.nav.no/familie/alene-med-barn/soknad/skolepenger',
+const devMiljø: Environment = lagMiljø({
+  minSideUrl: 'https://www.intern.dev.nav.no/minside/',
+  oAuthCallbackUri:
+    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/minside/oauth2/callback',
+  ettersendingUrl: 'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/ettersending',
+  søknadOvergangsstønadUrl: 'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/',
+  søknadBarnetilsynUrl:
+    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/barnetilsyn',
+  søknadSkolepengerUrl:
+    'https://familie.ekstern.dev.nav.no/familie/alene-med-barn/soknad/skolepenger',
+  klageUrl: 'https://klage.intern.dev.nav.no/',
 });
+
+const prodMiljø: Environment = lagMiljø({});
 
 const initierMiljøvariabler = (): Environment => {
   switch (process.env.ENV) {
