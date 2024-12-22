@@ -38,15 +38,15 @@
     "@navikt/ds-tokens": "^7.0.0",
     "@navikt/nav-dekoratoren-moduler": "^3.1.1",
     "@sentry/browser": "^8.41.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "@typescript-eslint/eslint-plugin": "^8.16.0",
     "axios": "^1.7.8",
     "constate": "^3.3.2",
     "date-fns": "^4.1.0",
     "eslint": "^9.16.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-router-dom": "^7.0.1",
     "styled-components": "^6.1.13"
   },
@@ -72,7 +72,7 @@
     "html-webpack-plugin": "^5.6.3",
     "husky": "^9.1.7",
     "mini-css-extract-plugin": "^2.9.2",
-    "npm": "^10.9.1",
+    "npm": "^11.0.0",
     "postcss-loader": "^8.1.1",
     "prettier": "^3.4.1",
     "pretty-quick": "^4.0.0",
@@ -85,6 +85,6 @@
     "url-loader": "^4.1.1",
     "vitest": "^2.1.6",
     "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^6.0.1"
   }
 }
