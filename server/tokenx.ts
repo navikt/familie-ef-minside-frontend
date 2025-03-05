@@ -2,8 +2,8 @@ import { Issuer } from 'openid-client';
 import jwt from 'jsonwebtoken';
 import { v4 as uuid } from 'uuid';
 import nodeJose from 'node-jose';
-import logger from './logger.js';
-import { ApplicationName } from './tokenProxy.js';
+import logger from './logger';
+import { ApplicationName } from './tokenProxy';
 import { isLocal, miljø } from './miljø';
 
 class TokenXClient {

@@ -1,5 +1,5 @@
 import { injectDecoratorServerSide } from '@navikt/nav-dekoratoren-moduler/ssr/index.js';
-import logger from './logger.js';
+import logger from './logger';
 import { defaultBreadcrumbs } from './miljø';
 type NaisEnv = 'prod' | 'dev';
 

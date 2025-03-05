@@ -1,9 +1,9 @@
 import express, { Router } from 'express';
 import path from 'path';
-import getHtmlWithDecorator from './decorator.js';
-import logger from './logger.js';
-import { addRequestInfo, doProxy } from './proxy.js';
-import attachToken from './tokenProxy.js';
+import getHtmlWithDecorator from './decorator';
+import logger from './logger';
+import { addRequestInfo, doProxy } from './proxy';
+import attachToken from './tokenProxy';
 import { appEnv, defaultBreadcrumbs, miljø } from './miljø';
 
 const buildPath =
