@@ -1,6 +1,6 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
-import TokenXClient from './tokenx.js';
-import { logWarn, logInfo } from './logger.js';
+import TokenXClient from './tokenx';
+import { logWarn, logInfo } from './logger';
 import { brukDevApi, isLocal, lokaltTokenxApi } from './miljø';
 
 const { exchangeToken } = new TokenXClient();
@@ -14,9 +14,9 @@ const attachToken = (applicationName: ApplicationName): RequestHandler => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       req.headers[AUTHORIZATION_HEADER] =
-          isLocal() && !brukDevApi()
-              ? await getFakedingsToken(applicationName)
-              : await getAccessToken(req, applicationName);
+        isLocal() && !brukDevApi()
+          ? await getFakedingsToken(applicationName)
+          : await getAccessToken(req, applicationName);
       req.headers[WONDERWALL_ID_TOKEN_HEADER] = '';
       next();
     } catch (error) {
@@ -45,7 +45,7 @@ const utledToken = (req: Request, authorization: string | undefined) => {
 const getAccessToken = async (req: Request, applicationName: ApplicationName) => {
   logInfo('PrepareSecuredRequest', req);
   if (isLocal()) {
-    return `Bearer ${lokaltTokenxApi}`
+    return `Bearer ${lokaltTokenxApi}`;
   }
 
   const { authorization } = req.headers;
@@ -54,7 +54,7 @@ const getAccessToken = async (req: Request, applicationName: ApplicationName) =>
   const accessToken = await exchangeToken(token, applicationName).then(
     (accessToken) => accessToken
   );
-  return `Bearer ${accessToken}`
+  return `Bearer ${accessToken}`;
 };
 
 const getFakedingsToken = async (applicationName: string): Promise<string> => {
