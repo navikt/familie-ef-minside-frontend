@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 import nodeJose from 'node-jose';
 import logger from './logger.js';
 import { ApplicationName } from './tokenProxy.js';
-import { isLocal, miljø } from './miljø.js';
+import { isLocal, miljø } from './miljø';
 
 class TokenXClient {
   private tokenxClient: any = null;

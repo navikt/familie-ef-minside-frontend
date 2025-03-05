@@ -4,7 +4,7 @@ import getHtmlWithDecorator from './decorator.js';
 import logger from './logger.js';
 import { addRequestInfo, doProxy } from './proxy.js';
 import attachToken from './tokenProxy.js';
-import { appEnv, defaultBreadcrumbs, miljø } from './miljø.js';
+import { appEnv, defaultBreadcrumbs, miljø } from './miljø';
 
 const buildPath =
   process.env.NODE_ENV !== 'development'
