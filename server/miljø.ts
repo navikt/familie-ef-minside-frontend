@@ -27,7 +27,7 @@ const lagMiljø = (overskriv: Partial<Environment>): Environment => ({
   søknadApiProxyUrl: 'http://familie-ef-soknad-api/familie/alene-med-barn/soknad-api/api',
   minSideUrl: 'https://www.nav.no/minside/',
   oAuthCallbackUri: 'https://www.nav.no/familie/alene-med-barn/minside/oauth2/callback',
-  endringsmeldingUrl: 'https://innboks.nav.no/s/skriv-til-oss?category=Familie',
+  endringsmeldingUrl: 'https://innboks.nav.no/s/beskjed-til-oss?category=Endring-enslig',
   ettersendingUrl: 'https://www.nav.no/familie/alene-med-barn/ettersending',
   søknadOvergangsstønadUrl: 'https://www.nav.no/familie/alene-med-barn/soknad',
   søknadBarnetilsynUrl: 'https://www.nav.no/familie/alene-med-barn/soknad/barnetilsyn',
