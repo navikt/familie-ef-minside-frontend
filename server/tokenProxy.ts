@@ -53,7 +53,9 @@ const getAccessToken = async (req: Request, audience: string) => {
   const { authorization } = req.headers;
   const token = utledToken(req, authorization);
   logInfo('IdPorten-token found: ' + (token.length > 1), req);
-  const accessToken = await exchangeToken(token, audience).then((accessToken) => accessToken);
+  const accessToken = await exchangeToken(token, audience).then(
+    (accessToken) => accessToken.access_token
+  );
   return `Bearer ${accessToken}`;
 };
 
