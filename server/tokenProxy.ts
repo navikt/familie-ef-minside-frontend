@@ -1,9 +1,8 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
-import TokenXClient from './tokenx';
 import { logWarn, logInfo } from './logger';
 import { brukDevApi, isLocal, lokaltTokenxApi } from './miljø';
-
-const { exchangeToken } = new TokenXClient();
+import { TexasClient } from './texas';
+const { exchangeToken } = new TexasClient();
 
 export type ApplicationName = 'familie-ef-soknad-api';
 
@@ -12,11 +11,14 @@ const WONDERWALL_ID_TOKEN_HEADER = 'x-wonderwall-id-token';
 
 const attachToken = (applicationName: ApplicationName): RequestHandler => {
   return async (req: Request, res: Response, next: NextFunction) => {
+    const cluster = erProd() ? 'prod-gcp' : 'dev-gcp';
+    const audience = `${cluster}:teamfamilie:${applicationName}`;
+
     try {
       req.headers[AUTHORIZATION_HEADER] =
         isLocal() && !brukDevApi()
           ? await getFakedingsToken(applicationName)
-          : await getAccessToken(req, applicationName);
+          : await getAccessToken(req, audience);
       req.headers[WONDERWALL_ID_TOKEN_HEADER] = '';
       next();
     } catch (error) {
@@ -26,8 +28,8 @@ const attachToken = (applicationName: ApplicationName): RequestHandler => {
   };
 };
 
-const erLokalt = () => {
-  return process.env.ENV === 'localhost';
+const erProd = () => {
+  return process.env.ENV === 'prod';
 };
 
 const harBearerToken = (authorization: string) => {
@@ -42,7 +44,7 @@ const utledToken = (req: Request, authorization: string | undefined) => {
   }
 };
 
-const getAccessToken = async (req: Request, applicationName: ApplicationName) => {
+const getAccessToken = async (req: Request, audience: string) => {
   logInfo('PrepareSecuredRequest', req);
   if (isLocal()) {
     return `Bearer ${lokaltTokenxApi}`;
@@ -51,9 +53,7 @@ const getAccessToken = async (req: Request, applicationName: ApplicationName) =>
   const { authorization } = req.headers;
   const token = utledToken(req, authorization);
   logInfo('IdPorten-token found: ' + (token.length > 1), req);
-  const accessToken = await exchangeToken(token, applicationName).then(
-    (accessToken) => accessToken
-  );
+  const accessToken = await exchangeToken(token, audience).then((accessToken) => accessToken);
   return `Bearer ${accessToken}`;
 };
 
