@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { envVar } from './envVar';
-import logger from './logger';
 
 interface SuksesseResponse {
   access_token: string;
@@ -17,14 +16,12 @@ export class TexasClient {
       user_token: token,
     };
 
-    logger.info(`exchangeToken request: ${JSON.stringify(requestBody)}`);
-
     const response = await axios.post<SuksesseResponse>(exchangeTokenUrl, requestBody, {
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    logger.info(`exchangeToken response: ${JSON.stringify(response.data)}`);
+
     return response.data;
   }
 
