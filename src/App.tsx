@@ -23,7 +23,7 @@ const App: React.FC = () => {
   if (!appEnv) {
     return (
       <HStack justify={'center'}>
-        <Loader size={'xlarge'} onResize={undefined} onResizeCapture={undefined} />
+        <Loader size={'xlarge'} />
       </HStack>
     );
   }
