@@ -73,7 +73,7 @@ const TabellRad: React.FC<{
 
   const beløpsperiode = stønadType === 'skolepenger' ? `${månedÅr}` : `${fraDato} - ${tilDato}`;
 
-  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} NOK`;
+  const beløp = `${formaterTallMedTusenSkille(periode.beløp)} kr`;
 
   return (
     <Table.Row>
