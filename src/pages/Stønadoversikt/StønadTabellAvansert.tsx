@@ -127,7 +127,7 @@ const TabellRad: React.FC<{
       return beløp;
     }
 
-    return `${formaterTallMedTusenSkille(beløp)} NOK`;
+    return `${formaterTallMedTusenSkille(beløp)} kr`;
   };
 
   return ekspanderbar ? (

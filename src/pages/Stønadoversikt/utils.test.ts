@@ -91,8 +91,8 @@ describe('sjekk - formateringer av tekst og perioder stønadsidene', () => {
     expect(utledKolonnebredde(10)).toBe('2.3rem');
     expect(utledKolonnebredde(100)).toBe('2.85rem');
     expect(utledKolonnebredde(1000)).toBe('3.65rem');
-    expect(utledKolonnebredde(10000)).toBe('5.5rem');
-    expect(utledKolonnebredde(100000)).toBe('5.5rem');
+    expect(utledKolonnebredde(10000)).toBe('5.6rem');
+    expect(utledKolonnebredde(100000)).toBe('5.6rem');
   });
 });
 
