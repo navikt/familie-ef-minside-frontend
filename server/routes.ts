@@ -12,12 +12,9 @@ const buildPath =
     : path.join(process.cwd(), 'dev-build');
 const EF_BASE_PATH = '/familie/alene-med-barn';
 const BASE_PATH = `${EF_BASE_PATH}/minside`;
-const routes = (router: Router) => {
-  router.get(`${BASE_PATH}/internal/isAlive`, (req, res) => {
-    res.sendStatus(200);
-  });
 
-  router.get(`${BASE_PATH}/internal/isReady`, (req, res) => {
+const routes = (router: Router) => {
+  router.get([`${BASE_PATH}/internal/isAlive`, `${BASE_PATH}/internal/isReady`], (req, res) => {
     res.sendStatus(200);
   });
 
