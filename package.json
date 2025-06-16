@@ -5,12 +5,11 @@
   "type": "module",
   "scripts": {
     "build": "tsc && NODE_ENV=production ENV=prod PUBLIC_URL=/familie/alene-med-barn/minside webpack --config ./config/webpack.build.js",
-    "start:dev": "npm run build:dev-server && npm run set-node-options NODE_ENV=development ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node server/backend/server-lokal.js",
-    "start:preprod": "npm run build:dev-server && npm run set-node-options NODE_ENV=development BRUK_DEV_API=true ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node server/backend/server-lokal.js",
+    "start:dev": "npm run build:dev-server && NODE_ENV=development ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node server/backend/server/server-lokal.js",
+    "start:preprod": "npm run build:dev-server && NODE_ENV=development BRUK_DEV_API=true ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node server/backend/server/server-lokal.js",
     "build:dev-server": "cd server && tsc --build --verbose && cd ..",
     "test": "vitest run --exclude '**/build/**'",
-    "postinstall": "cd server && npm ci && cd ..",
-    "set-node-options": "NODE_OPTIONS='--import=./server/backend/register.js --es-module-specifier-resolution=node'"
+    "postinstall": "cd server && npm ci && cd .."
   },
   "husky": {
     "hooks": {
@@ -56,7 +55,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.0",
     "@svgr/webpack": "^8.1.0",
     "@types/express": "^5.0.3",
-    "@types/node": "^22.15.30",
+    "@types/node": "^24.0.2",
     "autoprefixer": "^10.4.21",
     "babel-loader": "^10.0.0",
     "babel-plugin-macros": "^3.1.0",

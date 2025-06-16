@@ -1,7 +1,7 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
-import { logWarn, logInfo } from './logger';
-import { brukDevApi, isLocal, lokaltTokenxApi } from './miljø';
-import { TexasClient } from './texas';
+import { logWarn, logInfo } from './logger.js';
+import { brukDevApi, isLocal, lokaltTokenxApi } from './miljø.js';
+import { TexasClient } from './texas.js';
 const { exchangeToken } = new TexasClient();
 
 export type ApplicationName = 'familie-ef-soknad-api';
@@ -23,7 +23,8 @@ const attachToken = (applicationName: ApplicationName): RequestHandler => {
       next();
     } catch (error) {
       logWarn(`Noe gikk galt ved setting av token (${req.method} - ${req.path}): `, req, error);
-      return res.status(401).send('En uventet feil oppstod. Ingen gyldig token');
+      res.status(401).send('En uventet feil oppstod. Ingen gyldig token');
+      return;
     }
   };
 };

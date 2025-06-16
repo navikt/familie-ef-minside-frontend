@@ -1,6 +1,6 @@
-import logger from './logger';
-import 'dotenv/config';
-import { DecoratorBreadcrumb } from './decorator';
+import logger from './logger.js';
+import 'dotenv/config.js';
+import { DecoratorBreadcrumb } from './decorator.js';
 
 interface Environment {
   port: number;
