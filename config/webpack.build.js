@@ -7,6 +7,7 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import process from 'process';
 
 const publicPath = process.env.PUBLIC_URL || '/';
 const kopieresOver = ['filer', 'favicon.ico', 'manifest.json', 'robots.txt'];

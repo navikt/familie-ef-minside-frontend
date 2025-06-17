@@ -5,6 +5,7 @@ import ESLintPlugin from 'eslint-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import process from 'process';
 
 const publicPath = process.env.PUBLIC_URL || '/';
 const brukMockLokalt = process.env.BRUK_MOCK_LOKALT || false;
@@ -21,10 +22,7 @@ const config = {
     },
     open: publicPath,
     proxy: {
-      '/api':
-        brukMockLokalt === 'true'
-          ? 'http://localhost:8092'
-          : 'http://localhost:8091',
+      '/api': brukMockLokalt === 'true' ? 'http://localhost:8092' : 'http://localhost:8091',
     },
     devMiddleware: { publicPath: publicPath },
     historyApiFallback: true,

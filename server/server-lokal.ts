@@ -4,8 +4,8 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import cookieParser from 'cookie-parser';
 // @ts-ignore
-import config from '../../config/webpack.run';
-import startServer from './server-felles';
+import config from '../config/webpack.run.js';
+import startServer from './server-felles.js';
 
 const app = express();
 

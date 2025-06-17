@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { envVar } from './envVar';
+import { envVar } from './envVar.js';
 
 interface SuksessResponse {
   access_token: string;

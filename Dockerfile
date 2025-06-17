@@ -7,4 +7,4 @@ COPY server .
 ENV NODE_ENV production
 EXPOSE 8080
 
-CMD ["--import=./backend/register.js", "--es-module-specifier-resolution=node", "backend/server.js"]
+CMD ["--es-module-specifier-resolution=node", "backend/server.js"]

@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
-import routes from './routes';
-import { cspString } from './csp';
-import { miljø } from './miljø';
+import routes from './routes.js';
+import { cspString } from './csp.js';
+import { miljø } from './miljø.js';
 
 const startServer = (app: Express) => {
   app.use((_req, res, next) => {
