@@ -35,7 +35,7 @@
     "@navikt/ds-react": "^7.25.1",
     "@navikt/ds-tokens": "^7.0.0",
     "@navikt/nav-dekoratoren-moduler": "^3.4.0",
-    "@sentry/browser": "^9.42.0",
+    "@sentry/browser": "^10.3.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
