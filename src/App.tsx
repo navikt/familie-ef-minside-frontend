@@ -10,7 +10,7 @@ import StønadSide from './pages/Stønadoversikt/StønadSide';
 import { SpråkProvider } from './context/SpråkContext';
 import { useSpråkValg } from './hooks/useSpråkValg';
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   const [appEnv, settAppEnv] = useState<AppEnv>();
   useSpråkValg();
 
@@ -51,5 +51,3 @@ const App: React.FC = () => {
     </SpråkProvider>
   );
 };
-
-export default App;

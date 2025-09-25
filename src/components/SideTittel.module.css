@@ -1,0 +1,7 @@
+.ikonContainer {
+    display: none;
+
+    @media (min-width: var(--breakpoint-width-desktop)) {
+        display: block;
+    }
+}

@@ -1,6 +1,5 @@
 import { AleneMedBarn } from '../icons/AleneMedBarn';
-import styled from 'styled-components';
-import { desktop } from '../utils/constants';
+import styles from './SideTittel.module.css';
 import { HStack, VStack } from '@navikt/ds-react';
 import React from 'react';
 import { HeadingLevel1, UnderTittel } from './ResponsiveHeadinger';
@@ -11,20 +10,12 @@ interface Props {
   ikon?: boolean;
 }
 
-const IkonContainer = styled.div`
-  display: none;
-
-  @media (min-width: ${desktop}px) {
-    display: block;
-  }
-`;
-
-const SideTittel: React.FC<Props> = ({ tittel, underTittel, ikon }) => (
+export const SideTittel: React.FC<Props> = ({ tittel, underTittel, ikon }) => (
   <HStack gap="4">
     {ikon && (
-      <IkonContainer aria-hidden={true}>
+      <div aria-hidden={true} className={styles.ikonContainer}>
         <AleneMedBarn />
-      </IkonContainer>
+      </div>
     )}
     <VStack>
       <HeadingLevel1 size="medium" level="1">
@@ -34,5 +25,3 @@ const SideTittel: React.FC<Props> = ({ tittel, underTittel, ikon }) => (
     </VStack>
   </HStack>
 );
-
-export default SideTittel;

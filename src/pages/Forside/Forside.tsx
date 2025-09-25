@@ -7,7 +7,7 @@ import React from 'react';
 import DineDokumenter from './DineDokumenter';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
-import SideTittel from '../../components/SideTittel';
+import { SideTittel } from '../../components/SideTittel';
 import DineStønader from './DineStønader';
 import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
