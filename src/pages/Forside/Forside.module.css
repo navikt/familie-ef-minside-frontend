@@ -1,0 +1,14 @@
+.grid {
+    display: grid;
+    grid-template-columns: minmax(auto, var(--content-width-mobile));
+    row-gap: 1rem;
+    justify-content: center;
+
+    padding: 1rem 0.5rem;
+
+    @media (min-width: var(--breakpoint-width-desktop)) {
+        grid-template-columns: minmax(auto, var(--content-width-desktop));
+        row-gap: 2.5rem;
+        padding: 2rem 0.5rem;
+    }
+}
