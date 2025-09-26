@@ -11,14 +11,12 @@ const LenkePanelStorListe: React.FC = () => {
     <HStack gap="4">
       <LenkePanelStor
         tittel={tekst('endre.tittel')}
-        headingLevel="3"
         brødtekst={tekst('endre.brødtekst')}
         url={appEnv.endringsmeldingUrl}
         redirect="ekstern"
       />
       <LenkePanelStor
         tittel={tekst('utbetaling.tittel')}
-        headingLevel="3"
         brødtekst={tekst('utbetaling.brødtekst')}
         url={appEnv.utbetalingsoversiktUrl}
         redirect="ekstern"

@@ -1,14 +1,12 @@
-import { LinkPanel } from '@navikt/ds-react';
+import { Heading, LinkPanel } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils/constants';
-import { HeadingLevel3 } from './ResponsiveHeadinger';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {
   tittel: string;
-  headingLevel: '1' | '2' | '3' | '4' | '5';
   url: string;
   redirect: 'ekstern' | 'intern';
 }
@@ -24,7 +22,7 @@ const StyledLinkPanel = styled(LinkPanel)`
   }
 `;
 
-const LenkePanelMikro: React.FC<Props> = ({ tittel, headingLevel, url, redirect }) => {
+const LenkePanelMikro: React.FC<Props> = ({ tittel, url, redirect }) => {
   const navigate = useNavigate();
 
   const href = redirect === 'ekstern' ? url : undefined;
@@ -39,9 +37,9 @@ const LenkePanelMikro: React.FC<Props> = ({ tittel, headingLevel, url, redirect 
 
   return (
     <StyledLinkPanel href={href} border={true} onClick={handleClick}>
-      <HeadingLevel3 size="xsmall" level={headingLevel}>
+      <Heading size="small" level="3">
         {tittel}
-      </HeadingLevel3>
+      </Heading>
     </StyledLinkPanel>
   );
 };

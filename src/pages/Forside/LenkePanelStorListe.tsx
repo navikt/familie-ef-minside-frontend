@@ -1,7 +1,6 @@
 import LenkePanelStor from '../../components/LenkePanelStor';
 import { useApp } from '../../context/AppContext';
-import { HStack, VStack } from '@navikt/ds-react';
-import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
+import { Heading, HStack, VStack } from '@navikt/ds-react';
 import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const LenkePanelStorListe: React.FC = () => {
@@ -10,20 +9,18 @@ const LenkePanelStorListe: React.FC = () => {
 
   return (
     <VStack gap="2">
-      <HeadingLevel2 size="small" level="2">
+      <Heading size="medium" level="2">
         {tekst('endreEllerEttersende.tittel')}
-      </HeadingLevel2>
+      </Heading>
       <HStack gap="4">
         <LenkePanelStor
           tittel={tekst('endre.tittel')}
-          headingLevel="3"
           brødtekst={tekst('endre.brødtekst')}
           url={appEnv.endringsmeldingUrl}
           redirect="ekstern"
         />
         <LenkePanelStor
           tittel={tekst('ettersende.tittel')}
-          headingLevel="3"
           brødtekst={tekst('ettersende.brødtekst')}
           url={appEnv.ettersendingUrl}
           redirect="ekstern"

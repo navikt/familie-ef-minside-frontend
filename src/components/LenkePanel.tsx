@@ -1,8 +1,7 @@
-import { BodyLong, HStack, LinkPanel, VStack } from '@navikt/ds-react';
+import { BodyLong, Heading, HStack, LinkPanel, VStack } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AOrange50, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import { desktop } from '../utils/constants';
-import { HeadingLevel3 } from './ResponsiveHeadinger';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Stønad, StønadType } from '../interfaces/stønader';
@@ -15,7 +14,6 @@ import { useLocaleIntlContext } from '../context/LocaleIntlContext';
 
 interface Props {
   className?: string;
-  headingLevel: '1' | '2' | '3' | '4' | '5';
   stønad: Stønad;
   stønadType: StønadType;
   url: string;
@@ -42,7 +40,7 @@ const IkonContainer = styled.div`
   height: 2.75rem;
 `;
 
-const LenkePanel: React.FC<Props> = ({ className, headingLevel, stønad, stønadType, url }) => {
+const LenkePanel: React.FC<Props> = ({ className, stønad, stønadType, url }) => {
   const navigate = useNavigate();
   const { tekst } = useLocaleIntlContext();
 
@@ -61,9 +59,9 @@ const LenkePanel: React.FC<Props> = ({ className, headingLevel, stønad, stønad
       <HStack gap="4" align="center" wrap={false}>
         <IkonContainer aria-hidden={true}>{ikon}</IkonContainer>
         <VStack>
-          <HeadingLevel3 size="xsmall" level={headingLevel}>
+          <Heading size="small" level="3">
             {tittel}
-          </HeadingLevel3>
+          </Heading>
           {brødtekst}
         </VStack>
       </HStack>

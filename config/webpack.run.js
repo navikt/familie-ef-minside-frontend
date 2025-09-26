@@ -44,31 +44,40 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(jsx|js|tsx|ts)?$/,
+        test: /\.(jsx|tsx|ts|js)?$/,
         exclude: /node_modules/,
-        include: path.join(process.cwd(), 'src'),
+        loader: 'babel-loader',
+        options: {
+          plugins: ['react-refresh/babel'],
+        },
+      },
+      {
+        test: /\.module\.css$/,
         use: [
+          'style-loader',
           {
-            loader: 'babel-loader',
+            loader: 'css-loader',
             options: {
-              plugins: ['react-refresh/babel'],
+              modules: {
+                namedExport: false,
+              },
+              importLoaders: 1,
             },
           },
         ],
       },
       {
-        test: /\.(css)$/,
+        test: /\.css$/,
+        exclude: /\.module\.css$/,
         use: [
-          {
-            loader: 'style-loader',
-          },
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
               modules: {
                 mode: 'icss',
               },
-              importLoaders: 2,
+              importLoaders: 1,
             },
           },
         ],

@@ -1,5 +1,4 @@
-import { Alert, BodyLong, VStack } from '@navikt/ds-react';
-import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
+import { Alert, BodyLong, Heading, VStack } from '@navikt/ds-react';
 import { useApp } from '../../context/AppContext';
 import React from 'react';
 import { Journalpost } from '../../interfaces/journalpost';
@@ -32,9 +31,9 @@ const DineVedtak: React.FC<Props> = ({ stønadType }) => {
 
   return (
     <VStack gap="2">
-      <HeadingLevel2 size="small" level="2">
+      <Heading size="medium" level="2">
         {tekst('vedtak.tittel')}
-      </HeadingLevel2>
+      </Heading>
       <DataViewer
         dataStatus={journalpostStatus}
         loaderTekst={tekst('vedtak.henter')}

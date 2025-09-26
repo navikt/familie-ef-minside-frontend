@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import SideTittel from '../../components/SideTittel';
+import { SideTittel } from '../../components/SideTittel';
 import { Grid, Stripe } from './Grid';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import DataViewer from '../../components/DataViewer';

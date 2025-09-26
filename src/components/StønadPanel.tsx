@@ -1,14 +1,12 @@
-import { BodyLong, Panel, HStack, VStack, Link, Button } from '@navikt/ds-react';
+import { BodyLong, Panel, HStack, VStack, Link, Button, Heading } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
 import React from 'react';
 import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils/constants';
-import { HeadingLevel3 } from './ResponsiveHeadinger';
 
 interface Props {
   tittel: string;
-  headingLevel: '1' | '2' | '3' | '4' | '5';
   brødtekst: string;
   lenkeTekst: string;
   lenkeUrl: string;
@@ -39,7 +37,6 @@ const IkonContainer = styled.div`
 
 const StønadPanel: React.FC<Props> = ({
   tittel,
-  headingLevel,
   brødtekst,
   lenkeTekst,
   lenkeUrl,
@@ -51,9 +48,9 @@ const StønadPanel: React.FC<Props> = ({
     <VStack gap="4">
       <HStack gap="2" align="center" justify="start">
         <IkonContainer aria-hidden={true}>{ikon}</IkonContainer>
-        <HeadingLevel3 size="xsmall" level={headingLevel}>
+        <Heading size="small" level="3">
           {tittel}
-        </HeadingLevel3>
+        </Heading>
       </HStack>
       <BodyLong>{brødtekst}</BodyLong>
     </VStack>
