@@ -1,5 +1,4 @@
-import { Alert, HStack, VStack } from '@navikt/ds-react';
-import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
+import { Alert, Heading, HStack, VStack } from '@navikt/ds-react';
 import { useApp } from '../../context/AppContext';
 import React from 'react';
 import DataViewer from '../../components/DataViewer';
@@ -13,9 +12,9 @@ const DineStønader: React.FC = () => {
 
   return (
     <VStack gap="2">
-      <HeadingLevel2 size="small" level="2">
+      <Heading size="medium" level="2">
         {tekst('stonader.tittel')}
-      </HeadingLevel2>
+      </Heading>
       <DataViewer
         dataStatus={stønadStatus}
         loaderTekst={tekst('dataViewer.henter')}
@@ -46,28 +45,13 @@ const StønadPaneler: React.FC<{ stønader: Stønader }> = ({ stønader }) => {
   return (
     <HStack gap="4">
       {harOvergangsstønad && (
-        <LenkePanel
-          headingLevel="3"
-          stønad={overgangsstønad}
-          stønadType="overgangsstønad"
-          url="/overgangsstonad"
-        />
+        <LenkePanel stønad={overgangsstønad} stønadType="overgangsstønad" url="/overgangsstonad" />
       )}
       {harBarnetilsyn && (
-        <LenkePanel
-          headingLevel="3"
-          stønad={barnetilsyn}
-          stønadType="barnetilsyn"
-          url="/barnetilsyn"
-        />
+        <LenkePanel stønad={barnetilsyn} stønadType="barnetilsyn" url="/barnetilsyn" />
       )}
       {harSkolepenger && (
-        <LenkePanel
-          headingLevel="3"
-          stønad={skolepenger}
-          stønadType="skolepenger"
-          url="/skolepenger"
-        />
+        <LenkePanel stønad={skolepenger} stønadType="skolepenger" url="/skolepenger" />
       )}
     </HStack>
   );

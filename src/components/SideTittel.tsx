@@ -1,8 +1,7 @@
 import { AleneMedBarn } from '../icons/AleneMedBarn';
 import styles from './SideTittel.module.css';
-import { HStack, VStack } from '@navikt/ds-react';
+import { BodyShort, Heading, HStack, VStack } from '@navikt/ds-react';
 import React from 'react';
-import { HeadingLevel1, UnderTittel } from './ResponsiveHeadinger';
 
 interface Props {
   tittel: string;
@@ -18,10 +17,10 @@ export const SideTittel: React.FC<Props> = ({ tittel, underTittel, ikon }) => (
       </div>
     )}
     <VStack>
-      <HeadingLevel1 size="medium" level="1">
+      <Heading size="xlarge" level="1">
         {tittel}
-      </HeadingLevel1>
-      {underTittel && <UnderTittel>{underTittel}</UnderTittel>}
+      </Heading>
+      {underTittel && <BodyShort>{underTittel}</BodyShort>}
     </VStack>
   </HStack>
 );
