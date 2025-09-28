@@ -25,7 +25,7 @@ jobs:
           cache: npm
           registry-url: "https://npm.pkg.github.com"
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@39edc492dbe16b1465b0cafca41432d857bdb31a # ratchet:github/codeql-action/init@v3
+        uses: github/codeql-action/init@3599b3baa15b485a2e49ef411a7a4bb2452e7f93 # ratchet:github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
       - name: Npm install and build
@@ -42,6 +42,6 @@ jobs:
           npm ci
           npm run build
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@39edc492dbe16b1465b0cafca41432d857bdb31a # ratchet:github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@3599b3baa15b485a2e49ef411a7a4bb2452e7f93 # ratchet:github/codeql-action/analyze@v3
         with:
           category: "/language:${{matrix.language}}"
