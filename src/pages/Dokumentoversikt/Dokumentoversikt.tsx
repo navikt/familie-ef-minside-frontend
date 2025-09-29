@@ -7,8 +7,7 @@ import {
   desktop,
 } from '../../utils/constants';
 import DokumentListe from './DokumentListe';
-import { HeadingLevel1, UnderTittel } from '../../components/ResponsiveHeadinger';
-import { Alert, VStack } from '@navikt/ds-react';
+import { Alert, BodyShort, Heading, VStack } from '@navikt/ds-react';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
 import DataViewer from '../../components/DataViewer';
@@ -54,10 +53,10 @@ const DokumentOversikt: React.FC = () => {
       >
         <Grid>
           <VStack gap="5">
-            <HeadingLevel1 size="medium" level="1">
+            <Heading size="xlarge" level="1">
               {tekst('dokumentoversikt.tittel')}
-            </HeadingLevel1>
-            <UnderTittel spacing>{tekst('dokumentoversikt.undertittel')}</UnderTittel>
+            </Heading>
+            <BodyShort>{tekst('dokumentoversikt.undertittel')}</BodyShort>
             {!harDokumenter ? (
               <DokumentListe journalposter={journalposter} />
             ) : (

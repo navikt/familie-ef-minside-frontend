@@ -3,8 +3,7 @@ import { Overgangsstønad } from '../../icons/Overgangsstønad';
 import { Barnetilsyn } from '../../icons/Barnetilsyn';
 import { Skolepenger } from '../../icons/Skolepenger';
 import StønadPanel from '../../components/StønadPanel';
-import { HStack, VStack } from '@navikt/ds-react';
-import { HeadingLevel2 } from '../../components/ResponsiveHeadinger';
+import { Heading, HStack, VStack } from '@navikt/ds-react';
 import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
 
 const StønadPanelListe: React.FC = () => {
@@ -13,13 +12,12 @@ const StønadPanelListe: React.FC = () => {
 
   return (
     <VStack gap="2">
-      <HeadingLevel2 size="small" level="2">
+      <Heading size="medium" level="2">
         {tekst('søke.tittel')}
-      </HeadingLevel2>
+      </Heading>
       <HStack gap="4">
         <StønadPanel
           tittel={tekst('overgangsstønad.tittel')}
-          headingLevel="3"
           brødtekst={tekst('overgangsstønad.brødtekst')}
           ikon={<Overgangsstønad width={44} height={44} />}
           lenkeTekst={tekst('overgangsstønad.lenkeTekst')}
@@ -29,7 +27,6 @@ const StønadPanelListe: React.FC = () => {
         />
         <StønadPanel
           tittel={tekst('barnetilsyn.tittel')}
-          headingLevel="3"
           brødtekst={tekst('barnetilsyn.brødtekst')}
           ikon={<Barnetilsyn width={44} height={44} />}
           lenkeTekst={tekst('barnetilsyn.lenkeTekst')}
@@ -39,7 +36,6 @@ const StønadPanelListe: React.FC = () => {
         />
         <StønadPanel
           tittel={tekst('skolepenger.tittel')}
-          headingLevel="3"
           brødtekst={tekst('skolepenger.brødtekst')}
           ikon={<Skolepenger width={44} height={44} />}
           lenkeTekst={tekst('skolepenger.lenkeTekst')}

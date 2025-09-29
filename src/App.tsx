@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Outlet, Routes, Navigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import Forside from './pages/Forside/Forside';
+import { Forside } from './pages/Forside/Forside';
 import { AppEnv, hentEnv } from './api/env';
 import { AppProvider } from './context/AppContext';
 import { HStack, Loader } from '@navikt/ds-react';
@@ -10,7 +10,7 @@ import StønadSide from './pages/Stønadoversikt/StønadSide';
 import { SpråkProvider } from './context/SpråkContext';
 import { useSpråkValg } from './hooks/useSpråkValg';
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   const [appEnv, settAppEnv] = useState<AppEnv>();
   useSpråkValg();
 
@@ -51,5 +51,3 @@ const App: React.FC = () => {
     </SpråkProvider>
   );
 };
-
-export default App;

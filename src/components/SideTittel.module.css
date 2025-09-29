@@ -1,0 +1,7 @@
+.ikonContainer {
+    display: none;
+
+    @media (min-width: 948px) {
+        display: block;
+    }
+}
