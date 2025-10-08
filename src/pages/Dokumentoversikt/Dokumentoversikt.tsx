@@ -57,7 +57,7 @@ const DokumentOversikt: React.FC = () => {
               {tekst('dokumentoversikt.tittel')}
             </Heading>
             <BodyShort>{tekst('dokumentoversikt.undertittel')}</BodyShort>
-            {!harDokumenter ? (
+            {harDokumenter ? (
               <DokumentListe journalposter={journalposter} />
             ) : (
               <Alert inline variant="info">
