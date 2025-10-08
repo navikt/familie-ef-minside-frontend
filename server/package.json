@@ -16,15 +16,15 @@
     "express-http-proxy": "^2.1.2",
     "http-proxy-middleware": "^3.0.5",
     "jsdom": "^26.1.0",
-    "uuid": "^11.1.0",
+    "uuid": "^12.0.0",
     "winston": "^3.18.3",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.9",
     "@types/express": "^5.0.3",
-    "@types/uuid": "^10.0.0",
     "@types/webpack-hot-middleware": "^2.25.10",
+    "webpack": "^5.102.1",
     "webpack-dev-server": "^5.2.2",
     "webpack-hot-middleware": "^2.26.0"
   }

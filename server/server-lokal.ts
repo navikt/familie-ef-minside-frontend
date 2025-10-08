@@ -11,6 +11,11 @@ const app = express();
 
 if (process.env.NODE_ENV === 'development') {
   const compiler = webpack(config);
+
+  if (!compiler) {
+    throw new Error('Compiler er ikke definert');
+  }
+
   const middleware = webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
     writeToDisk: true,
