@@ -60,7 +60,6 @@
     "compression-webpack-plugin": "^11.1.0",
     "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",
-
     "eslint-plugin-react-hooks": "^6.1.1",
     "eslint-webpack-plugin": "^5.0.2",
     "fork-ts-checker-webpack-plugin": "^9.1.0",
