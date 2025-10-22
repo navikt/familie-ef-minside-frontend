@@ -8,8 +8,8 @@ import DineDokumenter from './DineDokumenter';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/AppContext';
 import { SideTittel } from '../../components/SideTittel';
+import DineStønader from './DineStønader';
 import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
-import { Alert } from '@navikt/ds-react';
 
 export const Forside: React.FC = () => {
   const { appEnv } = useApp();
@@ -30,10 +30,7 @@ export const Forside: React.FC = () => {
           underTittel={tekst('side.undertittel')}
           ikon={true}
         />
-        <Alert variant="warning">
-          Vi oppdaterer våre systemer. Mens dette pågår vil det ikke være mulig å se informasjon om
-          dine stønader. Vi beklager ulempen dette medfører.
-        </Alert>
+        <DineStønader />
       </section>
       <section className={styles.grid} style={{ backgroundColor: ASurfaceActionSubtle }}>
         <LenkePanelStorListe />
