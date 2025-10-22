@@ -9,16 +9,28 @@ import { ScrollToTop } from './utils/scrollEffect';
 import StønadSide from './pages/Stønadoversikt/StønadSide';
 import { SpråkProvider } from './context/SpråkContext';
 import { useSpråkValg } from './hooks/useSpråkValg';
+import { useToggles } from './toggles/TogglesContext';
+import hentToggles from './toggles/api';
 
 export const App: React.FC = () => {
   const [appEnv, settAppEnv] = useState<AppEnv>();
+  const [fetching, settFetching] = useState<boolean>(true);
   useSpråkValg();
+  const { settToggles } = useToggles();
 
   React.useEffect(() => {
     hentEnv().then((env: AppEnv) => {
       settAppEnv(env);
     });
   }, []);
+
+  React.useEffect(() => {
+    Promise.all([hentToggles(settToggles)])
+      .then(() => settFetching(false))
+      .catch(() => settFetching(false));
+  }, []);
+
+  console.log(fetching);
 
   if (!appEnv) {
     return (
