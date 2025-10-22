@@ -1,7 +1,6 @@
 import { Heading, LinkPanel } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
-import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils/constants';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,9 +27,7 @@ const LenkePanelMikro: React.FC<Props> = ({ tittel, url, redirect }) => {
   const href = redirect === 'ekstern' ? url : undefined;
 
   const handleClick = () => {
-    if (redirect === 'ekstern') {
-      logNavigering(url, tittel, 'lenke-panel-mikro');
-    } else {
+    if (redirect !== 'ekstern') {
       navigate(url);
     }
   };
