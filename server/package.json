@@ -15,15 +15,15 @@
     "express": "^5.1.0",
     "express-http-proxy": "^2.1.2",
     "http-proxy-middleware": "^3.0.5",
-    "jsdom": "^27.0.0",
+    "jsdom": "^27.0.1",
     "uuid": "^13.0.0",
     "winston": "^3.18.3",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@types/cookie-parser": "^1.4.9",
-    "@types/express": "^5.0.3",
-    "@types/webpack-hot-middleware": "^2.25.11",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.4",
+    "@types/webpack-hot-middleware": "^2.25.12",
     "webpack": "^5.102.1",
     "webpack-dev-server": "^5.2.2",
     "webpack-hot-middleware": "^2.26.1"
