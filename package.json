@@ -30,9 +30,9 @@
     ]
   },
   "dependencies": {
-    "@navikt/aksel-icons": "^7.36.0",
-    "@navikt/ds-css": "^7.36.0",
-    "@navikt/ds-react": "^7.36.0",
+    "@navikt/aksel-icons": "^7.37.0",
+    "@navikt/ds-css": "^7.37.0",
+    "@navikt/ds-react": "^7.37.0",
     "@navikt/ds-tokens": "^7.32.1",
     "@navikt/nav-dekoratoren-moduler": "^3.6.1",
     "@sentry/browser": "^10.32.1",
@@ -43,7 +43,7 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-router-dom": "^7.11.0",
-    "styled-components": "^6.1.19"
+    "styled-components": "^6.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
@@ -72,7 +72,7 @@
     "style-loader": "^4.0.0",
     "terser-webpack-plugin": "^5.3.16",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.1",
+    "typescript-eslint": "^8.52.0",
     "url-loader": "^4.1.1",
     "vitest": "^3.2.4",
     "webpack": "^5.104.1",
