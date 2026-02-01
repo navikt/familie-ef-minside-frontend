@@ -33,7 +33,7 @@
     "@navikt/aksel-icons": "^7.36.0",
     "@navikt/ds-css": "^7.36.0",
     "@navikt/ds-react": "^7.36.0",
-    "@navikt/ds-tokens": "^7.32.1",
+    "@navikt/ds-tokens": "^8.1.0",
     "@navikt/nav-dekoratoren-moduler": "^3.6.1",
     "@sentry/browser": "^10.35.0",
     "@types/react": "^19.2.9",
