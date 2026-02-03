@@ -1,6 +1,6 @@
 import { BodyLong, Panel, HStack, VStack, Link, Button, Heading } from '@navikt/ds-react';
 import styled from 'styled-components';
-import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
+import { BorderNeutralSubtle, ShadowDialog } from '@navikt/ds-tokens/dist/tokens';
 import React from 'react';
 import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils/constants';
@@ -17,8 +17,8 @@ interface Props {
 
 const Container = styled(Panel)`
   padding: 1.25rem;
-  box-shadow: ${AShadowMedium};
-  border-color: ${ABorderSubtle};
+  box-shadow: ${ShadowDialog};
+  border-color: ${BorderNeutralSubtle};
   border-radius: 0.5rem;
 
   display: flex;
@@ -45,8 +45,8 @@ const StønadPanel: React.FC<Props> = ({
   ikon,
 }) => (
   <Container border={true}>
-    <VStack gap="4">
-      <HStack gap="2" align="center" justify="start">
+    <VStack gap="space-4">
+      <HStack gap="space-2" align="center" justify="start">
         <IkonContainer aria-hidden={true}>{ikon}</IkonContainer>
         <Heading size="small" level="3">
           {tittel}
@@ -54,7 +54,7 @@ const StønadPanel: React.FC<Props> = ({
       </HStack>
       <BodyLong>{brødtekst}</BodyLong>
     </VStack>
-    <VStack gap="4">
+    <VStack gap="space-4">
       <Link href={lenkeUrl} onClick={() => logNavigering(lenkeUrl, lenkeTekst, 'stønad-panel')}>
         {lenkeTekst}
       </Link>

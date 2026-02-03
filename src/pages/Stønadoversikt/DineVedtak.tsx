@@ -30,7 +30,7 @@ const DineVedtak: React.FC<Props> = ({ stønadType }) => {
   const { tekst } = useLocaleIntlContext();
 
   return (
-    <VStack gap="2">
+    <VStack gap="space-2">
       <Heading size="medium" level="2">
         {tekst('vedtak.tittel')}
       </Heading>

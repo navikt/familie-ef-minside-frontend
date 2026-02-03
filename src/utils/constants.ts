@@ -3,6 +3,8 @@ export const contentWidthMobile = 458; // px
 export const desktop = 948; // px
 export const mobile = 480; // px
 
+export const AOrange50 = '#FFF9F0';
+
 export const breadCrumbDokumentOversikt = {
   url: '/familie/alene-med-barn/minside/dokumentoversikt',
   title: 'dokumentoversikt.breadcrumb',

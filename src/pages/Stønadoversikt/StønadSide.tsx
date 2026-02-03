@@ -1,7 +1,7 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { SideTittel } from '../../components/SideTittel';
-import { Grid, Stripe } from './Grid';
+import { Grid } from './Grid';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import DataViewer from '../../components/DataViewer';
 import DineVedtak from './DineVedtak';
@@ -33,9 +33,9 @@ const StønadSide: React.FC<Props> = ({ stønadType }) => {
           <StønadTabell stønad={stønad} stønadType={stønadType} />
         </DataViewer>
       </Grid>
-      <Stripe>
-        <LenkePanelStorListe />
-      </Stripe>
+
+      <LenkePanelStorListe />
+
       <Grid>
         <DineVedtak stønadType={stønadType} />
       </Grid>

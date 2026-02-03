@@ -29,7 +29,7 @@ const DineDokumenter: React.FC = () => {
   const { tekst } = useLocaleIntlContext();
 
   return (
-    <VStack gap="2">
+    <VStack gap="space-2">
       <Heading size="medium" level="2">
         {tekst('dokumenter.tittel')}
       </Heading>
