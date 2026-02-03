@@ -2,7 +2,6 @@ import { BodyLong, Panel, HStack, VStack, Link, Button, Heading } from '@navikt/
 import styled from 'styled-components';
 import { BorderNeutralSubtle, ShadowDialog } from '@navikt/ds-tokens/dist/tokens';
 import React from 'react';
-import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils/constants';
 
 interface Props {
@@ -55,14 +54,11 @@ const StønadPanel: React.FC<Props> = ({
       <BodyLong>{brødtekst}</BodyLong>
     </VStack>
     <VStack gap="space-4">
-      <Link href={lenkeUrl} onClick={() => logNavigering(lenkeUrl, lenkeTekst, 'stønad-panel')}>
-        {lenkeTekst}
-      </Link>
+      <Link href={lenkeUrl}>{lenkeTekst}</Link>
       <Button
         variant="secondary"
         role="link"
         onClick={() => {
-          logNavigering(knappUrl, knappTekst, 'button');
           window.location.href = knappUrl;
         }}
       >
