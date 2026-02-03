@@ -1,5 +1,4 @@
 import styles from './Forside.module.css';
-import { ASurfaceActionSubtle } from '@navikt/ds-tokens/dist/tokens';
 import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
@@ -32,7 +31,7 @@ export const Forside: React.FC = () => {
         />
         <DineStønader />
       </section>
-      <section className={styles.grid} style={{backgroundColor: ASurfaceActionSubtle}}>
+      <section className={styles.grid}>
         <LenkePanelStorListe />
       </section>
       <section className={styles.grid}>

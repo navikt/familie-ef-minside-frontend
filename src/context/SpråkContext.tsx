@@ -22,15 +22,14 @@ export const SpråkProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   const [tekster, settTekster] = useState<Tekster>(nb);
 
   onLanguageSelect((language) => {
-    settLocale(language.locale as LocaleType);
+    const locale = language.locale as LocaleType;
+
+    settLocale(locale);
+    settTekster(locale === LocaleType.en ? en : nb);
   });
 
   useEffect(() => {
     document.documentElement.lang = locale;
-  }, [locale]);
-
-  useEffect(() => {
-    settTekster(locale === LocaleType.en ? en : nb);
   }, [locale]);
 
   return (

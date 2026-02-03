@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const SideTittel: React.FC<Props> = ({ tittel, underTittel, ikon }) => (
-  <HStack gap="4">
+  <HStack gap="space-4">
     {ikon && (
       <div aria-hidden={true} className={styles.ikonContainer}>
         <AleneMedBarn />

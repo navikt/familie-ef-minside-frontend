@@ -11,11 +11,11 @@ const StønadPanelListe: React.FC = () => {
   const { tekst } = useLocaleIntlContext();
 
   return (
-    <VStack gap="2">
+    <VStack gap="space-2">
       <Heading size="medium" level="2">
         {tekst('søke.tittel')}
       </Heading>
-      <HStack gap="4">
+      <HStack gap="space-4">
         <StønadPanel
           tittel={tekst('overgangsstønad.tittel')}
           brødtekst={tekst('overgangsstønad.brødtekst')}

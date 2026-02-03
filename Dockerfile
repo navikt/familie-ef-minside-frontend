@@ -3,8 +3,9 @@ FROM gcr.io/distroless/nodejs20-debian12
 WORKDIR /app
 COPY build ./build
 COPY server .
+COPY node_modules ./node_modules
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 EXPOSE 8080
 
 CMD ["--es-module-specifier-resolution=node", "backend/server.js"]
