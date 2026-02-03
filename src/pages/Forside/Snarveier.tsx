@@ -8,11 +8,11 @@ const Snarveier: React.FC = () => {
   const { tekst } = useLocaleIntlContext();
 
   return (
-    <VStack gap="2">
+    <VStack gap="space-2">
       <Heading size="medium" level="2">
         {tekst('snarveier.tittel')}
       </Heading>
-      <HStack gap="4">
+      <HStack gap="space-4">
         <LenkePanelMikro
           tittel={tekst('snarveier.saksbehandlingstider')}
           url={appEnv.saksbehandlingstiderUrl}

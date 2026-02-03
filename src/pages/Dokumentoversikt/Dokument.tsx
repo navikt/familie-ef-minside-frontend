@@ -1,7 +1,7 @@
 import React from 'react';
 import { FilePdfIcon } from '@navikt/aksel-icons';
 import styled from 'styled-components';
-import { ABorderDivider, AIconAction } from '@navikt/ds-tokens/dist/tokens';
+import { BorderNeutralSubtle } from '@navikt/ds-tokens/dist/tokens';
 import { Detail, Link, VStack } from '@navikt/ds-react';
 import { Journalpost } from '../../interfaces/journalpost';
 import { utledDetailTekst } from './utils';
@@ -13,7 +13,7 @@ const ListElement = styled.li`
   display: grid;
   grid-template-columns: 2rem 1fr;
   column-gap: 1.25rem;
-  border-bottom: 1px solid ${ABorderDivider};
+  border-bottom: 1px solid ${BorderNeutralSubtle};
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 
@@ -46,14 +46,8 @@ const Dokument: React.FC<Props> = ({ journalpost }) => {
 
   return (
     <ListElement className="dokument-rad">
-      <FilePdfIcon
-        color={AIconAction}
-        title="pdf-dokument"
-        aria-hidden={true}
-        width="2.25rem"
-        height="2.25rem"
-      />
-      <VStack gap="5">
+      <FilePdfIcon title="pdf-dokument" aria-hidden={true} width="2.25rem" height="2.25rem" />
+      <VStack gap="space-4">
         <div>
           <LenkeBold href={urlHovedDokument} variant="neutral" className="bold" target="_blank">
             {`${journalpost.hovedDokument.tittel}.pdf`}

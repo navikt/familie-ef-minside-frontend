@@ -81,7 +81,7 @@ const TabellHeader: React.FC<{
         <Table.HeaderCell>{tekst(headerPeriode)}</Table.HeaderCell>
         {!ekspanderbar && (
           <Table.HeaderCell>
-            <HStack gap={'1'}>
+            <HStack gap="space-2">
               {headerInntekt && tekst(headerInntekt)}
               <HelpText>{tekst('inntektsgrunnlag.hjelpetekst')}</HelpText>
             </HStack>
@@ -89,7 +89,7 @@ const TabellHeader: React.FC<{
         )}
         {!ekspanderbar && harSamordningsfradrag && (
           <Table.HeaderCell>
-            <HStack gap={'1'}>
+            <HStack gap="space-2">
               {headerSamordningsfradrag && tekst(headerSamordningsfradrag)}
               <HelpText>{tekst('samordningsfradrag.hjelpetekst')}</HelpText>
             </HStack>
@@ -161,12 +161,12 @@ const UtvidetTabellRad: React.FC<{
   const { tekst } = useLocaleIntlContext();
   return (
     <>
-      <HStack gap={'1'}>
+      <HStack gap="space-2">
         Inntektsgrunnlag: {formaterTallMedTusenSkille(periode.inntektsgrunnlag)} NOK{' '}
         <HelpText>{tekst('inntektsgrunnlag.hjelpetekst')}</HelpText>
       </HStack>
       {periode.samordningsfradrag > 0 && (
-        <HStack gap={'1'}>
+        <HStack gap="space-2">
           Samordning: {formaterTallMedTusenSkille(periode.samordningsfradrag)} NOK{' '}
           <HelpText>{tekst('samordningsfradrag.hjelpetekst')}</HelpText>
         </HStack>

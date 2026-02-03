@@ -1,6 +1,6 @@
 import { BodyLong, Heading, LinkPanel, VStack } from '@navikt/ds-react';
 import styled from 'styled-components';
-import { ABorderSubtle, AShadowMedium } from '@navikt/ds-tokens/dist/tokens';
+import { BorderNeutralSubtle, ShadowDialog } from '@navikt/ds-tokens/dist/tokens';
 import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils/constants';
 import { useNavigate } from 'react-router-dom';
@@ -16,10 +16,11 @@ interface Props {
 const StyledLinkPanel = styled(LinkPanel)`
   width: 100%;
   border-radius: 0.5rem;
-  box-shadow: ${AShadowMedium};
-  border-color: ${ABorderSubtle};
+  box-shadow: ${ShadowDialog};
+  border-color: ${BorderNeutralSubtle};
   padding-left: 1.5rem;
-  min-height: 6.75rem;
+  height: 7rem;
+  vertical-align: top;
 
   @media (min-width: ${desktop}px) {
     max-width: 28.625rem;

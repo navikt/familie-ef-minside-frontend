@@ -8,7 +8,16 @@ const LenkePanelStorListe: React.FC = () => {
   const { tekst } = useLocaleIntlContext();
 
   return (
-    <HStack gap="4">
+    <HStack
+      gap="space-16"
+      justify={'center'}
+      align={'center'}
+      style={{
+        background: '#E6F0FF',
+        paddingTop: '2rem',
+        paddingBottom: '2rem',
+      }}
+    >
       <LenkePanelStor
         tittel={tekst('endre.tittel')}
         brødtekst={tekst('endre.brødtekst')}

@@ -52,7 +52,7 @@ const DokumentOversikt: React.FC = () => {
         alertTekst={tekst('dokumenter.galt')}
       >
         <Grid>
-          <VStack gap="5">
+          <VStack gap="space-4">
             <Heading size="xlarge" level="1">
               {tekst('dokumentoversikt.tittel')}
             </Heading>
