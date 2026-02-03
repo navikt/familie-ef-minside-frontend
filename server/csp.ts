@@ -19,7 +19,6 @@ export const cspMap = (): Record<string, string[]> => {
     'connect-src': [
       "'self'",
       '*.nav.no',
-      'amplitude.nav.no',
       '*.psplugin.com',
       '*.hotjar.com',
       '*.hotjar.io',

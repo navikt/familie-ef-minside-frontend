@@ -1,7 +1,6 @@
 import { BodyLong, Heading, LinkPanel, VStack } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { BorderNeutralSubtle, ShadowDialog } from '@navikt/ds-tokens/dist/tokens';
-import { logNavigering } from '../amplitude/amplitude';
 import { desktop } from '../utils/constants';
 import { useNavigate } from 'react-router-dom';
 
@@ -37,9 +36,7 @@ const LenkePanelStor: React.FC<Props> = ({ tittel, brødtekst, url, redirect, cl
   const href = redirect === 'ekstern' ? url : `${process.env.PUBLIC_URL}${url}`;
 
   const handleClick = (e: React.SyntheticEvent) => {
-    if (redirect === 'ekstern') {
-      logNavigering(url, tittel, 'lenke-panel-stor');
-    } else {
+    if (redirect !== 'ekstern') {
       e.preventDefault();
       navigate(url);
     }
