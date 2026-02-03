@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "tsc && NODE_ENV=production ENV=prod PUBLIC_URL=/familie/alene-med-barn/minside webpack --config ./config/webpack.build.js",
-    "start:dev": "npm run build:dev-server && NODE_ENV=development ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node server/backend/server-lokal.js",
-    "start:preprod": "npm run build:dev-server && NODE_ENV=development BRUK_DEV_API=true ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node server/backend/server-lokal.js",
-    "build:dev-server": "tsc --build server/tsconfig.json --verbose",
+    "start:dev": "npm run build:server && NODE_ENV=development ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node server/backend/server-lokal.js",
+    "start:preprod": "npm run build:server && NODE_ENV=development BRUK_DEV_API=true ENV=localhost PUBLIC_URL=/familie/alene-med-barn/minside node server/backend/server-lokal.js",
+    "build:server": "tsc --build server/tsconfig.json --verbose",
     "test": "vitest run --exclude '**/build/**'"
   },
   "dependencies": {
