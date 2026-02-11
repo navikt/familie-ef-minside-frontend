@@ -18,7 +18,7 @@
     "@navikt/nav-dekoratoren-moduler": "3.6.1",
     "@sentry/browser": "10.38.0",
     "@types/react": "19.2.10",
-    "axios": "1.13.4",
+    "axios": "1.13.5",
     "cookie-parser": "1.4.7",
     "date-fns": "4.1.0",
     "dotenv": "17.2.3",
