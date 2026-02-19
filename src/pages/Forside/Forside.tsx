@@ -9,6 +9,7 @@ import { useApp } from '../../context/AppContext';
 import { SideTittel } from '../../components/SideTittel';
 import DineStønader from './DineStønader';
 import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { InfoNyRegelverksendring } from './InfoNyRegelverksendring';
 
 export const Forside: React.FC = () => {
   const { appEnv } = useApp();
@@ -29,6 +30,8 @@ export const Forside: React.FC = () => {
           underTittel={tekst('side.undertittel')}
           ikon={true}
         />
+        <InfoNyRegelverksendring />
+
         <DineStønader />
       </section>
       <section className={styles.grid}>
