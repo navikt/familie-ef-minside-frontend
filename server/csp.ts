@@ -24,6 +24,7 @@ export const cspMap = (): Record<string, string[]> => {
       '*.hotjar.io',
       '*.boost.ai',
       '*.taskanalytics.com',
+      // ...(process.env.NODE_ENV === 'development' ? ['ws://localhost:*'] : []), TODO: Slett?
     ],
     // Kan kun submitte forms til seg selv.
     'form-action': ["'self'"],
@@ -45,6 +46,13 @@ export const cspMap = (): Record<string, string[]> => {
     'child-src': ["'self'", 'blob:'],
     // Hvor manifest-filer kan hentes fra
     'manifest-src': ["'self'", 'www.nav.no', 'oidc-ver2.difi.no', 'idporten-ver2.difi.no'],
+    // 'manifest-src': [
+    //   "'self'",
+    //   'www.nav.no',
+    //   'cdn.nav.no',
+    //   'oidc-ver2.difi.no',
+    //   'idporten-ver2.difi.no',
+    // ], TODO: Slett?
   };
 };
 
