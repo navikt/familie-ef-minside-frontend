@@ -1,30 +1,22 @@
 import express from 'express';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
 import cookieParser from 'cookie-parser';
-// @ts-ignore
-import config from '../../config/webpack.run.js';
 import startServer from './server-felles.js';
+import { createServer as createViteServer } from 'vite';
 
 const app = express();
+app.use(cookieParser());
 
-if (process.env.NODE_ENV === 'development') {
-  const compiler = webpack(config);
+const startLokalServer = async () => {
+  if (process.env.NODE_ENV === 'development') {
+    const vite = await createViteServer({
+      server: { middlewareMode: true },
+      appType: 'custom',
+    });
 
-  if (!compiler) {
-    throw new Error('Compiler er ikke definert');
+    startServer(app, vite);
+  } else {
+    startServer(app);
   }
+};
 
-  const middleware = webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath,
-    writeToDisk: true,
-    index: false,
-  });
-
-  app.use(middleware);
-  app.use(cookieParser());
-  app.use(webpackHotMiddleware(compiler));
-}
-
-startServer(app);
+startLokalServer();

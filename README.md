@@ -4,8 +4,9 @@ Enslig forsørger - min side
 ## Kjør lokalt
 1. `npm install`
 2. Kjør opp `familie-ef-soknad-api` med launcheren `ApplicationLocalLauncher`
-3. `npm run start:dev`
-4. Sett cookie og naviger til forsiden med `http://localhost:8091/local/cookie?redirect=http://localhost:3000/familie/alene-med-barn/minside&issuerId=tokenx&audience=familie-app`
+3. Bygg med `npm run build:server`
+3. Kjør skriptet `npm run start:dev`
+4. Naviger til `http://localhost:3000/familie/alene-med-barn/minside/`
 
 ## Kjør lokalt mot preprod:
 1. Hent token fra
