@@ -4,13 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
     "build:server": "tsc --build server/tsconfig.json --verbose",
     "start:dev": "npm run build:server && NODE_ENV=development ENV=localhost node server/backend/server-lokal.js",
     "start:preprod": "npm run build:server && NODE_ENV=development BRUK_DEV_API=true ENV=localhost node server/backend/server-lokal.js",
-    "test": "vitest run --exclude '**/build/**'",
-    "preview": "vite preview"
+    "test": "vitest run --exclude '**/build/**'"
   },
   "dependencies": {
     "@navikt/aksel-icons": "8.6.0",
