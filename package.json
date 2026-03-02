@@ -11,10 +11,10 @@
     "test": "vitest run --exclude '**/build/**'"
   },
   "dependencies": {
-    "@navikt/aksel-icons": "8.5.0",
-    "@navikt/ds-css": "8.5.0",
-    "@navikt/ds-react": "8.5.0",
-    "@navikt/ds-tokens": "8.5.0",
+    "@navikt/aksel-icons": "8.6.0",
+    "@navikt/ds-css": "8.6.0",
+    "@navikt/ds-react": "8.6.0",
+    "@navikt/ds-tokens": "8.6.0",
     "@navikt/nav-dekoratoren-moduler": "3.6.2",
     "@types/react": "19.2.14",
     "axios": "1.13.5",
@@ -26,8 +26,8 @@
     "http-proxy-middleware": "3.0.5",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-router-dom": "7.13.0",
-    "styled-components": "6.3.9",
+    "react-router-dom": "7.13.1",
+    "styled-components": "6.3.11",
     "uuid": "13.0.0",
     "winston": "3.19.0"
   },
