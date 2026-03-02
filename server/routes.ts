@@ -58,7 +58,7 @@ export const htmlRoutes = (router: Router, vite?: ViteDevServer) => {
       if (erUtvikling && vite) {
         const indexHtmlPath = path.join(process.cwd(), 'index.html');
         const html = await getHtmlWithDecorator(indexHtmlPath);
-        const transformedHtml = await vite.transformIndexHtml(url, html);
+        const transformedHtml = await vite.transformIndexHtml(BASE_PATH, html);
         res.send(transformedHtml);
       } else {
         const html = await getHtmlWithDecorator(path.join(buildPath, 'index.html'));

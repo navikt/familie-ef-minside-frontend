@@ -5,7 +5,7 @@ const basePath = '/familie/alene-med-barn/minside';
 
 export default defineConfig({
   plugins: [react()],
-  base: basePath,
+  base: `${basePath}/`,
   define: {
     'process.env.PUBLIC_URL': JSON.stringify(basePath),
   },
