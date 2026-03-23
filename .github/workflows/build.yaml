@@ -3,8 +3,8 @@ name: Build
 on: [pull_request, workflow_dispatch]
 
 jobs:
-  build:
-    name: Build and test
+  build-lint-test:
+    name: Build, install and test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # ratchet:actions/checkout@v4
@@ -13,11 +13,13 @@ jobs:
           node-version: '20'
           cache: npm
           registry-url: "https://npm.pkg.github.com"
-      - name: Npm install, test and build
+      - name: Install dependencies
         env:
           NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-        run: |
-          npm ci
-          npm run test
-          npm run build
-          npm run build:server
+        run: npm ci
+      - name: Test
+        run: npm run test
+      - name: Build
+        run: npm run build
+      - name: Build server
+        run: npm run build:server

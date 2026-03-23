@@ -40,35 +40,16 @@ updates:
   registries: "*"
   versioning-strategy: increase
   groups:
-    minor-and-patch-dependencies:
+    patch-dependencies:
+      patterns:
+        - "*"
+      update-types:
+        - "patch"
+    minor-dependencies:
       patterns:
         - "*"
       update-types:
         - "minor"
-        - "patch"
-    major-dependencies:
-      patterns:
-        - "*"
-      update-types:
-        - "major"
-- package-ecosystem: npm
-  directory: "/server"
-  schedule:
-    interval: weekly
-    day: "sunday"
-    time: "04:00"
-  cooldown:
-    default-days: 4
-  open-pull-requests-limit: 10
-  registries: "*"
-  versioning-strategy: increase
-  groups:
-    minor-and-patch-dependencies:
-      patterns:
-        - "*"
-      update-types:
-        - "minor"
-        - "patch"
     major-dependencies:
       patterns:
         - "*"
