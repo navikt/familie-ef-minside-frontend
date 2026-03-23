@@ -15,7 +15,7 @@
     "@navikt/ds-css": "8.7.0",
     "@navikt/ds-react": "8.7.0",
     "@navikt/ds-tokens": "8.7.0",
-    "@navikt/nav-dekoratoren-moduler": "3.6.2",
+    "@navikt/nav-dekoratoren-moduler": "3.6.3",
     "@types/react": "19.2.14",
     "axios": "1.13.6",
     "cookie-parser": "1.4.7",
@@ -27,7 +27,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-router-dom": "7.13.1",
-    "styled-components": "6.3.11",
+    "styled-components": "6.3.12",
     "uuid": "13.0.0",
     "winston": "3.19.0"
   },
@@ -45,7 +45,7 @@
     "globals": "16.5.0",
     "prettier": "3.8.1",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.57.0",
+    "typescript-eslint": "8.57.1",
     "vite": "7.3.1",
     "vitest": "4.0.18"
   }
