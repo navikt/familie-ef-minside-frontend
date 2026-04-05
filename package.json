@@ -14,7 +14,7 @@
     "@navikt/aksel-icons": "8.7.0",
     "@navikt/ds-css": "8.7.0",
     "@navikt/ds-react": "8.7.0",
-    "@navikt/ds-tokens": "8.7.0",
+    "@navikt/ds-tokens": "8.9.0",
     "@navikt/nav-dekoratoren-moduler": "3.6.3",
     "@types/react": "19.2.14",
     "axios": "1.13.6",
