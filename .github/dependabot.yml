@@ -40,15 +40,11 @@ updates:
   registries: "*"
   versioning-strategy: increase
   groups:
-    patch-dependencies:
+    patch-minor-dependencies:
       patterns:
         - "*"
       update-types:
         - "patch"
-    minor-dependencies:
-      patterns:
-        - "*"
-      update-types:
         - "minor"
     major-dependencies:
       patterns:
