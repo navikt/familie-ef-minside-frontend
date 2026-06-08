@@ -15,7 +15,7 @@
     "@navikt/ds-css": "8.10.6",
     "@navikt/ds-react": "8.10.6",
     "@navikt/ds-tokens": "8.10.6",
-    "@navikt/nav-dekoratoren-moduler": "3.7.1",
+    "@navikt/nav-dekoratoren-moduler": "4.2.1",
     "@types/react": "19.2.15",
     "axios": "1.16.1",
     "cookie-parser": "1.4.7",
