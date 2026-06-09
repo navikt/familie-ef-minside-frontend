@@ -9,8 +9,8 @@
     "lint:eslint": "eslint './src/**/*.{ts,tsx}' --max-warnings=0",
     "lint": "npm run lint:eslint && npm run typecheck",
     "build:server": "tsc --build server/tsconfig.json --verbose",
-    "start:dev": "npm run build:server && NODE_ENV=development ENV=localhost node server/backend/server-lokal.js",
-    "start:preprod": "npm run build:server && NODE_ENV=development BRUK_DEV_API=true ENV=localhost node server/backend/server-lokal.js",
+    "dev:lokal": "npm run build:server && NODE_ENV=development ENV=localhost node server/backend/server-lokal.js",
+    "dev": "npm run build:server && NODE_ENV=development BRUK_DEV_API=true ENV=localhost node server/backend/server-lokal.js",
     "test": "vitest run --exclude '**/build/**'"
   },
   "dependencies": {
