@@ -13,7 +13,10 @@ const EF_BASE_PATH = '/familie/alene-med-barn';
 const BASE_PATH = `${EF_BASE_PATH}/minside`;
 
 const fjernUgyldigeSluttTagger = (html: string): string =>
-  html.replace(/<\/(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\s*>/gi, '');
+  html.replace(
+    /<\/(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\s*>/gi,
+    ''
+  );
 
 export const apiRoutes = (router: Router) => {
   router.get([`${BASE_PATH}/internal/isAlive`, `${BASE_PATH}/internal/isReady`], (_req, res) => {
