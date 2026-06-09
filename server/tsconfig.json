@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "es6",
+    "module": "nodenext",
     "strict": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
     "outDir": "backend",
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true

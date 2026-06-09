@@ -12,6 +12,9 @@ const buildPath = path.join(process.cwd(), 'build');
 const EF_BASE_PATH = '/familie/alene-med-barn';
 const BASE_PATH = `${EF_BASE_PATH}/minside`;
 
+const fjernUgyldigeSluttTagger = (html: string): string =>
+  html.replace(/<\/(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\s*>/gi, '');
+
 export const apiRoutes = (router: Router) => {
   router.get([`${BASE_PATH}/internal/isAlive`, `${BASE_PATH}/internal/isReady`], (_req, res) => {
     res.sendStatus(200);
@@ -58,7 +61,8 @@ export const htmlRoutes = (router: Router, vite?: ViteDevServer) => {
       if (erUtvikling && vite) {
         const indexHtmlPath = path.join(process.cwd(), 'index.html');
         const html = await getHtmlWithDecorator(indexHtmlPath);
-        const transformedHtml = await vite.transformIndexHtml(BASE_PATH, html);
+        const gyldigHtml = fjernUgyldigeSluttTagger(html);
+        const transformedHtml = await vite.transformIndexHtml(BASE_PATH, gyldigHtml);
         res.send(transformedHtml);
       } else {
         const html = await getHtmlWithDecorator(path.join(buildPath, 'index.html'));
