@@ -1,10 +1,10 @@
 import { Alert, Heading, HStack, VStack } from '@navikt/ds-react';
-import { useApp } from '../../context/AppContext';
+import { useApp } from '../../context/useApp';
 import React from 'react';
 import DataViewer from '../../components/DataViewer';
 import LenkePanel from '../../components/LenkePanel';
 import { Stønader } from '../../interfaces/stønader';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 const DineStønader: React.FC = () => {
   const { stønader, stønadStatus } = useApp();

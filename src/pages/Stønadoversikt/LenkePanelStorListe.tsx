@@ -1,7 +1,7 @@
 import LenkePanelStor from '../../components/LenkePanelStor';
-import { useApp } from '../../context/AppContext';
+import { useApp } from '../../context/useApp';
 import { HStack } from '@navikt/ds-react';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 const LenkePanelStorListe: React.FC = () => {
   const { appEnv } = useApp();

@@ -9,11 +9,15 @@ import {
 import styled from 'styled-components';
 import { contentWidthMobile } from '../../utils/constants';
 import { utledBrødtekst, utledHeaderTekst, utledKolonnebredde } from './utils';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 interface Props {
   stønadsperioder: Stønadsperiode[];
   stønadType: StønadType;
+}
+
+interface TekstProps {
+  tekst: (key: string, params?: string[]) => string;
 }
 
 const Tabell = styled(Table)`
@@ -33,25 +37,30 @@ const StønadTabellEnkel: React.FC<Props> = ({ stønadsperioder, stønadType }) 
     <>
       <BodyLong>{tekst(utledBrødtekst(stønadType))}</BodyLong>
       <Tabell>
-        <TabellHeader stønadType={stønadType} />
+        {lagTabellHeader({ stønadType, tekst })}
         <Table.Body>
-          {stønadsperioder.map((periode) => (
-            <TabellRad
-              key={periode.fraDato + periode.tilDato}
-              periode={periode}
-              stønadType={stønadType}
-              kolonneBredde={kolonneBredde}
-            />
-          ))}
+          {stønadsperioder.map((periode) =>
+            lagTabellRad({
+              radNøkkel: periode.fraDato + periode.tilDato,
+              periode,
+              stønadType,
+              kolonneBredde,
+            })
+          )}
         </Table.Body>
       </Tabell>
     </>
   );
 };
 
-const TabellHeader: React.FC<{ stønadType: StønadType }> = ({ stønadType }) => {
+const lagTabellHeader = ({
+  stønadType,
+  tekst,
+}: {
+  stønadType: StønadType;
+} & TekstProps) => {
   const { headerPeriode, headerBeløp } = utledHeaderTekst(stønadType);
-  const { tekst } = useLocaleIntlContext();
+
   return (
     <Table.Header>
       <Table.Row>
@@ -62,11 +71,17 @@ const TabellHeader: React.FC<{ stønadType: StønadType }> = ({ stønadType }) =
   );
 };
 
-const TabellRad: React.FC<{
+const lagTabellRad = ({
+  radNøkkel,
+  periode,
+  stønadType,
+  kolonneBredde,
+}: {
+  radNøkkel: string;
   periode: Stønadsperiode;
   stønadType: StønadType;
   kolonneBredde: string;
-}> = ({ periode, stønadType, kolonneBredde }) => {
+}) => {
   const fraDato = formaterIsoDato(periode.fraDato);
   const tilDato = formaterIsoDato(periode.tilDato);
   const månedÅr = formaterIsoMånedÅr(periode.fraDato);
@@ -76,7 +91,7 @@ const TabellRad: React.FC<{
   const beløp = `${formaterTallMedTusenSkille(periode.beløp)} kr`;
 
   return (
-    <Table.Row>
+    <Table.Row key={radNøkkel}>
       <Table.DataCell>{beløpsperiode}</Table.DataCell>
       <Table.DataCell align="right">
         <BeløpWrapper bredde={kolonneBredde} justify="end">

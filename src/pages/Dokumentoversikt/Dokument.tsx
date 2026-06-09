@@ -7,7 +7,7 @@ import { Journalpost } from '../../interfaces/journalpost';
 import { utledDetailTekst } from './utils';
 import { utledFilUrl } from '../../utils/fil';
 import VedleggListe from './VedleggListe';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 const ListElement = styled.li`
   display: grid;

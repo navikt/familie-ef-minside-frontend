@@ -1,5 +1,5 @@
 import { Alert, BodyLong, Heading, VStack } from '@navikt/ds-react';
-import { useApp } from '../../context/AppContext';
+import { useApp } from '../../context/useApp';
 import React from 'react';
 import { Journalpost } from '../../interfaces/journalpost';
 import DokumentListe from '../Dokumentoversikt/DokumentListe';
@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import DataViewer from '../../components/DataViewer';
 import { StønadType } from '../../interfaces/stønader';
 import { utledBeskrivelse, utledStønadTekst, utledVedtak } from './utils';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 interface Props {
   stønadType: StønadType;

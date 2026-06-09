@@ -1,16 +1,5 @@
-import React, { createContext, ReactNode, useContext } from 'react';
-
-interface LocaleIntlContextProps {
-  tekster: Record<string, string>;
-  tekst: (key: string, params?: string[]) => string;
-}
-
-const LocaleIntlContext = createContext<LocaleIntlContextProps>({
-  tekster: {},
-  tekst: () => 'oversettelser ikke tilgjengelig',
-});
-
-const useLocaleIntlContext = () => useContext(LocaleIntlContext);
+import React, { ReactNode } from 'react';
+import { LocaleIntlContext } from './LocaleIntlContextState';
 
 interface LocaleIntlProviderProps {
   tekster: Record<string, string>;
@@ -41,4 +30,4 @@ const LocaleIntlProvider: React.FC<LocaleIntlProviderProps> = ({ children, tekst
   );
 };
 
-export { useLocaleIntlContext, LocaleIntlProvider };
+export { LocaleIntlProvider };

@@ -31,7 +31,7 @@ export const App: React.FC = () => {
   return (
     <SpråkProvider>
       <AppProvider appEnv={appEnv}>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Outlet />}>

@@ -1,7 +1,7 @@
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useEffect } from 'react';
-import { useLocaleIntlContext } from '../context/LocaleIntlContext';
-import { useApp } from '../context/AppContext';
+import { useLocaleIntlContext } from '../context/useLocaleIntlContext';
+import { useApp } from '../context/useApp';
 import { StønadType } from '../interfaces/stønader';
 import { utledBreadCrumb } from '../pages/Stønadoversikt/utils';
 

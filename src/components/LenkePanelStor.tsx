@@ -33,7 +33,8 @@ const StyledLinkPanel = styled(LinkPanel)`
 const LenkePanelStor: React.FC<Props> = ({ tittel, brødtekst, url, redirect, className }) => {
   const navigate = useNavigate();
 
-  const href = redirect === 'ekstern' ? url : `${process.env.PUBLIC_URL}${url}`;
+  const href =
+    redirect === 'ekstern' ? url : `${import.meta.env.BASE_URL.replace(/\/$/, '')}${url}`;
 
   const handleClick = (e: React.SyntheticEvent) => {
     if (redirect !== 'ekstern') {
