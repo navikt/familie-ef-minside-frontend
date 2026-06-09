@@ -21,7 +21,7 @@ const startServer = (app: Express, vite?: ViteDevServer) => {
   app.use('/', htmlRoutes(express.Router(), vite));
 
   app.listen(miljø.port, '0.0.0.0', () => {
-    console.log(`Server startet`);
+    console.log(`Server startet på port ${miljø.port}.`);
 
     if (process.env.NODE_ENV === 'development') {
       console.log(`Min side: http://localhost:${miljø.port}/familie/alene-med-barn/minside`);
