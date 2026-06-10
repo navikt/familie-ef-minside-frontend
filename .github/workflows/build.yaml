@@ -17,6 +17,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
         run: npm ci
+      - name: Lint
+        run: npm run lint
       - name: Test
         run: npm run test
       - name: Build

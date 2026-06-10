@@ -9,9 +9,9 @@ import {
 import DokumentListe from './DokumentListe';
 import { Alert, BodyShort, Heading, VStack } from '@navikt/ds-react';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
-import { useApp } from '../../context/AppContext';
+import { useApp } from '../../context/useApp';
 import DataViewer from '../../components/DataViewer';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 const Grid = styled.section`
   display: grid;

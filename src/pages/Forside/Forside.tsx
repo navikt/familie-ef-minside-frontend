@@ -5,10 +5,10 @@ import StønadPanelListe from './StønadPanelListe';
 import React from 'react';
 import DineDokumenter from './DineDokumenter';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
-import { useApp } from '../../context/AppContext';
+import { useApp } from '../../context/useApp';
 import { SideTittel } from '../../components/SideTittel';
 import DineStønader from './DineStønader';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 import { InfoNyRegelverksendring } from './InfoNyRegelverksendring';
 
 export const Forside: React.FC = () => {

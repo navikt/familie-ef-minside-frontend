@@ -1,5 +1,5 @@
 import React from 'react';
-import { useApp } from '../../context/AppContext';
+import { useApp } from '../../context/useApp';
 import { SideTittel } from '../../components/SideTittel';
 import { Grid } from './Grid';
 import LenkePanelStorListe from './LenkePanelStorListe';
@@ -8,7 +8,7 @@ import DineVedtak from './DineVedtak';
 import StønadTabell from './StønadTabell';
 import { StønadType } from '../../interfaces/stønader';
 import { utledStønadTekst } from './utils';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 import { useSettBreadcrumbTekster } from '../../hooks/useBreadcrumbTekster';
 
 interface Props {

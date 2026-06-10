@@ -1,7 +1,7 @@
 import LenkePanelMikro from '../../components/LenkePanelMikro';
-import { useApp } from '../../context/AppContext';
+import { useApp } from '../../context/useApp';
 import { Heading, HStack, VStack } from '@navikt/ds-react';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 const Snarveier: React.FC = () => {
   const { appEnv } = useApp();

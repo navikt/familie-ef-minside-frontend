@@ -1,12 +1,12 @@
 import { Alert, Heading, Link, VStack } from '@navikt/ds-react';
-import { useApp } from '../../context/AppContext';
+import { useApp } from '../../context/useApp';
 import React from 'react';
 import { Journalpost } from '../../interfaces/journalpost';
 import DokumentListe from '../Dokumentoversikt/DokumentListe';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import DataViewer from '../../components/DataViewer';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 const StyledDokumentListe = styled(DokumentListe)`
   .dokument-rad {
@@ -48,7 +48,7 @@ const DokumentVisning: React.FC<{ journalposter: Journalpost[] }> = ({ journalpo
   const navigate = useNavigate();
   const { tekst } = useLocaleIntlContext();
   const harDokumenter = journalposter.length > 0;
-  const href = `${process.env.PUBLIC_URL}/dokumentoversikt`;
+  const href = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/dokumentoversikt`;
 
   const handleClick = (e: React.SyntheticEvent) => {
     e.preventDefault();

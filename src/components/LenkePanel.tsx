@@ -10,7 +10,7 @@ import { Overgangsstønad } from '../icons/Overgangsstønad';
 import { Barnetilsyn } from '../icons/Barnetilsyn';
 import { Skolepenger } from '../icons/Skolepenger';
 import { utledKomponentTittel } from '../pages/Forside/utils';
-import { useLocaleIntlContext } from '../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../context/useLocaleIntlContext';
 
 interface Props {
   className?: string;
@@ -44,7 +44,7 @@ const LenkePanel: React.FC<Props> = ({ className, stønad, stønadType, url }) =
   const navigate = useNavigate();
   const { tekst } = useLocaleIntlContext();
 
-  const href = `${process.env.PUBLIC_URL}${url}`;
+  const href = `${import.meta.env.BASE_URL.replace(/\/$/, '')}${url}`;
   const ikon = utledIkon(stønadType);
   const tittel = tekst(utledKomponentTittel(stønadType));
   const brødtekst = utledBrødtekst(stønadType, stønad, tekst);
@@ -93,7 +93,7 @@ const utledBrødtekst = (
   const sluttDato = formaterNullableIsoDato(stønad.sluttDato);
 
   if (startDato && sluttDato) {
-    <BodyLong>{tekst('tekst.fraTil', [startDato, sluttDato])}</BodyLong>;
+    return <BodyLong>{tekst('tekst.fraTil', [startDato, sluttDato])}</BodyLong>;
   }
   if (sluttDato) {
     return <BodyLong>{tekst('stønad.tilOgMed', [sluttDato])}</BodyLong>;

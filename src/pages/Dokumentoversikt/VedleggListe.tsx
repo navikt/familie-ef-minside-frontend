@@ -3,7 +3,7 @@ import { Detail } from '@navikt/ds-react';
 import { DokumentInfo } from '../../interfaces/journalpost';
 import UnorderedList from '../../components/UnorderedList';
 import Vedlegg from './Vedlegg';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 interface Props {
   journalpostId: string;

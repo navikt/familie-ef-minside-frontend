@@ -16,7 +16,7 @@ describe('sjekk - formatering av tall, dato og tid', () => {
 
     expect(datoStandard).toBe('31.08.2024');
     expect(datoTid).toBe('31.08.2024');
-    expect(datoUndefined).toBeUndefined;
+    expect(datoUndefined).toBeUndefined();
   });
 
   test('iso-dato skal formateres riktig', () => {

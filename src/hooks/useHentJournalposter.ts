@@ -17,7 +17,7 @@ export const useHentJournalposter = (): JournalpostResponse => {
     prefferedAxios
       .get(`familie/alene-med-barn/minside/api/journalpost`, axiosConfig)
       .then((response: { data: Journalpost[] }) => {
-        response && settJournalposter(response.data);
+        settJournalposter(response.data);
         settJournalpostStatus(DataStatus.HENTET);
       })
       .catch(() => {

@@ -1,10 +1,10 @@
-import { useApp } from '../../context/AppContext';
+import { useApp } from '../../context/useApp';
 import { Overgangsstønad } from '../../icons/Overgangsstønad';
 import { Barnetilsyn } from '../../icons/Barnetilsyn';
 import { Skolepenger } from '../../icons/Skolepenger';
 import StønadPanel from '../../components/StønadPanel';
 import { Heading, HStack, VStack } from '@navikt/ds-react';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 const StønadPanelListe: React.FC = () => {
   const { appEnv } = useApp();

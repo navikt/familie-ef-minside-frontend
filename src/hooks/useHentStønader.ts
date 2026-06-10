@@ -17,7 +17,7 @@ export const useHentStønader = (): StønadResponse => {
     prefferedAxios
       .get(`familie/alene-med-barn/minside/api/saksbehandling/stonadsperioder`, axiosConfig)
       .then((response: { data: Stønader }) => {
-        response && settStønader(response.data);
+        settStønader(response.data);
         settStønadStatus(DataStatus.HENTET);
       })
       .catch(() => {

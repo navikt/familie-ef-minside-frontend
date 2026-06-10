@@ -6,11 +6,15 @@ import styled from 'styled-components';
 import { contentWidthDesktop, contentWidthMobile } from '../../utils/constants';
 import { grunnbeløpInfo, utledBrødtekst, utledHeaderTekst, utledKolonnebredde } from './utils';
 import { useSkjermstørrelseHook } from '../../hooks/useSkjermstørrelseHook';
-import { useLocaleIntlContext } from '../../context/LocaleIntlContext';
+import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 interface Props {
   stønadsperioder: Stønadsperiode[];
   stønadType: StønadType;
+}
+
+interface TekstProps {
+  tekst: (key: string, params?: string[]) => string;
 }
 
 const Tabell = styled(Table)<{ bredde: string }>`
@@ -44,35 +48,36 @@ const StønadTabellAvansert: React.FC<Props> = ({ stønadsperioder, stønadType 
       )}
 
       <Tabell bredde={skjermbredde}>
-        <TabellHeader
-          stønadType={stønadType}
-          ekspanderbar={erLitenSkjerm}
-          harSamordningsfradrag={harSamordningsfradrag}
-        />
+        {lagTabellHeader({ stønadType, ekspanderbar: erLitenSkjerm, harSamordningsfradrag, tekst })}
         <Table.Body>
-          {stønadsperioder.map((periode) => (
-            <TabellRad
-              key={periode.fraDato + periode.tilDato}
-              periode={periode}
-              kolonneBredde={kolonneBredde}
-              ekspanderbar={erLitenSkjerm}
-              harSamordningsfradrag={harSamordningsfradrag}
-            />
-          ))}
+          {stønadsperioder.map((periode) =>
+            lagTabellRad({
+              radNøkkel: periode.fraDato + periode.tilDato,
+              periode,
+              kolonneBredde,
+              ekspanderbar: erLitenSkjerm,
+              harSamordningsfradrag,
+              tekst,
+            })
+          )}
         </Table.Body>
       </Tabell>
     </>
   );
 };
 
-const TabellHeader: React.FC<{
+const lagTabellHeader = ({
+  stønadType,
+  ekspanderbar,
+  harSamordningsfradrag,
+  tekst,
+}: {
   stønadType: StønadType;
   ekspanderbar: boolean;
   harSamordningsfradrag: boolean;
-}> = ({ stønadType, ekspanderbar, harSamordningsfradrag }) => {
+} & TekstProps) => {
   const { headerPeriode, headerBeløp, headerInntekt, headerSamordningsfradrag } =
     utledHeaderTekst(stønadType);
-  const { tekst } = useLocaleIntlContext();
 
   return (
     <Table.Header>
@@ -101,7 +106,7 @@ const TabellHeader: React.FC<{
   );
 };
 
-const VerdiCelle: React.FC<{ bredde: string; children: ReactNode }> = ({ bredde, children }) => {
+const lagVerdiCelle = ({ bredde, children }: { bredde: string; children: ReactNode }) => {
   return (
     <Table.DataCell align="right">
       <BeløpWrapper bredde={bredde} justify="end">
@@ -111,12 +116,20 @@ const VerdiCelle: React.FC<{ bredde: string; children: ReactNode }> = ({ bredde,
   );
 };
 
-const TabellRad: React.FC<{
+const lagTabellRad = ({
+  radNøkkel,
+  periode,
+  kolonneBredde,
+  ekspanderbar,
+  harSamordningsfradrag,
+  tekst,
+}: {
+  radNøkkel: string;
   periode: Stønadsperiode;
   kolonneBredde: string;
   ekspanderbar: boolean;
   harSamordningsfradrag: boolean;
-}> = ({ periode, kolonneBredde, ekspanderbar, harSamordningsfradrag }) => {
+} & TekstProps) => {
   const fraDato = formaterIsoDato(periode.fraDato);
   const tilDato = formaterIsoDato(periode.tilDato);
 
@@ -131,34 +144,39 @@ const TabellRad: React.FC<{
   };
 
   return ekspanderbar ? (
-    <Table.ExpandableRow content={<UtvidetTabellRad periode={periode} />}>
+    <Table.ExpandableRow key={radNøkkel} content={lagUtvidetTabellRad({ periode, tekst })}>
       <Table.DataCell>{beløpsperiode}</Table.DataCell>
-      <VerdiCelle bredde={kolonneBredde}>
-        {beløpMedTusenSkilleOgNokEllerNull(periode.beløp)}
-      </VerdiCelle>
+      {lagVerdiCelle({
+        bredde: kolonneBredde,
+        children: beløpMedTusenSkilleOgNokEllerNull(periode.beløp),
+      })}
     </Table.ExpandableRow>
   ) : (
-    <Table.Row>
+    <Table.Row key={radNøkkel}>
       <Table.DataCell>{beløpsperiode}</Table.DataCell>
-      <VerdiCelle bredde={kolonneBredde}>
-        {beløpMedTusenSkilleOgNokEllerNull(periode.inntektsgrunnlag)}
-      </VerdiCelle>
-      {harSamordningsfradrag && (
-        <VerdiCelle bredde={kolonneBredde}>
-          {beløpMedTusenSkilleOgNokEllerNull(periode.samordningsfradrag)}
-        </VerdiCelle>
-      )}
-      <VerdiCelle bredde={kolonneBredde}>
-        {beløpMedTusenSkilleOgNokEllerNull(periode.beløp)}
-      </VerdiCelle>
+      {lagVerdiCelle({
+        bredde: kolonneBredde,
+        children: beløpMedTusenSkilleOgNokEllerNull(periode.inntektsgrunnlag),
+      })}
+      {harSamordningsfradrag &&
+        lagVerdiCelle({
+          bredde: kolonneBredde,
+          children: beløpMedTusenSkilleOgNokEllerNull(periode.samordningsfradrag),
+        })}
+      {lagVerdiCelle({
+        bredde: kolonneBredde,
+        children: beløpMedTusenSkilleOgNokEllerNull(periode.beløp),
+      })}
     </Table.Row>
   );
 };
 
-const UtvidetTabellRad: React.FC<{
+const lagUtvidetTabellRad = ({
+  periode,
+  tekst,
+}: {
   periode: Stønadsperiode;
-}> = ({ periode }) => {
-  const { tekst } = useLocaleIntlContext();
+} & TekstProps) => {
   return (
     <>
       <HStack gap="space-2">
