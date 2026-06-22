@@ -4,7 +4,6 @@ import { Forside } from './pages/Forside/Forside';
 import { AppEnv, hentEnv } from './api/env';
 import { AppProvider } from './context/AppContext';
 import { HStack, Loader } from '@navikt/ds-react';
-import Dokumentoversikt from './pages/Dokumentoversikt/Dokumentoversikt';
 import { ScrollToTop } from './utils/scrollEffect';
 import StønadSide from './pages/Stønadoversikt/StønadSide';
 import { SpråkProvider } from './context/SpråkContext';
@@ -36,7 +35,6 @@ export const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Outlet />}>
               <Route index element={<Forside />} />
-              <Route path="/dokumentoversikt" element={<Dokumentoversikt />} />
               <Route
                 path="/overgangsstonad"
                 element={<StønadSide stønadType="overgangsstønad" />}
