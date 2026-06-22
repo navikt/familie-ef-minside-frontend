@@ -4,7 +4,6 @@ import { SideTittel } from '../../components/SideTittel';
 import { Grid } from './Grid';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import DataViewer from '../../components/DataViewer';
-import DineVedtak from './DineVedtak';
 import StønadTabell from './StønadTabell';
 import { StønadType } from '../../interfaces/stønader';
 import { utledStønadTekst } from './utils';
@@ -35,10 +34,6 @@ const StønadSide: React.FC<Props> = ({ stønadType }) => {
       </Grid>
 
       <LenkePanelStorListe />
-
-      <Grid>
-        <DineVedtak stønadType={stønadType} />
-      </Grid>
     </main>
   );
 };
