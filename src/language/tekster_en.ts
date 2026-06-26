@@ -15,18 +15,6 @@ export const en: Tekster = {
   'ettersende.tittel': 'Submit documentation',
   'ettersende.brødtekst': 'Here you can submit documents for your case.',
 
-  'dokumenter.tittel': 'Your documents',
-  'dokumenter.ingenFunnet':
-    'We found no documents to show related to benefits for single parents. Note that only documents and messages you have submitted digitally will be displayed here.',
-  'dokumenter.seAlle': 'See all documents',
-  'dokumenter.henter': 'Fetching documents',
-  'dokumenter.galt': 'Something went wrong while fetching your documents.',
-
-  'dokumentoversikt.tittel': 'Your documents',
-  'dokumentoversikt.undertittel':
-    'Here you can find your documents relating to single parent benefits. You can only view documents and messages you have submitted digitally.',
-  'dokumentoversikt.ingenFunnet': 'We found no documents to show.',
-
   'søke.tittel': 'Do you want to apply?',
 
   'overgangsstønad.tittel': 'Transitional Benefit',

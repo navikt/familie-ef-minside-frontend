@@ -3,7 +3,6 @@ import Snarveier from './Snarveier';
 import LenkePanelStorListe from './LenkePanelStorListe';
 import StønadPanelListe from './StønadPanelListe';
 import React from 'react';
-import DineDokumenter from './DineDokumenter';
 import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 import { useApp } from '../../context/useApp';
 import { SideTittel } from '../../components/SideTittel';
@@ -38,7 +37,6 @@ export const Forside: React.FC = () => {
         <LenkePanelStorListe />
       </section>
       <section className={styles.grid}>
-        <DineDokumenter />
         <StønadPanelListe />
         <Snarveier />
       </section>
