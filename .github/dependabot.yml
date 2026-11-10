@@ -1,53 +1,53 @@
 version: 2
 
 registries:
-  npm-github:
-    type: npm-registry
-    url: https://npm.pkg.github.com
-    token: ${{ secrets.READER_TOKEN }}
+    npm-github:
+        type: npm-registry
+        url: https://npm.pkg.github.com
+        token: ${{ secrets.READER_TOKEN }}
 
 updates:
-- package-ecosystem: github-actions
-  directory: "/"
-  schedule:
-    interval: weekly
-    day: "sunday"
-    time: "04:00"
-  cooldown:
-    default-days: 4
-  groups:
-    github-actions-minor-patches:
-      patterns:
-        - "*"
-      update-types:
-        - "minor"
-        - "patch"
-    github-actions-major:
-      patterns:
-        - "*"
-      update-types:
-        - "major"
+    - package-ecosystem: github-actions
+      directory: "/"
+      schedule:
+          interval: weekly
+          day: "sunday"
+          time: "04:00"
+      cooldown:
+          default-days: 4
+      groups:
+          github-actions-minor-patches:
+              patterns:
+                  - "*"
+              update-types:
+                  - "minor"
+                  - "patch"
+          github-actions-major:
+              patterns:
+                  - "*"
+              update-types:
+                  - "major"
 
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: weekly
-    day: "sunday"
-    time: "04:00"
-  cooldown:
-    default-days: 4
-  open-pull-requests-limit: 30
-  registries: "*"
-  versioning-strategy: increase
-  groups:
-    patch-minor-dependencies:
-      patterns:
-        - "*"
-      update-types:
-        - "patch"
-        - "minor"
-    major-dependencies:
-      patterns:
-        - "*"
-      update-types:
-        - "major"
+    - package-ecosystem: npm
+      directory: "/"
+      schedule:
+          interval: weekly
+          day: "sunday"
+          time: "04:00"
+      cooldown:
+          default-days: 4
+      open-pull-requests-limit: 30
+      registries: "*"
+      versioning-strategy: increase
+      groups:
+          patch-minor-dependencies:
+              patterns:
+                  - "*"
+              update-types:
+                  - "patch"
+                  - "minor"
+          major-dependencies:
+              patterns:
+                  - "*"
+              update-types:
+                  - "major"

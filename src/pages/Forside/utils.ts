@@ -1,11 +1,11 @@
-import { StønadType } from '../../interfaces/stønader';
+import type { StønadType } from '../../interfaces/stønader';
 
 const titler = {
-  overgangsstønad: 'titler.overgangsstønad',
-  barnetilsyn: 'titler.barnetilsyn',
-  skolepenger: 'titler.skolepenger',
+    overgangsstønad: 'titler.overgangsstønad',
+    barnetilsyn: 'titler.barnetilsyn',
+    skolepenger: 'titler.skolepenger',
 };
 
 export const utledKomponentTittel = (stønadType: StønadType) => {
-  return titler[stønadType];
+    return titler[stønadType];
 };

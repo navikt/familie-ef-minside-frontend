@@ -1,19 +1,15 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "module": "nodenext",
-    "strict": true,
-    "noImplicitAny": true,
-    "esModuleInterop": true,
-    "outDir": "backend",
-    "moduleResolution": "nodenext",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "exclude": [
-    "node_modules",
-    "**/*.test.ts",
-    "./src/global.d.ts"
-  ]
+    "compilerOptions": {
+        "target": "es6",
+        "module": "nodenext",
+        "strict": true,
+        "noImplicitAny": true,
+        "esModuleInterop": true,
+        "outDir": "backend",
+        "moduleResolution": "nodenext",
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "exclude": ["node_modules", "**/*.test.ts", "./src/global.d.ts"]
 }

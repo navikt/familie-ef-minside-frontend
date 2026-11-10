@@ -1,15 +1,15 @@
 import { BodyLong, Heading, LinkPanel, VStack } from '@navikt/ds-react';
-import styled from 'styled-components';
 import { BorderNeutralSubtle, ShadowDialog } from '@navikt/ds-tokens/dist/tokens';
-import { desktop } from '../utils/constants';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { desktop } from '../utils/constants';
 
 interface Props {
-  tittel: string;
-  brødtekst: string;
-  url: string;
-  redirect: 'ekstern' | 'intern';
-  className?: string;
+    tittel: string;
+    brødtekst: string;
+    url: string;
+    redirect: 'ekstern' | 'intern';
+    className?: string;
 }
 
 const StyledLinkPanel = styled(LinkPanel)`
@@ -31,28 +31,27 @@ const StyledLinkPanel = styled(LinkPanel)`
 `;
 
 const LenkePanelStor: React.FC<Props> = ({ tittel, brødtekst, url, redirect, className }) => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const href =
-    redirect === 'ekstern' ? url : `${import.meta.env.BASE_URL.replace(/\/$/, '')}${url}`;
+    const href = redirect === 'ekstern' ? url : `${import.meta.env.BASE_URL.replace(/\/$/, '')}${url}`;
 
-  const handleClick = (e: React.SyntheticEvent) => {
-    if (redirect !== 'ekstern') {
-      e.preventDefault();
-      navigate(url);
-    }
-  };
+    const handleClick = (e: React.SyntheticEvent) => {
+        if (redirect !== 'ekstern') {
+            e.preventDefault();
+            navigate(url);
+        }
+    };
 
-  return (
-    <StyledLinkPanel href={href} border={true} onClick={handleClick} className={className}>
-      <VStack>
-        <Heading size="small" level="3">
-          {tittel}
-        </Heading>
-        <BodyLong textColor="subtle">{brødtekst}</BodyLong>
-      </VStack>
-    </StyledLinkPanel>
-  );
+    return (
+        <StyledLinkPanel href={href} border={true} onClick={handleClick} className={className}>
+            <VStack>
+                <Heading size="small" level="3">
+                    {tittel}
+                </Heading>
+                <BodyLong textColor="subtle">{brødtekst}</BodyLong>
+            </VStack>
+        </StyledLinkPanel>
+    );
 };
 
 export default LenkePanelStor;
