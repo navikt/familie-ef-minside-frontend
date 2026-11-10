@@ -29,4 +29,4 @@ export const formaterTallMedTusenSkille = (verdi?: number): string =>
     harTallverdi(verdi) ? Number(verdi).toLocaleString('no-NO') : '';
 
 export const harTallverdi = (verdi: number | undefined | null | string): boolean =>
-    verdi !== undefined && verdi !== null && verdi !== '' && !isNaN(Number(verdi.toString()));
+    verdi !== undefined && verdi !== null && verdi !== '' && !Number.isNaN(Number(verdi.toString()));

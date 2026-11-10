@@ -13,7 +13,7 @@ const prefix = (req: Request) => {
     return `${req.method} - ${req.originalUrl}`;
 };
 
-const utledMetadata = (req: Request, error?: any) => {
+const utledMetadata = (req: Request, error?: unknown) => {
     const callId = req.header('nav-call-id');
     const requestId = req.header('x-request-id');
 
@@ -31,7 +31,7 @@ export const logInfo = (message: string, req: Request) => {
     logger.info(melding, meta);
 };
 
-export const logWarn = (message: string, req: Request, error?: any) => {
+export const logWarn = (message: string, req: Request, error?: unknown) => {
     const melding = `${prefix(req)}: ${message}`;
     const meta = utledMetadata(req, error);
 

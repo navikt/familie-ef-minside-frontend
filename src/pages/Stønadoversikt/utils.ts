@@ -50,9 +50,10 @@ const sorterDatoDesc = (a: Stønadsperiode, b: Stønadsperiode) => (a.fraDato < 
 const mergeSammenhengendePerioderMedLikeBeløp = (perioder: Stønadsperiode[]) => {
     const sortertePerioderAsc = sorterStønadsperioder(perioder, 'asc');
 
-    const sammenslåttePerioder = sortertePerioderAsc.reduce((acc, periode) => {
+    const sammenslåttePerioder = sortertePerioderAsc.reduce<Stønadsperiode[]>((acc, periode) => {
         if (acc.length === 0) {
-            return [periode];
+            acc.push(periode);
+            return acc;
         }
         const prevPeriode = acc[acc.length - 1];
         if (erPåfølgendeDatoer(prevPeriode.tilDato, periode.fraDato) && harSammeBeløp(prevPeriode, periode)) {
@@ -64,10 +65,12 @@ const mergeSammenhengendePerioderMedLikeBeløp = (perioder: Stønadsperiode[]) =
                 samordningsfradrag: periode.samordningsfradrag,
             } as Stønadsperiode;
 
-            return [...acc.slice(0, -1), sammenslåttPeriode];
+            acc[acc.length - 1] = sammenslåttPeriode;
+            return acc;
         }
-        return [...acc, periode];
-    }, [] as Stønadsperiode[]);
+        acc.push(periode);
+        return acc;
+    }, []);
 
     return sorterStønadsperioder(sammenslåttePerioder, 'desc');
 };

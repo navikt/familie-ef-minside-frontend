@@ -36,7 +36,7 @@ const harBearerToken = (authorization: string) => {
     return authorization.includes('Bearer ');
 };
 
-const utledToken = (req: Request, authorization: string | undefined) => {
+const utledToken = (authorization: string | undefined) => {
     if (authorization && harBearerToken(authorization)) {
         return authorization.split(' ')[1];
     } else {
@@ -51,8 +51,8 @@ const getAccessToken = async (req: Request, audience: string) => {
     }
 
     const { authorization } = req.headers;
-    const token = utledToken(req, authorization);
-    logInfo('IdPorten-token found: ' + (token.length > 1), req);
+    const token = utledToken(authorization);
+    logInfo(`IdPorten-token found: ${token.length > 1}`, req);
     const accessToken = await exchangeToken(token, audience, 'tokenx').then(accessToken => accessToken.access_token);
     return `Bearer ${accessToken}`;
 };

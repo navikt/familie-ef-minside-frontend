@@ -21,5 +21,5 @@ export const useSettBreadcrumbTekster = (stønadType: StønadType) => {
         }));
 
         setBreadcrumbs([...settBreadcrumbTitleMedTekst, breadCrumbModifisert]);
-    }, [stønadType, appEnv.defaultBreadcrumbs, tekst, breadCrumb, breadCrumbTitle]);
+    }, [appEnv.defaultBreadcrumbs, tekst, breadCrumb, breadCrumbTitle]);
 };

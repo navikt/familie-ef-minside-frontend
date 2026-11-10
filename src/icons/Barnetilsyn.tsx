@@ -9,7 +9,14 @@ export const Barnetilsyn: React.FC<Props> = ({ width, height }) => {
     const iconHeight = height ? height : 64;
     const iconWidth = width ? width : 64;
     return (
-        <svg width={iconWidth} height={iconHeight} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+            aria-hidden="true"
+            width={iconWidth}
+            height={iconHeight}
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
             <rect width="32" height="32" transform="translate(31.9609 9.66797) rotate(45)" fill="#E0D8E9" />
             <mask id="path-1-inside-1_3174_9619" fill="white">
                 <path

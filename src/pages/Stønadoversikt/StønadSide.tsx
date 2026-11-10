@@ -25,7 +25,7 @@ const StønadSide: React.FC<Props> = ({ stønadType }) => {
     const stønad = stønader[`${stønadType}`];
 
     return (
-        <main id="maincontent" tabIndex={-1} role="main">
+        <main id="maincontent" tabIndex={-1}>
             <Grid>
                 <SideTittel tittel={tittel} />
                 <DataViewer dataStatus={stønadStatus} loaderTekst={loaderTekst} alertTekst={alertTekst}>

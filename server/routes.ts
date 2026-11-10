@@ -1,5 +1,5 @@
+import path from 'node:path';
 import express, { type Router } from 'express';
-import path from 'path';
 import type { ViteDevServer } from 'vite';
 import getHtmlWithDecorator from './decorator.js';
 import logger from './logger.js';

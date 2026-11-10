@@ -9,7 +9,14 @@ export const Skolepenger: React.FC<Props> = ({ height, width }) => {
     const iconHeight = height ? height : 64;
     const iconWidth = width ? width : 64;
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width={iconWidth} height={iconHeight} viewBox="0 0 64 64" fill="none">
+        <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width={iconWidth}
+            height={iconHeight}
+            viewBox="0 0 64 64"
+            fill="none"
+        >
             <path d="M55.9996 46L56 11.3333L8 46L55.9996 46Z" fill="#E0D8E9" />
             <path
                 d="M6.33398 34.6641C6.33398 30.7981 9.46799 27.6641 13.334 27.6641H29.334C33.2 27.6641 36.334 30.7981 36.334 34.6641V58.6641C36.334 61.0573 34.3939 62.9974 32.0007 62.9974H10.6673C8.27409 62.9974 6.33398 61.0573 6.33398 58.6641V34.6641Z"

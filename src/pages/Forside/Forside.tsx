@@ -22,7 +22,7 @@ export const Forside: React.FC = () => {
     setBreadcrumbs(settBreadcrumbTitleMedTekst);
 
     return (
-        <main id="maincontent" tabIndex={-1} role="main">
+        <main id="maincontent" tabIndex={-1}>
             <section className={styles.grid}>
                 <SideTittel tittel={tekst('side.tittel')} underTittel={tekst('side.undertittel')} ikon={true} />
                 <InfoNyRegelverksendring />

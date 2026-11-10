@@ -9,7 +9,14 @@ export const Overgangsstønad: React.FC<Props> = ({ height, width }) => {
     const iconHeight = height ? height : 64;
     const iconWidth = width ? width : 64;
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width={iconWidth} height={iconHeight} viewBox="0 0 64 64" fill="none">
+        <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width={iconWidth}
+            height={iconHeight}
+            viewBox="0 0 64 64"
+            fill="none"
+        >
             <path
                 d="M49.3341 30.4445C49.3341 25.7807 45.6777 22 41.1674 22C38.8819 22 36.8156 22.9708 35.3348 24.5353C33.8524 22.9708 31.7862 22 29.5007 22C24.9903 22 21.334 25.7807 21.334 30.4445C21.334 32.8083 22.2733 34.9453 23.7871 36.4782L23.6673 36.4762L35.334 47.3334L47.0007 36.4762L46.881 36.4782C48.3948 34.9453 49.3341 32.8083 49.3341 30.4445Z"
                 fill="#E0D8E9"

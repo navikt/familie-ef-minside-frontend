@@ -6,7 +6,7 @@ interface Props {
     title: string;
 }
 const DataLoader: React.FC<Props> = ({ size, title }) => (
-    <main id="maincontent" tabIndex={-1} role="main">
+    <main id="maincontent" tabIndex={-1}>
         <HStack justify="center">
             <Loader size={size} title={title} />
         </HStack>
