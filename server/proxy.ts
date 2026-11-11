@@ -5,9 +5,6 @@ import { createProxyMiddleware } from 'http-proxy-middleware';
 import { v4 as uuid } from 'uuid';
 import logger from './logger.js';
 
-
-
-
 const restream = (proxyReq: ClientRequest, req: IncomingMessage) => {
     const requestBody = (req as Request).body;
     if (requestBody) {
