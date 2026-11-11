@@ -1,3 +1,3 @@
 export interface Tekster {
-  [key: string]: string;
+    [key: string]: string;
 }

@@ -1,5 +1,5 @@
 export enum DataStatus {
-  HENTER = 'HENTER',
-  HENTET = 'HENTET',
-  FEILET = 'FEILET',
+    HENTER = 'HENTER',
+    HENTET = 'HENTET',
+    FEILET = 'FEILET',
 }

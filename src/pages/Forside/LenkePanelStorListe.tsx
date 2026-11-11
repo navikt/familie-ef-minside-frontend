@@ -1,33 +1,33 @@
+import { Heading, HStack, VStack } from '@navikt/ds-react';
 import LenkePanelStor from '../../components/LenkePanelStor';
 import { useApp } from '../../context/useApp';
-import { Heading, HStack, VStack } from '@navikt/ds-react';
 import { useLocaleIntlContext } from '../../context/useLocaleIntlContext';
 
 const LenkePanelStorListe: React.FC = () => {
-  const { appEnv } = useApp();
-  const { tekst } = useLocaleIntlContext();
+    const { appEnv } = useApp();
+    const { tekst } = useLocaleIntlContext();
 
-  return (
-    <VStack gap="space-2">
-      <Heading size="medium" level="2">
-        {tekst('endreEllerEttersende.tittel')}
-      </Heading>
-      <HStack gap="space-4">
-        <LenkePanelStor
-          tittel={tekst('endre.tittel')}
-          brødtekst={tekst('endre.brødtekst')}
-          url={appEnv.endringsmeldingUrl}
-          redirect="ekstern"
-        />
-        <LenkePanelStor
-          tittel={tekst('ettersende.tittel')}
-          brødtekst={tekst('ettersende.brødtekst')}
-          url={appEnv.ettersendingUrl}
-          redirect="ekstern"
-        />
-      </HStack>
-    </VStack>
-  );
+    return (
+        <VStack gap="space-2">
+            <Heading size="medium" level="2">
+                {tekst('endreEllerEttersende.tittel')}
+            </Heading>
+            <HStack gap="space-4">
+                <LenkePanelStor
+                    tittel={tekst('endre.tittel')}
+                    brødtekst={tekst('endre.brødtekst')}
+                    url={appEnv.endringsmeldingUrl}
+                    redirect="ekstern"
+                />
+                <LenkePanelStor
+                    tittel={tekst('ettersende.tittel')}
+                    brødtekst={tekst('ettersende.brødtekst')}
+                    url={appEnv.ettersendingUrl}
+                    redirect="ekstern"
+                />
+            </HStack>
+        </VStack>
+    );
 };
 
 export default LenkePanelStorListe;
