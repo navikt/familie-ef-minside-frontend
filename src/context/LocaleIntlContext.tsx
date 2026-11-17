@@ -1,33 +1,32 @@
-import React, { ReactNode } from 'react';
+import type React from 'react';
+import type { ReactNode } from 'react';
 import { LocaleIntlContext } from './LocaleIntlContextState';
 
 interface LocaleIntlProviderProps {
-  tekster: Record<string, string>;
-  children?: ReactNode;
+    tekster: Record<string, string>;
+    children?: ReactNode;
 }
 
 const LocaleIntlProvider: React.FC<LocaleIntlProviderProps> = ({ children, tekster }) => {
-  const formaterMelding = (key: string, parametre?: string[]) => {
-    const tekst = tekster[key];
+    const formaterMelding = (key: string, parametre?: string[]) => {
+        const tekst = tekster[key];
 
-    if (tekst === undefined || tekst === null) {
-      console.warn(`Finner ikke oversettelse for ${key}`);
-      return key;
-    }
+        if (tekst === undefined || tekst === null) {
+            console.warn(`Finner ikke oversettelse for ${key}`);
+            return key;
+        }
 
-    if (parametre) {
-      return parametre.reduce((acc, param, index) => {
-        const placeholder = `[${index}]`;
-        return acc.replaceAll(placeholder, param);
-      }, tekst);
-    }
+        if (parametre) {
+            return parametre.reduce((acc, param, index) => {
+                const placeholder = `[${index}]`;
+                return acc.replaceAll(placeholder, param);
+            }, tekst);
+        }
 
-    return tekst;
-  };
-  const tekst = (key: string, params?: string[]) => formaterMelding(key, params);
-  return (
-    <LocaleIntlContext.Provider value={{ tekster, tekst }}>{children}</LocaleIntlContext.Provider>
-  );
+        return tekst;
+    };
+    const tekst = (key: string, params?: string[]) => formaterMelding(key, params);
+    return <LocaleIntlContext.Provider value={{ tekster, tekst }}>{children}</LocaleIntlContext.Provider>;
 };
 
 export { LocaleIntlProvider };

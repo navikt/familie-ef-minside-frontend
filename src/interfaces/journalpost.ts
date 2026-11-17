@@ -1,25 +1,25 @@
 export interface Journalpost {
-  journalpostId: string;
-  journalpostType: JournalpostType;
-  dato: string;
-  hovedDokument: DokumentInfo;
-  vedlegg: DokumentInfo[];
+    journalpostId: string;
+    journalpostType: JournalpostType;
+    dato: string;
+    hovedDokument: DokumentInfo;
+    vedlegg: DokumentInfo[];
 }
 
 export interface DokumentInfo {
-  dokumentId: string;
-  tittel: string;
-  variantformat: Variantformat;
-  filtype: string;
+    dokumentId: string;
+    tittel: string;
+    variantformat: Variantformat;
+    filtype: string;
 }
 
 export enum JournalpostType {
-  I = 'I',
-  U = 'U',
-  N = 'N',
+    I = 'I',
+    U = 'U',
+    N = 'N',
 }
 
 export enum Variantformat {
-  ARKIV = 'ARKIV',
-  SLADDET = 'SLADDET',
+    ARKIV = 'ARKIV',
+    SLADDET = 'SLADDET',
 }

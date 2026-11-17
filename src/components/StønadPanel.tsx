@@ -1,17 +1,17 @@
-import { BodyLong, Panel, HStack, VStack, Link, Button, Heading } from '@navikt/ds-react';
-import styled from 'styled-components';
+import { BodyLong, Button, Heading, HStack, Link, Panel, VStack } from '@navikt/ds-react';
 import { BorderNeutralSubtle, ShadowDialog } from '@navikt/ds-tokens/dist/tokens';
-import React from 'react';
+import type React from 'react';
+import styled from 'styled-components';
 import { desktop } from '../utils/constants';
 
 interface Props {
-  tittel: string;
-  brødtekst: string;
-  lenkeTekst: string;
-  lenkeUrl: string;
-  knappTekst: string;
-  knappUrl: string;
-  ikon: React.ReactNode;
+    tittel: string;
+    brødtekst: string;
+    lenkeTekst: string;
+    lenkeUrl: string;
+    knappTekst: string;
+    knappUrl: string;
+    ikon: React.ReactNode;
 }
 
 const Container = styled(Panel)`
@@ -34,38 +34,30 @@ const IkonContainer = styled.div`
   height: 2.75rem;
 `;
 
-const StønadPanel: React.FC<Props> = ({
-  tittel,
-  brødtekst,
-  lenkeTekst,
-  lenkeUrl,
-  knappTekst,
-  knappUrl,
-  ikon,
-}) => (
-  <Container border={true}>
-    <VStack gap="space-4">
-      <HStack gap="space-2" align="center" justify="start">
-        <IkonContainer aria-hidden={true}>{ikon}</IkonContainer>
-        <Heading size="small" level="3">
-          {tittel}
-        </Heading>
-      </HStack>
-      <BodyLong>{brødtekst}</BodyLong>
-    </VStack>
-    <VStack gap="space-4">
-      <Link href={lenkeUrl}>{lenkeTekst}</Link>
-      <Button
-        variant="secondary"
-        role="link"
-        onClick={() => {
-          window.location.href = knappUrl;
-        }}
-      >
-        {knappTekst}
-      </Button>
-    </VStack>
-  </Container>
+const StønadPanel: React.FC<Props> = ({ tittel, brødtekst, lenkeTekst, lenkeUrl, knappTekst, knappUrl, ikon }) => (
+    <Container border={true}>
+        <VStack gap="space-4">
+            <HStack gap="space-2" align="center" justify="start">
+                <IkonContainer aria-hidden={true}>{ikon}</IkonContainer>
+                <Heading size="small" level="3">
+                    {tittel}
+                </Heading>
+            </HStack>
+            <BodyLong>{brødtekst}</BodyLong>
+        </VStack>
+        <VStack gap="space-4">
+            <Link href={lenkeUrl}>{lenkeTekst}</Link>
+            <Button
+                variant="secondary"
+                role="link"
+                onClick={() => {
+                    window.location.href = knappUrl;
+                }}
+            >
+                {knappTekst}
+            </Button>
+        </VStack>
+    </Container>
 );
 
 export default StønadPanel;
